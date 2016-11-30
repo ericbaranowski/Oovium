@@ -39,7 +39,7 @@ public class Lambda: NSObject {
 	
 	// Variables
 	func nextVar () -> Obj {
-		return Obj(dims: [])
+		return Obj(def: RealDef.def, dims: [])
 	}
 	
 	// Stack

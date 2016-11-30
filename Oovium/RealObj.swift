@@ -14,7 +14,7 @@ class RealObj: Obj {
 	}
 	
 	public init (_ x: Double) {
-		super.init(dims: [RealDim(x)])
+		super.init(def: RealDef.def, dims: [RealDim(x)])
 	}
 	
 	var value: Double {
@@ -24,7 +24,7 @@ class RealObj: Obj {
 		}
 	}
 	
-	static func + (left: RealObj, right: RealObj) -> Obj {
-		return RealObj(left.value+right.value)
+	static func + (a: RealObj, b: RealObj) -> Obj {
+		return RealObj(a.x+b.x)
 	}
 }

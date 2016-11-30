@@ -9,9 +9,11 @@
 import Foundation
 
 class Obj: NSObject {
-	let dims: [Dim]
+	let def: Def
+	var dims: [Dim]
 	
-	init (dims: [Dim]) {
+	init (def: Def, dims: [Dim]) {
+		self.def = def
 		self.dims = dims
-	}	
+	}
 }

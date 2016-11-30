@@ -9,6 +9,12 @@
 import Foundation
 
 class RealDef: Def {
+	static let def = RealDef()
+	
+	init () {
+		super.init(name: "Number", properties: ["x"], color: UIColor.green, order:1)
+	}
+	
 	static let cons: (Lambda)->() = {(lambda: Lambda)->() in
 		lambda.push(lambda.nextCons())
 	}
