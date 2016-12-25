@@ -13,20 +13,35 @@ enum ParseError: Error {
 }
 
 public class Cauldron: NSObject {
+	let tokens: [Token]
+	let lambda: Lambda
+	
+	public init (_ tokens:[Token]) {
+		self.tokens = tokens
+		self.lambda = Lambda()
+	}
+	
+	private func add (morph: @escaping (Lambda)->()) {
+		lambda.addMorph(morph)
+	}
+	private func apply (tag: Tag) {
+		lambda.applyTag(tag)
+	}
+	
 // Tokens ==========================================================================================
-	static private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
+	private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
 		let token: Token = tokens[i]
 		
 		if token.type != .operator && token.type != .separator
 			{throw ParseError.general}
 		
-//		switch token.level! {
-//			case .add:			ops.aOp(token.tag)
-//			case .multiply:		ops.mOp(token.tag)
-//			case .power:		ops.pOp(token.tag)
-//			case .compare:		ops.cOp(token.tag)
-//			case .separator:	ops.end()
-//		}
+		switch token.level! {
+			case .add:			ops.aOp(token.tag)
+			case .multiply:		ops.mOp(token.tag)
+			case .power:		ops.pOp(token.tag)
+			case .compare:		ops.cOp(token.tag)
+			case .separator:	ops.end()
+		}
 	}
 	
 	//	if ([tokens count] <= i)
@@ -115,10 +130,16 @@ public class Cauldron: NSObject {
 	//
 	//	@throw [[ParseException alloc] initWithText:_text at:i];
 
-	static private func parseNumber (tokens: [Token], i:Int) -> String {
-		return ""
+	private func parseNumber (tokens: [Token], i:Int) -> String {
+		var sb = String()
+		for i in i..<tokens.count {
+			let token = tokens[i]
+			if token.type != .digit {break}
+			sb.append(token.tag.key)
+		}
+		return sb;
 	}
-	static private func parseOperand (tokens:[Token], i:Int, lambda:Lambda) throws -> Int {
+	private func parseOperand (tokens:[Token], i:Int, lambda:Lambda) throws -> Int {
 		var i = i
 		if (tokens.count <= i)
 			{throw ParseError.general}
@@ -141,35 +162,40 @@ public class Cauldron: NSObject {
 			if let unary = unary
 				{lambda.applyTag(unary)}
 			return n.lengthOfBytes(using: .ascii) + (unary != nil ? 1 : 0)
-		} else if token == Token.leftParen {
+		} else if token == .leftParen {
 		} else if token.type == .function {
-		} else if token == Token.bra {
+		} else if token == .bra {
 		} else if token.type == .variable {
+			let v: String = token.tag.key
+			let buck = v.range(of:"$")?.lowerBound
+			let name = buck != nil ? v.substring(to: buck!) : v
+			let type = buck != nil ? "\(v.substring(from: v.index(buck!, offsetBy: 1)))Var;" : "var;num;"
+			lambda.variables.append(name)
+			add(morph: Math.morph(key: type))
+			
+			if unary != nil {apply(tag: unary!)}
+			return 1 + (unary != nil ? 1 : 0)
+			
 		} else if token.type == .constant {
 		} else if token == Token.quote {
 		}
 		
 		throw ParseError.general
 	}
-	static private func parseTokens (tokens:[Token], start:Int, stop:Int, lambda:Lambda) throws {
+	private func parseTokens (tokens:[Token], start:Int, stop:Int, lambda:Lambda) throws {
 		if (tokens.count == 0) {return}
 		let ops: Ops = Ops(lambda)
 		var i: Int = start
 		i += try parseOperand(tokens:tokens, i:i, lambda:lambda)
 		while i < stop {
 			try parseOperator(tokens:tokens, i:i, ops:ops)
+			i += 1
 			i += try parseOperand(tokens:tokens, i:i, lambda:lambda)
 		}
 		ops.end()
 	}
-	static func parse (tokens: [Token]) throws -> Lambda {
-		let lambda: Lambda = Lambda()
+	public func parse (tokens: [Token]) throws -> Lambda {
 		try parseTokens(tokens:tokens, start:0, stop:tokens.count, lambda:lambda)
 		return lambda
-	}
-	
-// String ==========================================================================================
-	public static func parse (string: String) -> Lambda {
-		return Lambda()
 	}
 }

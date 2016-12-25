@@ -67,6 +67,10 @@
 		D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC351DE8FC9F00B56F6A /* Oovium.swift */; };
 		D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC361DE8FC9F00B56F6A /* OoviumDelegate.swift */; };
 		D89BEC3B1DE8FD2100B56F6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89BEC3A1DE8FD2100B56F6A /* Default-568h@2x.png */; };
+		D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
+		D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
+		D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
+		D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +145,8 @@
 		D89BEC3A1DE8FD2100B56F6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		D89BEC431DE8FDAB00B56F6A /* OoviumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OoviumLib.h; sourceTree = "<group>"; };
 		D89BEC441DE8FDAB00B56F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
+		D8D1EEEF1DFDC67300CF3870 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +282,8 @@
 			children = (
 				D89BEC241DE8D42100B56F6A /* Scratch.swift */,
 				D89BEC221DE8D42100B56F6A /* Lambda.swift */,
+				D8D1EEEF1DFDC67300CF3870 /* Slot.swift */,
+				D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */,
 				D89BEC231DE8D42100B56F6A /* Recipe.swift */,
 				D89BEC251DE8D42100B56F6A /* Tower.swift */,
 				D89BEC211DE8D42100B56F6A /* Engine.swift */,
@@ -486,12 +494,14 @@
 				D80659121DE90EC800325182 /* Tower.swift in Sources */,
 				D806590E1DE90EC800325182 /* DateDef.swift in Sources */,
 				D80659181DE90EC800325182 /* Cauldron.swift in Sources */,
+				D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */,
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
 				D80EB9A21DED97EB00361939 /* Math.swift in Sources */,
 				D806590F1DE90EC800325182 /* Scratch.swift in Sources */,
 				D80659031DE90EC800325182 /* RealDim.swift in Sources */,
 				D80659191DE90EC800325182 /* ViewController.swift in Sources */,
 				D80659071DE90EC800325182 /* RealObj.swift in Sources */,
+				D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */,
 				D80659041DE90EC800325182 /* LambdaDim.swift in Sources */,
 				D80659131DE90EC800325182 /* Engine.swift in Sources */,
 				D80659101DE90EC800325182 /* Lambda.swift in Sources */,
@@ -527,7 +537,9 @@
 				D89BEC0C1DE8D3CB00B56F6A /* LambdaDim.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
 				D89BEC291DE8D42100B56F6A /* Scratch.swift in Sources */,
+				D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
+				D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */,
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,
 				D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */,
 				D89BEC111DE8D3DC00B56F6A /* Obj.swift in Sources */,
@@ -633,6 +645,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -683,6 +696,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

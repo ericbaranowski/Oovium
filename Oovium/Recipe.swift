@@ -9,17 +9,21 @@
 import Foundation
 
 public class Recipe: NSObject {
-	private let steps: [(Recipe)->()]
+	private let steps: [(Memory)->()]
 	private var sp: Int
 	
 	override public init () {
 		steps = []
 		sp = 0
 	}
-	init (steps: [(Recipe)->()]) {
+	init (steps: [(Memory)->()]) {
 		self.steps = steps
 		sp = 0
 	}
 	
-	public func apply () {}
+	public func enact (_ memory: Memory) {
+		for step in steps {
+			step(memory)
+		}
+	}
 }

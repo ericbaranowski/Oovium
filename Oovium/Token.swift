@@ -30,17 +30,27 @@ params is determined by looking it up in the Tag registry of the Math appliance.
 
 import Foundation
 
-enum TokenType: String {
-	case digit = "dgt"
-	case `operator` = "opr"
-	case separator = "sep"
-	case function = "fnc"
-	case variable = "var"
-	case property = "pty"
-	case constant = "cns"
-	case character = "chr"
+//public enum TokenType: String {
+//	case digit = "dgt"
+//	case `operator` = "opr"
+//	case separator = "sep"
+//	case function = "fnc"
+//	case variable = "var"
+//	case property = "pty"
+//	case constant = "cns"
+//	case character = "chr"
+//}
+@objc public enum TokenType: Int {
+	case digit
+	case `operator`
+	case separator
+	case function
+	case variable
+	case property
+	case constant
+	case character
 }
-enum TokenLevel: Int {
+@objc public enum TokenLevel: Int {
 	case add
 	case multiply
 	case power
@@ -48,22 +58,26 @@ enum TokenLevel: Int {
 	case separator
 }
 
-class Token: NSObject {
-	let type: TokenType
-	let tag: Tag
-	let level: TokenLevel?
+public class Token: NSObject {
+	public let type: TokenType
+	public let tag: Tag
+	public let level: TokenLevel?
 	
-	init (type: TokenType, tag: Tag) {
+	public init (type: TokenType, tag: Tag) {
 		self.type = type
 		self.tag = tag
 		self.level = .add
 	}
-	
+	public init (type: TokenType, tag: Tag, level: TokenLevel) {
+		self.type = type
+		self.tag = tag
+		self.level = level
+	}
 	
 	static var tokens: [String:Token] = [String:Token]()
 	
-	static func token (type: TokenType, tag:Tag) -> Token {
-		let key: String = ""
+	public static func token (type: TokenType, tag:Tag) -> Token {
+		let key: String = "\(type.rawValue):\(tag)"
 		var token: Token? = tokens[key]
 		if token == nil {
 			token = Token(type:type, tag:tag)
@@ -98,4 +112,7 @@ class Token: NSObject {
 	static let e: Token					= token(type:.constant, tag:Tag.e)
 	static let i: Token					= token(type:.constant, tag:Tag.i)
 	static let pi: Token				= token(type:.constant, tag:Tag.pi)
+	
+	// Legacy
+	public var ip: Int!
 }

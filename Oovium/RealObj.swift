@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RealObj: Obj {
+public class RealObj: Obj {
 	var x: Double {
 		get {return (self.dims[0] as! RealDim).x}
 	}
@@ -17,14 +17,30 @@ class RealObj: Obj {
 		super.init(def: RealDef.def, dims: [RealDim(x)])
 	}
 	
-	var value: Double {
-		get {
-			let dim: RealDim = dims[0] as! RealDim;
-			return dim.asDouble()
-		}
+//	public var value: Double {
+//		get {
+//			let dim: RealDim = dims[0] as! RealDim;
+//			return dim.asDouble()
+//		}
+//	}
+	override public func mimic (_ obj: Obj) {
+		(self.dims[0] as! RealDim).x = (obj.dims[0] as! RealDim).x;
 	}
 	
-	static func + (a: RealObj, b: RealObj) -> Obj {
+	static func + (a: RealObj, b: RealObj) -> RealObj {
 		return RealObj(a.x+b.x)
+	}
+	static func - (a: RealObj, b: RealObj) -> RealObj {
+		return RealObj(a.x-b.x)
+	}
+	static func * (a: RealObj, b: RealObj) -> RealObj {
+		return RealObj(a.x*b.x)
+	}
+	static func / (a: RealObj, b: RealObj) -> RealObj {
+		return RealObj(a.x/b.x)
+	}
+	
+	static func == (a: RealObj, b: RealObj) -> RealObj {
+		return RealObj(a.x==b.x ? 1.0 : 0.0)
 	}
 }

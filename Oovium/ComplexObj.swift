@@ -23,7 +23,21 @@ class ComplexObj: Obj {
 		self.init(r,0)
 	}
 	
-	static func + (a: ComplexObj, b: ComplexObj) -> Obj {
-		return ComplexObj(a.r+b.r,a.i+b.i)
+	static func + (a: ComplexObj, b: ComplexObj) -> ComplexObj {
+		return ComplexObj(a.r+b.r, a.i+b.i)
+	}
+	static func - (a: ComplexObj, b: ComplexObj) -> ComplexObj {
+		return ComplexObj(a.r-b.r, a.i-b.i)
+	}
+	static func * (a: ComplexObj, b: ComplexObj) -> ComplexObj {
+		return ComplexObj(a.r*b.r-a.i*b.i, a.r*b.i+a.i*b.r)
+	}
+	static func / (a: ComplexObj, b: ComplexObj) -> ComplexObj {
+		let x = b.r*b.r + b.i*b.i
+		return ComplexObj((a.r*b.r+a.i*b.i)/x , (a.i*b.r-a.r*b.i)/x)
+	}
+
+	static func == (a: ComplexObj, b: ComplexObj) -> RealObj {
+		return RealObj(a.r==b.r && a.i==b.i ? 1 : 0)
 	}
 }

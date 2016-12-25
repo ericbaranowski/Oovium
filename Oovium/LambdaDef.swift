@@ -6,8 +6,9 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class LambdaDef: Def {
+public class LambdaDef: Def {
+	public static let def = LambdaDef(name:"lambda", key:"lmd", properties:["_"], color:.white)
 
 }

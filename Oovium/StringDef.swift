@@ -8,6 +8,6 @@
 
 import Foundation
 
-class StringDef: Def {
-
+public class StringDef: Def {
+	public static let def = LambdaDef(name:"String", key:"str", properties:["_"], color:.white)
 }

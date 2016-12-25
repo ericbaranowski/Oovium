@@ -8,19 +8,39 @@
 
 import Foundation
 
-class RealDef: Def {
-	static let def = RealDef()
+public class RealDef: Def {
+	public static let def = RealDef()
 	
 	init () {
-		super.init(name: "Number", properties: ["x"], color: UIColor.green, order:1)
+		super.init(name: "Number", key:"num", properties: ["x"], color: UIColor.green, order:1)
 	}
 	
-	static let cons: (Lambda)->() = {(lambda: Lambda)->() in
-		lambda.push(lambda.nextCons())
-	}
 	static let add: (Lambda)->() = {(lambda: Lambda)->() in
 		let a = lambda.pop() as! RealObj
 		let b = lambda.pop() as! RealObj
 		lambda.push(a+b)
 	}
+
+	static var formatter_ = NumberFormatter()
+	static var scientific_ = NumberFormatter()
+	
+	override public static func initialize () {
+		formatter_.positiveFormat = "#,##0.########"
+		formatter_.negativeFormat = "#,##0.########"
+		
+		scientific_.maximumIntegerDigits = 1
+		scientific_.maximumFractionDigits = 8
+		scientific_.exponentSymbol = "e"
+		scientific_.numberStyle = .scientific
+	}
+
+	override func format (_ obj: Obj) -> String {
+		let x = obj.value
+		if (fabs(x) < 0.00000001 && x != 0) || fabs(x) > 999999999 {
+			return RealDef.scientific_.string(from: NSNumber(value: x))!
+		} else {
+			return RealDef.formatter_.string(from: NSNumber(value: x))!
+		}
+	}
+
 }

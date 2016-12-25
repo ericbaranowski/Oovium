@@ -8,10 +8,10 @@
 
 import Foundation
 
-class ComplexDef: Def {
-	static let def = ComplexDef()
+public class ComplexDef: Def {
+	public static let def = ComplexDef()
 	
 	init () {
-		super.init(name: "Complex", properties: ["r", "i"], color: UIColor.cyan, order:2)
+		super.init(name: "Complex", key:"cpx", properties: ["r", "i"], color: UIColor.cyan, order:2)
 	}	
 }

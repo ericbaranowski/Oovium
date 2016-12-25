@@ -11,49 +11,49 @@ import Foundation
 class Ops: NSObject {
 	private let lambda: Lambda
 	
-	private var pOp: String?
-	private var mOp: String?
-	private var aOp: String?
-	private var cOp: String?
+	private var pOp: Tag?
+	private var mOp: Tag?
+	private var aOp: Tag?
+	private var cOp: Tag?
 	
 	init (_ lambda: Lambda) {
 		self.lambda = lambda
 	}
 	
-	private func doPOP (_ o: String?) {
-//		if let tag = pOp {lambda.applyTag(tag: tag, stack: stack)}
-		pOp = o
+	private func doPOP (_ tag: Tag?) {
+		if let pOp = pOp {lambda.applyTag(pOp)}
+		pOp = tag
 	}
-	private func doMOP (_ o: String?) {
-//		if let tag = mOp {lambda.applyTag(tag: tag, stack: stack)}
-		mOp = o
+	private func doMOP (_ tag: Tag?) {
+		if let mOp = mOp {lambda.applyTag(mOp)}
+		mOp = tag
 	}
-	private func doAOP (_ o: String?) {
-//		if let tag = aOp {lambda.applyTag(tag: tag, stack: stack)}
-		aOp = o
+	private func doAOP (_ tag: Tag?) {
+		if let aOp = aOp {lambda.applyTag(aOp)}
+		aOp = tag
 	}
-	private func doCOP (_ o: String?) {
-//		if let tag = cOp {lambda.applyTag(tag: tag, stack: stack)}
-		cOp = o
+	private func doCOP (_ tag: Tag?) {
+		if let cOp = cOp {lambda.applyTag(cOp)}
+		cOp = tag
 	}
 	
-	func pOp (_ o: String) {
-		doPOP(o)
+	func pOp (_ tag: Tag) {
+		doPOP(tag)
 	}
-	func mOp (_ o: String) {
+	func mOp (_ tag: Tag) {
 		doPOP(nil)
-		doMOP(o)
+		doMOP(tag)
 	}
-	func aOp (_ o: String) {
+	func aOp (_ tag: Tag) {
 		doPOP(nil)
 		doMOP(nil)
-		doAOP(o)
+		doAOP(tag)
 	}
-	func cOp (_ o: String) {
+	func cOp (_ tag: Tag) {
 		doPOP(nil)
 		doMOP(nil)
 		doAOP(nil)
-		doCOP(o)
+		doCOP(tag)
 	}
 	func end () {
 		doPOP(nil)

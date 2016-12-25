@@ -8,18 +8,17 @@
 
 import Foundation
 
-class Tag: NSObject {
-	var key: String
-	var params: Int
+public class Tag: NSObject {
+	let key: String
+	let params: Int
 	
 	private init (key: String, params:Int) {
 		self.key = key
 		self.params = params
 	}
 	
-	static var tags: [String:Tag] = [String:Tag]()
-	static func tag (key: String, params:Int) -> Tag {
-		print("\(key)")
+	static var tags = [String:Tag]()
+	public static func tag (key: String, params:Int) -> Tag {
 		var tag: Tag? = tags[key]
 		if tag == nil {
 			tag = Tag(key:key, params:params)
@@ -27,12 +26,12 @@ class Tag: NSObject {
 		}
 		return tag!
 	}
-	static func tag (key: String) -> Tag {
+	public static func tag (key: String) -> Tag {
 		return tag(key:key, params:1)
 	}
 	
-	static let constant: Tag		= tag(key:"constant")
-	static let variable: Tag		= tag(key:"variable")
+	static let constant: Tag		= tag(key:"constant", params:0)
+	static let variable: Tag		= tag(key:"variable", params:0)
 	static let negative: Tag		= tag(key:"negative")
 	
 	static let add: Tag				= tag(key:"+", params:2)
@@ -61,4 +60,14 @@ class Tag: NSObject {
 	static let e: Tag				= tag(key:"e")
 	static let i: Tag				= tag(key:"i")
 	static let pi: Tag				= tag(key:"π")
+	
+//	override public static func initialize () {
+//		constant
+//		variable
+//		add
+//		subtract
+//		multiply
+//		divide
+//		equal
+//	}
 }
