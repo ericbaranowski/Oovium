@@ -15,15 +15,15 @@ enum CalcState {
 	case notReady, progress, cached
 }
 
-class Tower: NSObject {
-	var engine: Engine
+public class Tower: NSObject {
+	var task: Task?
 	var state: TowerState = .calced
 	var upstream: Set<Tower> = Set<Tower>()
 	var downstream: Set<Tower> = Set<Tower>()
 	var stopper: NSObject?
 	
-	init (engine: Engine) {
-		self.engine = engine
+	public init (task: Task?) {
+		self.task = task
 	}
 	
 	private var _orbit: Tower?
@@ -51,7 +51,7 @@ class Tower: NSObject {
 //		return nil
 //	}
 	
-	func attach (_ tower: Tower) {
+	public func attach (_ tower: Tower) {
 		downstream.insert(tower)
 		tower.upstream.insert(self)
 	}
@@ -59,24 +59,40 @@ class Tower: NSObject {
 		downstream.remove(tower)
 		tower.upstream.remove(self)
 	}
+	
+	func towersDestined (for target: Tower) -> Set<Tower> {
+		if self == target {return [self]}
+		
+		var result = Set<Tower>()
+		for tower in downstream {
+			result.formUnion(tower.towersDestined(for: target))
+		}
+		if result.count > 0 && self.task != nil {
+			result.insert(self)
+		}
+		return result
+	}
 
 // Evaluate ========================================================================================
-	func evaluate (vars: [String:Obj?]) -> CalcState {
-		if (state != .uncalced || vars[engine.name] != nil)
-			{return .cached}
-		
-		for tower in upstream {
-			if (tower.state == .calced) {continue}
-			if (vars[tower.engine.name] != nil) {continue}
-			return .notReady
-		}
-		return engine.eval(vars) == .calced ? .progress : .cached
+	func ping (_ memory: Memory) -> CalcState {
+		return .cached
 	}
-	private func loadEval (_ towers: inout Set<Tower>) {
-		towers.insert(self)
-		for tower in downstream
-			{tower.loadEval(&towers)}
-	}
+//	func evaluate (vars: [String:Obj?]) -> CalcState {
+//		if (state != .uncalced || vars[task.name] != nil)
+//			{return .cached}
+//		
+//		for tower in upstream {
+//			if (tower.state == .calced) {continue}
+//			if (vars[tower.task.name] != nil) {continue}
+//			return .notReady
+//		}
+//		return task.eval(vars) == .calced ? .progress : .cached
+//	}
+//	private func loadEval (_ towers: inout Set<Tower>) {
+//		towers.insert(self)
+//		for tower in downstream
+//			{tower.loadEval(&towers)}
+//	}
 	func triggerEval (_ vars: [String:Obj?]) {
 		
 //		var progress: Bool
@@ -89,7 +105,7 @@ class Tower: NSObject {
 	private var display: String {
 		get {return ""}
 	}
-	override var debugDescription: String {
+	override public var debugDescription: String {
 		var sb: String = ""
 
 		sb.append("Tower [\(display) : \(state)\n")

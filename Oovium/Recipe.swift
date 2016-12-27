@@ -9,21 +9,40 @@
 import Foundation
 
 public class Recipe: NSObject {
-	private let steps: [(Memory)->()]
-	private var sp: Int
+	private var tasks: [Task]
+	private var tp: Int = 0
 	
 	override public init () {
-		steps = []
-		sp = 0
+		tasks = []
 	}
-	init (steps: [(Memory)->()]) {
-		self.steps = steps
-		sp = 0
+	init (tasks: [Task]) {
+		self.tasks = tasks
 	}
 	
-	public func enact (_ memory: Memory) {
-		for step in steps {
-			step(memory)
+	func add (_ task: Task) {
+		tasks.append(task)
+	}
+	
+	func execute (_ memory: Memory) -> Obj {
+		tp = 0
+		while tp < tasks.count {
+			let task = tasks[tp]
+			let goto = task.execute(memory)
+			tp = goto ?? tp+1
 		}
+		return RealObj(0)
+	}
+	
+	override public var description: String {
+		var sb = String()
+		sb.append("[ Recipe =================================== ]\n")
+		var i = 0
+		for task in tasks  {
+			let index = String(format: "%2d", i)
+			let name = task.name
+			sb.append("  [\(index)][\(name)]\n")
+			i += 1
+		}
+		return sb
 	}
 }

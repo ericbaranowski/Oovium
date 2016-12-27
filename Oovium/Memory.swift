@@ -68,8 +68,10 @@ public class Memory: NSObject {
 		}
 	}
 	
-	public func display () {
-		print("[ Memory ================= ]")
+// CustomStringConvertible =========================================================================
+	override public var description: String {
+		var sb = String()
+		sb.append("[ Memory ================= ]\n")
 		var i = 0
 		for slot in slots  {
 			let index = String(format: "%2d", i)
@@ -77,9 +79,10 @@ public class Memory: NSObject {
 			let set = slot.fixed ? "O" : " "
 			let name = slot.name.padding(toLength: 12, withPad: " ", startingAt: 0)
 			let value = slot.loaded ? "\(slot.value)" : "-"
-			print("  [\(index)][\(set)][\(loaded)][\(name)][\(value)]")
+			sb.append("  [\(index)][\(set)][\(loaded)][\(name)][\(value)]\n")
 			i += 1
 		}
-		print("[ ======================== ]")
+		sb.append("[ ======================== ]\n")
+		return sb
 	}
 }
