@@ -9,10 +9,10 @@
 import Foundation
 
 public class Slot: NSObject {
-	var name: String
-	var fixed: Bool
-	var loaded: Bool
-	var value: Obj
+	public var name: String
+	public var fixed: Bool
+	public var loaded: Bool
+	public var value: Obj
 	
 	init (_ name: String) {
 		self.name = name

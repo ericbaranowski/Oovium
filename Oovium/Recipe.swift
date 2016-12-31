@@ -22,27 +22,31 @@ public class Recipe: NSObject {
 	func add (_ task: Task) {
 		tasks.append(task)
 	}
+	func removeLast () {
+		tasks.removeLast()
+	}
 	
-	func execute (_ memory: Memory) -> Obj {
+	func execute (_ memory: Memory) {
 		tp = 0
 		while tp < tasks.count {
 			let task = tasks[tp]
 			let goto = task.execute(memory)
 			tp = goto ?? tp+1
 		}
-		return RealObj(0)
 	}
 	
 	override public var description: String {
 		var sb = String()
-		sb.append("[ Recipe =================================== ]\n")
+		sb.append("[ Recipe ============================================= ]\n")
 		var i = 0
 		for task in tasks  {
 			let index = String(format: "%2d", i)
-			let name = task.name
-			sb.append("  [\(index)][\(name)]\n")
+			let label = String(format: "%12s", (task.label as NSString).utf8String!)
+			let command = String(format: "%-32s", (task.command as NSString).utf8String!)
+			sb.append("  \(index)> \(label) : \(command)\n")
 			i += 1
 		}
+		sb.append("[ ==================================================== ]\n\n")
 		return sb
 	}
 }

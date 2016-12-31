@@ -10,7 +10,7 @@ import Foundation
 
 public class Memory: NSObject {
 	var index = [String:Int]()
-	var slots = [Slot]()
+	public var slots = [Slot]()
 	
 	public init (_ names: [String]) {
 		super.init()
@@ -61,28 +61,35 @@ public class Memory: NSObject {
 	public func isLoaded (_ i: Int) -> Bool {
 		return slots[i].loaded
 	}
+	public func load (_ i: Int, with value: Obj) {
+		slots[i].loaded = true
+		slots[i].value = value
+	}
 
 	public func clear () {
 		for slot in slots {
 			slot.clear()
 		}
 	}
+	public var count: Int {
+		return slots.count
+	}
 	
 // CustomStringConvertible =========================================================================
 	override public var description: String {
 		var sb = String()
-		sb.append("[ Memory ================= ]\n")
+		sb.append("[ Memory ==================== ]\n")
 		var i = 0
 		for slot in slots  {
 			let index = String(format: "%2d", i)
-			let loaded = slot.loaded ? "O" : " "
 			let set = slot.fixed ? "O" : " "
+			let loaded = slot.loaded ? "O" : " "
 			let name = slot.name.padding(toLength: 12, withPad: " ", startingAt: 0)
 			let value = slot.loaded ? "\(slot.value)" : "-"
 			sb.append("  [\(index)][\(set)][\(loaded)][\(name)][\(value)]\n")
 			i += 1
 		}
-		sb.append("[ ======================== ]\n")
+		sb.append("[ =========================== ]\n\n")
 		return sb
 	}
 }

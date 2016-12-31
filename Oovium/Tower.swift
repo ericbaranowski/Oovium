@@ -16,10 +16,15 @@ enum CalcState {
 }
 
 public class Tower: NSObject {
+	public var name: String?
+	public var index: Int = -1
 	var task: Task?
-	var state: TowerState = .calced
+	
+	public var gateTo: Tower?
 	var upstream: Set<Tower> = Set<Tower>()
 	var downstream: Set<Tower> = Set<Tower>()
+
+	var state: TowerState = .calced
 	var stopper: NSObject?
 	
 	public init (task: Task?) {
@@ -72,10 +77,96 @@ public class Tower: NSObject {
 		}
 		return result
 	}
+//	private func possiblePaths (for target: Tower) -> Satyr<Tower> {
+//		if self == target {
+//			var satyr = Satyr<Tower>()
+//			satyr.array.append([self])
+//		}
+//		
+//		var satyr = Satyr<Tower>()
+//		if task != nil {
+//			satyr.array.append([self])
+//		} else {
+//			satyr.array.append([])
+//		}
+//		
+//		if gateTo == nil {
+//			for tower in downstream {
+//				satyr.incorporate(tower.possiblePaths(for: target))
+//			}
+//		} else {
+//			for tower in downstream {
+//				let downSatyr = tower.possiblePaths(for: target)
+//				for set in downSatyr.array {
+//					satyr.array.append(set)
+//				}
+//			}
+//		}
+//		
+//		return satyr
+//	}
+	func stronglyLinked (to target: Tower, override: Tower?) -> Bool {
+		if self == target || self == override {return true}
+		if let gateTo = self.gateTo {
+			return gateTo.stronglyLinked(to: target, override: override)
+		} else {
+			for tower in upstream {
+				if tower.gateTo != nil && tower.gateTo != self {
+					return false
+				}
+			}
+			for tower in downstream {
+				if tower.stronglyLinked(to: target, override: override) {
+					return true
+				}
+			}
+			return false
+		}
+	}
+	func towersStronglylinked (for target: Tower, override: Tower?) -> Set<Tower> {
+		let towers = towersDestined(for: target)
+		var result = Set<Tower>()
+		for tower in towers {
+			if tower.stronglyLinked(to: target, override: override) {
+				result.insert(tower)
+			}
+		}
+		return result
+	}
+	func towersStronglylinked (for target: Tower) -> Set<Tower> {
+		let result = towersStronglylinked(for: target, override: nil)
+		
+		let satyr = Satyr<Tower>()
+		satyr.array.append(result)
+		
+		for tower in result {
+			if tower.gateTo != nil {
+				let gateSatyr = Satyr<Tower>()
+				for branch in tower.downstream {
+					if tower.gateTo == branch {continue}
+					gateSatyr.array.append(towersStronglylinked(for: target, override: branch))
+				}
+				satyr.incorporate(gateSatyr)
+			}
+		}
+		
+		return satyr.intersection()
+	}
 
 // Evaluate ========================================================================================
 	func ping (_ memory: Memory) -> CalcState {
-		return .cached
+		if memory.isLoaded(index) {return .cached}
+		
+		for tower in upstream {
+			if tower.task == nil {continue}
+			if !memory.isLoaded(tower.index) {
+				return .notReady
+			}
+		}
+		
+		memory.load(index, with: RealObj(0))
+		
+		return .progress
 	}
 //	func evaluate (vars: [String:Obj?]) -> CalcState {
 //		if (state != .uncalced || vars[task.name] != nil)
@@ -101,6 +192,19 @@ public class Tower: NSObject {
 //		} while (progress)
 	}
 	
+	
+	public func printTowers (towers: Set<Tower>) {
+		var sb = String()
+		sb.append("[ Towers =================================== ]\n")
+		for tower in towers  {
+			if let task = tower.task {
+				sb.append("  \(task.label) : \(task.command)\n")
+			}
+		}
+		sb.append("[ ========================================== ]\n\n")
+		print("\(sb)")
+	}
+
 // CustomDebugStringConvertible ====================================================================
 	private var display: String {
 		get {return ""}
