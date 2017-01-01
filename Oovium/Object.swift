@@ -8,9 +8,11 @@
 
 import Foundation
 
-class Object: Aexel {
+public class Object: Aexel {
 	var tokens: String = ""
-
+	
+	var tower = Tower()
+	
 // Domain ==========================================================================================
 	override func properties () -> [String] {
 		return super.properties() + ["tokens"]

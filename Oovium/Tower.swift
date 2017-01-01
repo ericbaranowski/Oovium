@@ -27,6 +27,8 @@ public class Tower: NSObject {
 	var state: TowerState = .calced
 	var stopper: NSObject?
 	
+	override init () {
+	}
 	public init (task: Task?) {
 		self.task = task
 	}

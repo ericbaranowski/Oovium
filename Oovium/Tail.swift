@@ -8,11 +8,15 @@
 
 import Foundation
 
-class Tail: Aexel {
+public class Tail: Aexel {
 	var whileTokens: String = ""
 	var resultTokens: String = ""
 	
 	var vertebras: [Vertebra] = []
+	
+	var headTower = Tower()
+	var whileTower = Tower()
+	var resultTower = Tower()
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

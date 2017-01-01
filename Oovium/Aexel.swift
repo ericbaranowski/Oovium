@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Aexel: Domain {
+public class Aexel: Domain {
 	var name: String = ""
 	var x: Double = 0.0
 	var y: Double = 0.0

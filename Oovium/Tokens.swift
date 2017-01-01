@@ -1,9 +1,9 @@
 //
-//  Cauldron.swift
+//  Tokens.swift
 //  Oovium
 //
-//  Created by Joe Charlier on 10/12/16.
-//  Copyright © 2016 Aepryus Software. All rights reserved.
+//  Created by Joe Charlier on 1/1/17.
+//  Copyright © 2017 Aepryus Software. All rights reserved.
 //
 
 import Foundation
@@ -12,7 +12,7 @@ enum ParseError: Error {
 	case general
 }
 
-public class Cauldron: NSObject {
+public class Tokens: NSObject {
 	let tokens: [Token]
 	let lambda: Lambda
 	
@@ -28,19 +28,19 @@ public class Cauldron: NSObject {
 		lambda.applyTag(tag)
 	}
 	
-// Tokens ==========================================================================================
+	// Tokens ==========================================================================================
 	private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
 		let token: Token = tokens[i]
 		
 		if token.type != .operator && token.type != .separator
-			{throw ParseError.general}
+		{throw ParseError.general}
 		
 		switch token.level! {
-			case .add:			ops.aOp(token.tag)
-			case .multiply:		ops.mOp(token.tag)
-			case .power:		ops.pOp(token.tag)
-			case .compare:		ops.cOp(token.tag)
-			case .separator:	ops.end()
+		case .add:			ops.aOp(token.tag)
+		case .multiply:		ops.mOp(token.tag)
+		case .power:		ops.pOp(token.tag)
+		case .compare:		ops.cOp(token.tag)
+		case .separator:	ops.end()
 		}
 	}
 	
@@ -129,7 +129,7 @@ public class Cauldron: NSObject {
 	//	}
 	//
 	//	@throw [[ParseException alloc] initWithText:_text at:i];
-
+	
 	private func parseNumber (tokens: [Token], i:Int) -> String {
 		var sb = String()
 		for i in i..<tokens.count {
@@ -142,7 +142,7 @@ public class Cauldron: NSObject {
 	private func parseOperand (tokens:[Token], i:Int, lambda:Lambda) throws -> Int {
 		var i = i
 		if (tokens.count <= i)
-			{throw ParseError.general}
+		{throw ParseError.general}
 		
 		var token: Token = tokens[i]
 		
@@ -151,7 +151,7 @@ public class Cauldron: NSObject {
 			unary = token==Token.subtract ? Tag.negative : Tag.not
 			i += 1
 			if (i == tokens.count)
-				{throw ParseError.general}
+			{throw ParseError.general}
 			token = tokens[i]
 		}
 		
@@ -160,7 +160,7 @@ public class Cauldron: NSObject {
 			let x: Double = Double(n)!
 			lambda.addConstant(x);
 			if let unary = unary
-				{lambda.applyTag(unary)}
+			{lambda.applyTag(unary)}
 			return n.lengthOfBytes(using: .ascii) + (unary != nil ? 1 : 0)
 		} else if token == .leftParen {
 		} else if token.type == .function {

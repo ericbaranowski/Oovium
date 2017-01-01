@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Grid: Aexel {
+public class Grid: Aexel {
 	var typeID: Int = 0
 	var rows: Int = 0
 	

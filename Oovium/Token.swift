@@ -86,6 +86,9 @@ public class Token: NSObject {
 		return token!
 	}
 	
+//	static func token (key: String) -> Token {
+//	}
+	
 	static let add: Token				= token(type:.operator, tag:Tag.add)
 	static let subtract: Token			= token(type:.operator, tag:Tag.subtract)
 	static let multiply: Token			= token(type:.operator, tag:Tag.multiply)

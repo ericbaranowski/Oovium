@@ -60,14 +60,12 @@ public class Domain: NSObject {
 	}
 	
 	private func subscribe () {
-		print("subscribe")
 		if isStatic() {return}
 		for keyPath in properties() {
 			addObserver(self, forKeyPath: keyPath, options: [.new,.old], context: nil)
 		}
 	}
 	private func unsubscribe () {
-		print("unsubscribe")
 		if isStatic() {return}
 		for keyPath in properties() {
 			removeObserver(self, forKeyPath: keyPath)
@@ -150,7 +148,7 @@ public class Domain: NSObject {
 		return index
 	}
 
-	func unload () -> [String:Any] {
+	public func unload () -> [String:Any] {
 		var attributes = [String:Any]()
 		
 		for keyPath in properties() {

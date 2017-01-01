@@ -8,11 +8,16 @@
 
 import Foundation
 
-class Gate: Aexel {
+public class Gate: Aexel {
 	var ifTokens: String = ""
 	var thenTokens: String = ""
 	var elseTokens: String = ""
 
+	var ifTower = Tower()
+	var thenTower = Tower()
+	var elseTower = Tower()
+	var resultTower = Tower()
+	
 // Domain ==========================================================================================
 	override func properties () -> [String] {
 		return super.properties() + ["ifTokens", "thenTokens", "elseTokens"]

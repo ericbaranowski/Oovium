@@ -8,10 +8,12 @@
 
 import Foundation
 
-class Cell: Domain {
+public class Cell: Domain {
 	var colID: Int = 0
 	var rowNo: Int = 0
 	var tokens: String = ""
+	
+	var tower = Tower()
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

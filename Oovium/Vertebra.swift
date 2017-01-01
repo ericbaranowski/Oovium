@@ -12,6 +12,8 @@ class Vertebra: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
 	var tokens: String = ""
+	
+	var tower = Tower()
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

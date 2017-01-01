@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Miru: Aexel {
+public class Miru: Aexel {
 	var gridID: Int = 0
 
 // Domain ==========================================================================================

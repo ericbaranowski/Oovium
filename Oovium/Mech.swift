@@ -8,8 +8,11 @@
 
 import Foundation
 
-class Mech: Aexel {
+public class Mech: Aexel {
 	var resultTokens: String = ""
+	
+	var headTower = Tower()
+	var resultTower = Tower()
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

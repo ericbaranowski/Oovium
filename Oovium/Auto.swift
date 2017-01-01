@@ -8,13 +8,22 @@
 
 import Foundation
 
-class Auto: Aexel {
+public class Auto: Aexel {
 	var statesTokens: String = ""
 	var resultTokens: String = ""
+	
+	var states: [State] = []
+	
+	var statesTower = Tower()
+	var headTower = Tower()
+	var resultTower = Tower()
 
+	@objc public func token (name: String) {
+	}
+	
 // Domain ==========================================================================================
 	override func properties () -> [String] {
-		return super.properties() + ["statesToken", "resultTokens"]
+		return super.properties() + ["statesTokens", "resultTokens"]
 	}
 	override func children () -> [String] {
 		return super.children() + ["states"]

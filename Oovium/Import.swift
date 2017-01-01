@@ -8,5 +8,5 @@
 
 import Foundation
 
-class Import: Aexel {
+public class Import: NSObject {
 }

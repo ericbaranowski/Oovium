@@ -12,7 +12,7 @@ enum OOEndMode {
 	case stop, `repeat`, bounce, endless, `while`
 }
 
-class Cron: Aexel {
+public class Cron: Aexel {
 	var startTokens: String = ""
 	var stopTokens: String = ""
 	var stepsTokens: String = ""
@@ -21,6 +21,13 @@ class Cron: Aexel {
 	var whileTokens: String = ""
 	var endMode: OOEndMode = .stop
 	var exposed: Bool = true
+	
+	var startTower = Tower()
+	var stopTower = Tower()
+	var stepsTower = Tower()
+	var rateTower = Tower()
+	var deltaTower = Tower()
+	var whileTower = Tower()
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {
