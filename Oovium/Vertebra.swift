@@ -9,8 +9,12 @@
 import Foundation
 
 class Vertebra: Domain {
-	var orderNo: Int = 0
-	var def: Def = RealDef.def
 	var name: String = ""
+	var def: Def = RealDef.def
 	var tokens: String = ""
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["name", "def", "tokens"]
+	}
 }

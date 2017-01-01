@@ -9,7 +9,11 @@
 import Foundation
 
 class Field: Domain {
-	var orderNo: Int = 0
-	var def: Def = RealDef.def
 	var name: String = ""
+	var def: Def = RealDef.def
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["name", "def"]
+	}
 }

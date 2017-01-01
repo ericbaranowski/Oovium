@@ -8,10 +8,15 @@
 
 import Foundation
 
-class Auto: Domain {
-	var nextTokens: String = ""
+class Auto: Aexel {
 	var statesTokens: String = ""
-	var noOfStates: Int = 0
-	var x: Double = 0.0
-	var y: Double = 0.0
+	var resultTokens: String = ""
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["statesToken", "resultTokens"]
+	}
+	override func children () -> [String] {
+		return super.children() + ["states"]
+	}
 }

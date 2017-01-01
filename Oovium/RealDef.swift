@@ -6,7 +6,7 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class RealDef: Def {
 	public static let def = RealDef()

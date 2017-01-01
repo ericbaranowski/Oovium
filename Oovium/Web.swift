@@ -46,7 +46,7 @@ public class Web: NSObject {
 					
 					if tower.gateTo != nil {
 						
-						var ifGotoTask = IfGotoTask()
+						let ifGotoTask = IfGotoTask()
 						recipe.add(ifGotoTask)
 						n += 1
 						var oldN = n
@@ -62,7 +62,7 @@ public class Web: NSObject {
 							n -= 1
 						}
 						
-						var gotoTask = GotoTask()
+						let gotoTask = GotoTask()
 						recipe.add(gotoTask)
 						n += 1
 						oldN = n

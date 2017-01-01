@@ -8,9 +8,16 @@
 
 import Foundation
 
-class Type: Domain {
-	var name: String = ""
+class Type: Aexel {
 	var color: OOColor = .black
-	var x: Double = 0
-	var y: Double = 0
+	
+	var fields: [Field] = []
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["color"]
+	}
+	override func children () -> [String] {
+		return super.children() + ["fields"]
+	}
 }

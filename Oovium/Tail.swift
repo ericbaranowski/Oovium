@@ -8,10 +8,17 @@
 
 import Foundation
 
-class Tail: Domain {
-	var name: String = ""
-	var condition: String = ""
-	var result: String = ""
-	var x: Double = 0
-	var y: Double = 0
+class Tail: Aexel {
+	var whileTokens: String = ""
+	var resultTokens: String = ""
+	
+	var vertebras: [Vertebra] = []
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["whileTokens", "resultTokens"]
+	}
+	override func children () -> [String] {
+		return super.children() + ["vertebras"]
+	}
 }

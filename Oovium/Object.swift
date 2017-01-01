@@ -8,9 +8,11 @@
 
 import Foundation
 
-class Object: Domain {
-	var name: String = ""
+class Object: Aexel {
 	var tokens: String = ""
-	var x: Double = 0
-	var y: Double = 0
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["tokens"]
+	}
 }

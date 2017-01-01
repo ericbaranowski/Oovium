@@ -10,4 +10,9 @@ import Foundation
 
 class Edge: Domain {
 	var textID: Int = 0
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["textID"]
+	}
 }

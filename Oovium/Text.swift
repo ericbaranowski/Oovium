@@ -17,11 +17,17 @@ enum OOShape {
 	case ellipse, rectangle, rounded, diamond
 }
 
-class Text: Domain {
-	var text: String = ""
+class Text: Aexel {
 	var color: OOColor = .orange
 	var shape: OOShape = .ellipse
-	var note: String = ""
-	var x: Double = 0.0
-	var y: Double = 0.0
+	
+	var edges: [Edge] = []
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["color", "shape"]
+	}
+	override func children () -> [String] {
+		return super.children() + ["edges"]
+	}
 }

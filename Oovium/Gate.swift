@@ -8,11 +8,13 @@
 
 import Foundation
 
-class Gate: Domain {
-	var name: String = ""
+class Gate: Aexel {
 	var ifTokens: String = ""
 	var thenTokens: String = ""
 	var elseTokens: String = ""
-	var x: Double = 0
-	var y: Double = 0
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["ifTokens", "thenTokens", "elseTokens"]
+	}
 }

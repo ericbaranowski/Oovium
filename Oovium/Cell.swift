@@ -12,4 +12,9 @@ class Cell: Domain {
 	var colID: Int = 0
 	var rowNo: Int = 0
 	var tokens: String = ""
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["colID", "rowNo", "tokens"]
+	}
 }

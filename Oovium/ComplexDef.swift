@@ -6,7 +6,7 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class ComplexDef: Def {
 	public static let def = ComplexDef()

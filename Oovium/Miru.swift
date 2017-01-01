@@ -8,8 +8,11 @@
 
 import Foundation
 
-class Miru: Domain {
+class Miru: Aexel {
 	var gridID: Int = 0
-	var x: Double = 0
-	var y: Double = 0
+
+// Domain ==========================================================================================
+	override func properties () -> [String] {
+		return super.properties() + ["gridID"]
+	}
 }

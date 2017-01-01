@@ -8,6 +8,5 @@
 
 import Foundation
 
-class Import: Domain {
-	var name: String = ""
+class Import: Aexel {
 }

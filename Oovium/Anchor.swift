@@ -8,5 +8,14 @@
 
 import Foundation
 
-class Anchor: Domain {
+public class Anchor: Domain {
+	var basket: Basket!
+	
+	public required init () {
+		super.init()
+	}
+	public required init (basket: Basket) {
+		self.basket = basket
+		super.init()
+	}
 }
