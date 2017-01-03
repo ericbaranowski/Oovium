@@ -8,5 +8,5 @@
 
 import Foundation
 
-public class LambdaDim: Dim {
+class LambdaDim: Dim {
 }

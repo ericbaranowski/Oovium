@@ -63,6 +63,12 @@ public class Token: NSObject {
 	public let tag: Tag
 	public let level: TokenLevel?
 	
+	var key: String {
+		get {
+			return "\(type.rawValue):\(tag.key)"
+		}
+	}
+	
 	public init (type: TokenType, tag: Tag) {
 		self.type = type
 		self.tag = tag
@@ -77,7 +83,7 @@ public class Token: NSObject {
 	static var tokens: [String:Token] = [String:Token]()
 	
 	public static func token (type: TokenType, tag:Tag) -> Token {
-		let key: String = "\(type.rawValue):\(tag)"
+		let key: String = "\(type.rawValue):\(tag.key)"
 		var token: Token? = tokens[key]
 		if token == nil {
 			token = Token(type:type, tag:tag)
@@ -85,9 +91,12 @@ public class Token: NSObject {
 		}
 		return token!
 	}
-	
-//	static func token (key: String) -> Token {
-//	}
+	static func token (key: String) -> Token {
+		let colon = key.range(of: ":")!.lowerBound
+		let type: TokenType = TokenType(rawValue: Int(key.substring(to: colon))!)!
+		let tag = Tag.tag(key: key.substring(from: key.index(after:colon)))
+		return token(type: type, tag: tag)
+	}
 	
 	static let add: Token				= token(type:.operator, tag:Tag.add)
 	static let subtract: Token			= token(type:.operator, tag:Tag.subtract)

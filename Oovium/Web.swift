@@ -20,6 +20,7 @@ public class Web: NSObject {
 		self.tail = tail
 		
 		towers = head.towersDestined(for: self.tail)
+		Tower.printTowers(towers)
 		recipe = Recipe()
 
 		super.init()
@@ -28,7 +29,21 @@ public class Web: NSObject {
 		
 		printTowers(towers: certain)
 		
-		_ = program(recipe: recipe, towers: certain, memory: memory, n: 0)
+		print("\(memory)")
+		_ = program(recipe: recipe, towers: certain, memory: memory, n: 0)		
+		print("\(recipe)")
+	}
+	
+	func weave () {
+		for tower in towers {tower.clear()}
+		for tower in towers {
+			
+		}
+	}
+	func strand (head: Tower, tail: Tower, memory: Memory) -> Recipe {
+		let recipe = Recipe()
+		program(recipe: recipe, towers: towers, memory: memory, n: 0)
+		return recipe
 	}
 	
 	func program (recipe: Recipe, towers: Set<Tower>, memory: Memory, n: Int) -> Int {

@@ -1,5 +1,5 @@
 //
-//  Tokens.swift
+//  Cauldron.swift
 //  Oovium
 //
 //  Created by Joe Charlier on 1/1/17.
@@ -8,11 +8,7 @@
 
 import Foundation
 
-enum ParseError: Error {
-	case general
-}
-
-public class Tokens: NSObject {
+public class Cauldron: NSObject {
 	let tokens: [Token]
 	let lambda: Lambda
 	

@@ -25,6 +25,34 @@ import Foundation
 	public var grids: [Grid] = []
 	public var mirus: [Miru] = []
 	
+	var aexels: [Aexel] = []
+	var tags: [String:Tag] = [:]
+	var tokens: [String:Token] = [:]
+	public var memory: Memory!
+	
+	public func link (_ tower: Tower) {
+		Tower.link(token: tower.token, tower: tower)
+	}
+	
+	public func wire () {
+		for object in objects {object.plugIn()}
+		for gate in gates {gate.plugIn()}
+		for auto in autos {auto.plugIn()}
+	
+		let tokens = Token.tokens
+		var vars = [String]()
+		for key in tokens.keys {
+			let token = tokens[key]!
+			if token.type != .variable {continue}
+			vars.append(token.tag.key)
+		}
+		memory = Memory(vars.sorted())
+
+		for object in objects {object.wire(memory)}
+		for gate in gates {gate.wire(memory)}
+		for auto in autos {auto.wire(memory)}
+	}
+	
 // Domain ==========================================================================================
 	override func properties () -> [String] {
 		return super.properties() + ["name", "xOffset", "yOffset", "readOnly"]

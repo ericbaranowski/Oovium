@@ -13,6 +13,8 @@ class Vertebra: Domain {
 	var def: Def = RealDef.def
 	var tokens: String = ""
 	
+	var chain = Chain()
+	
 	var tower = Tower()
 
 // Domain ==========================================================================================

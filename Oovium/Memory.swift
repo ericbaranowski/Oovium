@@ -54,8 +54,12 @@ public class Memory: NSObject {
 		append(slot:Slot(name))
 	}
 	
-	func index (for name: String) -> Int {
-		return index[name]!;
+	public func index (for name: String) -> Int {
+		if let n = index[name] {
+			return n
+		} else {
+			return -1
+		}
 	}
 	
 	public func isLoaded (_ i: Int) -> Bool {

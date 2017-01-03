@@ -8,12 +8,11 @@
 
 import Foundation
 
-public class Dim: NSObject {
-
-	public func asDouble () -> Double {
+class Dim {
+	func asDouble () -> Double {
 		return 0
 	}
-	public func asString () -> String {
+	func asString () -> String {
 		return "0"
 	}
 }

@@ -12,7 +12,9 @@ public class Cell: Domain {
 	var colID: Int = 0
 	var rowNo: Int = 0
 	var tokens: String = ""
-	
+
+	var chain = Chain()
+
 	var tower = Tower()
 
 // Domain ==========================================================================================

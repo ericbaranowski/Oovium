@@ -13,10 +13,57 @@ public class Gate: Aexel {
 	var thenTokens: String = ""
 	var elseTokens: String = ""
 
+	var ifChain = Chain()
+	var thenChain = Chain()
+	var elseChain = Chain()
+	
 	var ifTower = Tower()
 	var thenTower = Tower()
 	var elseTower = Tower()
 	var resultTower = Tower()
+	
+// Aexel ===========================================================================================
+	override func plugIn () {
+		ifTower.name = String(format: "IFI%05d", iden)
+		ifTower.token = Token.token(type: .variable, tag: Tag.tag(key: ifTower.name!))
+		
+		thenTower.name = String(format: "IFT%05d", iden)
+		thenTower.token = Token.token(type: .variable, tag: Tag.tag(key: thenTower.name!))
+		
+		elseTower.name = String(format: "IFE%05d", iden)
+		elseTower.token = Token.token(type: .variable, tag: Tag.tag(key: elseTower.name!))
+		
+		resultTower.name = String(format: "IF%05d", iden)
+		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name!))
+		
+		aether.link(ifTower)
+		aether.link(thenTower)
+		aether.link(elseTower)
+		aether.link(resultTower)
+	}
+	override func wire (_ memory: Memory) {
+		ifChain = Chain(string: ifTokens)
+		thenChain = Chain(string: thenTokens)
+		elseChain = Chain(string: elseTokens)
+		
+		ifTower.wire(chain: ifChain, memory:memory)
+		thenTower.wire(chain: thenChain, memory:memory)
+		elseTower.wire(chain: elseChain, memory:memory)
+		
+		let resultName = resultTower.token.tag.key
+		resultTower.index = memory.index(for: resultName)
+		let forkTask = ForkTask(label: resultName, command: "\(resultName) = ~")
+		forkTask.load(ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
+		resultTower.task = forkTask
+		
+		ifTower.attach(thenTower)
+		ifTower.attach(elseTower)
+		ifTower.attach(resultTower)
+		ifTower.gateTo = resultTower
+		
+		thenTower.attach(resultTower)
+		elseTower.attach(resultTower)
+	}
 	
 // Domain ==========================================================================================
 	override func properties () -> [String] {

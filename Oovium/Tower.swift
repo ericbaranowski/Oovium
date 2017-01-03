@@ -19,6 +19,7 @@ public class Tower: NSObject {
 	public var name: String?
 	public var index: Int = -1
 	var task: Task?
+	var token: Token!
 	
 	public var gateTo: Tower?
 	var upstream: Set<Tower> = Set<Tower>()
@@ -65,6 +66,37 @@ public class Tower: NSObject {
 	func detach (_ tower: Tower) {
 		downstream.remove(tower)
 		tower.upstream.remove(self)
+	}
+	func clear () {
+		upstream.removeAll()
+		downstream.removeAll()
+	}
+	
+	func wire (chain: Chain, memory: Memory) {
+		
+		var lambda: Lambda!
+		
+		do {
+			lambda = try chain.compile()
+		} catch {
+			print("\(error)")
+			return
+		}
+		
+		lambda.compile(memory: memory)
+		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)")
+		lambdaTask.load(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambda)
+		
+		task = lambdaTask
+
+		index = memory.index(for: token.tag.key)
+		lambda.vi = index
+		for token in chain.tokens {
+			let tower = Tower.tower(token: token)
+			if let tower = tower {
+				tower.attach(self)
+			}
+		}
 	}
 	
 	func towersDestined (for target: Tower) -> Set<Tower> {
@@ -195,7 +227,7 @@ public class Tower: NSObject {
 	}
 	
 	
-	public func printTowers (towers: Set<Tower>) {
+	public static func printTowers (_ towers: Set<Tower>) {
 		var sb = String()
 		sb.append("[ Towers =================================== ]\n")
 		for tower in towers  {
@@ -223,5 +255,14 @@ public class Tower: NSObject {
 			{sb.append("\t\t\(tower.display)\n")}
 
 		return sb;
+	}
+	
+// Static ==========================================================================================
+	static var lookup = [Token:Tower]()
+	static func link (token: Token, tower: Tower) {
+		Tower.lookup[token] = tower
+	}
+	static func tower (token: Token) -> Tower? {
+		return Tower.lookup[token]
 	}
 }

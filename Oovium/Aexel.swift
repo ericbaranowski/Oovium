@@ -12,6 +12,13 @@ public class Aexel: Domain {
 	var name: String = ""
 	var x: Double = 0.0
 	var y: Double = 0.0
+	
+	var aether: Aether {
+		return parent as! Aether
+	}
+	
+	func plugIn () {}
+	func wire (_ memory: Memory) {}
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

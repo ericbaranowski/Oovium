@@ -11,8 +11,11 @@ import Foundation
 public class Tail: Aexel {
 	var whileTokens: String = ""
 	var resultTokens: String = ""
-	
-	var vertebras: [Vertebra] = []
+
+	var whileChain = Chain()
+	var resultChain = Chain()
+
+	var vertebras: [Vertebra] = []	
 	
 	var headTower = Tower()
 	var whileTower = Tower()

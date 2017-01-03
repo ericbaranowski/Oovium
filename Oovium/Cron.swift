@@ -22,6 +22,13 @@ public class Cron: Aexel {
 	var endMode: OOEndMode = .stop
 	var exposed: Bool = true
 	
+	var startChain = Chain()
+	var stopChain = Chain()
+	var stepsChain = Chain()
+	var rateChain = Chain()
+	var deltaChain = Chain()
+	var whileChain = Chain()
+	
 	var startTower = Tower()
 	var stopTower = Tower()
 	var stepsTower = Tower()

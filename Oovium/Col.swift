@@ -23,6 +23,8 @@ public class Col: Domain {
 	var justify: OOJustify = .right
 	var format: String = ""
 	
+	var chain = Chain()
+	
 	var tower = Tower()
 
 // Domain ==========================================================================================

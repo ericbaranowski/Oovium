@@ -27,12 +27,12 @@ public class Obj: NSObject {
 	}
 	
 	// Legacy
-	public func dim (i: Int) -> Dim {
-		return dims[i]
-	}
-	public func setDim (i: Int, as dim: Dim) {
-		dims[i] = dim
-	}
+//	public func dim (i: Int) -> Dim {
+//		return dims[i]
+//	}
+//	public func setDim (i: Int, as dim: Dim) {
+//		dims[i] = dim
+//	}
 	public func v (i: Int) -> Double {
 		return dims[i].asDouble()
 	}

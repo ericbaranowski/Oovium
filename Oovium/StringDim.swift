@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class StringDim: Dim {
+class StringDim: Dim {
 	var string: String
 	
 	init (_ string: String) {
@@ -16,12 +16,12 @@ public class StringDim: Dim {
 	}
 	
 	// Dim ===========================================================================================
-	override public func asString () -> (String) {
+	override func asString () -> (String) {
 		return string
 	}
 	
 // Static ==========================================================================================
-	public static func dim (_ string: String) -> (StringDim) {
+	static func dim (_ string: String) -> (StringDim) {
 		return StringDim(string)
 	}
 }

@@ -11,7 +11,20 @@ import Foundation
 public class Object: Aexel {
 	var tokens: String = ""
 	
+	var chain = Chain()
+	
 	var tower = Tower()
+	
+// Aexel ===========================================================================================
+	override func plugIn () {
+		tower.name = String(format: "I%05d", iden)
+		tower.token = Token.token(type: .variable, tag: Tag.tag(key: tower.name!))
+		aether.link(tower)
+	}
+	override func wire (_ memory: Memory) {
+		chain = Chain(string: tokens)
+		tower.wire(chain:chain, memory:memory)
+	}
 	
 // Domain ==========================================================================================
 	override func properties () -> [String] {
