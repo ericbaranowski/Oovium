@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class Task: NSObject {
+public class Task {
 	var label: String
 	var command: String
 	var task: ((Memory)->(Int?))!
 	
-	override init () {
+	init () {
 		label = ""
 		command = ""
 	}
@@ -27,6 +27,10 @@ public class Task: NSObject {
 			return task(memory)
 		}
 		return nil
+	}
+	func calculate (_ memory: Memory) -> TowerState {
+		task(memory)
+		return .calced
 	}
 }
 

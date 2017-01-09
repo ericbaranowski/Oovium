@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class Recipe: NSObject {
+public class Recipe {
 	private var tasks: [Task]
 	private var tp: Int = 0
 	
-	override public init () {
+	public init () {
 		tasks = []
 	}
 	init (tasks: [Task]) {
@@ -35,7 +35,7 @@ public class Recipe: NSObject {
 		}
 	}
 	
-	override public var description: String {
+	public var description: String {
 		var sb = String()
 		sb.append("[ Recipe ============================================= ]\n")
 		var i = 0

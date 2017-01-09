@@ -10,7 +10,7 @@ import Foundation
 
 public class State: Domain {
 //	var color: OOColor = .clear
-	var color: Int = 0
+	public var color: Int = 0
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

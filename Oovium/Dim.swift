@@ -12,6 +12,9 @@ class Dim {
 	func asDouble () -> Double {
 		return 0
 	}
+	func asInt () -> Int {
+		return 0
+	}
 	func asString () -> String {
 		return "0"
 	}

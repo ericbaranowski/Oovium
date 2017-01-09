@@ -58,7 +58,7 @@ import Foundation
 	case separator
 }
 
-public class Token: NSObject {
+public class Token: Hashable {
 	public let type: TokenType
 	public let tag: Tag
 	public let level: TokenLevel?
@@ -80,6 +80,16 @@ public class Token: NSObject {
 		self.level = level
 	}
 	
+// Hashable ========================================================================================
+	public static func == (left: Token, right: Token) -> Bool {
+		return left.key == right.key
+	}
+	public var hashValue: Int {
+		return key.hashValue
+	}
+	
+	
+// Static ==========================================================================================
 	static var tokens: [String:Token] = [String:Token]()
 	
 	public static func token (type: TokenType, tag:Tag) -> Token {

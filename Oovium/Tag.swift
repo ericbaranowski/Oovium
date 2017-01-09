@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Tag: NSObject {
+public class Tag {
 	let key: String
 	let params: Int
 	

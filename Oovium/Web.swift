@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Web: NSObject {
+public class Web {
 	let head: Tower
 	let tail: Tower
 	
@@ -22,8 +22,6 @@ public class Web: NSObject {
 		towers = head.towersDestined(for: self.tail)
 		Tower.printTowers(towers)
 		recipe = Recipe()
-
-		super.init()
 
 		let certain = head.towersStronglylinked(for: self.tail)
 		
@@ -65,13 +63,10 @@ public class Web: NSObject {
 						recipe.add(ifGotoTask)
 						n += 1
 						var oldN = n
-						for branch in tower.downstream {
-							if branch.name?.range(of: "IFT") == nil {continue}
-							let newTowers = head.towersStronglylinked(for: self.tail, override: branch).subtracting(towers)
-							n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
-						}
+						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
-							ifGotoTask.load(name: tower.name!, index: memory.index(for: tower.name!), goto: n+1)
+							ifGotoTask.load(name: tower.name, index: memory.index(for: tower.name), goto: n+1)
 						} else {
 							recipe.removeLast()
 							n -= 1
@@ -81,11 +76,8 @@ public class Web: NSObject {
 						recipe.add(gotoTask)
 						n += 1
 						oldN = n
-						for branch in tower.downstream {
-							if branch.name?.range(of: "IFE") == nil {continue}
-							let newTowers = head.towersStronglylinked(for: self.tail, override: branch).subtracting(towers)
-							n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
-						}
+						newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
 							gotoTask.load(goto: n)
 						} else {
@@ -119,7 +111,7 @@ public class Web: NSObject {
 	
 	
 // CustomStringConvertible =========================================================================
-	override public var description: String {
+	public var description: String {
 		var sb = String()
 		sb.append("[ Web ====================================== ]\n")
 		for tower in towers  {

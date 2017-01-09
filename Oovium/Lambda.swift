@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class Lambda: NSObject {
-	public var morphs: [@convention(block) (Lambda)->()] = [(Lambda)->()]()
+public class Lambda {
+	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
 	public var cons = [Obj]()
 	public var variables = [String]()
 	public var varIndexes = [Int]()
@@ -20,7 +20,7 @@ public class Lambda: NSObject {
 	public var vi: Int = 0
 	var memory: Memory!
 	
-	public override init () {
+	public init () {
 		stack = [Obj?](repeating: nil, count: 10)
 		cp = 0
 		vp = 0

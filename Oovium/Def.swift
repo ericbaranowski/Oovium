@@ -11,7 +11,7 @@ import UIKit
 // http://stackoverflow.com/questions/36607801/swift-framework-imported-into-objc-c-binary-does-not-generate-obj-c-header-corre
 extension NSArray {}
 
-public class Def: NSObject {
+public class Def {
 	public let name: String
 	public let key: String
 	public let properties: [String]

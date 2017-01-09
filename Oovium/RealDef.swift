@@ -24,7 +24,7 @@ public class RealDef: Def {
 	static var formatter_ = NumberFormatter()
 	static var scientific_ = NumberFormatter()
 	
-	override public static func initialize () {
+	public static func initialize () {
 		formatter_.positiveFormat = "#,##0.########"
 		formatter_.negativeFormat = "#,##0.########"
 		

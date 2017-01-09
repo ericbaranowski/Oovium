@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class Memory: NSObject {
+public class Memory {
 	var index = [String:Int]()
 	public var slots = [Slot]()
 	
 	public init (_ names: [String]) {
-		super.init()
+//		super.init()
 		for name in names {
 			append(name:name)
 		}
@@ -21,7 +21,11 @@ public class Memory: NSObject {
 	
 	public subscript (i: Int) -> Obj? {
 		get {
-			return slots[i].value
+			if slots[i].loaded {
+				return slots[i].value
+			} else {
+				return nil
+			}
 		}
 	}
 	public subscript (name: String) -> Obj? {
@@ -39,11 +43,20 @@ public class Memory: NSObject {
 		slot.value.mimic(obj)
 		slot.loaded = true
 	}
+	public func mimic (_ i: Int, n: Int) {
+		let slot = slots[i]
+		(slot.value as! RealObj).mimic(int: n)
+		slot.loaded = true
+	}
 	
+	public func fix (_ i: Int) {
+		let slot = slots[i]
+		slot.fixed = true
+	}
 	public func fix (_ i: Int, obj:Obj) {
 		let slot = slots[i]
-		slot.value = obj
 		slot.fixed = true
+		slot.value = obj
 	}
 	
 	func append (slot: Slot) {
@@ -80,7 +93,7 @@ public class Memory: NSObject {
 	}
 	
 // CustomStringConvertible =========================================================================
-	override public var description: String {
+	public var description: String {
 		var sb = String()
 		sb.append("[ Memory ==================== ]\n")
 		var i = 0

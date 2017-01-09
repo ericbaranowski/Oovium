@@ -47,10 +47,33 @@ import Foundation
 			vars.append(token.tag.key)
 		}
 		memory = Memory(vars.sorted())
+		for key in tokens.keys {
+			let token = tokens[key]!
+			token.ip = memory.index(for: key)
+		}
 
 		for object in objects {object.wire(memory)}
 		for gate in gates {gate.wire(memory)}
 		for auto in autos {auto.wire(memory)}
+	}
+	
+	public func calculate () {
+		var towers = [Tower]()
+		for object in objects {towers.append(contentsOf: object.towers())}
+		for gate in gates {towers.append(contentsOf: gate.towers())}
+		for auto in autos {towers.append(contentsOf: auto.towers())}
+		
+		var progress: Bool
+		repeat {
+			progress = false
+			
+			for tower in towers {
+				if tower.calculate(memory) == .progress {
+					progress = true
+				}
+			}
+			
+		} while progress
 	}
 	
 // Domain ==========================================================================================

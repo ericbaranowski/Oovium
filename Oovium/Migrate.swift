@@ -18,7 +18,7 @@ class Migrator {
 	}
 }
 
-public class Migrate: NSObject {
+public class Migrate {
 	var migrators = [Migrator]()
 	
 	public func migrate (_ attributes: [String:Any]) -> [String:Any] {

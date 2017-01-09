@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Obj: NSObject {
+open class Obj {
 	var def: Def
 	var dims: [Dim]
 	
@@ -45,7 +45,19 @@ public class Obj: NSObject {
 			return dim.asDouble()
 		}
 	}
-	override public var description : String {
+	public var asDouble: Double {
+		get {
+			let dim: RealDim = dims[0] as! RealDim;
+			return dim.asDouble()
+		}
+	}
+	public var asInt: Int {
+		get {
+			let dim: RealDim = dims[0] as! RealDim;
+			return dim.asInt()
+		}
+	}
+	open var description : String {
 		return def.format(self)
 	}
 }

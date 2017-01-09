@@ -25,16 +25,16 @@ public class Gate: Aexel {
 // Aexel ===========================================================================================
 	override func plugIn () {
 		ifTower.name = String(format: "IFI%05d", iden)
-		ifTower.token = Token.token(type: .variable, tag: Tag.tag(key: ifTower.name!))
+		ifTower.token = Token.token(type: .variable, tag: Tag.tag(key: ifTower.name))
 		
 		thenTower.name = String(format: "IFT%05d", iden)
-		thenTower.token = Token.token(type: .variable, tag: Tag.tag(key: thenTower.name!))
+		thenTower.token = Token.token(type: .variable, tag: Tag.tag(key: thenTower.name))
 		
 		elseTower.name = String(format: "IFE%05d", iden)
-		elseTower.token = Token.token(type: .variable, tag: Tag.tag(key: elseTower.name!))
+		elseTower.token = Token.token(type: .variable, tag: Tag.tag(key: elseTower.name))
 		
 		resultTower.name = String(format: "IF%05d", iden)
-		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name!))
+		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name))
 		
 		aether.link(ifTower)
 		aether.link(thenTower)
@@ -56,13 +56,18 @@ public class Gate: Aexel {
 		forkTask.load(ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
 		resultTower.task = forkTask
 		
-		ifTower.attach(thenTower)
-		ifTower.attach(elseTower)
 		ifTower.attach(resultTower)
 		ifTower.gateTo = resultTower
+		ifTower.thenTo = thenTower
+		ifTower.elseTo = elseTower
+		thenTower.gate = ifTower
+		elseTower.gate = ifTower
 		
 		thenTower.attach(resultTower)
 		elseTower.attach(resultTower)
+	}
+	override func towers () -> [Tower] {
+		return [ifTower, thenTower, elseTower, resultTower]
 	}
 	
 // Domain ==========================================================================================

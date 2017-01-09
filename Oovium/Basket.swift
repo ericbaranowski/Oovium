@@ -8,9 +8,11 @@
 
 import Foundation
 
-public class Basket: NSObject {
+public class Basket {
 	var cache = [Int:Anchor]()
 	var blocks: [String:(Domain)->()] = [:]
+	
+	public init () {}
 
 	func load (attributes: [String:Any], cls: Anchor.Type) -> Anchor {
 		let anchor = cls.init(basket: self)

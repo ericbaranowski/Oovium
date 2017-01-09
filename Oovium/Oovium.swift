@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Oovium: NSObject {
+class Oovium {
 	static var window_: UIWindow!
 
 	static func start () {

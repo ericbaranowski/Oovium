@@ -12,11 +12,11 @@ enum ParseError: Error {
 	case general
 }
 
-public class Chain: NSObject {
+public class Chain {
 	var tokens = [Token]()
 	var lambda: Lambda = Lambda()
 	
-	override init () {}
+	init () {}
 	public init (string: String) {
 		let keys = string .components(separatedBy: ";")
 		for key in keys {

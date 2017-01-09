@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Math: NSObject {
+public class Math {
 	static var morphs = [String:(Lambda)->()]()
 	
 	static func registerMorph (key: String, morph:@escaping (Lambda)->()) {

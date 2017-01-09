@@ -26,6 +26,9 @@ public class RealObj: Obj {
 	override public func mimic (_ obj: Obj) {
 		(self.dims[0] as! RealDim).x = (obj.dims[0] as! RealDim).x;
 	}
+	public func mimic (int: Int) {
+		(self.dims[0] as! RealDim).x = Double(int)
+	}
 	
 	static func + (a: RealObj, b: RealObj) -> RealObj {
 		return RealObj(a.x+b.x)

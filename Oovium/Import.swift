@@ -8,5 +8,5 @@
 
 import Foundation
 
-public class Import: NSObject {
+public class Import {
 }

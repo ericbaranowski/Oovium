@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ops: NSObject {
+class Ops {
 	private let lambda: Lambda
 	
 	private var pOp: Tag?

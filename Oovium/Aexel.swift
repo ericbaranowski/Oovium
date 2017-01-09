@@ -19,6 +19,9 @@ public class Aexel: Domain {
 	
 	func plugIn () {}
 	func wire (_ memory: Memory) {}
+	func towers () -> [Tower] {
+		return []
+	}
 
 // Domain ==========================================================================================
 	override func properties () -> [String] {

@@ -40,6 +40,10 @@
 		D81FCDBA1E131AB500E8936E /* Strand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDB91E131AB500E8936E /* Strand.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
+		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
+		D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
+		D82BE4D81E2369D600E8E710 /* OoviumLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */; };
+		D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */; };
 		D85EEFCF1E10544A00166C4C /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
 		D85EEFD01E10B47700166C4C /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
 		D85EEFD21E10CD4C00166C4C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
@@ -163,6 +167,8 @@
 		D80EB9A31DEEF93C00361939 /* ComplexObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexObj.swift; sourceTree = "<group>"; };
 		D81FCDB91E131AB500E8936E /* Strand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strand.swift; sourceTree = "<group>"; };
 		D81FCDBE1E1343B100E8936E /* Satyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satyr.swift; sourceTree = "<group>"; };
+		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
+		D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumLookup.swift; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85EEFD11E10CD4C00166C4C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D89BEBDB1DE8D32B00B56F6A /* Oovium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oovium.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				D81FCDBE1E1343B100E8936E /* Satyr.swift */,
+				D82BE4D01E21A00F00E8E710 /* JSON.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -318,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				D89BEC361DE8FC9F00B56F6A /* OoviumDelegate.swift */,
+				D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */,
 				D89BEC351DE8FC9F00B56F6A /* Oovium.swift */,
 				D89BEBEA1DE8D32B00B56F6A /* Info.plist */,
 			);
@@ -618,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8CB76801E17AAAF00A286DF /* Import.swift in Sources */,
+				D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */,
 				D85EEFD31E10CD5000166C4C /* Task.swift in Sources */,
 				D8CB767B1E17AAAF00A286DF /* Cron.swift in Sources */,
 				D8CB76831E17AAAF00A286DF /* Miru.swift in Sources */,
@@ -654,6 +663,7 @@
 				D80659021DE90EC800325182 /* Dim.swift in Sources */,
 				D80659151DE90EC800325182 /* Token.swift in Sources */,
 				D80659141DE90EC800325182 /* Tag.swift in Sources */,
+				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
 				D80659061DE90EC800325182 /* Obj.swift in Sources */,
 				D806590A1DE90EC800325182 /* ComplexDef.swift in Sources */,
 				D80659081DE90EC800325182 /* Def.swift in Sources */,
@@ -717,6 +727,7 @@
 				D89BEC0D1DE8D3CB00B56F6A /* RealDim.swift in Sources */,
 				D8CB76721E17943D00A286DF /* Anchor.swift in Sources */,
 				D8CB76701E17942A00A286DF /* State.swift in Sources */,
+				D82BE4D81E2369D600E8E710 /* OoviumLookup.swift in Sources */,
 				D8CB76931E185D1300A286DF /* Migrate.swift in Sources */,
 				D89BEC271DE8D42100B56F6A /* Lambda.swift in Sources */,
 				D85EEFD21E10CD4C00166C4C /* Task.swift in Sources */,
@@ -733,6 +744,7 @@
 				D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */,
 				D89BEC321DE8D44500B56F6A /* Ops.swift in Sources */,
 				D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */,
+				D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */,
 				D8CB766A1E1793E900A286DF /* Field.swift in Sources */,
 				D8CB76741E17944500A286DF /* Domain.swift in Sources */,
 			);

@@ -8,11 +8,6 @@
 
 import Foundation
 
-enum OOColor {
-	case red, orange, yellow, lime, maroon, peach, paleYellow, olive, magenta, lavender, marine, green, violet, cyan, cobolt, blue, black, grey, white, clear
-	case cgaRed, cgaLightRed, cgaBrown, cgaYellow, cgaGreen, cgaLightGreen, cgaCyan, cgaLightCyan, cgaBlue, cgaLightBlue, cgaMagenta, cgaLightMagenta
-	
-}
 enum OOShape {
 	case ellipse, rectangle, rounded, diamond
 }

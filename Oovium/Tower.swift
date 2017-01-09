@@ -15,22 +15,28 @@ enum CalcState {
 	case notReady, progress, cached
 }
 
-public class Tower: NSObject {
-	public var name: String?
+public class Tower: Hashable {
+	public var name: String
 	public var index: Int = -1
 	var task: Task?
 	var token: Token!
 	
-	public var gateTo: Tower?
 	var upstream: Set<Tower> = Set<Tower>()
 	var downstream: Set<Tower> = Set<Tower>()
 
-	var state: TowerState = .calced
-	var stopper: NSObject?
+	public var gateTo: Tower?
+	public var thenTo: Tower?
+	public var elseTo: Tower?
+	public var gate: Tower?
+
+	var state: TowerState = .open
+//	var stopper: NSObject?
 	
-	override init () {
+	init () {
+		name = "[\(arc4random_uniform(99999999))]"
 	}
 	public init (task: Task?) {
+		name = "[\(arc4random_uniform(99999999))]"
 		self.task = task
 	}
 	
@@ -38,7 +44,7 @@ public class Tower: NSObject {
 	var orbit: Tower? {
 		set {_orbit = newValue}
 		get {
-			if (stopper != nil) {return nil}
+//			if (stopper != nil) {return nil}
 			if let orbit = orbitUp() {return orbit}
 //			if let orbit = orbitDown() {return orbit}
 			return nil
@@ -141,14 +147,10 @@ public class Tower: NSObject {
 //	}
 	func stronglyLinked (to target: Tower, override: Tower?) -> Bool {
 		if self == target || self == override {return true}
+		if gate != nil {return false}
 		if let gateTo = self.gateTo {
 			return gateTo.stronglyLinked(to: target, override: override)
 		} else {
-			for tower in upstream {
-				if tower.gateTo != nil && tower.gateTo != self {
-					return false
-				}
-			}
 			for tower in downstream {
 				if tower.stronglyLinked(to: target, override: override) {
 					return true
@@ -202,6 +204,29 @@ public class Tower: NSObject {
 		
 		return .progress
 	}
+	
+	func calculate (_ memory: Memory) -> CalcState {
+		if state != .open {return .cached}
+		
+		for tower in upstream {
+			if tower.state == .open {
+				return .notReady
+			} else if tower.state == .uncalced {
+				state = .uncalced
+				return .progress
+			}
+		}
+
+		if let task = task {
+			state = task.calculate(memory)
+			if state == .calced {
+				memory.fix(index)
+			}
+		}
+		
+		return .progress
+	}
+	
 //	func evaluate (vars: [String:Obj?]) -> CalcState {
 //		if (state != .uncalced || vars[task.name] != nil)
 //			{return .cached}
@@ -239,11 +264,20 @@ public class Tower: NSObject {
 		print("\(sb)")
 	}
 
+// Hashable ========================================================================================
+	public static func == (left: Tower, right: Tower) -> Bool {
+		return left === right
+	}
+	public var hashValue: Int {
+		return name.hashValue
+	}
+
+	
 // CustomDebugStringConvertible ====================================================================
 	private var display: String {
 		get {return ""}
 	}
-	override public var debugDescription: String {
+	public var debugDescription: String {
 		var sb: String = ""
 
 		sb.append("Tower [\(display) : \(state)\n")

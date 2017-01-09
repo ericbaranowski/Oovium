@@ -19,6 +19,9 @@ class RealDim: Dim {
 	override func asDouble () -> Double {
 		return x
 	}
+	override func asInt () -> Int {
+		return Int(x)
+	}
 	override func asString () -> String {
 		return "\(x)"
 	}
