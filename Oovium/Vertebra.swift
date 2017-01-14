@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Vertebra: Domain {
+final class Vertebra: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
 	var tokens: String = ""

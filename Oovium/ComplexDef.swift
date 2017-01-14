@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class ComplexDef: Def {
+public final class ComplexDef: Def {
 	public static let def = ComplexDef()
 	
 	init () {

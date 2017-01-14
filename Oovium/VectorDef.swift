@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class VectorDef: Def {
+public final class VectorDef: Def {
 	public static let def = LambdaDef(name:"vector", key:"vtr", properties:["x","y","z"], color:.white)
 }

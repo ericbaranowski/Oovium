@@ -9,15 +9,13 @@
 import Foundation
 
 class ComplexObj: Obj {
-	var r: Double {
-		get {return (self.dims[0] as! RealDim).x}
-	}
-	var i: Double {
-		get {return (self.dims[1] as! RealDim).x}
-	}
+	var r: Double
+	var i: Double
 
 	public init (_ r: Double, _ i: Double) {
-		super.init(def: ComplexDef.def, dims: [RealDim(r), RealDim(i)])
+		self.r = r
+		self.i = i
+		super.init(def: ComplexDef.def)
 	}
 	convenience public init (_ r: Double) {
 		self.init(r,0)

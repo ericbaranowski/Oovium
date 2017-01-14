@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StringDim: Dim {
+final class StringDim: Dim {
 	var string: String
 	
 	init (_ string: String) {

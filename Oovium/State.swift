@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class State: Domain {
+public final class State: Domain {
 //	var color: OOColor = .clear
 	public var color: Int = 0
 

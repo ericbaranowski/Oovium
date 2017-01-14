@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Satyr<T:Hashable> {
+final class Satyr<T:Hashable> {
 	var array = [Set<T>]()
 	
 	func union () -> Set<T> {

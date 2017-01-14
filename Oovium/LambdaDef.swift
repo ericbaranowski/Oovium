@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class LambdaDef: Def {
+public final class LambdaDef: Def {
 	public static let def = LambdaDef(name:"lambda", key:"lmd", properties:["_"], color:.white)
 
 }

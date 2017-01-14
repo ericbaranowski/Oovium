@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Recipe {
+public final class Recipe {
 	private var tasks: [Task]
 	private var tp: Int = 0
 	

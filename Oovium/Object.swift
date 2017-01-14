@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Object: Aexel {
+public final class Object: Aexel {
 	var tokens: String = ""
 	
 	var chain = Chain()

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Type: Aexel {
+public final class Type: Aexel {
 	var color: OOColor = .black
 	
 	var fields: [Field] = []

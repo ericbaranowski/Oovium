@@ -9,11 +9,10 @@
 import Foundation
 
 public class RealObj: Obj {
-	var x: Double {
-		get {return (self.dims[0] as! RealDim).x}
-	}
+	public var x: Double
 	
 	public init (_ x: Double) {
+		self.x = x
 		super.init(def: RealDef.def, dims: [RealDim(x)])
 	}
 	
@@ -24,10 +23,10 @@ public class RealObj: Obj {
 //		}
 //	}
 	override public func mimic (_ obj: Obj) {
-		(self.dims[0] as! RealDim).x = (obj.dims[0] as! RealDim).x;
+		x = (obj as! RealObj).x;
 	}
 	public func mimic (int: Int) {
-		(self.dims[0] as! RealDim).x = Double(int)
+		x = Double(int)
 	}
 	
 	static func + (a: RealObj, b: RealObj) -> RealObj {

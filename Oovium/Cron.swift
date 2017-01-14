@@ -12,7 +12,7 @@ enum OOEndMode {
 	case stop, `repeat`, bounce, endless, `while`
 }
 
-public class Cron: Aexel {
+public final class Cron: Aexel {
 	var startTokens: String = ""
 	var stopTokens: String = ""
 	var stepsTokens: String = ""

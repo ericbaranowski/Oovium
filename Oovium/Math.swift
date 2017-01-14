@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Math {
+public final class Math {
 	static var morphs = [String:(Lambda)->()]()
 	
 	static func registerMorph (key: String, morph:@escaping (Lambda)->()) {
@@ -61,7 +61,8 @@ public class Math {
 	// Add
 	static let addRR: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isRR(lambda)
-		lambda.push(x+y)
+//		lambda.push(x+y)
+		lambda.push(n: Int(x.x+y.x))
 	}
 	static let addCC: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isCC(lambda)
@@ -133,7 +134,8 @@ public class Math {
 	// Equals
 	static let equalsRR: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isRR(lambda)
-		lambda.push(x==y)
+//		lambda.push(x==y)
+		lambda.push(n: x.x==y.x ?  1 : 0)
 	}
 	static let equalsCC: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isCC(lambda)

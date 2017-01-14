@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Cauldron {
+public final class Cauldron {
 	let tokens: [Token]
 	let lambda: Lambda
 	

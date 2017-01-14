@@ -29,12 +29,12 @@ public class Task {
 		return nil
 	}
 	func calculate (_ memory: Memory) -> TowerState {
-		task(memory)
+		_ = task(memory)
 		return .calced
 	}
 }
 
-public class GotoTask: Task {
+public final class GotoTask: Task {
 	func load (goto: Int) {
 		label = ""
 		command = "GOTO \(goto)"
@@ -44,18 +44,18 @@ public class GotoTask: Task {
 	}
 }
 
-public class IfGotoTask: Task {
+public final class IfGotoTask: Task {
 	func load (name: String, index: Int, goto: Int) {
 		label = ""
 		command = "IF \(name) == FALSE THEN GOTO \(goto)"
 		task = { (memory: Memory) -> (Int?) in
-			if memory[index]!.value != 0 {return nil}
+			if (memory[index]! as! RealObj).x != 0 {return nil}
 			return goto
 		}
 	}
 }
 
-public class LambdaTask: Task {
+public final class LambdaTask: Task {
 	public func load (label: String, command: String, lambda: Lambda) {
 		self.label = label
 		self.command = command
@@ -66,10 +66,10 @@ public class LambdaTask: Task {
 	}
 }
 
-public class ForkTask: Task {
+public final class ForkTask: Task {
 	public func load (ifIndex: Int, thenIndex: Int, elseIndex: Int, resultIndex: Int) {
 		task = { (memory: Memory)->(Int?) in
-			if memory[ifIndex]?.value != 0 {
+			if (memory[ifIndex]! as! RealObj).x != 0 {
 				memory.mimic(resultIndex, obj: memory[thenIndex]!)
 			} else {
 				memory.mimic(resultIndex, obj: memory[elseIndex]!)

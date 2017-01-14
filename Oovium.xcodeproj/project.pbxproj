@@ -24,7 +24,6 @@
 		D806590C1DE90EC800325182 /* LambdaDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC161DE8D3FA00B56F6A /* LambdaDef.swift */; };
 		D806590D1DE90EC800325182 /* StringDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC181DE8D3FA00B56F6A /* StringDef.swift */; };
 		D806590E1DE90EC800325182 /* DateDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC141DE8D3FA00B56F6A /* DateDef.swift */; };
-		D806590F1DE90EC800325182 /* Scratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC241DE8D42100B56F6A /* Scratch.swift */; };
 		D80659101DE90EC800325182 /* Lambda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC221DE8D42100B56F6A /* Lambda.swift */; };
 		D80659111DE90EC800325182 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC231DE8D42100B56F6A /* Recipe.swift */; };
 		D80659121DE90EC800325182 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
@@ -37,7 +36,6 @@
 		D80EB9A21DED97EB00361939 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A01DED96F900361939 /* Math.swift */; };
 		D80EB9A41DEEF93C00361939 /* ComplexObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A31DEEF93C00361939 /* ComplexObj.swift */; };
 		D80EB9A51DEEFAAB00361939 /* ComplexObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A31DEEF93C00361939 /* ComplexObj.swift */; };
-		D81FCDBA1E131AB500E8936E /* Strand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDB91E131AB500E8936E /* Strand.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
@@ -48,6 +46,8 @@
 		D85EEFD01E10B47700166C4C /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
 		D85EEFD21E10CD4C00166C4C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
 		D85EEFD31E10CD5000166C4C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
+		D8705D3D1E293E7C003F5668 /* TypeObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8705D3C1E293E7C003F5668 /* TypeObj.swift */; };
+		D8705D3E1E293EAA003F5668 /* TypeObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8705D3C1E293E7C003F5668 /* TypeObj.swift */; };
 		D89BEBE11DE8D32B00B56F6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBE01DE8D32B00B56F6A /* ViewController.swift */; };
 		D89BEBE61DE8D32B00B56F6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */; };
 		D89BEBF41DE8D32B00B56F6A /* OoviumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBF31DE8D32B00B56F6A /* OoviumTests.swift */; };
@@ -66,7 +66,6 @@
 		D89BEC201DE8D3FA00B56F6A /* VectorDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC191DE8D3FA00B56F6A /* VectorDef.swift */; };
 		D89BEC271DE8D42100B56F6A /* Lambda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC221DE8D42100B56F6A /* Lambda.swift */; };
 		D89BEC281DE8D42100B56F6A /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC231DE8D42100B56F6A /* Recipe.swift */; };
-		D89BEC291DE8D42100B56F6A /* Scratch.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC241DE8D42100B56F6A /* Scratch.swift */; };
 		D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
 		D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2C1DE8D44500B56F6A /* Chain.swift */; };
 		D89BEC321DE8D44500B56F6A /* Ops.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2D1DE8D44500B56F6A /* Ops.swift */; };
@@ -165,12 +164,12 @@
 		D80658F61DE90DC300325182 /* OoviumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OoviumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80EB9A01DED96F900361939 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		D80EB9A31DEEF93C00361939 /* ComplexObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexObj.swift; sourceTree = "<group>"; };
-		D81FCDB91E131AB500E8936E /* Strand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strand.swift; sourceTree = "<group>"; };
 		D81FCDBE1E1343B100E8936E /* Satyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satyr.swift; sourceTree = "<group>"; };
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumLookup.swift; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85EEFD11E10CD4C00166C4C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		D8705D3C1E293E7C003F5668 /* TypeObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObj.swift; sourceTree = "<group>"; };
 		D89BEBDB1DE8D32B00B56F6A /* Oovium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oovium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89BEBE01DE8D32B00B56F6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -193,7 +192,6 @@
 		D89BEC191DE8D3FA00B56F6A /* VectorDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorDef.swift; sourceTree = "<group>"; };
 		D89BEC221DE8D42100B56F6A /* Lambda.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lambda.swift; sourceTree = "<group>"; };
 		D89BEC231DE8D42100B56F6A /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		D89BEC241DE8D42100B56F6A /* Scratch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scratch.swift; sourceTree = "<group>"; };
 		D89BEC251DE8D42100B56F6A /* Tower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		D89BEC2C1DE8D44500B56F6A /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		D89BEC2D1DE8D44500B56F6A /* Ops.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ops.swift; sourceTree = "<group>"; };
@@ -371,9 +369,7 @@
 				D89BEC221DE8D42100B56F6A /* Lambda.swift */,
 				D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */,
 				D89BEC231DE8D42100B56F6A /* Recipe.swift */,
-				D89BEC241DE8D42100B56F6A /* Scratch.swift */,
 				D8D1EEEF1DFDC67300CF3870 /* Slot.swift */,
-				D81FCDB91E131AB500E8936E /* Strand.swift */,
 				D85EEFD11E10CD4C00166C4C /* Task.swift */,
 				D89BEC251DE8D42100B56F6A /* Tower.swift */,
 				D85EEFCE1E10544A00166C4C /* Web.swift */,
@@ -401,6 +397,7 @@
 				D89BEC0F1DE8D3DC00B56F6A /* Obj.swift */,
 				D89BEC101DE8D3DC00B56F6A /* RealObj.swift */,
 				D80EB9A31DEEF93C00361939 /* ComplexObj.swift */,
+				D8705D3C1E293E7C003F5668 /* TypeObj.swift */,
 			);
 			name = Objs;
 			sourceTree = "<group>";
@@ -645,7 +642,6 @@
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
 				D80EB9A21DED97EB00361939 /* Math.swift in Sources */,
-				D806590F1DE90EC800325182 /* Scratch.swift in Sources */,
 				D80659031DE90EC800325182 /* RealDim.swift in Sources */,
 				D80659191DE90EC800325182 /* ViewController.swift in Sources */,
 				D80659071DE90EC800325182 /* RealObj.swift in Sources */,
@@ -679,6 +675,7 @@
 				D8CB767A1E17AAAF00A286DF /* Col.swift in Sources */,
 				D8FB18F51E187EA700350284 /* Basket.swift in Sources */,
 				D80659111DE90EC800325182 /* Recipe.swift in Sources */,
+				D8705D3E1E293EAA003F5668 /* TypeObj.swift in Sources */,
 				D8CB76861E17AAAF00A286DF /* Tail.swift in Sources */,
 				D80425881E19B49C009C9ED3 /* Cauldron.swift in Sources */,
 			);
@@ -689,6 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D89BEC331DE8D44500B56F6A /* Tag.swift in Sources */,
+				D8705D3D1E293E7C003F5668 /* TypeObj.swift in Sources */,
 				D89BEC341DE8D44500B56F6A /* Token.swift in Sources */,
 				D8CB76641E1793B300A286DF /* Miru.swift in Sources */,
 				D80EB9A41DEEF93C00361939 /* ComplexObj.swift in Sources */,
@@ -704,7 +702,6 @@
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
 				D89BEC0C1DE8D3CB00B56F6A /* LambdaDim.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
-				D89BEC291DE8D42100B56F6A /* Scratch.swift in Sources */,
 				D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
 				D8CB76521E17934100A286DF /* Gate.swift in Sources */,
@@ -719,7 +716,6 @@
 				D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */,
 				D89BEC1D1DE8D3FA00B56F6A /* LambdaDef.swift in Sources */,
 				D89BEC0B1DE8D3CB00B56F6A /* Dim.swift in Sources */,
-				D81FCDBA1E131AB500E8936E /* Strand.swift in Sources */,
 				D8CB76661E1793D700A286DF /* Input.swift in Sources */,
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,

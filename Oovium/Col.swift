@@ -15,7 +15,7 @@ enum OOJustify {
 	case left, center, right
 }
 
-public class Col: Domain {
+public final class Col: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
 	var tokens: String = ""

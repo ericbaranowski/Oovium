@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Gate: Aexel {
+public final class Gate: Aexel {
 	var ifTokens: String = ""
 	var thenTokens: String = ""
 	var elseTokens: String = ""

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public class DateDef: Def {
+public final class DateDef: Def {
 	public static let def = LambdaDef(name:"date", key:"dte", properties:["_"], color:.white)
 }

@@ -12,7 +12,7 @@ enum ParseError: Error {
 	case general
 }
 
-public class Chain {
+public final class Chain {
 	var tokens = [Token]()
 	var lambda: Lambda = Lambda()
 	

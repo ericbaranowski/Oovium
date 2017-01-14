@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class JSON {
+public final class JSON {
 	public static func toJSON (attributes: [String:Any]) -> String {
 		do {
 			let data = try JSONSerialization.data(withJSONObject: attributes, options: .prettyPrinted)

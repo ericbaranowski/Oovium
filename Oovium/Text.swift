@@ -12,7 +12,7 @@ enum OOShape {
 	case ellipse, rectangle, rounded, diamond
 }
 
-public class Text: Aexel {
+public final class Text: Aexel {
 	var color: OOColor = .orange
 	var shape: OOShape = .ellipse
 	

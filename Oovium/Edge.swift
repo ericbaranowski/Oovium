@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Edge: Domain {
+final class Edge: Domain {
 	var textID: Int = 0
 
 // Domain ==========================================================================================

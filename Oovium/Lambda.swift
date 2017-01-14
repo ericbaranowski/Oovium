@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Lambda {
+public final class Lambda {
 	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
 	public var cons = [Obj]()
 	public var variables = [String]()
@@ -57,6 +57,10 @@ public class Lambda {
 		stack[sp] = obj;
 		sp += 1
 	}
+	func push(n: Int) {
+		(stack[sp] as! RealObj).mimic(int: n)
+		sp += 1
+	}
 	func pop () -> Obj {
 		sp -= 1
 		return stack[sp]!
@@ -84,7 +88,7 @@ public class Lambda {
 		for morph in morphs
 			{morph(self)}
 		
-		let result: Double = (peek() as! RealObj).value
+		let result: Double = (peek() as! RealObj).x
 		
 		return result
 	}

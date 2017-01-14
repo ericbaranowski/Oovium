@@ -58,7 +58,7 @@ import Foundation
 	case separator
 }
 
-public class Token: Hashable {
+public final class Token: Hashable {
 	public let type: TokenType
 	public let tag: Tag
 	public let level: TokenLevel?

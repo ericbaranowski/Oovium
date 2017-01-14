@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Slot {
+public final class Slot {
 	public var name: String
 	public var fixed: Bool
 	public var loaded: Bool

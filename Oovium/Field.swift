@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Field: Domain {
+final class Field: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
 

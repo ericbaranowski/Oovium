@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Input: Domain {
+final class Input: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
 

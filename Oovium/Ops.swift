@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ops {
+final class Ops {
 	private let lambda: Lambda
 	
 	private var pOp: Tag?

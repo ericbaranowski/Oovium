@@ -15,7 +15,7 @@ enum CalcState {
 	case notReady, progress, cached
 }
 
-public class Tower: Hashable {
+public final class Tower: Hashable {
 	public var name: String
 	public var index: Int = -1
 	var task: Task?

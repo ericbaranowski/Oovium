@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Tag {
+public final class Tag {
 	let key: String
 	let params: Int
 	

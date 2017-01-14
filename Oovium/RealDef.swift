@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class RealDef: Def {
+public final class RealDef: Def {
 	public static let def = RealDef()
 	
 	init () {
@@ -35,7 +35,7 @@ public class RealDef: Def {
 	}
 
 	override func format (_ obj: Obj) -> String {
-		let x = obj.value
+		let x = (obj as! RealObj).x
 		if (fabs(x) < 0.00000001 && x != 0) || fabs(x) > 999999999 {
 			return RealDef.scientific_.string(from: NSNumber(value: x))!
 		} else {

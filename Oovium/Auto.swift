@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Auto: Aexel {
+public final class Auto: Aexel {
 	var statesTokens: String = ""
 	var resultTokens: String = ""
 	

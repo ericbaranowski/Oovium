@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Memory {
+public final class Memory {
 	var index = [String:Int]()
 	public var slots = [Slot]()
 	
@@ -20,6 +20,10 @@ public class Memory {
 	}
 	
 	public subscript (i: Int) -> Obj? {
+		set {
+			slots[i].value = newValue!
+			slots[i].loaded = true
+		}
 		get {
 			if slots[i].loaded {
 				return slots[i].value

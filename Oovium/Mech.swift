@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Mech: Aexel {
+public final class Mech: Aexel {
 	var resultTokens: String = ""
 	
 	var resultChain = Chain()

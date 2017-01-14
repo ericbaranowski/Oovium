@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Tail: Aexel {
+public final class Tail: Aexel {
 	var whileTokens: String = ""
 	var resultTokens: String = ""
 

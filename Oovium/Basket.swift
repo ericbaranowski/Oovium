@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Basket {
+public final class Basket {
 	var cache = [Int:Anchor]()
 	var blocks: [String:(Domain)->()] = [:]
 	

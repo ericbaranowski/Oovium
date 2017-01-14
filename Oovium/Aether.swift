@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public class Aether: Anchor {
+@objc public final class Aether: Anchor {
 	var name: String = ""
 	var xOffset: Double = 0
 	var yOffset: Double = 0

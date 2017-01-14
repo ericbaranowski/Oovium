@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Web {
+public final class Web {
 	let head: Tower
 	let tail: Tower
 	
@@ -34,13 +34,13 @@ public class Web {
 	
 	func weave () {
 		for tower in towers {tower.clear()}
-		for tower in towers {
-			
-		}
+//		for tower in towers {
+//			
+//		}
 	}
 	func strand (head: Tower, tail: Tower, memory: Memory) -> Recipe {
 		let recipe = Recipe()
-		program(recipe: recipe, towers: towers, memory: memory, n: 0)
+		_ = program(recipe: recipe, towers: towers, memory: memory, n: 0)
 		return recipe
 	}
 	
