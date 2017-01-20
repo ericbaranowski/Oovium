@@ -8,9 +8,14 @@
 
 import Foundation
 
-public final class Memory {
+public struct Memory: CustomStringConvertible {
 	var index = [String:Int]()
-	public var slots = [Slot]()
+//	private var slots = [Slot]()
+	
+	private var names = [String]()
+	private var fixed = [Bool]()
+	private var loaded = [Bool]()
+	private var values = [Obj]()
 	
 	public init (_ names: [String]) {
 //		super.init()
@@ -21,12 +26,12 @@ public final class Memory {
 	
 	public subscript (i: Int) -> Obj? {
 		set {
-			slots[i].value = newValue!
-			slots[i].loaded = true
+			values[i] = newValue!
+			loaded[i] = true
 		}
 		get {
-			if slots[i].loaded {
-				return slots[i].value
+			if loaded[i] {
+				return values[i]
 			} else {
 				return nil
 			}
@@ -35,40 +40,43 @@ public final class Memory {
 	public subscript (name: String) -> Obj? {
 		get {
 			if let i = index[name] {
-				return slots[i].value
+				return values[i]
 			} else {
 				return nil
 			}
 		}
 	}
 	
-	public func mimic (_ i: Int, obj: Obj) {
-		let slot = slots[i]
-		slot.value.mimic(obj)
-		slot.loaded = true
+	public mutating func mimic (_ i: Int, obj: Obj) {
+//		slot.value.mimic(obj)
+		values[i] = obj
+		loaded[i] = true
 	}
-	public func mimic (_ i: Int, n: Int) {
-		let slot = slots[i]
-		(slot.value as! RealObj).mimic(int: n)
-		slot.loaded = true
+//	public func mimic (_ i: Int, n: Int) {
+//		let slot = slots[i]
+////		(slot.value as! RealObj).mimic(int: n)
+//		slot.value = RealObj(Double(n))
+//		slot.loaded = true
+//	}
+	
+	public mutating func fix (_ i: Int) {
+		fixed[i] = true
+	}
+	public mutating func fix (_ i: Int, obj:Obj) {
+		fixed[i] = true
+		values[i] = obj
 	}
 	
-	public func fix (_ i: Int) {
-		let slot = slots[i]
-		slot.fixed = true
-	}
-	public func fix (_ i: Int, obj:Obj) {
-		let slot = slots[i]
-		slot.fixed = true
-		slot.value = obj
-	}
-	
-	func append (slot: Slot) {
-		index[slot.name] = slots.count
-		slots.append(slot)
-	}
-	func append (name: String) {
-		append(slot:Slot(name))
+//	func append (slot: Slot) {
+//		index[slot.name] = slots.count
+//		slots.append(slot)
+//	}
+	mutating func append (name: String) {
+		index[name] = names.count
+		names.append(name)
+		fixed.append(false)
+		loaded.append(false)
+		values.append(RealObj.zero)
 	}
 	
 	public func index (for name: String) -> Int {
@@ -80,35 +88,33 @@ public final class Memory {
 	}
 	
 	public func isLoaded (_ i: Int) -> Bool {
-		return slots[i].loaded
+		return loaded[i]
 	}
-	public func load (_ i: Int, with value: Obj) {
-		slots[i].loaded = true
-		slots[i].value = value
+	public mutating func load (_ i: Int, with value: Obj) {
+		loaded[i] = true
+		values[i] = value
 	}
 
-	public func clear () {
-		for slot in slots {
-			slot.clear()
+	public mutating func clear () {
+		for i in 0..<count {
+			loaded[i] = fixed[i]
 		}
 	}
 	public var count: Int {
-		return slots.count
+		return names.count
 	}
 	
 // CustomStringConvertible =========================================================================
 	public var description: String {
 		var sb = String()
 		sb.append("[ Memory ==================== ]\n")
-		var i = 0
-		for slot in slots  {
+		for i in 0..<count  {
 			let index = String(format: "%2d", i)
-			let set = slot.fixed ? "O" : " "
-			let loaded = slot.loaded ? "O" : " "
-			let name = slot.name.padding(toLength: 12, withPad: " ", startingAt: 0)
-			let value = slot.loaded ? "\(slot.value)" : "-"
-			sb.append("  [\(index)][\(set)][\(loaded)][\(name)][\(value)]\n")
-			i += 1
+			let set: String = fixed[i] ? "O" : " "
+			let load: String = loaded[i] ? "O" : " "
+			let name: String  = names[i].padding(toLength: 12, withPad: " ", startingAt: 0)
+			let value: String = loaded[i] ? "\(values[i])" : "-"
+			sb.append("  [\(index)][\(set)][\(load)][\(name)][\(value)]\n")
 		}
 		sb.append("[ =========================== ]\n\n")
 		return sb

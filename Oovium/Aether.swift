@@ -68,7 +68,7 @@ import Foundation
 			progress = false
 			
 			for tower in towers {
-				if tower.calculate(memory) == .progress {
+				if tower.calculate(&(memory!)) == .progress {
 					progress = true
 				}
 			}

@@ -52,8 +52,7 @@ public final class Gate: Aexel {
 		
 		let resultName = resultTower.token.tag.key
 		resultTower.index = memory.index(for: resultName)
-		let forkTask = ForkTask(label: resultName, command: "\(resultName) = ~")
-		forkTask.load(ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
+		var forkTask = ForkTask(/*label: resultName, command: "\(resultName) = ~"*/ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
 		resultTower.task = forkTask
 		
 		ifTower.attach(resultTower)

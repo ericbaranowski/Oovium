@@ -9,7 +9,8 @@
 import Foundation
 
 public final class Lambda {
-	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
+//	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
+	public var morphs: [Morph] = [Morph]()
 	public var cons = [Obj]()
 	public var variables = [String]()
 	public var varIndexes = [Int]()
@@ -27,7 +28,8 @@ public final class Lambda {
 		sp = 0
 		vi = 0
 	}
-	public init (morphs: [(Lambda)->()], cons: [Obj], vars: [String]) {
+	public init (morphs: [Morph], cons: [Obj], vars: [String]) {
+//	public init (morphs: [(Lambda)->()], cons: [Obj], vars: [String]) {
 		self.morphs = morphs
 		self.cons = cons
 		self.variables = vars
@@ -46,7 +48,7 @@ public final class Lambda {
 	}
 	
 	// Variables
-	func nextVar () -> Obj {
+	func nextVar (memory: inout Memory) -> Obj {
 		let obj = memory[varIndexes[vp]]!
 		vp += 1
 		return obj
@@ -57,10 +59,11 @@ public final class Lambda {
 		stack[sp] = obj;
 		sp += 1
 	}
-	func push(n: Int) {
-		(stack[sp] as! RealObj).mimic(int: n)
-		sp += 1
-	}
+//	func push(n: Int) {
+////		(stack[sp] as! RealObj).mimic(int: n)
+//		stack[sp] = RealObj(Double(n))
+//		sp += 1
+//	}
 	func pop () -> Obj {
 		sp -= 1
 		return stack[sp]!
@@ -70,28 +73,32 @@ public final class Lambda {
 	}
 
 	// Evaluate
-	public func evaluate (_ memory: Memory) -> Obj {
-		cp = 0
-		vp = 0
-		sp = 0
-		self.memory = memory
-		for morph in morphs
-			{morph(self)}
-		return peek()
-	}
-	public func doubleEvaluate (_ memory: Memory) -> Double {
-		cp = 0
-		vp = 0
-		sp = 0
-		self.memory = memory
-		
-		for morph in morphs
-			{morph(self)}
-		
-		let result: Double = (peek() as! RealObj).x
-		
-		return result
-	}
+//	public func evaluate (_ memory: inout Memory) -> Obj {
+//		cp = 0
+//		vp = 0
+//		sp = 0
+//		
+//		for morph in morphs {
+//			applyMorph(morph: morph, memory: &memory)
+//		}
+//		return peek()
+//	}
+//	public func doubleEvaluate (_ memory: inout Memory) -> Double {
+//		cp = 0
+//		vp = 0
+//		sp = 0
+//		self.memory = memory
+//		
+//		for morph in morphs {
+//			var lambda = self
+//			Math.apply(morph: morph, lambda: &lambda)
+//		}
+////			{morph(self)}
+//		
+//		let result: Double = (peek() as! RealObj).x
+//		
+//		return result
+//	}
 	
 	// Build
 	func applyTag (_ tag: Tag) {
@@ -114,7 +121,8 @@ public final class Lambda {
 //		variables.append(name)
 //		applyTag(Tag.variable)
 //	}
-	func addMorph (_ morph: @escaping (Lambda)->()) {
+	func addMorph (_ morph: Morph) {
+//	func addMorph (_ morph: @escaping (Lambda)->()) {
 		morphs.append(morph)
 		push(RealObj(0))
 	}
@@ -124,4 +132,36 @@ public final class Lambda {
 			varIndexes.append(memory.index(for: name))
 		}
 	}
+	
+	func apply (morph: Morph, memory: inout Memory) {
+		switch (morph) {
+		case .addRR:
+			let y = pop() as! RealObj
+			let x = pop() as! RealObj
+			push(x+y)
+			break;
+		case .equalsRR:
+			let y = pop() as! RealObj
+			let x = pop() as! RealObj
+			push(x==y)
+			break;
+		case .variable:
+			push(nextVar(memory: &memory))
+			break;
+		case .constant:
+			push(nextCons())
+			break;
+		}
+	}
+	
+	public func execute (memory: inout Memory) -> Obj {
+		cp = 0
+		vp = 0
+		sp = 0
+		for morph in morphs {
+			apply(morph: morph, memory: &memory)
+		}
+		return peek()
+	}
+
 }

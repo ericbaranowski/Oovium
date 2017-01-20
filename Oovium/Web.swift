@@ -8,14 +8,14 @@
 
 import Foundation
 
-public final class Web {
+public final class Web: CustomStringConvertible {
 	let head: Tower
 	let tail: Tower
 	
 	var towers: Set<Tower>
 	public var recipe: Recipe
 	
-	public init (head: Tower, tail: Tower, memory: Memory) {
+	public init (head: Tower, tail: Tower, memory: inout Memory) {
 		self.head = head
 		self.tail = tail
 		
@@ -28,7 +28,7 @@ public final class Web {
 		printTowers(towers: certain)
 		
 		print("\(memory)")
-		_ = program(recipe: recipe, towers: certain, memory: memory, n: 0)		
+		_ = program(recipe: recipe, towers: certain, memory: &memory, n: 0)		
 		print("\(recipe)")
 	}
 	
@@ -38,13 +38,13 @@ public final class Web {
 //			
 //		}
 	}
-	func strand (head: Tower, tail: Tower, memory: Memory) -> Recipe {
+	func strand (head: Tower, tail: Tower, memory: inout Memory) -> Recipe {
 		let recipe = Recipe()
-		_ = program(recipe: recipe, towers: towers, memory: memory, n: 0)
+		_ = program(recipe: recipe, towers: towers, memory: &memory, n: 0)
 		return recipe
 	}
 	
-	func program (recipe: Recipe, towers: Set<Tower>, memory: Memory, n: Int) -> Int {
+	func program (recipe: Recipe, towers: Set<Tower>, memory: inout Memory, n: Int) -> Int {
 		var n = n
 		
 		var progress: Bool
@@ -52,34 +52,34 @@ public final class Web {
 			progress = false
 			
 			for tower in towers {
-				if tower.ping(memory) == .progress {
+				if tower.ping(&memory) == .progress {
 					progress = true
 					recipe.add(tower.task!)
 					n += 1
 					
 					if tower.gateTo != nil {
 						
-						let ifGotoTask = IfGotoTask()
-						recipe.add(ifGotoTask)
+						let ifGotoIndex = n
+						recipe.add(IfGotoTask(index: 0, goto: 0))
 						n += 1
 						var oldN = n
 						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:&memory, n:n)
 						if oldN != n {
-							ifGotoTask.load(name: tower.name, index: memory.index(for: tower.name), goto: n+1)
+							recipe.replace(at: ifGotoIndex, with: IfGotoTask(index: memory.index(for: tower.name), goto: n+1))
 						} else {
 							recipe.removeLast()
 							n -= 1
 						}
 						
-						let gotoTask = GotoTask()
-						recipe.add(gotoTask)
+						let gotoIndex = n
+						recipe.add(GotoTask(goto: 0))
 						n += 1
 						oldN = n
 						newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:&memory, n:n)
 						if oldN != n {
-							gotoTask.load(goto: n)
+							recipe.replace(at: gotoIndex, with: GotoTask(goto: n))
 						} else {
 							recipe.removeLast()
 							n -= 1
@@ -93,8 +93,10 @@ public final class Web {
 		return n
 	}
 
-	public func execute (_ memory: Memory) {
-		recipe.execute(memory)
+	static let zero = RealObj(0)
+	static let one = RealObj(1)
+	public func execute (_ memory: inout Memory) {
+		recipe.execute(&memory)
 	}
 
 	public func printTowers (towers: Set<Tower>) {

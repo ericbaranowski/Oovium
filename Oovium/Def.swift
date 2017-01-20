@@ -35,10 +35,10 @@ public class Def {
 	
 	static let variable = {(lambda: Lambda)->() in
 //		lambda.push(lambda.nextVar())
-		lambda.push(n: Int((lambda.nextVar() as! RealObj).x))
+//		lambda.push(n: Int((lambda.nextVar() as! RealObj).x))
 	}
 	static let constant = {(lambda: Lambda)->() in
-//		lambda.push(lambda.nextCons())
-		lambda.push(n: Int((lambda.nextCons() as! RealObj).x))
+		lambda.push(lambda.nextCons())
+//		lambda.push(n: Int((lambda.nextCons() as! RealObj).x))
 	}
 }

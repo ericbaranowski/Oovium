@@ -9,13 +9,12 @@
 import Foundation
 
 class ComplexObj: Obj {
-	var r: Double
-	var i: Double
+	public var r: Double
+	public var i: Double
 
 	public init (_ r: Double, _ i: Double) {
 		self.r = r
 		self.i = i
-		super.init(def: ComplexDef.def)
 	}
 	convenience public init (_ r: Double) {
 		self.init(r,0)
@@ -38,4 +37,13 @@ class ComplexObj: Obj {
 	static func == (a: ComplexObj, b: ComplexObj) -> RealObj {
 		return RealObj(a.r==b.r && a.i==b.i ? 1 : 0)
 	}
+	
+// Obj =============================================================================================
+	public var def: Def {
+		get {return ComplexDef.def}
+	}
+	public var description: String {
+		get {return ""}
+	}
+	func mimic (_ obj: Obj) {}
 }

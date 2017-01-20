@@ -8,31 +8,18 @@
 
 import Foundation
 
-open class Obj {
-	var def: Def
-	
-	public init (def: Def) {
-		self.def = def
-	}
-	init (def: Def, dims: [Dim]) {
-		self.def = def
-	}
-	
-	public func mimic (_ obj: Obj) {
-		self.def = obj.def
-	}
-	
-	// Legacy
-//	public func dim (i: Int) -> Dim {
-//		return dims[i]
-//	}
-//	public func setDim (i: Int, as dim: Dim) {
-//		dims[i] = dim
-//	}
-	public func typeOo () -> Def {
-		return RealDef()
-	}
-	open var description : String {
-		return def.format(self)
-	}
+public protocol Obj {
+	var def: Def {get}
+	var description: String {get}
+	mutating func mimic (_ obj: Obj)
 }
+
+//open class Obj {
+//	open var def: Def {
+//		get {return RealDef.def}
+//	}
+//	open var description: String {
+//		get {return ""}
+//	}
+//	open func mimic (_ obj: Obj) {}
+//}

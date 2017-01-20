@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class Recipe {
+public final class Recipe: CustomStringConvertible {
 	private var tasks: [Task]
 	private var tp: Int = 0
 	
@@ -22,16 +22,28 @@ public final class Recipe {
 	func add (_ task: Task) {
 		tasks.append(task)
 	}
+	func replace (at: Int, with task: Task) {
+		tasks[at] = task
+	}
 	func removeLast () {
 		tasks.removeLast()
 	}
 	
-	func execute (_ memory: Memory) {
+	func execute (_ memory: inout Memory) {
+//		let A = (memory[2] as! RealObj).x
+//		let B = (memory[3] as! RealObj).x
+//		let C = (memory[4] as! RealObj).x
+//		let D = (memory[5] as! RealObj).x
+//		let E = (memory[6] as! RealObj).x
+//		let F = (memory[7] as! RealObj).x
+//		let G = (memory[8] as! RealObj).x
+//		let H = (memory[9] as! RealObj).x
+//		let SELF: RealObj = memory[10] as! RealObj
+//		let SUM = A+B+C+D+E+F+G+H
+//		memory.mimic(0, obj: SUM == 2 ? SELF : (SUM == 3 ? Web.one : Web.zero))
 		tp = 0
 		while tp < tasks.count {
-			let task = tasks[tp]
-			let goto = task.execute(memory)
-			tp = goto ?? tp+1
+			tp = tasks[tp].execute(memory: &memory) ?? tp+1
 		}
 	}
 	

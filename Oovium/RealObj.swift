@@ -8,26 +8,19 @@
 
 import Foundation
 
-public class RealObj: Obj {
+public struct RealObj: Obj {
 	public var x: Double
 	
 	public init (_ x: Double) {
 		self.x = x
-		super.init(def: RealDef.def, dims: [RealDim(x)])
 	}
 	
-//	public var value: Double {
-//		get {
-//			let dim: RealDim = dims[0] as! RealDim;
-//			return dim.asDouble()
-//		}
-//	}
-	override public func mimic (_ obj: Obj) {
+	public mutating func mimic (_ obj: Obj) {
 		x = (obj as! RealObj).x;
 	}
-	public func mimic (int: Int) {
-		x = Double(int)
-	}
+//	public func mimic (int: Int) {
+//		x = Double(int)
+//	}
 	
 	static func + (a: RealObj, b: RealObj) -> RealObj {
 		return RealObj(a.x+b.x)
@@ -45,4 +38,15 @@ public class RealObj: Obj {
 	static func == (a: RealObj, b: RealObj) -> RealObj {
 		return RealObj(a.x==b.x ? 1.0 : 0.0)
 	}
+	
+// Obj =============================================================================================
+	public var def: Def {
+		get {return RealDef.def}
+	}
+	public var description: String {
+		get {return ""}
+	}
+	
+// Static ==========================================================================================
+	public static let zero = RealObj(0)
 }

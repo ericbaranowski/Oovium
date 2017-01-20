@@ -8,24 +8,32 @@
 
 import Foundation
 
+public enum Morph {
+	case addRR, equalsRR, variable, constant
+}
+
 public final class Math {
-	static var morphs = [String:(Lambda)->()]()
+//	static var morphs = [String:(Lambda)->()]()
+	static var morphs = [String:Morph]()
 	
-	static func registerMorph (key: String, morph:@escaping (Lambda)->()) {
+	static func registerMorph (key: String, morph:Morph) {
+//	static func registerMorph (key: String, morph:@escaping (Lambda)->()) {
 		morphs[key] = morph
 	}
-	static func registerOperator (tag: Tag, defs: [Def], morph:@escaping (Lambda)->()) {
+//	static func registerOperator (tag: Tag, defs: [Def], morph:@escaping (Lambda)->()) {
+	static func registerOperator (tag: Tag, defs: [Def], morph: Morph) {
 		var key = "\(tag.key);"
 		for def in defs {
 			key += "\(def.key);"
 		}
 		registerMorph(key: key, morph: morph)
 	}
-	static func morph (key: String) -> (Lambda)->() {
+	static func morph (key: String) -> Morph {
+//	static func morph (key: String) -> (Lambda)->() {
 		let morph = morphs[key]
 		guard morph != nil else {
 			print("key [\(key)] not found!")
-			return Math.addCC
+			return .addRR
 		}
 		return morph!
 	}
@@ -60,9 +68,12 @@ public final class Math {
 	
 	// Add
 	static let addRR: (Lambda)->() = {(lambda: Lambda)->() in
-		let (x,y) = isRR(lambda)
-//		lambda.push(x+y)
-		lambda.push(n: Int(x.x+y.x))
+//		let (x,y) = isRR(lambda)
+		let y = lambda.pop() as! RealObj
+		let x = lambda.pop() as! RealObj
+
+		lambda.push(x+y)
+//		lambda.push(n: Int(x.x+y.x))
 	}
 	static let addCC: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isCC(lambda)
@@ -133,9 +144,11 @@ public final class Math {
 	
 	// Equals
 	static let equalsRR: (Lambda)->() = {(lambda: Lambda)->() in
-		let (x,y) = isRR(lambda)
-//		lambda.push(x==y)
-		lambda.push(n: x.x==y.x ?  1 : 0)
+//		let (x,y) = isRR(lambda)
+		let y = lambda.pop() as! RealObj
+		let x = lambda.pop() as! RealObj
+		lambda.push(x==y)
+//		lambda.push(n: x.x==y.x ?  1 : 0)
 	}
 	static let equalsCC: (Lambda)->() = {(lambda: Lambda)->() in
 		let (x,y) = isCC(lambda)
@@ -151,13 +164,14 @@ public final class Math {
 	}
 	
 	public static func start () {
-		registerOperator(tag: Tag.add, defs: [RealDef.def,RealDef.def], morph: addRR)
-		registerOperator(tag: Tag.subtract, defs: [RealDef.def,RealDef.def], morph: subRR)
-		registerOperator(tag: Tag.multiply, defs: [RealDef.def,RealDef.def], morph: mulRR)
-		registerOperator(tag: Tag.divide, defs: [RealDef.def,RealDef.def], morph: divRR)
-		registerOperator(tag: Tag.equal, defs: [RealDef.def,RealDef.def], morph: equalsRR)
+		registerOperator(tag: Tag.add, defs: [RealDef.def,RealDef.def], morph: .addRR)
+//		registerOperator(tag: Tag.subtract, defs: [RealDef.def,RealDef.def], morph: subRR)
+//		registerOperator(tag: Tag.multiply, defs: [RealDef.def,RealDef.def], morph: mulRR)
+//		registerOperator(tag: Tag.divide, defs: [RealDef.def,RealDef.def], morph: divRR)
+		registerOperator(tag: Tag.equal, defs: [RealDef.def,RealDef.def], morph: .equalsRR)
 
-		registerMorph(key:"var;num;", morph:Def.variable)
-		registerMorph(key:"constant;", morph:Def.constant)
+		registerMorph(key:"var;num;", morph:.variable)
+		registerMorph(key:"constant;", morph:.constant)
 	}
+	
 }

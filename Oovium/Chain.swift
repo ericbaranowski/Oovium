@@ -58,7 +58,8 @@ public final class Chain {
 		return lambda
 	}
 	
-	private func add (morph: @escaping (Lambda)->()) {
+//	private func add (morph: @escaping (Lambda)->()) {
+	private func add (morph: Morph) {
 		lambda.addMorph(morph)
 	}
 	private func apply (tag: Tag) {

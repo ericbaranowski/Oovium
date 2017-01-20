@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TowerState {
+public enum TowerState {
 	case open, calced, uncalced, invalid
 }
 enum CalcState {
@@ -90,8 +90,8 @@ public final class Tower: Hashable {
 		}
 		
 		lambda.compile(memory: memory)
-		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)")
-		lambdaTask.load(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambda)
+		var lambdaTask = LambdaTask(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)"*/lambda: lambda)
+//		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
 		
 		task = lambdaTask
 
@@ -190,7 +190,7 @@ public final class Tower: Hashable {
 	}
 
 // Evaluate ========================================================================================
-	func ping (_ memory: Memory) -> CalcState {
+	func ping (_ memory: inout Memory) -> CalcState {
 		if memory.isLoaded(index) {return .cached}
 		
 		for tower in upstream {
@@ -205,7 +205,7 @@ public final class Tower: Hashable {
 		return .progress
 	}
 	
-	func calculate (_ memory: Memory) -> CalcState {
+	func calculate (_ memory: inout Memory) -> CalcState {
 		if state != .open {return .cached}
 		
 		for tower in upstream {
@@ -217,8 +217,8 @@ public final class Tower: Hashable {
 			}
 		}
 
-		if let task = task {
-			state = task.calculate(memory)
+		if var task = task {
+			state = task.calculate(memory: &memory)
 			if state == .calced {
 				memory.fix(index)
 			}

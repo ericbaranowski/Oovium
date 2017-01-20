@@ -24,17 +24,16 @@ public final class Auto: Aexel {
 	@objc public func token (name: String) {
 	}
 	
-	public func foreshadow (_ memory: Memory) {
-		let zero = RealObj(0)
-		memory.mimic(memory.index(for: String(format: "Auto%d.A", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.B", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.C", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.D", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.E", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.F", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.G", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.H", iden)), obj: zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.Self", iden)), obj: zero)
+	public func foreshadow (_ memory: inout Memory) {
+		memory.mimic(memory.index(for: String(format: "Auto%d.A", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.B", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.C", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.D", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.E", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.F", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.G", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.H", iden)), obj: RealObj.zero)
+		memory.mimic(memory.index(for: String(format: "Auto%d.Self", iden)), obj: RealObj.zero)
 	}
 	
 // Aexel ===========================================================================================
