@@ -24,16 +24,17 @@ public final class Auto: Aexel {
 	@objc public func token (name: String) {
 	}
 	
-	public func foreshadow (_ memory: inout Memory) {
-		memory.mimic(memory.index(for: String(format: "Auto%d.A", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.B", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.C", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.D", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.E", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.F", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.G", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.H", iden)), obj: RealObj.zero)
-		memory.mimic(memory.index(for: String(format: "Auto%d.Self", iden)), obj: RealObj.zero)
+	public func foreshadow (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+		
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.A", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.B", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.C", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.D", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.E", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.F", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.G", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.H", iden))].loaded = 1
+		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.I", iden))].loaded = 1
 	}
 	
 // Aexel ===========================================================================================
@@ -57,13 +58,13 @@ public final class Auto: Aexel {
 		aether.link(statesTower)
 		aether.link(resultTower)
 	}
-	override func wire (_ memory: Memory) {
+	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
 		statesChain = Chain(string: statesTokens)
 		resultChain = Chain(string: resultTokens)
 		
-		statesTower.wire(chain:statesChain, memory:memory)
+		statesTower.wire(chain:statesChain, memory:memory, memoryS: memoryS)
 		headTower.state = .uncalced
-		resultTower.wire(chain:resultChain, memory:memory)
+		resultTower.wire(chain:resultChain, memory:memory, memoryS: memoryS)
 	}
 	override func towers () -> [Tower] {
 		return [statesTower, headTower, resultTower]

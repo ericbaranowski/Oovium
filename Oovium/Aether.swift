@@ -28,7 +28,8 @@ import Foundation
 	var aexels: [Aexel] = []
 	var tags: [String:Tag] = [:]
 	var tokens: [String:Token] = [:]
-	public var memory: Memory!
+	public var memoryS: MemoryS!
+	public var memory: UnsafeMutablePointer<Memory>!
 	
 	public func link (_ tower: Tower) {
 		Tower.link(token: tower.token, tower: tower)
@@ -46,15 +47,73 @@ import Foundation
 			if token.type != .variable {continue}
 			vars.append(token.tag.key)
 		}
-		memory = Memory(vars.sorted())
+		vars.sort(by: {$0<$1})
+		memoryS = MemoryS(vars.sorted())
+		memory = AEMemoryCreate(vars.count)
+		
+		var i = -1
+		for v in vars {
+			i += 1
+			withUnsafeMutablePointer(to: &memory.pointee.slots[i].name) {
+				$0.withMemoryRebound(to: Int8.self, capacity: MemoryLayout.size(ofValue: memory.pointee.slots[i].name)) {
+					_ = strlcpy($0, v, MemoryLayout.size(ofValue: memory.pointee.slots[i].name))
+				}
+			}
+		}
+		
+//		var i = -1
+//		for v in vars {
+//			i += 1
+//			
+//			memory.pointee.slots[i].name = (0,0,0,0,0,0,0,0,0,0,0,0)
+//			
+//			let array: [UInt8] = Array(v.utf8)
+//			
+//			if v.length == 0 {continue}
+//			memory.pointee.slots[i].name.0 = Int8(array[0])
+//
+//			if v.length == 1 {continue}
+//			memory.pointee.slots[i].name.1 = Int8(array[1])
+//
+//			if v.length == 2 {continue}
+//			memory.pointee.slots[i].name.2 = Int8(array[2])
+//
+//			if v.length == 3 {continue}
+//			memory.pointee.slots[i].name.3 = Int8(array[3])
+//
+//			if v.length == 4 {continue}
+//			memory.pointee.slots[i].name.4 = Int8(array[4])
+//
+//			if v.length == 5 {continue}
+//			memory.pointee.slots[i].name.5 = Int8(array[5])
+//
+//			if v.length == 6 {continue}
+//			memory.pointee.slots[i].name.6 = Int8(array[6])
+//
+//			if v.length == 7 {continue}
+//			memory.pointee.slots[i].name.7 = Int8(array[7])
+//
+//			if v.length == 8 {continue}
+//			memory.pointee.slots[i].name.8 = Int8(array[8])
+//
+//			if v.length == 9 {continue}
+//			memory.pointee.slots[i].name.9 = Int8(array[9])
+//
+//			if v.length == 10 {continue}
+//			memory.pointee.slots[i].name.10 = Int8(array[10])
+//
+//			if v.length == 11 {continue}
+//			memory.pointee.slots[i].name.11 = Int8(array[11])
+//		}
+		
 		for key in tokens.keys {
 			let token = tokens[key]!
-			token.ip = memory.index(for: key)
+			token.ip = memoryS.index(for: key)
 		}
 
-		for object in objects {object.wire(memory)}
-		for gate in gates {gate.wire(memory)}
-		for auto in autos {auto.wire(memory)}
+		for object in objects {object.wire(memory, memoryS: memoryS)}
+		for gate in gates {gate.wire(memory, memoryS: memoryS)}
+		for auto in autos {auto.wire(memory, memoryS: memoryS)}
 	}
 	
 	public func calculate () {
@@ -68,7 +127,7 @@ import Foundation
 			progress = false
 			
 			for tower in towers {
-				if tower.calculate(&(memory!)) == .progress {
+				if tower.calculate(memory) == .progress {
 					progress = true
 				}
 			}

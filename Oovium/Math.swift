@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Morph {
+public enum Morph: Int {
 	case addRR, equalsRR, variable, constant
 }
 

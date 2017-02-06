@@ -9,31 +9,39 @@
 import Foundation
 
 public final class Lambda {
+	var lambdaC: UnsafeMutablePointer<LambdaC>!
+	
+//	init () {
+////		lambdaC = AELambdaCreate()
+//	}
+	deinit {
+//		AELambdaRelease(self)
+	}
 //	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
 	public var morphs: [Morph] = [Morph]()
-	public var cons = [Obj]()
+	public var cons = [ObjS]()
 	public var variables = [String]()
 	public var varIndexes = [Int]()
-	var stack: [Obj?] = [Obj?]()
+	var stack: [ObjS] = [ObjS]()
 	var cp: Int = 0
 	var vp: Int = 0
 	var sp: Int = 0
 	public var vi: Int = 0
-	var memory: Memory!
+//	var memory: Memory!
 	
 	public init () {
-		stack = [Obj?](repeating: nil, count: 10)
+		stack = [ObjS](repeating: RealObj.zero, count: 10)
 		cp = 0
 		vp = 0
 		sp = 0
 		vi = 0
 	}
-	public init (morphs: [Morph], cons: [Obj], vars: [String]) {
+	public init (morphs: [Morph], cons: [ObjS], vars: [String]) {
 //	public init (morphs: [(Lambda)->()], cons: [Obj], vars: [String]) {
 		self.morphs = morphs
 		self.cons = cons
 		self.variables = vars
-		stack = [Obj?](repeating: nil, count: 10)
+		stack = [ObjS](repeating: RealObj.zero, count: 10)
 		cp = 0
 		vp = 0
 		sp = 0
@@ -41,21 +49,21 @@ public final class Lambda {
 	}
 	
 	// Constants
-	func nextCons () -> Obj {
+	func nextCons () -> ObjS {
 		let obj = cons[cp]
 		cp += 1
 		return obj
 	}
 	
 	// Variables
-	func nextVar (memory: inout Memory) -> Obj {
-		let obj = memory[varIndexes[vp]]!
-		vp += 1
-		return obj
-	}
+//	func nextVar (memory: inout MemoryS) -> ObjS {
+//		let obj = memory.get(varIndexes[vp])!
+//		vp += 1
+//		return obj
+//	}
 	
 	// Stack
-	func push (_ obj: Obj) {
+	func push (_ obj: ObjS) {
 		stack[sp] = obj;
 		sp += 1
 	}
@@ -64,12 +72,12 @@ public final class Lambda {
 //		stack[sp] = RealObj(Double(n))
 //		sp += 1
 //	}
-	func pop () -> Obj {
+	func pop () -> ObjS {
 		sp -= 1
-		return stack[sp]!
+		return stack[sp]
 	}
-	func peek () -> Obj {
-		return stack[sp-1]!
+	func peek () -> ObjS {
+		return stack[sp-1]
 	}
 
 	// Evaluate
@@ -126,42 +134,67 @@ public final class Lambda {
 		morphs.append(morph)
 		push(RealObj(0))
 	}
-	public func compile(memory: Memory) {
+	public func compile (memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
 		varIndexes = [Int]()
 		for name in variables {
-			varIndexes.append(memory.index(for: name))
+			let text = UnsafeMutablePointer<Int8>(mutating: (name as NSString).utf8String!)
+			varIndexes.append(Int(AEMemoryIndexForName(memory, text)))
 		}
+		
+//		let n = Morph.addRR.rawValue
+
+		let cn = cons.count
+		let c: UnsafeMutablePointer<Obj>! = UnsafeMutablePointer<Obj>.allocate(capacity: cn)
+		for i in 0..<cn {
+			c[i].a.x = (cons[i] as! RealObj).x
+		}
+		
+		var o = Obj()
+		o.a.x = 2.71
+		
+		for i in 0..<cn {
+			print("c[\(i)] \(c[i].a.x)")
+		}
+		
+		let vn = variables.count
+		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)
+		for i in 0..<vn {
+			v[i] = UInt8(memoryS.index(for: variables[i]))
+		}
+
+		let mn = morphs.count
+		let m: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: mn)
+		for i in 0..<mn {
+			m[i] = UInt8(morphs[i].rawValue)
+		}
+		
+		lambdaC = AELambdaCreate(UInt8(vi), c, UInt8(cn), v, UInt8(vn), m, UInt8(mn))
+		
+		c.deallocate(capacity: cn)
+		v.deallocate(capacity: vn)
+		m.deallocate(capacity: mn)
 	}
 	
-	func apply (morph: Morph, memory: inout Memory) {
-		switch (morph) {
-		case .addRR:
-			let y = pop() as! RealObj
-			let x = pop() as! RealObj
-			push(x+y)
-			break;
-		case .equalsRR:
-			let y = pop() as! RealObj
-			let x = pop() as! RealObj
-			push(x==y)
-			break;
-		case .variable:
-			push(nextVar(memory: &memory))
-			break;
-		case .constant:
-			push(nextCons())
-			break;
-		}
-	}
-	
-	public func execute (memory: inout Memory) -> Obj {
-		cp = 0
-		vp = 0
-		sp = 0
-		for morph in morphs {
-			apply(morph: morph, memory: &memory)
-		}
-		return peek()
-	}
+//	func apply (morph: Morph, memory: inout MemoryS) {
+//		switch (morph) {
+//			case .addRR:
+//				let y = pop() as! RealObj
+//				let x = pop() as! RealObj
+//				push(x+y)
+//			case .equalsRR:
+//				let y = pop() as! RealObj
+//				let x = pop() as! RealObj
+//				push(x==y)
+//			case .variable:
+//				push(nextVar(memory: &memory))
+//			case .constant:
+//				push(nextCons())
+//		}
+//	}
+//	
+//	public func execute (memory: inout MemoryS) -> ObjS {
+//		return RealObj.zero
+////		return AELambdaExecute(lambdaC, memory)
+//	}
 
 }

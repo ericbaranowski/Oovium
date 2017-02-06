@@ -8,16 +8,16 @@
 
 import Foundation
 
-public struct RealObj: Obj {
+public struct RealObj: ObjS {
 	public var x: Double
 	
 	public init (_ x: Double) {
 		self.x = x
 	}
 	
-	public mutating func mimic (_ obj: Obj) {
-		x = (obj as! RealObj).x;
-	}
+//	public mutating func mimic (_ obj: Obj) {
+//		x = (obj as! RealObj).x;
+//	}
 //	public func mimic (int: Int) {
 //		x = Double(int)
 //	}

@@ -8,11 +8,11 @@
 
 import Foundation
 
-public final class Slot {
+public final class SlotQ {
 	public var name: String
 	public var fixed: Bool
 	public var loaded: Bool
-	public var value: Obj
+	public var value: ObjS
 	
 	init (_ name: String) {
 		self.name = name
@@ -20,7 +20,7 @@ public final class Slot {
 		loaded = false
 		value = RealObj(0)
 	}
-	convenience init (_ name: String, value:Obj) {
+	convenience init (_ name: String, value:ObjS) {
 		self.init(name)
 		self.value = value
 	}

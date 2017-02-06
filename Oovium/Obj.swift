@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol Obj {
+public protocol ObjS {
 	var def: Def {get}
 	var description: String {get}
-	mutating func mimic (_ obj: Obj)
+//	mutating func mimic (_ obj: Obj)
 }
 
 //open class Obj {

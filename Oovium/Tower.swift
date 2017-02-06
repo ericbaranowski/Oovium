@@ -78,9 +78,10 @@ public final class Tower: Hashable {
 		downstream.removeAll()
 	}
 	
-	func wire (chain: Chain, memory: Memory) {
+	func wire (chain: Chain, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
 		
-		var lambda: Lambda!
+		var lambda: Lambda
+		var lambdaC: UnsafeMutablePointer<LambdaC>
 		
 		do {
 			lambda = try chain.compile()
@@ -89,14 +90,16 @@ public final class Tower: Hashable {
 			return
 		}
 		
-		lambda.compile(memory: memory)
-		var lambdaTask = LambdaTask(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)"*/lambda: lambda)
+		lambda.compile(memory: memory, memoryS: memoryS)
+		lambdaC = lambda.lambdaC
+		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
 //		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
 		
 		task = lambdaTask
 
-		index = memory.index(for: token.tag.key)
+		index = memoryS.index(for: token.tag.key)
 		lambda.vi = index
+		lambdaC.pointee.vi = UInt8(index)
 		for token in chain.tokens {
 			let tower = Tower.tower(token: token)
 			if let tower = tower {
@@ -190,22 +193,23 @@ public final class Tower: Hashable {
 	}
 
 // Evaluate ========================================================================================
-	func ping (_ memory: inout Memory) -> CalcState {
-		if memory.isLoaded(index) {return .cached}
+	func ping (_ memory: UnsafeMutablePointer<Memory>) -> CalcState {
+		if memory.pointee.slots[Int(index)].loaded != 0 {return .cached}
 		
 		for tower in upstream {
 			if tower.task == nil {continue}
-			if !memory.isLoaded(tower.index) {
+			if memory.pointee.slots[Int(tower.index)].loaded == 0 {
 				return .notReady
 			}
 		}
 		
-		memory.load(index, with: RealObj(0))
+		memory.pointee.slots[Int(index)].loaded = 1
+//		memory.load(index, with: RealObj(0))
 		
 		return .progress
 	}
 	
-	func calculate (_ memory: inout Memory) -> CalcState {
+	func calculate (_ memory: UnsafeMutablePointer<Memory>) -> CalcState {
 		if state != .open {return .cached}
 		
 		for tower in upstream {
@@ -217,10 +221,10 @@ public final class Tower: Hashable {
 			}
 		}
 
-		if var task = task {
-			state = task.calculate(memory: &memory)
+		if let task = task {
+			state = task.calculate(memory: memory)
 			if state == .calced {
-				memory.fix(index)
+				AEMemoryFix(memory, index)
 			}
 		}
 		
@@ -243,7 +247,7 @@ public final class Tower: Hashable {
 //		for tower in downstream
 //			{tower.loadEval(&towers)}
 //	}
-	func triggerEval (_ vars: [String:Obj?]) {
+	func triggerEval (_ vars: [String:ObjS?]) {
 		
 //		var progress: Bool
 //		repeat {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ComplexObj: Obj {
+class ComplexObj: ObjS {
 	public var r: Double
 	public var i: Double
 
@@ -45,5 +45,5 @@ class ComplexObj: Obj {
 	public var description: String {
 		get {return ""}
 	}
-	func mimic (_ obj: Obj) {}
+	func mimic (_ obj: ObjS) {}
 }

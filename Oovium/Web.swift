@@ -13,23 +13,23 @@ public final class Web: CustomStringConvertible {
 	let tail: Tower
 	
 	var towers: Set<Tower>
-	public var recipe: Recipe
+	public var recipeS: RecipeS
 	
-	public init (head: Tower, tail: Tower, memory: inout Memory) {
+	public init (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
 		self.head = head
 		self.tail = tail
 		
 		towers = head.towersDestined(for: self.tail)
 		Tower.printTowers(towers)
-		recipe = Recipe()
+		recipeS = RecipeS()
 
 		let certain = head.towersStronglylinked(for: self.tail)
 		
 		printTowers(towers: certain)
 		
 		print("\(memory)")
-		_ = program(recipe: recipe, towers: certain, memory: &memory, n: 0)		
-		print("\(recipe)")
+		_ = program(recipe: recipeS, towers: certain, memory: memory, memoryS: memoryS, n: 0)
+		print("\(recipeS)")
 	}
 	
 	func weave () {
@@ -38,13 +38,13 @@ public final class Web: CustomStringConvertible {
 //			
 //		}
 	}
-	func strand (head: Tower, tail: Tower, memory: inout Memory) -> Recipe {
-		let recipe = Recipe()
-		_ = program(recipe: recipe, towers: towers, memory: &memory, n: 0)
-		return recipe
+	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) -> RecipeS {
+		let recipeS = RecipeS()
+		_ = program(recipe: recipeS, towers: towers, memory: memory, memoryS: memoryS, n: 0)
+		return recipeS
 	}
 	
-	func program (recipe: Recipe, towers: Set<Tower>, memory: inout Memory, n: Int) -> Int {
+	func program (recipe: RecipeS, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS, n: Int) -> Int {
 		var n = n
 		
 		var progress: Bool
@@ -52,36 +52,36 @@ public final class Web: CustomStringConvertible {
 			progress = false
 			
 			for tower in towers {
-				if tower.ping(&memory) == .progress {
+				if tower.ping(memory) == .progress {
 					progress = true
-					recipe.add(tower.task!)
+					recipeS.add(tower.task!)
 					n += 1
 					
 					if tower.gateTo != nil {
 						
 						let ifGotoIndex = n
-						recipe.add(IfGotoTask(index: 0, goto: 0))
+						recipeS.add(IfGotoTask(name: tower.name, index: 0, goto: 0))
 						n += 1
 						var oldN = n
 						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:&memory, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, memoryS: memoryS, n:n)
 						if oldN != n {
-							recipe.replace(at: ifGotoIndex, with: IfGotoTask(index: memory.index(for: tower.name), goto: n+1))
+							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: memoryS.index(for: tower.name), goto: n+1))
 						} else {
-							recipe.removeLast()
+							recipeS.removeLast()
 							n -= 1
 						}
 						
 						let gotoIndex = n
-						recipe.add(GotoTask(goto: 0))
+						recipeS.add(GotoTask(goto: 0))
 						n += 1
 						oldN = n
 						newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:&memory, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, memoryS: memoryS, n:n)
 						if oldN != n {
-							recipe.replace(at: gotoIndex, with: GotoTask(goto: n))
+							recipeS.replace(at: gotoIndex, with: GotoTask(goto: n))
 						} else {
-							recipe.removeLast()
+							recipeS.removeLast()
 							n -= 1
 						}
 					}
@@ -95,8 +95,9 @@ public final class Web: CustomStringConvertible {
 
 	static let zero = RealObj(0)
 	static let one = RealObj(1)
-	public func execute (_ memory: inout Memory) {
-		recipe.execute(&memory)
+	public func execute (_ memory: UnsafeMutablePointer<Memory>) {
+		var m = memory
+		recipeS.execute(m)
 	}
 
 	public func printTowers (towers: Set<Tower>) {

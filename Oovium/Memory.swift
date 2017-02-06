@@ -8,14 +8,14 @@
 
 import Foundation
 
-public struct Memory: CustomStringConvertible {
+public struct MemoryS: CustomStringConvertible {
 	var index = [String:Int]()
 //	private var slots = [Slot]()
 	
 	private var names = [String]()
 	private var fixed = [Bool]()
 	private var loaded = [Bool]()
-	private var values = [Obj]()
+	private var values = [ObjS]()
 	
 	public init (_ names: [String]) {
 //		super.init()
@@ -24,20 +24,27 @@ public struct Memory: CustomStringConvertible {
 		}
 	}
 	
-	public subscript (i: Int) -> Obj? {
+//	public subscript (i: Int) -> Obj? {
+//		set {
+//			values[i] = newValue!
+//			loaded[i] = true
+//		}
+//		get {
+//			if loaded[i] {
+//				return values[i]
+//			} else {
+//				return nil
+//			}
+//		}
+//	}
+	public subscript (name: String) -> ObjS? {
 		set {
-			values[i] = newValue!
-			loaded[i] = true
-		}
-		get {
-			if loaded[i] {
-				return values[i]
-			} else {
-				return nil
+			let i = index[name]
+			if let i = i  {
+				values[i] = newValue!
+				loaded[i] = true
 			}
 		}
-	}
-	public subscript (name: String) -> Obj? {
 		get {
 			if let i = index[name] {
 				return values[i]
@@ -47,22 +54,21 @@ public struct Memory: CustomStringConvertible {
 		}
 	}
 	
-	public mutating func mimic (_ i: Int, obj: Obj) {
-//		slot.value.mimic(obj)
+	public mutating func set (_ i: Int, obj: ObjS) {
 		values[i] = obj
 		loaded[i] = true
 	}
-//	public func mimic (_ i: Int, n: Int) {
-//		let slot = slots[i]
-////		(slot.value as! RealObj).mimic(int: n)
-//		slot.value = RealObj(Double(n))
-//		slot.loaded = true
-//	}
-	
+	public func get (_ i: Int) -> ObjS? {
+		if loaded[i] {
+			return values[i]
+		} else {
+			return nil
+		}
+	}
 	public mutating func fix (_ i: Int) {
 		fixed[i] = true
 	}
-	public mutating func fix (_ i: Int, obj:Obj) {
+	public mutating func fix (_ i: Int, obj: ObjS) {
 		fixed[i] = true
 		values[i] = obj
 	}
@@ -90,7 +96,7 @@ public struct Memory: CustomStringConvertible {
 	public func isLoaded (_ i: Int) -> Bool {
 		return loaded[i]
 	}
-	public mutating func load (_ i: Int, with value: Obj) {
+	public mutating func load (_ i: Int, with value: ObjS) {
 		loaded[i] = true
 		values[i] = value
 	}
@@ -117,6 +123,10 @@ public struct Memory: CustomStringConvertible {
 			sb.append("  [\(index)][\(set)][\(load)][\(name)][\(value)]\n")
 		}
 		sb.append("[ =========================== ]\n\n")
+		
+		print("{}{}{}{}{}")
+		print("\(sb)")
+		
 		return sb
 	}
 }

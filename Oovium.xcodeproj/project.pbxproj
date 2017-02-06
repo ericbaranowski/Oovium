@@ -11,10 +11,6 @@
 		D80425881E19B49C009C9ED3 /* Cauldron.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80425861E19B478009C9ED3 /* Cauldron.swift */; };
 		D80658FD1DE90DC300325182 /* OoviumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80658F61DE90DC300325182 /* OoviumLib.framework */; };
 		D80658FE1DE90DC300325182 /* OoviumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D80658F61DE90DC300325182 /* OoviumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D80659021DE90EC800325182 /* Dim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC071DE8D3CB00B56F6A /* Dim.swift */; };
-		D80659031DE90EC800325182 /* RealDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC091DE8D3CB00B56F6A /* RealDim.swift */; };
-		D80659041DE90EC800325182 /* LambdaDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC081DE8D3CB00B56F6A /* LambdaDim.swift */; };
-		D80659051DE90EC800325182 /* StringDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC0A1DE8D3CB00B56F6A /* StringDim.swift */; };
 		D80659061DE90EC800325182 /* Obj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC0F1DE8D3DC00B56F6A /* Obj.swift */; };
 		D80659071DE90EC800325182 /* RealObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC101DE8D3DC00B56F6A /* RealObj.swift */; };
 		D80659081DE90EC800325182 /* Def.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC151DE8D3FA00B56F6A /* Def.swift */; };
@@ -51,10 +47,6 @@
 		D89BEBE11DE8D32B00B56F6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBE01DE8D32B00B56F6A /* ViewController.swift */; };
 		D89BEBE61DE8D32B00B56F6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */; };
 		D89BEBF41DE8D32B00B56F6A /* OoviumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBF31DE8D32B00B56F6A /* OoviumTests.swift */; };
-		D89BEC0B1DE8D3CB00B56F6A /* Dim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC071DE8D3CB00B56F6A /* Dim.swift */; };
-		D89BEC0C1DE8D3CB00B56F6A /* LambdaDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC081DE8D3CB00B56F6A /* LambdaDim.swift */; };
-		D89BEC0D1DE8D3CB00B56F6A /* RealDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC091DE8D3CB00B56F6A /* RealDim.swift */; };
-		D89BEC0E1DE8D3CB00B56F6A /* StringDim.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC0A1DE8D3CB00B56F6A /* StringDim.swift */; };
 		D89BEC111DE8D3DC00B56F6A /* Obj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC0F1DE8D3DC00B56F6A /* Obj.swift */; };
 		D89BEC121DE8D3DC00B56F6A /* RealObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC101DE8D3DC00B56F6A /* RealObj.swift */; };
 		D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC131DE8D3FA00B56F6A /* ComplexDef.swift */; };
@@ -74,6 +66,7 @@
 		D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC351DE8FC9F00B56F6A /* Oovium.swift */; };
 		D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC361DE8FC9F00B56F6A /* OoviumDelegate.swift */; };
 		D89BEC3B1DE8FD2100B56F6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89BEC3A1DE8FD2100B56F6A /* Default-568h@2x.png */; };
+		D8A0DFB31E40428000AE38D1 /* Oovium-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */; };
 		D8CB764C1E17932000A286DF /* Aether.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764B1E17932000A286DF /* Aether.swift */; };
 		D8CB764E1E17932900A286DF /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764D1E17932900A286DF /* Import.swift */; };
 		D8CB76501E17933100A286DF /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764F1E17933100A286DF /* Object.swift */; };
@@ -123,9 +116,14 @@
 		D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
 		D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
+		D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
+		D8E4A08F1E46764C00B2C328 /* Aegean.h in Headers */ = {isa = PBXBuildFile; fileRef = D8E4A08C1E4673D600B2C328 /* Aegean.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D8E4A0901E46767400B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8FB18F21E1871A100350284 /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76921E185D1300A286DF /* Migrate.swift */; };
 		D8FB18F41E187DB600350284 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB18F31E187DB600350284 /* Basket.swift */; };
 		D8FB18F51E187EA700350284 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB18F31E187DB600350284 /* Basket.swift */; };
+		D8FDE1D21E46F08600B18F06 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
+		D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +165,7 @@
 		D81FCDBE1E1343B100E8936E /* Satyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satyr.swift; sourceTree = "<group>"; };
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumLookup.swift; sourceTree = "<group>"; };
+		D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oovium-Bridging-Header.h"; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85EEFD11E10CD4C00166C4C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D8705D3C1E293E7C003F5668 /* TypeObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObj.swift; sourceTree = "<group>"; };
@@ -177,10 +176,6 @@
 		D89BEBEF1DE8D32B00B56F6A /* OoviumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OoviumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89BEBF31DE8D32B00B56F6A /* OoviumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OoviumTests.swift; sourceTree = "<group>"; };
 		D89BEBF51DE8D32B00B56F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D89BEC071DE8D3CB00B56F6A /* Dim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dim.swift; sourceTree = "<group>"; };
-		D89BEC081DE8D3CB00B56F6A /* LambdaDim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LambdaDim.swift; sourceTree = "<group>"; };
-		D89BEC091DE8D3CB00B56F6A /* RealDim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealDim.swift; sourceTree = "<group>"; };
-		D89BEC0A1DE8D3CB00B56F6A /* StringDim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringDim.swift; sourceTree = "<group>"; };
 		D89BEC0F1DE8D3DC00B56F6A /* Obj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Obj.swift; sourceTree = "<group>"; };
 		D89BEC101DE8D3DC00B56F6A /* RealObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealObj.swift; sourceTree = "<group>"; };
 		D89BEC131DE8D3FA00B56F6A /* ComplexDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexDef.swift; sourceTree = "<group>"; };
@@ -227,7 +222,10 @@
 		D8CB76921E185D1300A286DF /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
 		D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		D8D1EEEF1DFDC67300CF3870 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
+		D8E4A08B1E4673D600B2C328 /* Aegean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Aegean.c; sourceTree = "<group>"; };
+		D8E4A08C1E4673D600B2C328 /* Aegean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aegean.h; sourceTree = "<group>"; };
 		D8FB18F31E187DB600350284 /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		D8FDE1D11E46F08600B18F06 /* String+MH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MH.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +259,19 @@
 			children = (
 				D81FCDBE1E1343B100E8936E /* Satyr.swift */,
 				D82BE4D01E21A00F00E8E710 /* JSON.swift */,
+				D8FDE1D11E46F08600B18F06 /* String+MH.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		D830C0B31E3EB57500FF25A8 /* Aegean */ = {
+			isa = PBXGroup;
+			children = (
+				D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */,
+				D8E4A08C1E4673D600B2C328 /* Aegean.h */,
+				D8E4A08B1E4673D600B2C328 /* Aegean.c */,
+			);
+			name = Aegean;
 			sourceTree = "<group>";
 		};
 		D89BEBD21DE8D32B00B56F6A = {
@@ -341,7 +350,7 @@
 		D89BEC011DE8D36200B56F6A /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				D89BEC061DE8D38800B56F6A /* Dims */,
+				D830C0B31E3EB57500FF25A8 /* Aegean */,
 				D89BEC051DE8D38300B56F6A /* Objs */,
 				D89BEC041DE8D37F00B56F6A /* Defs */,
 				D89BEC031DE8D36F00B56F6A /* Evaluate */,
@@ -400,17 +409,6 @@
 				D8705D3C1E293E7C003F5668 /* TypeObj.swift */,
 			);
 			name = Objs;
-			sourceTree = "<group>";
-		};
-		D89BEC061DE8D38800B56F6A /* Dims */ = {
-			isa = PBXGroup;
-			children = (
-				D89BEC071DE8D3CB00B56F6A /* Dim.swift */,
-				D89BEC091DE8D3CB00B56F6A /* RealDim.swift */,
-				D89BEC081DE8D3CB00B56F6A /* LambdaDim.swift */,
-				D89BEC0A1DE8D3CB00B56F6A /* StringDim.swift */,
-			);
-			name = Dims;
 			sourceTree = "<group>";
 		};
 		D89BEC421DE8FDAB00B56F6A /* OoviumLib */ = {
@@ -482,6 +480,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E4A08F1E46764C00B2C328 /* Aegean.h in Headers */,
+				D8A0DFB31E40428000AE38D1 /* Oovium-Bridging-Header.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +561,7 @@
 					D89BEBDA1DE8D32B00B56F6A = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = Z6PFG8RC6V;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					D89BEBEE1DE8D32B00B56F6A = {
@@ -642,11 +643,10 @@
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
 				D80EB9A21DED97EB00361939 /* Math.swift in Sources */,
-				D80659031DE90EC800325182 /* RealDim.swift in Sources */,
 				D80659191DE90EC800325182 /* ViewController.swift in Sources */,
+				D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */,
 				D80659071DE90EC800325182 /* RealObj.swift in Sources */,
 				D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */,
-				D80659041DE90EC800325182 /* LambdaDim.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
 				D80659101DE90EC800325182 /* Lambda.swift in Sources */,
@@ -656,7 +656,6 @@
 				D80659091DE90EC800325182 /* RealDef.swift in Sources */,
 				D80EB9A51DEEFAAB00361939 /* ComplexObj.swift in Sources */,
 				D8CB76821E17AAAF00A286DF /* Mech.swift in Sources */,
-				D80659021DE90EC800325182 /* Dim.swift in Sources */,
 				D80659151DE90EC800325182 /* Token.swift in Sources */,
 				D80659141DE90EC800325182 /* Tag.swift in Sources */,
 				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
@@ -668,9 +667,9 @@
 				D806590B1DE90EC800325182 /* VectorDef.swift in Sources */,
 				D8CB76891E17AAAF00A286DF /* Vertebra.swift in Sources */,
 				D80659171DE90EC800325182 /* Ops.swift in Sources */,
+				D8E4A0901E46767400B2C328 /* Aegean.c in Sources */,
 				D806590C1DE90EC800325182 /* LambdaDef.swift in Sources */,
 				D8CB767F1E17AAAF00A286DF /* Grid.swift in Sources */,
-				D80659051DE90EC800325182 /* StringDim.swift in Sources */,
 				D8CB76871E17AAAF00A286DF /* Text.swift in Sources */,
 				D8CB767A1E17AAAF00A286DF /* Col.swift in Sources */,
 				D8FB18F51E187EA700350284 /* Basket.swift in Sources */,
@@ -695,12 +694,10 @@
 				D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */,
 				D8CB766C1E1793F000A286DF /* Col.swift in Sources */,
 				D80425871E19B478009C9ED3 /* Cauldron.swift in Sources */,
-				D89BEC0E1DE8D3CB00B56F6A /* StringDim.swift in Sources */,
 				D89BEC1F1DE8D3FA00B56F6A /* StringDef.swift in Sources */,
 				D8CB76541E17934F00A286DF /* Cron.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
-				D89BEC0C1DE8D3CB00B56F6A /* LambdaDim.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
 				D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
@@ -710,17 +707,17 @@
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,
 				D8CB765E1E17938A00A286DF /* Auto.swift in Sources */,
 				D8CB76581E17937100A286DF /* Edge.swift in Sources */,
+				D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */,
 				D8FB18F41E187DB600350284 /* Basket.swift in Sources */,
 				D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */,
 				D89BEC111DE8D3DC00B56F6A /* Obj.swift in Sources */,
 				D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */,
 				D89BEC1D1DE8D3FA00B56F6A /* LambdaDef.swift in Sources */,
-				D89BEC0B1DE8D3CB00B56F6A /* Dim.swift in Sources */,
 				D8CB76661E1793D700A286DF /* Input.swift in Sources */,
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
-				D89BEC0D1DE8D3CB00B56F6A /* RealDim.swift in Sources */,
+				D8FDE1D21E46F08600B18F06 /* String+MH.swift in Sources */,
 				D8CB76721E17943D00A286DF /* Anchor.swift in Sources */,
 				D8CB76701E17942A00A286DF /* State.swift in Sources */,
 				D82BE4D81E2369D600E8E710 /* OoviumLookup.swift in Sources */,
@@ -859,6 +856,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Oovium/Oovium-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -902,6 +900,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Oovium/Oovium-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -913,11 +912,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Z6PFG8RC6V;
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aepryus.Oovium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Oovium/Oovium-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -927,11 +929,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Z6PFG8RC6V;
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aepryus.Oovium;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Oovium/Oovium-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

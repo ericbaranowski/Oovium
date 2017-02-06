@@ -29,7 +29,7 @@ public class Def {
 		self.init(name:name, key:key, properties:properties, color:color, order:9)
 	}
 	
-	func format (_ obj: Obj) -> String {
+	func format (_ obj: ObjS) -> String {
 		return "format not defined"
 	}
 	
