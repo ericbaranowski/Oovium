@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D80425871E19B478009C9ED3 /* Cauldron.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80425861E19B478009C9ED3 /* Cauldron.swift */; };
-		D80425881E19B49C009C9ED3 /* Cauldron.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80425861E19B478009C9ED3 /* Cauldron.swift */; };
 		D80658FD1DE90DC300325182 /* OoviumLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D80658F61DE90DC300325182 /* OoviumLib.framework */; };
 		D80658FE1DE90DC300325182 /* OoviumLib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D80658F61DE90DC300325182 /* OoviumLib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D80659061DE90EC800325182 /* Obj.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC0F1DE8D3DC00B56F6A /* Obj.swift */; };
@@ -158,7 +156,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D80425861E19B478009C9ED3 /* Cauldron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cauldron.swift; sourceTree = "<group>"; };
 		D80658F61DE90DC300325182 /* OoviumLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OoviumLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D80EB9A01DED96F900361939 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		D80EB9A31DEEF93C00361939 /* ComplexObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplexObj.swift; sourceTree = "<group>"; };
@@ -264,14 +261,14 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
-		D830C0B31E3EB57500FF25A8 /* Aegean */ = {
+		D830C0B31E3EB57500FF25A8 /* Calculate */ = {
 			isa = PBXGroup;
 			children = (
 				D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */,
 				D8E4A08C1E4673D600B2C328 /* Aegean.h */,
 				D8E4A08B1E4673D600B2C328 /* Aegean.c */,
 			);
-			name = Aegean;
+			name = Calculate;
 			sourceTree = "<group>";
 		};
 		D89BEBD21DE8D32B00B56F6A = {
@@ -350,10 +347,8 @@
 		D89BEC011DE8D36200B56F6A /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				D830C0B31E3EB57500FF25A8 /* Aegean */,
-				D89BEC051DE8D38300B56F6A /* Objs */,
-				D89BEC041DE8D37F00B56F6A /* Defs */,
-				D89BEC031DE8D36F00B56F6A /* Evaluate */,
+				D830C0B31E3EB57500FF25A8 /* Calculate */,
+				D89BEC031DE8D36F00B56F6A /* Compile */,
 				D89BEC021DE8D36A00B56F6A /* Parse */,
 				D80EB9A01DED96F900361939 /* Math.swift */,
 			);
@@ -367,14 +362,15 @@
 				D89BEC2F1DE8D44500B56F6A /* Token.swift */,
 				D89BEC2C1DE8D44500B56F6A /* Chain.swift */,
 				D89BEC2D1DE8D44500B56F6A /* Ops.swift */,
-				D80425861E19B478009C9ED3 /* Cauldron.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
 		};
-		D89BEC031DE8D36F00B56F6A /* Evaluate */ = {
+		D89BEC031DE8D36F00B56F6A /* Compile */ = {
 			isa = PBXGroup;
 			children = (
+				D89BEC051DE8D38300B56F6A /* Objs */,
+				D89BEC041DE8D37F00B56F6A /* Defs */,
 				D89BEC221DE8D42100B56F6A /* Lambda.swift */,
 				D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */,
 				D89BEC231DE8D42100B56F6A /* Recipe.swift */,
@@ -383,7 +379,7 @@
 				D89BEC251DE8D42100B56F6A /* Tower.swift */,
 				D85EEFCE1E10544A00166C4C /* Web.swift */,
 			);
-			name = Evaluate;
+			name = Compile;
 			sourceTree = "<group>";
 		};
 		D89BEC041DE8D37F00B56F6A /* Defs */ = {
@@ -676,7 +672,6 @@
 				D80659111DE90EC800325182 /* Recipe.swift in Sources */,
 				D8705D3E1E293EAA003F5668 /* TypeObj.swift in Sources */,
 				D8CB76861E17AAAF00A286DF /* Tail.swift in Sources */,
-				D80425881E19B49C009C9ED3 /* Cauldron.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,7 +688,6 @@
 				D8CB766E1E1793FC00A286DF /* Cell.swift in Sources */,
 				D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */,
 				D8CB766C1E1793F000A286DF /* Col.swift in Sources */,
-				D80425871E19B478009C9ED3 /* Cauldron.swift in Sources */,
 				D89BEC1F1DE8D3FA00B56F6A /* StringDef.swift in Sources */,
 				D8CB76541E17934F00A286DF /* Cron.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,

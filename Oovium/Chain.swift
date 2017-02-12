@@ -66,7 +66,7 @@ public final class Chain {
 		lambda.applyTag(tag)
 	}
 	
-	// Tokens ==========================================================================================
+// Tokens ==========================================================================================
 	private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
 		let token: Token = tokens[i]
 		
