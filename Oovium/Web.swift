@@ -96,7 +96,7 @@ public final class Web: CustomStringConvertible {
 	static let zero = RealObj(0)
 	static let one = RealObj(1)
 	public func execute (_ memory: UnsafeMutablePointer<Memory>) {
-		var m = memory
+		let m = memory
 		recipeS.execute(m)
 	}
 

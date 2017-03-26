@@ -227,7 +227,7 @@ long AETaskExecute (Task* task, Memory* memory) {
 // Recipe ==========================================================================================
 Recipe* AERecipeCreate (long tn) {
 	Recipe* recipe = (Recipe*)malloc(sizeof(Recipe));
-	recipe->tasks = (Task*)malloc(sizeof(Task)*tn);
+	recipe->tasks = (Task**)malloc(sizeof(Task*)*tn);
 	recipe->tn = tn;
 	return recipe;
 }

@@ -546,7 +546,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Aepryus Software";
 				TargetAttributes = {
 					D80658F51DE90DC300325182 = {
