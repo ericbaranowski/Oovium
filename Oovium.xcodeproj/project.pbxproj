@@ -48,6 +48,16 @@
 		D84CD40B1E9A816500029120 /* Leaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4001E99CAE500029120 /* Leaf.swift */; };
 		D84CD40C1E9A816700029120 /* Maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4081E9A809A00029120 /* Maker.swift */; };
 		D84CD40D1E9A816C00029120 /* OoviumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4051E9A800600029120 /* OoviumView.swift */; };
+		D84CD40F1E9AACFB00029120 /* ObjectMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD40E1E9AACFB00029120 /* ObjectMaker.swift */; };
+		D84CD4111E9AAD0700029120 /* ObjectBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4101E9AAD0700029120 /* ObjectBub.swift */; };
+		D84CD4121E9AAE6600029120 /* ObjectBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4101E9AAD0700029120 /* ObjectBub.swift */; };
+		D84CD4131E9AAE6900029120 /* ObjectMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD40E1E9AACFB00029120 /* ObjectMaker.swift */; };
+		D84CD4171E9AD3F900029120 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4161E9AD3F900029120 /* Hover.swift */; };
+		D84CD4191E9AE30600029120 /* Hovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4181E9AE30600029120 /* Hovers.swift */; };
+		D84CD41C1E9AE87D00029120 /* SheathEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD41B1E9AE87D00029120 /* SheathEditor.swift */; };
+		D84CD41D1E9AE8AC00029120 /* SheathEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD41B1E9AE87D00029120 /* SheathEditor.swift */; };
+		D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4181E9AE30600029120 /* Hovers.swift */; };
+		D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4161E9AD3F900029120 /* Hover.swift */; };
 		D85EEFCF1E10544A00166C4C /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
 		D85EEFD01E10B47700166C4C /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
 		D85EEFD21E10CD4C00166C4C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
@@ -181,6 +191,11 @@
 		D84CD4021E99D24300029120 /* AEPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AEPoint.swift; sourceTree = "<group>"; };
 		D84CD4051E9A800600029120 /* OoviumView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumView.swift; sourceTree = "<group>"; };
 		D84CD4081E9A809A00029120 /* Maker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maker.swift; sourceTree = "<group>"; };
+		D84CD40E1E9AACFB00029120 /* ObjectMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMaker.swift; sourceTree = "<group>"; };
+		D84CD4101E9AAD0700029120 /* ObjectBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectBub.swift; sourceTree = "<group>"; };
+		D84CD4161E9AD3F900029120 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
+		D84CD4181E9AE30600029120 /* Hovers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hovers.swift; sourceTree = "<group>"; };
+		D84CD41B1E9AE87D00029120 /* SheathEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheathEditor.swift; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85EEFD11E10CD4C00166C4C /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D8705D3C1E293E7C003F5668 /* TypeObj.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeObj.swift; sourceTree = "<group>"; };
@@ -305,6 +320,8 @@
 		D84CD3F61E994A1300029120 /* ObjectBub */ = {
 			isa = PBXGroup;
 			children = (
+				D84CD40E1E9AACFB00029120 /* ObjectMaker.swift */,
+				D84CD4101E9AAD0700029120 /* ObjectBub.swift */,
 			);
 			name = ObjectBub;
 			sourceTree = "<group>";
@@ -347,6 +364,32 @@
 				D84CD4051E9A800600029120 /* OoviumView.swift */,
 			);
 			name = Oovium;
+			sourceTree = "<group>";
+		};
+		D84CD4141E9AD38B00029120 /* Hovers */ = {
+			isa = PBXGroup;
+			children = (
+				D84CD4181E9AE30600029120 /* Hovers.swift */,
+				D84CD4151E9AD3E900029120 /* Structure */,
+				D84CD41A1E9AE85000029120 /* SheathEditor */,
+			);
+			name = Hovers;
+			sourceTree = "<group>";
+		};
+		D84CD4151E9AD3E900029120 /* Structure */ = {
+			isa = PBXGroup;
+			children = (
+				D84CD4161E9AD3F900029120 /* Hover.swift */,
+			);
+			name = Structure;
+			sourceTree = "<group>";
+		};
+		D84CD41A1E9AE85000029120 /* SheathEditor */ = {
+			isa = PBXGroup;
+			children = (
+				D84CD41B1E9AE87D00029120 /* SheathEditor.swift */,
+			);
+			name = SheathEditor;
 			sourceTree = "<group>";
 		};
 		D89BEBD21DE8D32B00B56F6A = {
@@ -420,6 +463,7 @@
 			children = (
 				D84CD4041E9A7FFB00029120 /* Oovium */,
 				D84CD3F51E994A0500029120 /* Aether */,
+				D84CD4141E9AD38B00029120 /* Hovers */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -702,6 +746,7 @@
 				D8CB76801E17AAAF00A286DF /* Import.swift in Sources */,
 				D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */,
 				D85EEFD31E10CD5000166C4C /* Task.swift in Sources */,
+				D84CD41D1E9AE8AC00029120 /* SheathEditor.swift in Sources */,
 				D8CB767B1E17AAAF00A286DF /* Cron.swift in Sources */,
 				D8CB76831E17AAAF00A286DF /* Miru.swift in Sources */,
 				D84CD4071E9A804200029120 /* AEPoint.swift in Sources */,
@@ -717,6 +762,7 @@
 				D8CB76851E17AAAF00A286DF /* State.swift in Sources */,
 				D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */,
 				D8CB76881E17AAAF00A286DF /* Type.swift in Sources */,
+				D84CD4121E9AAE6600029120 /* ObjectBub.swift in Sources */,
 				D8CB767C1E17AAAF00A286DF /* Edge.swift in Sources */,
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
@@ -725,6 +771,7 @@
 				D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */,
 				D80659071DE90EC800325182 /* RealObj.swift in Sources */,
 				D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */,
+				D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
 				D80659101DE90EC800325182 /* Lambda.swift in Sources */,
@@ -738,9 +785,11 @@
 				D80659141DE90EC800325182 /* Tag.swift in Sources */,
 				D84CD3FC1E99503300029120 /* AetherView.swift in Sources */,
 				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
+				D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */,
 				D80659061DE90EC800325182 /* Obj.swift in Sources */,
 				D806590A1DE90EC800325182 /* ComplexDef.swift in Sources */,
 				D80659081DE90EC800325182 /* Def.swift in Sources */,
+				D84CD4131E9AAE6900029120 /* ObjectMaker.swift in Sources */,
 				D84CD40C1E9A816700029120 /* Maker.swift in Sources */,
 				D8CB76841E17AAAF00A286DF /* Object.swift in Sources */,
 				D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */,
@@ -778,6 +827,8 @@
 				D89BEC1F1DE8D3FA00B56F6A /* StringDef.swift in Sources */,
 				D8CB76541E17934F00A286DF /* Cron.swift in Sources */,
 				D84CD4011E99CAE500029120 /* Leaf.swift in Sources */,
+				D84CD41C1E9AE87D00029120 /* SheathEditor.swift in Sources */,
+				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
@@ -800,12 +851,14 @@
 				D8CB76661E1793D700A286DF /* Input.swift in Sources */,
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
 				D84CD4061E9A800600029120 /* OoviumView.swift in Sources */,
+				D84CD40F1E9AACFB00029120 /* ObjectMaker.swift in Sources */,
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
 				D8FDE1D21E46F08600B18F06 /* String+MH.swift in Sources */,
 				D8CB76721E17943D00A286DF /* Anchor.swift in Sources */,
 				D8CB76701E17942A00A286DF /* State.swift in Sources */,
 				D82BE4D81E2369D600E8E710 /* OoviumLookup.swift in Sources */,
+				D84CD4171E9AD3F900029120 /* Hover.swift in Sources */,
 				D8CB76931E185D1300A286DF /* Migrate.swift in Sources */,
 				D89BEC271DE8D42100B56F6A /* Lambda.swift in Sources */,
 				D85EEFD21E10CD4C00166C4C /* Task.swift in Sources */,
@@ -821,6 +874,7 @@
 				D8CB76561E17935D00A286DF /* Text.swift in Sources */,
 				D8CB764C1E17932000A286DF /* Aether.swift in Sources */,
 				D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */,
+				D84CD4111E9AAD0700029120 /* ObjectBub.swift in Sources */,
 				D89BEC321DE8D44500B56F6A /* Ops.swift in Sources */,
 				D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */,
 				D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */,

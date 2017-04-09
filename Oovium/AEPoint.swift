@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AEPoint {
+public enum AEPoint {
 	case center, top, bottom, left, right, topLeft, topRight, bottomLeft, bottomRight
 	
 	func isRight() -> Bool {

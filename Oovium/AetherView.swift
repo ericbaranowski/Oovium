@@ -9,7 +9,7 @@
 import UIKit
 
 public class AetherView: UIScrollView {
-	
+	var maker: Maker = ObjectMaker()
 	
 	public init () {
 		super.init(frame: CGRect.zero)
@@ -20,8 +20,15 @@ public class AetherView: UIScrollView {
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
 	
+	func addBubble (_ bubble: Bubble) {
+		addSubview(bubble)
+	}
+	
 // Events ==========================================================================================
 	func onDoubleTap (_ gesture: UITapGestureRecognizer) {
-		print("double tap")
+		let origin = gesture.location(in: self)
+		let bubble = maker.make(origin: origin)
+		addBubble(bubble)
+		bubble.create()
 	}
 }

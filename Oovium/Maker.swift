@@ -9,6 +9,6 @@
 import UIKit
 
 protocol Maker {
-	func icon () -> UIImage;
 	func make (origin: CGPoint) -> Bubble;
+	func icon () -> UIImage;
 }
