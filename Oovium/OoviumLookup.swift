@@ -12,7 +12,7 @@ public enum OOColor: Int {
 	case red, orange, yellow, lime, maroon, peach, paleYellow, olive, magenta, lavender, marine, green, violet, cyan, cobolt, blue, black, grey, white, clear
 	case cgaRed, cgaLightRed, cgaBrown, cgaYellow, cgaGreen, cgaLightGreen, cgaCyan, cgaLightCyan, cgaBlue, cgaLightBlue, cgaMagenta, cgaLightMagenta
 	
-	public func toUIColor () -> UIColor {
+	public var uiColor: UIColor {
 		switch self {
 			case .red:				return UIColor(red: 255.0/255, green:  53.0/255, blue:  62.0/255, alpha: 1)
 			case .orange:			return UIColor(red: 255.0/255, green: 165.0/255, blue:  62.0/255, alpha: 1)

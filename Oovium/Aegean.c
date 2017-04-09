@@ -249,43 +249,43 @@ void playAegean () {
 	
 	scratch_ = AEScratchCreate();
 	
-	Obj o;
-	o.a.x = 3.14;
-	o.b.n = 3;
-	o.c.p = (void*)4;
-	
-	printf("%lf\n",o.a.x);
-	printf("%ld\n",o.b.n);
-	printf("%p\n",o.c.p);
-	printf("sizeof(ObjC): %lu\n",sizeof(Obj));
-	printf("sizeof(Dim): %lu\n",sizeof(Dim));
-	printf("sizeof(Byte): %lu\n",sizeof(Byte));
-	printf("sizeof(long): %lu\n",sizeof(long));
-	printf("sizeof(double): %lu\n",sizeof(double));
-	printf("sizeof(char): %lu\n",sizeof(char));
-	printf("sizeof(int): %lu\n",sizeof(int));
-	printf("sizeof(short): %lu\n",sizeof(short));
-	printf("sizeof(float): %lu\n",sizeof(float));
-	printf("sizeof(long double): %lu\n",sizeof(long double));
-	printf("sizeof(Slot): %lu\n",sizeof(Slot));
-	
-	Memory* memory = AEMemoryCreate(10);
-	printf("sizeof(Memory<10>): %lu\n",sizeof(memory));
-	
-	Obj* objs = (Obj*)malloc(sizeof(Obj)*10);
-	for (int i=0;i<10;i++) {
-		objs[i].b.x = 2.71;
-	}
-	
-	for (int i=0;i<10;i++) {
-		printf("%lf\n", objs[i].b.x);
-	}
-	
-	Obj p,q;
-	
-	p.a.x = 3;
-	q = p;
-	p.a.x = 4;
-	printf("p: [%lf]\n",p.a.x);
-	printf("q: [%lf]\n",q.a.x);
+//	Obj o;
+//	o.a.x = 3.14;
+//	o.b.n = 3;
+//	o.c.p = (void*)4;
+//	
+//	printf("%lf\n",o.a.x);
+//	printf("%ld\n",o.b.n);
+//	printf("%p\n",o.c.p);
+//	printf("sizeof(ObjC): %lu\n",sizeof(Obj));
+//	printf("sizeof(Dim): %lu\n",sizeof(Dim));
+//	printf("sizeof(Byte): %lu\n",sizeof(Byte));
+//	printf("sizeof(long): %lu\n",sizeof(long));
+//	printf("sizeof(double): %lu\n",sizeof(double));
+//	printf("sizeof(char): %lu\n",sizeof(char));
+//	printf("sizeof(int): %lu\n",sizeof(int));
+//	printf("sizeof(short): %lu\n",sizeof(short));
+//	printf("sizeof(float): %lu\n",sizeof(float));
+//	printf("sizeof(long double): %lu\n",sizeof(long double));
+//	printf("sizeof(Slot): %lu\n",sizeof(Slot));
+//	
+//	Memory* memory = AEMemoryCreate(10);
+//	printf("sizeof(Memory<10>): %lu\n",sizeof(memory));
+//	
+//	Obj* objs = (Obj*)malloc(sizeof(Obj)*10);
+//	for (int i=0;i<10;i++) {
+//		objs[i].b.x = 2.71;
+//	}
+//	
+//	for (int i=0;i<10;i++) {
+//		printf("%lf\n", objs[i].b.x);
+//	}
+//	
+//	Obj p,q;
+//	
+//	p.a.x = 3;
+//	q = p;
+//	p.a.x = 4;
+//	printf("p: [%lf]\n",p.a.x);
+//	printf("q: [%lf]\n",q.a.x);
 }
