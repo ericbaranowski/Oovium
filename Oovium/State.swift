@@ -13,7 +13,7 @@ public final class State: Domain {
 	public var color: Int = 0
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["color"]
 	}
 }

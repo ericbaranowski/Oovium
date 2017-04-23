@@ -6,13 +6,13 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public final class RealDef: Def {
 	public static let def = RealDef()
 	
-	init () {
-		super.init(name: "Number", key:"num", properties: ["x"], color: UIColor.green, order:1)
+	init() {
+		super.init(name: "Number", key:"num", properties: ["x"], order:1)
 	}
 	
 	static let add: (Lambda)->() = {(lambda: Lambda)->() in
@@ -24,7 +24,7 @@ public final class RealDef: Def {
 	static var formatter_ = NumberFormatter()
 	static var scientific_ = NumberFormatter()
 	
-	public static func initialize () {
+	public static func initialize() {
 		formatter_.positiveFormat = "#,##0.########"
 		formatter_.negativeFormat = "#,##0.########"
 		

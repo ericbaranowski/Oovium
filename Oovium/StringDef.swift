@@ -9,5 +9,5 @@
 import Foundation
 
 public final class StringDef: Def {
-	public static let def = LambdaDef(name:"String", key:"str", properties:["_"], color:.white)
+	public static let def = LambdaDef(name:"String", key:"str", properties:["_"])
 }

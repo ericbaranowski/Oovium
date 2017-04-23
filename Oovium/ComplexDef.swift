@@ -6,12 +6,12 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public final class ComplexDef: Def {
 	public static let def = ComplexDef()
 	
-	init () {
-		super.init(name: "Complex", key:"cpx", properties: ["r", "i"], color: UIColor.cyan, order:2)
+	init() {
+		super.init(name: "Complex", key:"cpx", properties: ["r", "i"], order:2)
 	}	
 }

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol Maker {
+	func make (origin: CGPoint) -> Bubble;
+	func icon() -> UIImage;
+}
+
 class Bubble: UIView {
 	var hitch: AEPoint
 	
@@ -27,15 +32,15 @@ class Bubble: UIView {
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 // Events ==========================================================================================
-	func onCreate () {}
-	func onRemove () {}
-	func onSelect () {}
-	func onUnselect () {}
-	func onMove () {}
-	func onUnload () {}
+	func onCreate() {}
+	func onRemove() {}
+	func onSelect() {}
+	func onUnselect() {}
+	func onMove() {}
+	func onUnload() {}
 	
 // Actions =========================================================================================
-	func create () {
+	func create() {
 		onCreate()
 	}
 }

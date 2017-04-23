@@ -11,7 +11,7 @@ import Foundation
 public final class Lambda {
 	var lambdaC: UnsafeMutablePointer<LambdaC>!
 	
-//	init () {
+//	init() {
 ////		lambdaC = AELambdaCreate()
 //	}
 	deinit {
@@ -29,7 +29,7 @@ public final class Lambda {
 	public var vi: Int = 0
 //	var memory: Memory!
 	
-	public init () {
+	public init() {
 		stack = [ObjS](repeating: RealObj.zero, count: 10)
 		cp = 0
 		vp = 0
@@ -49,7 +49,7 @@ public final class Lambda {
 	}
 	
 	// Constants
-	func nextCons () -> ObjS {
+	func nextCons() -> ObjS {
 		let obj = cons[cp]
 		cp += 1
 		return obj
@@ -72,11 +72,11 @@ public final class Lambda {
 //		stack[sp] = RealObj(Double(n))
 //		sp += 1
 //	}
-	func pop () -> ObjS {
+	func pop() -> ObjS {
 		sp -= 1
 		return stack[sp]
 	}
-	func peek () -> ObjS {
+	func peek() -> ObjS {
 		return stack[sp-1]
 	}
 
@@ -152,9 +152,9 @@ public final class Lambda {
 		var o = Obj()
 		o.a.x = 2.71
 		
-		for i in 0..<cn {
-			print("c[\(i)] \(c[i].a.x)")
-		}
+//		for i in 0..<cn {
+//			print("c[\(i)] \(c[i].a.x)")
+//		}
 		
 		let vn = variables.count
 		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)

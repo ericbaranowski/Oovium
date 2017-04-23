@@ -11,7 +11,7 @@ import Foundation
 final class Satyr<T:Hashable> {
 	var array = [Set<T>]()
 	
-	func union () -> Set<T> {
+	func union() -> Set<T> {
 		var result = Set<T>()
 
 		for set in array {
@@ -19,7 +19,7 @@ final class Satyr<T:Hashable> {
 		}
 		return result
 	}
-	func intersection () -> Set<T> {
+	func intersection() -> Set<T> {
 		guard array.count > 0 else {return Set<T>()}
 		
 		var result = array[0]

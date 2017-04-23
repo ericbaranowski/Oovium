@@ -17,14 +17,14 @@ public class Aexel: Domain {
 		return parent as! Aether
 	}
 	
-	func plugIn () {}
+	func plugIn() {}
 	func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {}
-	func towers () -> [Tower] {
+	func towers() -> [Tower] {
 		return []
 	}
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["name", "x", "y"]
 	}
 }

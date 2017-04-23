@@ -32,13 +32,15 @@ public final class Tower: Hashable {
 	var state: TowerState = .open
 //	var stopper: NSObject?
 	
-	init () {
+	init() {
 		name = "[\(arc4random_uniform(99999999))]"
 	}
 	public init (task: Task?) {
 		name = "[\(arc4random_uniform(99999999))]"
 		self.task = task
 	}
+	
+	func signal () {}
 	
 	private var _orbit: Tower?
 	var orbit: Tower? {
@@ -51,14 +53,14 @@ public final class Tower: Hashable {
 		}
 	}
 	
-	private func orbitUp () -> Tower? {
+	private func orbitUp() -> Tower? {
 		if let orbit = orbit {return orbit}
 		for tower in upstream
 			{if let orbit = tower.orbitUp() {return orbit}}
 		return nil
 		
 	}
-//	private func orbitDown () -> Tower? {
+//	private func orbitDown() -> Tower? {
 //		if let orbit = orbit {return orbit}
 //		for tower in downstream
 //			{if let orbit = tower.orbitDown() {return orbit}}
@@ -73,7 +75,7 @@ public final class Tower: Hashable {
 		downstream.remove(tower)
 		tower.upstream.remove(self)
 	}
-	func clear () {
+	func clear() {
 		upstream.removeAll()
 		downstream.removeAll()
 	}
@@ -84,7 +86,8 @@ public final class Tower: Hashable {
 		var lambdaC: UnsafeMutablePointer<LambdaC>
 		
 		do {
-			lambda = try chain.compile()
+			try chain.compile()
+			lambda = chain.lambda
 		} catch {
 			print("\(error)")
 			return

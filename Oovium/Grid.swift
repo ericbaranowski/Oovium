@@ -16,10 +16,10 @@ public final class Grid: Aexel {
 	var cells: [Cell] = []
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["typeID", "rows"]
 	}
-	override func children () -> [String] {
+	override func children() -> [String] {
 		return super.children() + ["cols", "cells"]
 	}
 }

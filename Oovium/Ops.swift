@@ -55,7 +55,7 @@ final class Ops {
 		doAOP(nil)
 		doCOP(tag)
 	}
-	func end () {
+	func end() {
 		doPOP(nil)
 		doMOP(nil)
 		doAOP(nil)

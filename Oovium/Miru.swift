@@ -12,7 +12,7 @@ public final class Miru: Aexel {
 	var gridID: Int = 0
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["gridID"]
 	}
 }

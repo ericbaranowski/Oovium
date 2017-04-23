@@ -22,10 +22,10 @@ public final class Tail: Aexel {
 	var resultTower = Tower()
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["whileTokens", "resultTokens"]
 	}
-	override func children () -> [String] {
+	override func children() -> [String] {
 		return super.children() + ["vertebras"]
 	}
 }

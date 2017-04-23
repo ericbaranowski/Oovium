@@ -6,8 +6,13 @@
 //  Copyright © 2017 Aepryus Software. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class Leaf {
-	var anchor: AEPoint = .center
+class Leaf: UIView {
+	var hitch: AEPoint = .center
+	
+	init() {
+		super.init(frame: CGRect.zero)
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

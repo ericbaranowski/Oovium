@@ -24,7 +24,7 @@ public final class SlotQ {
 		self.init(name)
 		self.value = value
 	}
-	func clear () {
+	func clear() {
 		loaded = fixed
 	}
 }

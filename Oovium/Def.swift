@@ -6,27 +6,23 @@
 //  Copyright © 2016 Aepryus Software. All rights reserved.
 //
 
-import UIKit
-
-// http://stackoverflow.com/questions/36607801/swift-framework-imported-into-objc-c-binary-does-not-generate-obj-c-header-corre
-extension NSArray {}
+import Foundation
 
 public class Def {
 	public let name: String
 	public let key: String
 	public let properties: [String]
-	public let color: UIColor
+//	public let color: UIColor
 	public let order: Int
 	
-	init (name: String, key: String, properties: [String], color: UIColor, order: Int) {
+	init (name: String, key: String, properties: [String], order: Int) {
 		self.name = name
 		self.key = key
 		self.properties = properties
-		self.color = color
 		self.order = order
 	}
-	convenience init (name: String, key:String, properties: [String], color: UIColor) {
-		self.init(name:name, key:key, properties:properties, color:color, order:9)
+	convenience init (name: String, key:String, properties: [String]) {
+		self.init(name:name, key:key, properties:properties, order:9)
 	}
 	
 	func format (_ obj: ObjS) -> String {

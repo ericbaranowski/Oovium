@@ -12,17 +12,47 @@ enum ParseError: Error {
 	case general
 }
 
-public final class Chain {
+protocol ChainDelegate {
+	func onChange()
+	func onEdit()
+	func onOK()
+}
+
+public final class Chain: CustomStringConvertible {
 	var tokens = [Token]()
 	var lambda: Lambda = Lambda()
+	let tower: Tower = Tower()
+	var delegate: ChainDelegate?
+	var open: Bool = false
 	
-	init () {}
-	public init (string: String) {
-		let keys = string .components(separatedBy: ";")
+	init() {}
+	public init (tokens: String) {
+		let keys = tokens.components(separatedBy: ";")
 		for key in keys {
-			tokens.append(Token.token(key: key))
+			self.tokens.append(Token.token(key: key))
 		}
 	}
+	init (striqng: String) {
+		for c in striqng.characters {
+			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "0")))}
+			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "1")))}
+			else if c == "2" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "2")))}
+			else if c == "3" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "3")))}
+			else if c == "4" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "4")))}
+			else if c == "5" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "5")))}
+			else if c == "6" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "6")))}
+			else if c == "7" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "7")))}
+			else if c == "8" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "8")))}
+			else if c == "9" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "9")))}
+			else if c == "." {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: ".")))}
+			else if c == "+" {self.tokens.append(Token.add)}
+			else if c == "-" {self.tokens.append(Token.subtract)}
+			else if c == "*" {self.tokens.append(Token.multiply)}
+			else if c == "/" {self.tokens.append(Token.divide)}
+			else if c == "^" {self.tokens.append(Token.power)}
+		}
+	}
+	
 //	- (NSString*) dehydrate {
 //	if (![_tokens count]) return @"";
 //	NSMutableString* tokens = [[NSMutableString alloc] init];
@@ -31,31 +61,51 @@ public final class Chain {
 //	[tokens deleteCharactersInRange:NSMakeRange([tokens length]-1,1)];
 //	return tokens;
 //	}
-
 	
+	func post (token: Token) {
+		tokens.append(token)
+		delegate?.onChange()
+	}
+	func backspace() {
+		guard tokens.count > 0 else {return}
+		tokens.removeLast()
+		delegate?.onChange()
+	}
+	func token() {
+	}
+	func edit() {
+		open = true
+		delegate?.onEdit()
+	}
+	func ok() {
+		do {
+			open = false
+			try compile()
+			tower.signal()
+			delegate?.onOK()
+		} catch {
+			print(error)
+		}
+	}
+
 	var store: String {
-		get {
 			var sb = String()
 			for token in tokens {
 				sb.append("\(token.key);")
 			}
 			sb.remove(at: sb.index(before: sb.endIndex))
 			return sb
-		}
 	}
 	var display: String {
-		get {
-			var sb = String()
-			for token in tokens {
-				sb.append(token.key)
-			}
-			return sb
+		var sb = String()
+		for token in tokens {
+			sb.append("\(token.tag)")
 		}
+		return sb
 	}
 	
-	func compile () throws -> Lambda {
+	func compile() throws {
 		lambda = try parse(tokens: tokens)
-		return lambda
 	}
 	
 //	private func add (morph: @escaping (Lambda)->()) {
@@ -186,7 +236,7 @@ public final class Chain {
 		
 		var unary: Tag?
 		if token == Token.subtract || token == Token.not {
-			unary = token==Token.subtract ? Tag.negative : Tag.not
+			unary = token==Token.subtract ? Tag.neg : Tag.not
 			i += 1
 			if (i == tokens.count)
 			{throw ParseError.general}
@@ -232,8 +282,17 @@ public final class Chain {
 		}
 		ops.end()
 	}
-	public func parse (tokens: [Token]) throws -> Lambda {
+	private func parse (tokens: [Token]) throws -> Lambda {
 		try parseTokens(tokens:tokens, start:0, stop:tokens.count, lambda:lambda)
 		return lambda
+	}
+	
+// CustomStringConvertible =========================================================================
+	public var description: String {
+		var sb = String()
+		for token in tokens {
+			sb.append("\(token.tag)")
+		}
+		return sb
 	}
 }

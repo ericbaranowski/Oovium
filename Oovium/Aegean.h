@@ -6,58 +6,7 @@
 //  Copyright © 2017 Aepryus Software. All rights reserved.
 //
 
-//typedef enum {
-//	AEMorphVariable,
-//	AEMorphConstant,
-//	AEMorphAdd,
-//	AEMorphSubtract,
-//	AEMorphMultiply,
-//	AEMorphDivide,
-//	AEMorphMod,
-//	AEMorphPower,
-//	AEMorphEqual,
-//	AEMorphNotEqual,
-//	AEMorphLesser,
-//	AEMorphLesserEqual,
-//	AEMorphGreater,
-//	AEMorphGreaterEqual,
-//	AEMorphNot,
-//	AEMorphAnd,
-//	AEMorphOr,
-//	AEMorphNeg,
-//	AEMorphAbs,
-//	AEMorphRound,
-//	AEMorphFloor,
-//	AEMorphSqrt,
-//	AEMorphFactorial,
-//	AEMorphExp,
-//	AEMorphLn,
-//	AEMorphLog,
-//	AEMorphTen,
-//	AEMorphTwo,
-//	AEMorphLog2,
-//	AEMorphSin,
-//	AEMorphCos,
-//	AEMorphTan,
-//	AEMorphAsin,
-//	AEMorphAcos,
-//	AEMorphAtan,
-//	AEMorphSec,
-//	AEMorphCsc,
-//	AEMorphCot,
-//	AEMorphSinh,
-//	AEMorphCosh,
-//	AEMorphTanh,
-//	AEMorphAsinh,
-//	AEMorphAcosh,
-//	AEMorphAtanh,
-//	AEMorphIf,
-//	AEMorphMin,
-//	AEMorphMax,
-//	AEMorphRandom
-//} AEMorph;
-
-typedef unsigned char Byte;
+typedef unsigned char byte;
 
 // Dim =====
 typedef union {
@@ -71,21 +20,21 @@ typedef struct {
 	Dim a;
 	Dim b;
 	Dim c;
-	//	Byte type;
+	//	byte type;
 } Obj;
 
 // Slot ====
 typedef struct Slot {
 	char name[12];
-	Byte fixed;
-	Byte loaded;
+	byte fixed;
+	byte loaded;
 	Obj obj;
 } Slot;
 
 // Memory ==
 typedef struct Memory {
 	Slot* slots;
-	Byte sn;
+	byte sn;
 } Memory;
 
 Memory* AEMemoryCreate(long sn);
@@ -93,14 +42,15 @@ void AEMemoryRelease();
 void AEMemoryFix(Memory* memory, long index);
 void AEMemoryClear(Memory* memory);
 void AEMemoryPrint(Memory* memory);
-Byte AEMemoryIndexForName(Memory* memory, char* name);
+byte AEMemoryIndexForName(Memory* memory, char* name);
+double AEMemoryFirstValue(Memory* memory);
 
 // Scratch =
 typedef struct Scratch {
 	Obj* stack;
-	Byte sp;
-	Byte cp;
-	Byte vp;
+	byte sp;
+	byte cp;
+	byte vp;
 } Scratch;
 
 Scratch* AEScratchCreate();
@@ -108,28 +58,31 @@ void AEScratchRelease(Scratch* scratch);
 
 // Morphs ==
 typedef enum {
-	AEMorphAdd,
-	AEMorphEqual,
-	AEMorphVariable,
-	AEMorphConstant
+	AEMorphAdd, AEMorphSub, AEMorphMul, AEMorphDiv, AEMorphMod, AEMorphPow, AEMorphEqual, AEMorphNotEqual,
+	AEMorphLessThan, AEMorphLessThanOrEqual, AEMorphGreaterThan, AEMorphGreaterThanOrEqual, AEMorphNot,
+	AEMorphAnd, AEMorphOr, AEMorphNeg, AEMorphAbs, AEMorphRound, AEMorphFloor, AEMorphSqrt, AEMorphFac,
+	AEMorphExp, AEMorphLn, AEMorphLog, AEMorphTen, AEMorphTwo, AEMorphLog2, AEMorphSin, AEMorphCos,
+	AEMorphTan, AEMorphAsin, AEMorphAcos, AEMorphAtan, AEMorphSec, AEMorphCsc, AEMorphCot, AEMorphSinh,
+	AEMorphCosh, AEMorphTanh, AEMorphAsinh, AEMorphAcosh, AEMorphAtanh, AEMorphIf, AEMorphMin, AEMorphMax,
+	AEMorphSum, AEMorphRandom, AEMorphVariable, AEMorphConstant
 } AEMorph;
 
 // Lambda ==
 typedef struct LambdaC {
 	Obj* constants;
-	Byte cn;
+	byte cn;
 	
-	Byte* variables;
-	Byte vn;
+	byte* variables;
+	byte vn;
 	
-	Byte* morphs;
-	Byte mn;
+	byte* morphs;
+	byte mn;
 	
-	Byte vi;
+	byte vi;
 	
 } LambdaC;
 
-LambdaC* AELambdaCreate(Byte vi, Obj* constants, Byte cn, Byte* variables, Byte vn, Byte* morphs, Byte mn);
+LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn);
 void AELambdaRelease(LambdaC* lambda);
 void AELambdaPrint(LambdaC* lambda);
 void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory);
@@ -146,17 +99,17 @@ typedef struct LambdaTask {
 	LambdaC* Lambda;
 } LambdaTask;
 typedef struct GotoTask {
-	Byte go2;
+	byte go2;
 } GotoTask;
 typedef struct IfGotoTask {
-	Byte index;
-	Byte go2;
+	byte index;
+	byte go2;
 } IfGotoTask;
 typedef struct ForkTask {
-	Byte ifIndex;
-	Byte thenIndex;
-	Byte elseIndex;
-	Byte resultIndex;
+	byte ifIndex;
+	byte thenIndex;
+	byte elseIndex;
+	byte resultIndex;
 } ForkTask;
 
 typedef struct Task {
@@ -170,18 +123,18 @@ typedef struct Task {
 } Task;
 
 Task* AETaskCreateLambda(LambdaC* lambda);
-Task* AETaskCreateGoto(Byte go2);
-Task* AETaskCreateIfGoto(Byte index,Byte go2);
-Task* AETaskCreateFork(Byte ifIndex, Byte thenIndex, Byte elseIndex, Byte resultIndex);
+Task* AETaskCreateGoto(byte go2);
+Task* AETaskCreateIfGoto(byte index,byte go2);
+Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex);
 
 // Recipe ==
 typedef struct Recipe {
 	Task** tasks;
-	Byte tn;
+	byte tn;
 } Recipe;
 
 Recipe* AERecipeCreate(long tn);
 void AERecipeRelease(Recipe* recipe);
 void AERecipeExecute(Recipe* recipe, Memory* memory);
 
-void playAegean();
+void startAegean();

@@ -38,7 +38,7 @@ public final class Auto: Aexel {
 	}
 	
 // Aexel ===========================================================================================
-	override func plugIn () {
+	override func plugIn() {
 		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.A", iden))), tower: headTower)
 		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.B", iden))), tower: headTower)
 		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.C", iden))), tower: headTower)
@@ -59,22 +59,22 @@ public final class Auto: Aexel {
 		aether.link(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
-		statesChain = Chain(string: statesTokens)
-		resultChain = Chain(string: resultTokens)
+		statesChain = Chain(tokens: statesTokens)
+		resultChain = Chain(tokens: resultTokens)
 		
 		statesTower.wire(chain:statesChain, memory:memory, memoryS: memoryS)
 		headTower.state = .uncalced
 		resultTower.wire(chain:resultChain, memory:memory, memoryS: memoryS)
 	}
-	override func towers () -> [Tower] {
+	override func towers() -> [Tower] {
 		return [statesTower, headTower, resultTower]
 	}
 	
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["statesTokens", "resultTokens"]
 	}
-	override func children () -> [String] {
+	override func children() -> [String] {
 		return super.children() + ["states"]
 	}
 }

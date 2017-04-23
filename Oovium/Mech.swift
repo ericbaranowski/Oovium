@@ -17,7 +17,7 @@ public final class Mech: Aexel {
 	var resultTower = Tower()
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["resultTokens"]
 	}
 }

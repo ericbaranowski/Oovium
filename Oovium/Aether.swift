@@ -35,7 +35,7 @@ import Foundation
 		Tower.link(token: tower.token, tower: tower)
 	}
 	
-	public func wire () {
+	public func wire() {
 		for object in objects {object.plugIn()}
 		for gate in gates {gate.plugIn()}
 		for auto in autos {auto.plugIn()}
@@ -108,7 +108,8 @@ import Foundation
 		
 		for key in tokens.keys {
 			let token = tokens[key]!
-			token.ip = memoryS.index(for: key)
+			let ip = memoryS.index(for: token.tag.key)
+			token.ip = ip
 		}
 
 		for object in objects {object.wire(memory, memoryS: memoryS)}
@@ -116,7 +117,7 @@ import Foundation
 		for auto in autos {auto.wire(memory, memoryS: memoryS)}
 	}
 	
-	public func calculate () {
+	public func calculate() {
 		var towers = [Tower]()
 		for object in objects {towers.append(contentsOf: object.towers())}
 		for gate in gates {towers.append(contentsOf: gate.towers())}
@@ -136,10 +137,10 @@ import Foundation
 	}
 	
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["name", "xOffset", "yOffset", "readOnly"]
 	}
-	override func children () -> [String] {
+	override func children() -> [String] {
 		return super.children() + ["objects", "gates", "crons", "texts", "mechs", "tails", "autos", "types", "grids", "mirus"]
 	}
 }
