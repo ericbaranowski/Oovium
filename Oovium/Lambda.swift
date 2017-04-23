@@ -55,13 +55,6 @@ public final class Lambda {
 		return obj
 	}
 	
-	// Variables
-//	func nextVar (memory: inout MemoryS) -> ObjS {
-//		let obj = memory.get(varIndexes[vp])!
-//		vp += 1
-//		return obj
-//	}
-	
 	// Stack
 	func push (_ obj: ObjS) {
 		stack[sp] = obj;
@@ -134,11 +127,10 @@ public final class Lambda {
 		morphs.append(morph)
 		push(RealObj(0))
 	}
-	public func compile (memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	public func compile (memory: UnsafeMutablePointer<Memory>) {
 		varIndexes = [Int]()
 		for name in variables {
-			let text = UnsafeMutablePointer<Int8>(mutating: (name as NSString).utf8String!)
-			varIndexes.append(Int(AEMemoryIndexForName(memory, text)))
+			varIndexes.append(Int(AEMemoryIndexForName(memory, name.toInt8())))
 		}
 		
 //		let n = Morph.addRR.rawValue
@@ -159,7 +151,7 @@ public final class Lambda {
 		let vn = variables.count
 		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)
 		for i in 0..<vn {
-			v[i] = UInt8(memoryS.index(for: variables[i]))
+			v[i] = UInt8(AEMemoryIndexForName(memory, variables[i].toInt8()))
 		}
 
 		let mn = morphs.count
@@ -173,28 +165,5 @@ public final class Lambda {
 		c.deallocate(capacity: cn)
 		v.deallocate(capacity: vn)
 		m.deallocate(capacity: mn)
-	}
-	
-//	func apply (morph: Morph, memory: inout MemoryS) {
-//		switch (morph) {
-//			case .addRR:
-//				let y = pop() as! RealObj
-//				let x = pop() as! RealObj
-//				push(x+y)
-//			case .equalsRR:
-//				let y = pop() as! RealObj
-//				let x = pop() as! RealObj
-//				push(x==y)
-//			case .variable:
-//				push(nextVar(memory: &memory))
-//			case .constant:
-//				push(nextCons())
-//		}
-//	}
-//	
-//	public func execute (memory: inout MemoryS) -> ObjS {
-//		return RealObj.zero
-////		return AELambdaExecute(lambdaC, memory)
-//	}
-
+	}	
 }

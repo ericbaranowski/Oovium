@@ -23,9 +23,8 @@ while (true) {
 			try chain.compile()
 			let lambda = chain.lambda
 			lambda.vi = 0
-			let memoryS = MemoryS([])
 			let memory = AEMemoryCreate(1)!
-			lambda.compile(memory: memory, memoryS: memoryS)
+			lambda.compile(memory: memory)
 			let lambdaC = lambda.lambdaC
 			let scratch = AEScratchCreate()
 			AELambdaExecute(lambdaC, scratch, memory)

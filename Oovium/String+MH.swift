@@ -20,4 +20,7 @@ public extension String {
 		let end = index(startIndex, offsetBy: r.upperBound)
 		return self[start...end]
 	}
+	func toInt8 () -> UnsafeMutablePointer<Int8> {
+		return UnsafeMutablePointer<Int8>(mutating: (self as NSString).utf8String!)
+	}
 }

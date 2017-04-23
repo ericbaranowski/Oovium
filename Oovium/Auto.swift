@@ -24,17 +24,16 @@ public final class Auto: Aexel {
 	@objc public func token (name: String) {
 	}
 	
-	public func foreshadow (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	public func foreshadow (_ memory: UnsafeMutablePointer<Memory>) {
 		
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.A", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.B", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.C", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.D", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.E", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.F", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.G", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.H", iden))].loaded = 1
-		memory.pointee.slots[memoryS.index(for: String(format: "Auto%d.I", iden))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.A", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.B", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.C", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.D", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.E", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.F", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.G", iden).toInt8()))].loaded = 1
+		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.H", iden).toInt8()))].loaded = 1
 	}
 	
 // Aexel ===========================================================================================
@@ -58,13 +57,13 @@ public final class Auto: Aexel {
 		aether.link(statesTower)
 		aether.link(resultTower)
 	}
-	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		statesChain = Chain(tokens: statesTokens)
 		resultChain = Chain(tokens: resultTokens)
 		
-		statesTower.wire(chain:statesChain, memory:memory, memoryS: memoryS)
+		statesTower.wire(chain:statesChain, memory:memory)
 		headTower.state = .uncalced
-		resultTower.wire(chain:resultChain, memory:memory, memoryS: memoryS)
+		resultTower.wire(chain:resultChain, memory:memory)
 	}
 	override func towers() -> [Tower] {
 		return [statesTower, headTower, resultTower]

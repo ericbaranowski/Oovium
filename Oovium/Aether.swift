@@ -28,7 +28,6 @@ import Foundation
 	var aexels: [Aexel] = []
 	var tags: [String:Tag] = [:]
 	var tokens: [String:Token] = [:]
-	public var memoryS: MemoryS!
 	public var memory: UnsafeMutablePointer<Memory>!
 	
 	public func link (_ tower: Tower) {
@@ -48,7 +47,6 @@ import Foundation
 			vars.append(token.tag.key)
 		}
 		vars.sort(by: {$0<$1})
-		memoryS = MemoryS(vars.sorted())
 		memory = AEMemoryCreate(vars.count)
 		
 		var i = -1
@@ -108,13 +106,12 @@ import Foundation
 		
 		for key in tokens.keys {
 			let token = tokens[key]!
-			let ip = memoryS.index(for: token.tag.key)
-			token.ip = ip
+			token.ip = Int(AEMemoryIndexForName(memory, token.tag.key.toInt8()))
 		}
 
-		for object in objects {object.wire(memory, memoryS: memoryS)}
-		for gate in gates {gate.wire(memory, memoryS: memoryS)}
-		for auto in autos {auto.wire(memory, memoryS: memoryS)}
+		for object in objects {object.wire(memory)}
+		for gate in gates {gate.wire(memory)}
+		for auto in autos {auto.wire(memory)}
 	}
 	
 	public func calculate() {

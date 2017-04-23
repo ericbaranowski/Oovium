@@ -18,7 +18,7 @@ public class Aexel: Domain {
 	}
 	
 	func plugIn() {}
-	func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {}
+	func wire (_ memory: UnsafeMutablePointer<Memory>) {}
 	func towers() -> [Tower] {
 		return []
 	}

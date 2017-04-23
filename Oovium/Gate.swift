@@ -41,17 +41,17 @@ public final class Gate: Aexel {
 		aether.link(elseTower)
 		aether.link(resultTower)
 	}
-	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		ifChain = Chain(tokens: ifTokens)
 		thenChain = Chain(tokens: thenTokens)
 		elseChain = Chain(tokens: elseTokens)
 		
-		ifTower.wire(chain: ifChain, memory:memory, memoryS: memoryS)
-		thenTower.wire(chain: thenChain, memory:memory, memoryS: memoryS)
-		elseTower.wire(chain: elseChain, memory:memory, memoryS: memoryS)
+		ifTower.wire(chain: ifChain, memory:memory)
+		thenTower.wire(chain: thenChain, memory:memory)
+		elseTower.wire(chain: elseChain, memory:memory)
 		
 		let resultName = resultTower.token.tag.key
-		resultTower.index = memoryS.index(for: resultName)
+		resultTower.index = Int(AEMemoryIndexForName(memory, resultName.toInt8()))
 		let forkTask = ForkTask(/*label: resultName, command: "\(resultName) = ~"*/ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
 		resultTower.task = forkTask
 		

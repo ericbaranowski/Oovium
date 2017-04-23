@@ -25,9 +25,9 @@ public final class Object: Aexel {
 		tower.token = Token.token(type: .variable, tag: Tag.tag(key: tower.name))
 		aether.link(tower)
 	}
-	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		chain = Chain(tokens: tokens)
-		tower.wire(chain:chain, memory:memory, memoryS: memoryS)
+		tower.wire(chain:chain, memory:memory)
 	}
 	override func towers() -> [Tower] {
 		return [tower]

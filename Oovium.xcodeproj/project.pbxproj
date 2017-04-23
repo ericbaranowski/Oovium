@@ -44,7 +44,6 @@
 		D8185C1B1EABFEEA00011CE0 /* StringDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC181DE8D3FA00B56F6A /* StringDef.swift */; };
 		D8185C1C1EABFEEA00011CE0 /* DateDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC141DE8D3FA00B56F6A /* DateDef.swift */; };
 		D8185C1D1EABFEEE00011CE0 /* Lambda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC221DE8D42100B56F6A /* Lambda.swift */; };
-		D8185C1E1EABFEEE00011CE0 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
 		D8185C1F1EABFEEE00011CE0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC231DE8D42100B56F6A /* Recipe.swift */; };
 		D8185C201EABFEEE00011CE0 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8185C211EABFEEE00011CE0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
@@ -56,6 +55,7 @@
 		D8185C271EABFEF600011CE0 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A01DED96F900361939 /* Math.swift */; };
 		D8185C281EABFF0600011CE0 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8185C291EABFFAB00011CE0 /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
+		D8185C2B1EAD47C500011CE0 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
@@ -172,8 +172,6 @@
 		D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB76931E185D1300A286DF /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76921E185D1300A286DF /* Migrate.swift */; };
-		D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
-		D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */; };
 		D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
@@ -316,7 +314,6 @@
 		D8CB76731E17944500A286DF /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		D8CB768C1E18402C00A286DF /* Aexel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aexel.swift; sourceTree = "<group>"; };
 		D8CB76921E185D1300A286DF /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
-		D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memory.swift; sourceTree = "<group>"; };
 		D8D1EEEF1DFDC67300CF3870 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
 		D8E4A08B1E4673D600B2C328 /* Aegean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Aegean.c; sourceTree = "<group>"; };
 		D8E4A08C1E4673D600B2C328 /* Aegean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aegean.h; sourceTree = "<group>"; };
@@ -626,7 +623,6 @@
 				D89BEC041DE8D37F00B56F6A /* Defs */,
 				D89BEC051DE8D38300B56F6A /* Objs */,
 				D89BEC221DE8D42100B56F6A /* Lambda.swift */,
-				D8D1EEEC1DFD4CF800CF3870 /* Memory.swift */,
 				D89BEC231DE8D42100B56F6A /* Recipe.swift */,
 				D8D1EEEF1DFDC67300CF3870 /* Slot.swift */,
 				D85EEFD11E10CD4C00166C4C /* Task.swift */,
@@ -934,7 +930,6 @@
 				D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */,
 				D8F2BA2B1E9BC584006A1492 /* Key.swift in Sources */,
 				D80659071DE90EC800325182 /* RealObj.swift in Sources */,
-				D8D1EEEE1DFD4D4800CF3870 /* Memory.swift in Sources */,
 				D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
@@ -987,7 +982,6 @@
 				D8185C1B1EABFEEA00011CE0 /* StringDef.swift in Sources */,
 				D8185C0D1EABFC5300011CE0 /* main.swift in Sources */,
 				D8185C241EABFEF300011CE0 /* Tag.swift in Sources */,
-				D8185C1E1EABFEEE00011CE0 /* Memory.swift in Sources */,
 				D8185C221EABFEEE00011CE0 /* Tower.swift in Sources */,
 				D8185C151EABFEE500011CE0 /* TypeObj.swift in Sources */,
 				D8185C251EABFEF300011CE0 /* Token.swift in Sources */,
@@ -1004,6 +998,7 @@
 				D8185C281EABFF0600011CE0 /* Aegean.c in Sources */,
 				D8185C291EABFFAB00011CE0 /* Satyr.swift in Sources */,
 				D8185C131EABFEE500011CE0 /* RealObj.swift in Sources */,
+				D8185C2B1EAD47C500011CE0 /* String+MH.swift in Sources */,
 				D8185C211EABFEEE00011CE0 /* Task.swift in Sources */,
 				D8185C231EABFEEE00011CE0 /* Web.swift in Sources */,
 				D8185C261EABFEF300011CE0 /* Ops.swift in Sources */,
@@ -1036,7 +1031,6 @@
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
-				D8D1EEED1DFD4CF800CF3870 /* Memory.swift in Sources */,
 				D84CD3F81E994A3100029120 /* AetherView.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
@@ -1370,6 +1364,7 @@
 				D8185C0F1EABFC5400011CE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D89BEBD61DE8D32B00B56F6A /* Build configuration list for PBXProject "Oovium" */ = {
 			isa = XCConfigurationList;

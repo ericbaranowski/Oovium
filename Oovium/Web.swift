@@ -15,7 +15,7 @@ public final class Web: CustomStringConvertible {
 	var towers: Set<Tower>
 	public var recipeS: RecipeS
 	
-	public init (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
+	public init (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>) {
 		self.head = head
 		self.tail = tail
 		
@@ -32,7 +32,7 @@ public final class Web: CustomStringConvertible {
 		print("\(recipeS)")
 	}
 	
-	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) -> RecipeS {
+	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>) -> RecipeS {
 		let recipeS = RecipeS()
 		_ = program(recipe: recipeS, towers: towers, memory: memory, n: 0)
 		return recipeS
@@ -60,8 +60,7 @@ public final class Web: CustomStringConvertible {
 						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
 						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
-							let name = UnsafeMutablePointer<Int8>(mutating: (tower.name as NSString).utf8String)
-							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, name)), goto: n+1))
+							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, tower.name.toInt8())), goto: n+1))
 						} else {
 							recipeS.removeLast()
 							n -= 1
