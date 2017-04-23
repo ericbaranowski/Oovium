@@ -9,5 +9,5 @@
 import Foundation
 
 public final class DateDef: Def {
-	public static let def = LambdaDef(name:"date", key:"dte", properties:["_"], color:.white)
+	public static let def = LambdaDef(name:"date", key:"dte", properties:["_"])
 }

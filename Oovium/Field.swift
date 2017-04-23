@@ -13,7 +13,7 @@ final class Field: Domain {
 	var def: Def = RealDef.def
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["name", "def"]
 	}
 }

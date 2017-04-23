@@ -6,6 +6,7 @@
 //  Copyright © 2017 Aepryus Software. All rights reserved.
 //
 
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -37,21 +38,6 @@ void AEMemoryClear(Memory* memory) {
 		memory->slots[i].loaded = memory->slots[i].fixed;
 	}
 }
-//public var description: String {
-//	var sb = String()
-//	sb.append("[ Memory ==================== ]\n")
-//	for i in 0..<count  {
-//		let index = String(format: "%2d", i)
-//		let set: String = fixed[i] ? "O" : " "
-//		let load: String = loaded[i] ? "O" : " "
-//		let name: String  = names[i].padding(toLength: 12, withPad: " ", startingAt: 0)
-//		let value: String = loaded[i] ? "\(values[i])" : "-"
-//		sb.append("  [\(index)][\(set)][\(load)][\(name)][\(value)]\n")
-//	}
-//	sb.append("[ =========================== ]\n\n")
-//	return sb
-//}
-
 void AEMemoryPrint(Memory* memory) {
 	printf("[ Memory ==================== ]\n");
 	for (int i=0;i<memory->sn;i++) {
@@ -64,12 +50,15 @@ void AEMemoryPrint(Memory* memory) {
 	}
 	printf("[ =========================== ]\n\n");
 }
-Byte AEMemoryIndexForName (Memory* memory, char* name) {
+byte AEMemoryIndexForName (Memory* memory, char* name) {
 	for (int i=0;i<memory->sn;i++) {
 		if (strcmp(name, memory->slots[i].name) == 0)
 			return i;
 	}
 	return -1;
+}
+double AEMemoryFirstValue(Memory* memory) {
+	return memory->slots[0].obj.a.x;
 }
 
 // Scratch =========================================================================================
@@ -84,7 +73,7 @@ void AEScratchRelease(Scratch* scratch) {
 }
 
 // Lambda ==========================================================================================
-LambdaC* AELambdaCreate(Byte vi, Obj* constants, Byte cn, Byte* variables, Byte vn, Byte* morphs, Byte mn) {
+LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn) {
 	LambdaC* lambda = (LambdaC*)malloc(sizeof(LambdaC));
 	
 	lambda->vi = vi;
@@ -94,12 +83,12 @@ LambdaC* AELambdaCreate(Byte vi, Obj* constants, Byte cn, Byte* variables, Byte 
 		lambda->constants[i] = constants[i];
 	lambda->cn = cn;
 	
-	lambda->variables = (Byte*)malloc(sizeof(Byte)*vn);
+	lambda->variables = (byte*)malloc(sizeof(byte)*vn);
 	for (int i=0;i<vn;i++)
 		lambda->variables[i] = variables[i];
 	lambda->vn = vn;
 	
-	lambda->morphs = (Byte*)malloc(sizeof(Byte)*mn);
+	lambda->morphs = (byte*)malloc(sizeof(byte)*mn);
 	for (int i=0;i<mn;i++)
 		lambda->morphs[i] = morphs[i];
 	lambda->mn = mn;
@@ -137,7 +126,27 @@ void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory) {
 				scratch->stack[scratch->sp-2].a.x += scratch->stack[scratch->sp-1].a.x;
 				scratch->sp--;
 			} break;
+
+			case AEMorphSub: {
+				scratch->stack[scratch->sp-2].a.x -= scratch->stack[scratch->sp-1].a.x;
+				scratch->sp--;
+			} break;
+
+			case AEMorphMul: {
+				scratch->stack[scratch->sp-2].a.x *= scratch->stack[scratch->sp-1].a.x;
+				scratch->sp--;
+			} break;
+
+			case AEMorphDiv: {
+				scratch->stack[scratch->sp-2].a.x /= scratch->stack[scratch->sp-1].a.x;
+				scratch->sp--;
+			} break;
 				
+			case AEMorphPow: {
+				scratch->stack[scratch->sp-2].a.x = pow(scratch->stack[scratch->sp-2].a.x,scratch->stack[scratch->sp-1].a.x);
+				scratch->sp--;
+			} break;
+
 			case AEMorphEqual: {
 				scratch->stack[scratch->sp-2].a.x = (scratch->stack[scratch->sp-2].a.x == scratch->stack[scratch->sp-1].a.x);
 				scratch->sp--;
@@ -171,20 +180,20 @@ Task* AETaskCreateLambda(LambdaC* lambda) {
 	task->lambda.Lambda = lambda;
 	return task;
 }
-Task* AETaskCreateGoto(Byte go2) {
+Task* AETaskCreateGoto(byte go2) {
 	Task* task = (Task*)malloc(sizeof(Task));
 	task->type = AETaskGoto;
 	task->go2.go2 = go2;
 	return task;
 }
-Task* AETaskCreateIfGoto(Byte index,Byte go2) {
+Task* AETaskCreateIfGoto(byte index,byte go2) {
 	Task* task = (Task*)malloc(sizeof(Task));
 	task->type = AETaskIfGoto;
 	task->ifGoto.index = index;
 	task->ifGoto.go2 = go2;
 	return task;
 }
-Task* AETaskCreateFork(Byte ifIndex, Byte thenIndex, Byte elseIndex, Byte resultIndex) {
+Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex) {
 	Task* task = (Task*)malloc(sizeof(Task));
 	task->type = AETaskFork;
 	task->fork.ifIndex = ifIndex;
@@ -243,49 +252,7 @@ void AERecipeExecute (Recipe* recipe, Memory* memory) {
 	}
 }
 
-// PlayAegean ======================================================================================
-void playAegean () {
-	printf("Hello, Aegean!\n");
-	
+// Aegean ==========================================================================================
+void startAegean() {
 	scratch_ = AEScratchCreate();
-	
-//	Obj o;
-//	o.a.x = 3.14;
-//	o.b.n = 3;
-//	o.c.p = (void*)4;
-//	
-//	printf("%lf\n",o.a.x);
-//	printf("%ld\n",o.b.n);
-//	printf("%p\n",o.c.p);
-//	printf("sizeof(ObjC): %lu\n",sizeof(Obj));
-//	printf("sizeof(Dim): %lu\n",sizeof(Dim));
-//	printf("sizeof(Byte): %lu\n",sizeof(Byte));
-//	printf("sizeof(long): %lu\n",sizeof(long));
-//	printf("sizeof(double): %lu\n",sizeof(double));
-//	printf("sizeof(char): %lu\n",sizeof(char));
-//	printf("sizeof(int): %lu\n",sizeof(int));
-//	printf("sizeof(short): %lu\n",sizeof(short));
-//	printf("sizeof(float): %lu\n",sizeof(float));
-//	printf("sizeof(long double): %lu\n",sizeof(long double));
-//	printf("sizeof(Slot): %lu\n",sizeof(Slot));
-//	
-//	Memory* memory = AEMemoryCreate(10);
-//	printf("sizeof(Memory<10>): %lu\n",sizeof(memory));
-//	
-//	Obj* objs = (Obj*)malloc(sizeof(Obj)*10);
-//	for (int i=0;i<10;i++) {
-//		objs[i].b.x = 2.71;
-//	}
-//	
-//	for (int i=0;i<10;i++) {
-//		printf("%lf\n", objs[i].b.x);
-//	}
-//	
-//	Obj p,q;
-//	
-//	p.a.x = 3;
-//	q = p;
-//	p.a.x = 4;
-//	printf("p: [%lf]\n",p.a.x);
-//	printf("q: [%lf]\n",q.a.x);
 }

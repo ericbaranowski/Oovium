@@ -9,14 +9,15 @@
 import UIKit
 
 public class AetherView: UIScrollView {
+	var aether: Aether = Aether()
 	var maker: Maker = ObjectMaker()
 	
-	public init () {
+	public init() {
 		super.init(frame: CGRect.zero)
 		
 		let gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
 		gesture.numberOfTapsRequired = 2
-		addGestureRecognizer(gesture)
+		addGestureRecognizer(gesture)		
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
 	

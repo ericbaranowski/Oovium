@@ -37,7 +37,7 @@ public final class Cron: Aexel {
 	var whileTower = Tower()
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["startTokens", "stopTokens", "stepsTokens", "rateTokens", "deltaTokens", "whileTokens", "endMode", "exposed"]
 	}
 }

@@ -21,8 +21,17 @@ class Hovers {
 			hover.alpha = 1
 		}
 	}
+	static func dismiss (hover: Hover) {
+		UIView.animate(withDuration: 0.2, animations: { 
+			hover.alpha = 0
+		}) { (canceled: Bool) in
+			hover.removeFromSuperview();
+			Hovers.invoked.remove(at: Hovers.invoked.index(of: hover)!)
+		}
+		
+	}
 	
-	static var sheathEditor: SheathEditor = {
-		return SheathEditor()
+	static var chainEditor: ChainEditor = {
+		return ChainEditor()
 	}()
 }

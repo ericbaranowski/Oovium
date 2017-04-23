@@ -23,7 +23,7 @@ public final class Gate: Aexel {
 	var resultTower = Tower()
 	
 // Aexel ===========================================================================================
-	override func plugIn () {
+	override func plugIn() {
 		ifTower.name = String(format: "IFI%05d", iden)
 		ifTower.token = Token.token(type: .variable, tag: Tag.tag(key: ifTower.name))
 		
@@ -65,12 +65,12 @@ public final class Gate: Aexel {
 		thenTower.attach(resultTower)
 		elseTower.attach(resultTower)
 	}
-	override func towers () -> [Tower] {
+	override func towers() -> [Tower] {
 		return [ifTower, thenTower, elseTower, resultTower]
 	}
 	
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["ifTokens", "thenTokens", "elseTokens"]
 	}
 }

@@ -24,7 +24,7 @@ public class Domain: NSObject {
 	var status: DomainStatus = .clean
 	var parent: Domain?
 	
-	public required override init () {
+	public required override init() {
 		type = Domain.nameFromClass(type(of:self))
 		super.init()
 		create()
@@ -37,7 +37,7 @@ public class Domain: NSObject {
 	func remove (_ domain: Domain) {}
 	func load (_ domain: Domain) {}
 	
-	func allDomainChildren () -> [Domain] {
+	func allDomainChildren() -> [Domain] {
 		var result: [Domain] = []
 		
 		for keyPath in children() {
@@ -59,13 +59,13 @@ public class Domain: NSObject {
 		return result
 	}
 	
-	private func subscribe () {
+	private func subscribe() {
 		if isStatic() {return}
 		for keyPath in properties() {
 			addObserver(self, forKeyPath: keyPath, options: [.new,.old], context: nil)
 		}
 	}
-	private func unsubscribe () {
+	private func unsubscribe() {
 		if isStatic() {return}
 		for keyPath in properties() {
 			removeObserver(self, forKeyPath: keyPath)
@@ -81,12 +81,12 @@ public class Domain: NSObject {
 	}
 	
 // Actions =========================================================================================
-	func create () {
+	func create() {
 		status = .created
 		onCreate()
 //		handleTriggers(self, action: .create)
 	}
-	func edit () {
+	func edit() {
 		if status == .created || status == .edited {return}
 		if status == .clean {unsubscribe()}
 		status = .edited
@@ -94,15 +94,15 @@ public class Domain: NSObject {
 		parent?.edit()
 //		handleTriggers(self, action: .edit)
 	}
-	func delete () {}
-	func load () {
+	func delete() {}
+	func load() {
 		if status != .clean {
 			subscribe()
 			status = .clean
 		}
 		onLoad()
 	}
-	func save () {
+	func save() {
 		if status != .clean {
 			subscribe()
 			status = .clean
@@ -115,19 +115,19 @@ public class Domain: NSObject {
 //		}
 //		handleTriggers(self, action: .save)
 	}
-	func dirty () {}
-	func dehydrate () {}
+	func dirty() {}
+	func dehydrate() {}
 	
 // Events ==========================================================================================
-	func onCreate () {}
-	func onEdit () {}
-	func onDelete () {}
-	func onAdded () {}
-	func onRemoved () {}
-	func onInit () {}
-	func onSave () {}
-	func onLoad () {}
-	func onDirty () {}
+	func onCreate() {}
+	func onEdit() {}
+	func onDelete() {}
+	func onAdded() {}
+	func onRemoved() {}
+	func onInit() {}
+	func onSave() {}
+	func onLoad() {}
+	func onDirty() {}
 	
 // Load and Unload =================================================================================
 	func loader (keyPath: String) -> ((Any)->(Any?))? {
@@ -148,7 +148,7 @@ public class Domain: NSObject {
 		return index
 	}
 
-	public func unload () -> [String:Any] {
+	public func unload() -> [String:Any] {
 		var attributes = [String:Any]()
 		
 		for keyPath in properties() {
@@ -237,13 +237,13 @@ public class Domain: NSObject {
 	}
 	
 // Domain ==========================================================================================
-	func properties () -> [String] {
+	func properties() -> [String] {
 		return ["iden", "type"]
 	}
-	func children () -> [String] {
+	func children() -> [String] {
 		return []
 	}
-	func isStatic () -> Bool {
+	func isStatic() -> Bool {
 		return false
 	}
 	var anchor: Anchor? {

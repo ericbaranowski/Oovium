@@ -11,7 +11,7 @@ import Foundation
 public final class RecipeS: CustomStringConvertible {
 	private var tasks: [Task]
 	
-	public init () {
+	public init() {
 		tasks = []
 	}
 	init (tasks: [Task]) {
@@ -24,7 +24,7 @@ public final class RecipeS: CustomStringConvertible {
 	func replace (at: Int, with task: Task) {
 		tasks[at] = task
 	}
-	func removeLast () {
+	func removeLast() {
 		tasks.removeLast()
 	}
 	
@@ -47,7 +47,7 @@ public final class RecipeS: CustomStringConvertible {
 			tp = tasks[tp].execute(memory: memory) ?? tp+1
 		}
 	}
-	public func compile () -> UnsafeMutablePointer<Recipe> {
+	public func compile() -> UnsafeMutablePointer<Recipe> {
 		let recipe: UnsafeMutablePointer<Recipe> = AERecipeCreate(tasks.count)!
 		var i: Int = 0
 		for task in tasks {

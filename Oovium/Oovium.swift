@@ -11,7 +11,7 @@ import UIKit
 class Oovium {
 	static var window_: UIWindow!
 
-	static func start () {
+	static func start() {
 		print("Oovium =============================================================================")
 		window_ = UIWindow(frame: UIScreen.main.bounds)
 		window_.makeKeyAndVisible()

@@ -23,7 +23,7 @@ class OoviumTests: XCTestCase {
 //        }
 //    }
 	
-	func testMath () {
+	func testMath() {
 		let lambda: Lambda = Lambda(morphs: [RealDef.cons, RealDef.cons, RealDef.add], cons: [RealObj(2), RealObj(2)], vars: [])
 		
 		let obj: RealObj = lambda.evaluate(vars: [String:Obj?]())[0] as! RealObj
@@ -66,7 +66,7 @@ class OoviumTests: XCTestCase {
 		return kills
 	}
 
-	func testRisk () {
+	func testRisk() {
 		var k0 = 0
 		var k1 = 0
 		var k2 = 0

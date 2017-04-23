@@ -58,7 +58,7 @@ import Foundation
 	case separator
 }
 
-public final class Token: Hashable {
+public final class Token: Hashable, CustomStringConvertible {
 	public let type: TokenType
 	public let tag: Tag
 	public let level: TokenLevel?
@@ -69,12 +69,12 @@ public final class Token: Hashable {
 		}
 	}
 	
-	public init (type: TokenType, tag: Tag) {
+	private init (type: TokenType, tag: Tag) {
 		self.type = type
 		self.tag = tag
 		self.level = .add
 	}
-	public init (type: TokenType, tag: Tag, level: TokenLevel) {
+	private init (type: TokenType, tag: Tag, level: TokenLevel) {
 		self.type = type
 		self.tag = tag
 		self.level = level
@@ -88,6 +88,10 @@ public final class Token: Hashable {
 		return key.hashValue
 	}
 	
+// CustomStringConvertible =========================================================================
+	public var description: String {
+		return "\(type.rawValue):\(tag)"
+	}
 	
 // Static ==========================================================================================
 	static var tokens: [String:Token] = [String:Token]()
@@ -101,6 +105,15 @@ public final class Token: Hashable {
 		}
 		return token!
 	}
+	public static func token (type: TokenType, tag: Tag, level: TokenLevel) -> Token {
+		let key: String = "\(type.rawValue):\(tag.key)"
+		var token: Token? = tokens[key]
+		if token == nil {
+			token = Token(type:type, tag:tag, level:level)
+			tokens[key] = token
+		}
+		return token!
+	}
 	static func token (key: String) -> Token {
 		let colon = key.range(of: ":")!.lowerBound
 		let type: TokenType = TokenType(rawValue: Int(key.substring(to: colon))!)!
@@ -108,28 +121,28 @@ public final class Token: Hashable {
 		return token(type: type, tag: tag)
 	}
 	
-	static let add: Token				= token(type:.operator, tag:Tag.add)
-	static let subtract: Token			= token(type:.operator, tag:Tag.subtract)
-	static let multiply: Token			= token(type:.operator, tag:Tag.multiply)
-	static let divide: Token			= token(type:.operator, tag:Tag.divide)
-	static let dot: Token				= token(type:.operator, tag:Tag.dot)
-	static let mod: Token				= token(type:.operator, tag:Tag.mod)
-	static let power: Token				= token(type:.operator, tag:Tag.power)
-	static let equal: Token				= token(type:.operator, tag:Tag.equal)
-	static let less: Token				= token(type:.operator, tag:Tag.less)
-	static let greater: Token			= token(type:.operator, tag:Tag.greater)
-	static let notEqual: Token			= token(type:.operator, tag:Tag.notEqual)
-	static let lessOrEqual: Token		= token(type:.operator, tag:Tag.lessOrEqual)
-	static let greaterOrEqual: Token	= token(type:.operator, tag:Tag.greaterOrEqual)
-	static let not: Token				= token(type:.operator, tag:Tag.not)
-	static let and: Token				= token(type:.operator, tag:Tag.and)
-	static let or: Token				= token(type:.operator, tag:Tag.or)
-	static let leftParen: Token			= token(type:.separator, tag:Tag.leftParen)
-	static let comma: Token				= token(type:.separator, tag:Tag.comma)
-	static let rightParen: Token		= token(type:.separator, tag:Tag.rightParen)
-	static let bra: Token				= token(type:.separator, tag:Tag.bra)
-	static let ket: Token				= token(type:.separator, tag:Tag.ket)
-	static let quote: Token				= token(type:.separator, tag:Tag.quote)
+	static let add: Token				= token(type: .operator,	tag: Tag.add,			level: .add)
+	static let subtract: Token			= token(type: .operator,	tag:Tag.subtract,		level: .add)
+	static let multiply: Token			= token(type: .operator,	tag:Tag.multiply,		level: .multiply)
+	static let divide: Token			= token(type: .operator,	tag:Tag.divide,			level: .multiply)
+	static let dot: Token				= token(type: .operator,	tag:Tag.dot,			level: .multiply)
+	static let mod: Token				= token(type: .operator,	tag:Tag.mod,			level: .multiply)
+	static let power: Token				= token(type: .operator,	tag:Tag.power,			level: .power)
+	static let equal: Token				= token(type: .operator,	tag:Tag.equal,			level: .compare)
+	static let less: Token				= token(type: .operator,	tag:Tag.less,			level: .compare)
+	static let greater: Token			= token(type: .operator,	tag:Tag.greater,		level: .compare)
+	static let notEqual: Token			= token(type: .operator,	tag:Tag.notEqual,		level: .compare)
+	static let lessOrEqual: Token		= token(type: .operator,	tag:Tag.lessOrEqual,	level: .compare)
+	static let greaterOrEqual: Token	= token(type: .operator,	tag:Tag.greaterOrEqual,	level: .compare)
+	static let not: Token				= token(type: .operator,	tag:Tag.not,			level: .compare)
+	static let and: Token				= token(type: .operator,	tag:Tag.and,			level: .compare)
+	static let or: Token				= token(type: .operator,	tag:Tag.or,				level: .compare)
+	static let leftParen: Token			= token(type: .separator,	tag:Tag.leftParen,		level: .separator)
+	static let comma: Token				= token(type: .separator,	tag:Tag.comma,			level: .separator)
+	static let rightParen: Token		= token(type: .separator,	tag:Tag.rightParen,		level: .separator)
+	static let bra: Token				= token(type: .separator,	tag:Tag.bra,			level: .separator)
+	static let ket: Token				= token(type: .separator,	tag:Tag.ket,			level: .separator)
+	static let quote: Token				= token(type: .separator,	tag:Tag.quote,			level: .separator)
 	
 	static let e: Token					= token(type:.constant, tag:Tag.e)
 	static let i: Token					= token(type:.constant, tag:Tag.i)

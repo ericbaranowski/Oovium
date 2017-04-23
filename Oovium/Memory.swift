@@ -101,7 +101,7 @@ public struct MemoryS: CustomStringConvertible {
 		values[i] = value
 	}
 
-	public mutating func clear () {
+	public mutating func clear() {
 		for i in 0..<count {
 			loaded[i] = fixed[i]
 		}

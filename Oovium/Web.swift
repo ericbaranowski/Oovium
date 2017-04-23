@@ -32,12 +32,6 @@ public final class Web: CustomStringConvertible {
 		print("\(recipeS)")
 	}
 	
-	func weave () {
-		for tower in towers {tower.clear()}
-//		for tower in towers {
-//			
-//		}
-	}
 	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) -> RecipeS {
 		let recipeS = RecipeS()
 		_ = program(recipe: recipeS, towers: towers, memory: memory, memoryS: memoryS, n: 0)
@@ -67,6 +61,8 @@ public final class Web: CustomStringConvertible {
 						n = program(recipe: recipe, towers: newTowers, memory:memory, memoryS: memoryS, n:n)
 						if oldN != n {
 							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: memoryS.index(for: tower.name), goto: n+1))
+//							let name = UnsafeMutablePointer<Int8>(mutating: (tower.name as NSString).utf8String)
+//							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, name)), goto: n+1))
 						} else {
 							recipeS.removeLast()
 							n -= 1

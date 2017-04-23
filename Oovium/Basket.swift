@@ -12,7 +12,7 @@ public final class Basket {
 	var cache = [Int:Anchor]()
 	var blocks: [String:(Domain)->()] = [:]
 	
-	public init () {}
+	public init() {}
 
 	func load (attributes: [String:Any], cls: Anchor.Type) -> Anchor {
 		let anchor = cls.init(basket: self)

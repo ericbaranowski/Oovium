@@ -11,7 +11,7 @@ import Foundation
 public class Anchor: Domain {
 	var basket: Basket!
 	
-	public required init () {
+	public required init() {
 		super.init()
 	}
 	public required init (basket: Basket) {

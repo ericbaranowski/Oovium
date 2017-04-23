@@ -8,7 +8,7 @@
 
 import Foundation
 
-public final class Tag {
+public final class Tag: CustomStringConvertible {
 	let key: String
 	let params: Int
 	
@@ -17,6 +17,12 @@ public final class Tag {
 		self.params = params
 	}
 	
+// CustomStringConvertible =========================================================================
+	public var description: String {
+		return key
+	}
+	
+// Static ==========================================================================================
 	static var tags = [String:Tag]()
 	public static func tag (key: String, params:Int) -> Tag {
 		var tag: Tag? = tags[key]
@@ -32,7 +38,6 @@ public final class Tag {
 	
 	static let constant: Tag		= tag(key:"constant", params:0)
 	static let variable: Tag		= tag(key:"variable", params:0)
-	static let negative: Tag		= tag(key:"negative")
 	
 	static let add: Tag				= tag(key:"+", params:2)
 	static let subtract: Tag		= tag(key:"−", params:2)
@@ -47,9 +52,10 @@ public final class Tag {
 	static let notEqual: Tag		= tag(key:"≠", params:2)
 	static let lessOrEqual: Tag		= tag(key:"≤", params:2)
 	static let greaterOrEqual: Tag	= tag(key:"≥", params:2)
-	static let not: Tag				= tag(key:"!")
 	static let and: Tag				= tag(key:"&", params:2)
 	static let or: Tag				= tag(key:"|", params:2)
+	static let not: Tag				= tag(key:"!")
+	static let neg: Tag				= tag(key:"neg")
 	static let leftParen: Tag		= tag(key:"(")
 	static let comma: Tag			= tag(key:",")
 	static let rightParen: Tag		= tag(key:")")
@@ -60,14 +66,4 @@ public final class Tag {
 	static let e: Tag				= tag(key:"e")
 	static let i: Tag				= tag(key:"i")
 	static let pi: Tag				= tag(key:"π")
-	
-//	override public static func initialize () {
-//		constant
-//		variable
-//		add
-//		subtract
-//		multiply
-//		divide
-//		equal
-//	}
 }

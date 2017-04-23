@@ -17,26 +17,37 @@ class Hover: UIView {
 		var y: CGFloat
 		
 		let parent: CGSize = UIScreen.main.bounds.size
+		let s = Hover.s
 		
-		if anchor.isLeft() {x = offset.horizontal * Hover.s}
-		else if anchor.isRight() {x = parent.width - size.width + offset.horizontal}
-		else {x = (parent.width - size.width) / 2 + offset.horizontal}
+		if anchor.isLeft() {x = offset.horizontal*s}
+		else if anchor.isRight() {x = parent.width - size.width*s + offset.horizontal*s}
+		else {x = (parent.width - size.width*s) / 2 + offset.horizontal*s}
 		
-		if anchor.isTop() {y = offset.vertical}
-		else if anchor.isBottom() {y = parent.height - size.height + offset.vertical}
-		else {y = (parent.height - size.height) / 2 + offset.vertical}
+		if anchor.isTop() {y = offset.vertical*s}
+		else if anchor.isBottom() {y = parent.height - size.height*s + offset.vertical*s}
+		else {y = (parent.height - size.height*s) / 2 + offset.vertical*s}
 		
-		super.init(frame: CGRect(x: x, y: y, width: size.width, height: size.height))
-		self.backgroundColor = UIColor.orange.withAlphaComponent(0.5)
+		super.init(frame: CGRect(x: x, y: y, width: size.width*s, height: size.height*s))
+		self.backgroundColor = UIColor.clear
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 
 // Events ==========================================================================================
 	
 // Actions =========================================================================================
-	func invoke () {
+	func invoke() {
 		Hovers.invoke(hover: self)
 	}
-	func dismiss () {}
-	func toggle () {}
+	func dismiss() {
+		Hovers.dismiss(hover: self)
+	}
+	func toggle() {}
+	
+// UIView ==========================================================================================
+	override func draw(_ rect: CGRect) {
+		let s = Hover.s
+		let path = CGMutablePath()
+		path.addRoundedRect(in: rect.insetBy(dx: 3*s, dy: 3*s), cornerWidth: 10*s, cornerHeight: 10*s)
+		Skin.panel(path: path, uiColor: UIColor.orange)
+	}
 }

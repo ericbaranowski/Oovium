@@ -18,7 +18,7 @@ public final class Cell: Domain {
 	var tower = Tower()
 
 // Domain ==========================================================================================
-	override func properties () -> [String] {
+	override func properties() -> [String] {
 		return super.properties() + ["colID", "rowNo", "tokens"]
 	}
 }
