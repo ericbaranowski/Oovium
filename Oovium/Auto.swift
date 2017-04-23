@@ -59,8 +59,8 @@ public final class Auto: Aexel {
 		aether.link(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
-		statesChain = Chain(string: statesTokens)
-		resultChain = Chain(string: resultTokens)
+		statesChain = Chain(tokens: statesTokens)
+		resultChain = Chain(tokens: resultTokens)
 		
 		statesTower.wire(chain:statesChain, memory:memory, memoryS: memoryS)
 		headTower.state = .uncalced

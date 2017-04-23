@@ -42,9 +42,9 @@ public final class Gate: Aexel {
 		aether.link(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) {
-		ifChain = Chain(string: ifTokens)
-		thenChain = Chain(string: thenTokens)
-		elseChain = Chain(string: elseTokens)
+		ifChain = Chain(tokens: ifTokens)
+		thenChain = Chain(tokens: thenTokens)
+		elseChain = Chain(tokens: elseTokens)
 		
 		ifTower.wire(chain: ifChain, memory:memory, memoryS: memoryS)
 		thenTower.wire(chain: thenChain, memory:memory, memoryS: memoryS)

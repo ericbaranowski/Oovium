@@ -32,8 +32,8 @@ public final class Chain: CustomStringConvertible {
 			self.tokens.append(Token.token(key: key))
 		}
 	}
-	init (string: String) {
-		for c in string.characters {
+	init (striqng: String) {
+		for c in striqng.characters {
 			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "0")))}
 			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "1")))}
 			else if c == "2" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "2")))}

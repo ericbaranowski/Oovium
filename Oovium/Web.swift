@@ -28,17 +28,17 @@ public final class Web: CustomStringConvertible {
 		printTowers(towers: certain)
 		
 		print("\(memory)")
-		_ = program(recipe: recipeS, towers: certain, memory: memory, memoryS: memoryS, n: 0)
+		_ = program(recipe: recipeS, towers: certain, memory: memory, n: 0)
 		print("\(recipeS)")
 	}
 	
 	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS) -> RecipeS {
 		let recipeS = RecipeS()
-		_ = program(recipe: recipeS, towers: towers, memory: memory, memoryS: memoryS, n: 0)
+		_ = program(recipe: recipeS, towers: towers, memory: memory, n: 0)
 		return recipeS
 	}
 	
-	func program (recipe: RecipeS, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, memoryS: MemoryS, n: Int) -> Int {
+	func program (recipe: RecipeS, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, n: Int) -> Int {
 		var n = n
 		
 		var progress: Bool
@@ -58,11 +58,10 @@ public final class Web: CustomStringConvertible {
 						n += 1
 						var oldN = n
 						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, memoryS: memoryS, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
-							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: memoryS.index(for: tower.name), goto: n+1))
-//							let name = UnsafeMutablePointer<Int8>(mutating: (tower.name as NSString).utf8String)
-//							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, name)), goto: n+1))
+							let name = UnsafeMutablePointer<Int8>(mutating: (tower.name as NSString).utf8String)
+							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, name)), goto: n+1))
 						} else {
 							recipeS.removeLast()
 							n -= 1
@@ -73,7 +72,7 @@ public final class Web: CustomStringConvertible {
 						n += 1
 						oldN = n
 						newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, memoryS: memoryS, n:n)
+						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
 							recipeS.replace(at: gotoIndex, with: GotoTask(goto: n))
 						} else {
