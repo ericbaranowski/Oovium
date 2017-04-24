@@ -24,10 +24,6 @@ class OoviumTests: XCTestCase {
 //    }
 	
 	func testMath() {
-		let lambda: Lambda = Lambda(morphs: [RealDef.cons, RealDef.cons, RealDef.add], cons: [RealObj(2), RealObj(2)], vars: [])
-		
-		let obj: RealObj = lambda.evaluate(vars: [String:Obj?]())[0] as! RealObj
-		XCTAssert(obj.value==4.0, "[\(obj.value) != 4.0]")
 		
 		
 	}

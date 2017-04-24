@@ -11,13 +11,6 @@ import Foundation
 public final class Lambda {
 	var lambdaC: UnsafeMutablePointer<LambdaC>!
 	
-//	init() {
-////		lambdaC = AELambdaCreate()
-//	}
-	deinit {
-//		AELambdaRelease(self)
-	}
-//	public var morphs: [(Lambda)->()] = [(Lambda)->()]()
 	public var morphs: [Morph] = [Morph]()
 	public var cons = [ObjS]()
 	public var variables = [String]()
@@ -27,7 +20,6 @@ public final class Lambda {
 	var vp: Int = 0
 	var sp: Int = 0
 	public var vi: Int = 0
-//	var memory: Memory!
 	
 	public init() {
 		stack = [ObjS](repeating: RealObj.zero, count: 10)
@@ -37,7 +29,6 @@ public final class Lambda {
 		vi = 0
 	}
 	public init (morphs: [Morph], cons: [ObjS], vars: [String]) {
-//	public init (morphs: [(Lambda)->()], cons: [Obj], vars: [String]) {
 		self.morphs = morphs
 		self.cons = cons
 		self.variables = vars
@@ -60,11 +51,6 @@ public final class Lambda {
 		stack[sp] = obj;
 		sp += 1
 	}
-//	func push(n: Int) {
-////		(stack[sp] as! RealObj).mimic(int: n)
-//		stack[sp] = RealObj(Double(n))
-//		sp += 1
-//	}
 	func pop() -> ObjS {
 		sp -= 1
 		return stack[sp]
@@ -73,34 +59,6 @@ public final class Lambda {
 		return stack[sp-1]
 	}
 
-	// Evaluate
-//	public func evaluate (_ memory: inout Memory) -> Obj {
-//		cp = 0
-//		vp = 0
-//		sp = 0
-//		
-//		for morph in morphs {
-//			applyMorph(morph: morph, memory: &memory)
-//		}
-//		return peek()
-//	}
-//	public func doubleEvaluate (_ memory: inout Memory) -> Double {
-//		cp = 0
-//		vp = 0
-//		sp = 0
-//		self.memory = memory
-//		
-//		for morph in morphs {
-//			var lambda = self
-//			Math.apply(morph: morph, lambda: &lambda)
-//		}
-////			{morph(self)}
-//		
-//		let result: Double = (peek() as! RealObj).x
-//		
-//		return result
-//	}
-	
 	// Build
 	func applyTag (_ tag: Tag) {
 		var key = "\(tag.key);"
@@ -118,12 +76,7 @@ public final class Lambda {
 		cons.append(RealObj(x))
 		applyTag(Tag.constant)
 	}
-//	func addVariable (_ name: String) {
-//		variables.append(name)
-//		applyTag(Tag.variable)
-//	}
 	func addMorph (_ morph: Morph) {
-//	func addMorph (_ morph: @escaping (Lambda)->()) {
 		morphs.append(morph)
 		push(RealObj(0))
 	}
@@ -133,20 +86,11 @@ public final class Lambda {
 			varIndexes.append(Int(AEMemoryIndexForName(memory, name.toInt8())))
 		}
 		
-//		let n = Morph.addRR.rawValue
-
 		let cn = cons.count
 		let c: UnsafeMutablePointer<Obj>! = UnsafeMutablePointer<Obj>.allocate(capacity: cn)
 		for i in 0..<cn {
 			c[i].a.x = (cons[i] as! RealObj).x
 		}
-		
-		var o = Obj()
-		o.a.x = 2.71
-		
-//		for i in 0..<cn {
-//			print("c[\(i)] \(c[i].a.x)")
-//		}
 		
 		let vn = variables.count
 		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)

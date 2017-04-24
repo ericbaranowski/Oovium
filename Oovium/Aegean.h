@@ -86,6 +86,7 @@ LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte 
 void AELambdaRelease(LambdaC* lambda);
 void AELambdaPrint(LambdaC* lambda);
 void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory);
+//void AELambdaApplyTag (LambdaC* lambda, )
 
 // Task ====
 typedef enum AETask {

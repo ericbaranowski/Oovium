@@ -45,7 +45,6 @@
 		D8185C1C1EABFEEA00011CE0 /* DateDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC141DE8D3FA00B56F6A /* DateDef.swift */; };
 		D8185C1D1EABFEEE00011CE0 /* Lambda.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC221DE8D42100B56F6A /* Lambda.swift */; };
 		D8185C1F1EABFEEE00011CE0 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC231DE8D42100B56F6A /* Recipe.swift */; };
-		D8185C201EABFEEE00011CE0 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8185C211EABFEEE00011CE0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFD11E10CD4C00166C4C /* Task.swift */; };
 		D8185C221EABFEEE00011CE0 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
 		D8185C231EABFEEE00011CE0 /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
@@ -172,8 +171,6 @@
 		D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB76931E185D1300A286DF /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76921E185D1300A286DF /* Migrate.swift */; };
-		D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
-		D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D1EEEF1DFDC67300CF3870 /* Slot.swift */; };
 		D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8E4A08F1E46764C00B2C328 /* Aegean.h in Headers */ = {isa = PBXBuildFile; fileRef = D8E4A08C1E4673D600B2C328 /* Aegean.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8E4A0901E46767400B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
@@ -314,7 +311,6 @@
 		D8CB76731E17944500A286DF /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		D8CB768C1E18402C00A286DF /* Aexel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aexel.swift; sourceTree = "<group>"; };
 		D8CB76921E185D1300A286DF /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
-		D8D1EEEF1DFDC67300CF3870 /* Slot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slot.swift; sourceTree = "<group>"; };
 		D8E4A08B1E4673D600B2C328 /* Aegean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Aegean.c; sourceTree = "<group>"; };
 		D8E4A08C1E4673D600B2C328 /* Aegean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aegean.h; sourceTree = "<group>"; };
 		D8F2BA2C1E9BC8AF006A1492 /* TokenKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenKey.swift; sourceTree = "<group>"; };
@@ -624,7 +620,6 @@
 				D89BEC051DE8D38300B56F6A /* Objs */,
 				D89BEC221DE8D42100B56F6A /* Lambda.swift */,
 				D89BEC231DE8D42100B56F6A /* Recipe.swift */,
-				D8D1EEEF1DFDC67300CF3870 /* Slot.swift */,
 				D85EEFD11E10CD4C00166C4C /* Task.swift */,
 			);
 			name = Compile;
@@ -916,7 +911,6 @@
 				D84CD40A1E9A816200029120 /* Bubble.swift in Sources */,
 				D8CB76811E17AAAF00A286DF /* Input.swift in Sources */,
 				D8F2BA291E9BC57E006A1492 /* KeyPad.swift in Sources */,
-				D8D1EEF11DFDC9BD00CF3870 /* Slot.swift in Sources */,
 				D8CB76771E17AAAF00A286DF /* Aether.swift in Sources */,
 				D8CB76851E17AAAF00A286DF /* State.swift in Sources */,
 				D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */,
@@ -991,7 +985,6 @@
 				D8185C121EABFEE500011CE0 /* Obj.swift in Sources */,
 				D8185C181EABFEEA00011CE0 /* ComplexDef.swift in Sources */,
 				D8185C161EABFEEA00011CE0 /* Def.swift in Sources */,
-				D8185C201EABFEEE00011CE0 /* Slot.swift in Sources */,
 				D8185C191EABFEEA00011CE0 /* VectorDef.swift in Sources */,
 				D8185C1A1EABFEEA00011CE0 /* LambdaDef.swift in Sources */,
 				D8185C1D1EABFEEE00011CE0 /* Lambda.swift in Sources */,
@@ -1035,7 +1028,6 @@
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
 				D8CB76521E17934100A286DF /* Gate.swift in Sources */,
-				D8D1EEF01DFDC67300CF3870 /* Slot.swift in Sources */,
 				D8AEB73B1E9B04B700249E7E /* RGB.swift in Sources */,
 				D8CB764E1E17932900A286DF /* Import.swift in Sources */,
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,

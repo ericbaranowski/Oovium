@@ -109,12 +109,12 @@ public final class Chain: CustomStringConvertible {
 	}
 	
 //	private func add (morph: @escaping (Lambda)->()) {
-	private func add (morph: Morph) {
-		lambda.addMorph(morph)
-	}
-	private func apply (tag: Tag) {
-		lambda.applyTag(tag)
-	}
+//	private func add (morph: Morph) {
+//		lambda.addMorph(morph)
+//	}
+//	private func apply (tag: Tag) {
+//		lambda.applyTag(tag)
+//	}
 	
 // Tokens ==========================================================================================
 	private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
@@ -259,9 +259,11 @@ public final class Chain: CustomStringConvertible {
 			let name = buck != nil ? v.substring(to: buck!) : v
 			let type = buck != nil ? "\(v.substring(from: v.index(buck!, offsetBy: 1)))Var;" : "var;num;"
 			lambda.variables.append(name)
-			add(morph: Math.morph(key: type))
+			lambda.addMorph(Math.morph(key: type))
+//			add(morph: Math.morph(key: type))
 			
-			if unary != nil {apply(tag: unary!)}
+			if unary != nil {lambda.applyTag(unary!)}
+//			if unary != nil {apply(tag: unary!)}
 			return 1 + (unary != nil ? 1 : 0)
 			
 		} else if token.type == .constant {
