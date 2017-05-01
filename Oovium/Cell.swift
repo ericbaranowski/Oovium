@@ -13,7 +13,7 @@ public final class Cell: Domain {
 	var rowNo: Int = 0
 	var tokens: String = ""
 
-	var chain = Chain()
+	var chain: Chain!
 
 	var tower = Tower()
 

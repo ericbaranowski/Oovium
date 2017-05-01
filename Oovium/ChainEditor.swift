@@ -9,7 +9,7 @@
 import UIKit
 
 class ChainEditor: KeyPad {
-	var chain = Chain()
+	var chain: Chain!
 	
 	init() {
 		super.init(size: CGSize(width: 204, height: 251))

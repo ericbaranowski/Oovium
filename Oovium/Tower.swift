@@ -82,26 +82,16 @@ public final class Tower: Hashable {
 	
 	func wire (chain: Chain, memory: UnsafeMutablePointer<Memory>) {
 		
-		var lambda: Lambda
-		var lambdaC: UnsafeMutablePointer<LambdaC>
+		var lambdaC: UnsafeMutablePointer<Lambda>
 		
-		do {
-			try chain.compile()
-			lambda = chain.lambda
-		} catch {
-			print("\(error)")
-			return
-		}
-		
-		lambda.compile(memory: memory)
-		lambdaC = lambda.lambdaC
+		lambdaC = chain.compile(memory: memory)
 		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
 //		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
 		
 		task = lambdaTask
 
 		index = Int(AEMemoryIndexForName(memory, token.tag.key.toInt8()))
-		lambda.vi = index
+//		lambda.vi = index
 		lambdaC.pointee.vi = UInt8(index)
 		for token in chain.tokens {
 			let tower = Tower.tower(token: token)

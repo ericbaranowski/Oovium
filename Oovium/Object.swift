@@ -11,7 +11,7 @@ import Foundation
 public final class Object: Aexel {
 	var tokens: String = ""
 	
-	var chain = Chain()
+	var chain: Chain!
 	
 	var tower = Tower()
 	
@@ -26,7 +26,7 @@ public final class Object: Aexel {
 		aether.link(tower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		chain = Chain(tokens: tokens)
+		chain = Chain(tokens: tokens, tower: tower)
 		tower.wire(chain:chain, memory:memory)
 	}
 	override func towers() -> [Tower] {

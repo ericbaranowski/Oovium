@@ -21,11 +21,11 @@ public protocol Task {
 }
 
 struct LambdaTask: Task {
-	var lambda: UnsafeMutablePointer<LambdaC>!
+	var lambda: UnsafeMutablePointer<Lambda>!
 	var label: String
 	var command: String
 	
-	init (label: String, command: String, lambda: UnsafeMutablePointer<LambdaC>) {
+	init (label: String, command: String, lambda: UnsafeMutablePointer<Lambda>) {
 		self.label = label
 		self.command = command
 		self.lambda = lambda

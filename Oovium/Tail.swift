@@ -12,8 +12,8 @@ public final class Tail: Aexel {
 	var whileTokens: String = ""
 	var resultTokens: String = ""
 
-	var whileChain = Chain()
-	var resultChain = Chain()
+	var whileChain: Chain!
+	var resultChain: Chain!
 
 	var vertebras: [Vertebra] = []	
 	

@@ -68,7 +68,7 @@ typedef enum {
 } AEMorph;
 
 // Lambda ==
-typedef struct LambdaC {
+typedef struct Lambda {
 	Obj* constants;
 	byte cn;
 	
@@ -80,13 +80,13 @@ typedef struct LambdaC {
 	
 	byte vi;
 	
-} LambdaC;
+} Lambda;
 
-LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn);
-void AELambdaRelease(LambdaC* lambda);
-void AELambdaPrint(LambdaC* lambda);
-void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory);
-//void AELambdaApplyTag (LambdaC* lambda, )
+Lambda* AELambdareate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn);
+void AELambdaRelease(Lambda* lambda);
+void AELambdaPrint(Lambda* lambda);
+void AELambdaExecute (Lambda* lambda, Scratch* scratch, Memory* memory);
+//void AELambdaApplyTag (Lambda* lambda, )
 
 // Task ====
 typedef enum AETask {
@@ -97,7 +97,7 @@ typedef enum AETask {
 } AETask;
 
 typedef struct LambdaTask {
-	LambdaC* Lambda;
+	Lambda* Lambda;
 } LambdaTask;
 typedef struct GotoTask {
 	byte go2;
@@ -123,7 +123,7 @@ typedef struct Task {
 	};
 } Task;
 
-Task* AETaskCreateLambda(LambdaC* lambda);
+Task* AETaskCreateLambda(Lambda* lambda);
 Task* AETaskCreateGoto(byte go2);
 Task* AETaskCreateIfGoto(byte index,byte go2);
 Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex);

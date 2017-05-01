@@ -12,8 +12,8 @@ public final class Auto: Aexel {
 	var statesTokens: String = ""
 	var resultTokens: String = ""
 	
-	var statesChain = Chain()
-	var resultChain = Chain()
+	var statesChain: Chain!
+	var resultChain: Chain!
 	
 	public var states: [State] = []
 	
@@ -58,8 +58,8 @@ public final class Auto: Aexel {
 		aether.link(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		statesChain = Chain(tokens: statesTokens)
-		resultChain = Chain(tokens: resultTokens)
+		statesChain = Chain(tokens: statesTokens, tower: statesTower)
+		resultChain = Chain(tokens: resultTokens, tower: resultTower)
 		
 		statesTower.wire(chain:statesChain, memory:memory)
 		headTower.state = .uncalced

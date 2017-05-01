@@ -15,11 +15,11 @@ public final class RealDef: Def {
 		super.init(name: "Number", key:"num", properties: ["x"], order:1)
 	}
 	
-	static let add: (Lambda)->() = {(lambda: Lambda)->() in
-		let a = lambda.pop() as! RealObj
-		let b = lambda.pop() as! RealObj
-		lambda.push(a+b)
-	}
+//	static let add: (LambdaS)->() = {(lambda: LambdaS)->() in
+//		let a = lambda.pop() as! RealObj
+//		let b = lambda.pop() as! RealObj
+//		lambda.push(a+b)
+//	}
 
 	static var formatter_ = NumberFormatter()
 	static var scientific_ = NumberFormatter()

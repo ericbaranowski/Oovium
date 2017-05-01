@@ -8,6 +8,61 @@
 
 import Foundation
 
+fileprivate class Ops {
+	private let chain: Chain
+	
+	private var pOp: Tag?
+	private var mOp: Tag?
+	private var aOp: Tag?
+	private var cOp: Tag?
+	
+	init (_ chain: Chain) {
+		self.chain = chain
+	}
+	
+	private func doPOP (_ tag: Tag?) {
+		if let pOp = pOp {chain.applyTag(pOp)}
+		pOp = tag
+	}
+	private func doMOP (_ tag: Tag?) {
+		if let mOp = mOp {chain.applyTag(mOp)}
+		mOp = tag
+	}
+	private func doAOP (_ tag: Tag?) {
+		if let aOp = aOp {chain.applyTag(aOp)}
+		aOp = tag
+	}
+	private func doCOP (_ tag: Tag?) {
+		if let cOp = cOp {chain.applyTag(cOp)}
+		cOp = tag
+	}
+	
+	func pOp (_ tag: Tag) {
+		doPOP(tag)
+	}
+	func mOp (_ tag: Tag) {
+		doPOP(nil)
+		doMOP(tag)
+	}
+	func aOp (_ tag: Tag) {
+		doPOP(nil)
+		doMOP(nil)
+		doAOP(tag)
+	}
+	func cOp (_ tag: Tag) {
+		doPOP(nil)
+		doMOP(nil)
+		doAOP(nil)
+		doCOP(tag)
+	}
+	func end() {
+		doPOP(nil)
+		doMOP(nil)
+		doAOP(nil)
+		doCOP(nil)
+	}
+}
+
 enum ParseError: Error {
 	case general
 }
@@ -20,19 +75,20 @@ protocol ChainDelegate {
 
 public final class Chain: CustomStringConvertible {
 	var tokens = [Token]()
-	var lambda: Lambda = Lambda()
-	let tower: Tower = Tower()
+	let tower: Tower
 	var delegate: ChainDelegate?
 	var open: Bool = false
+	var lambda: UnsafeMutablePointer<Lambda>?
 	
-	init() {}
-	public init (tokens: String) {
+	public init (tokens: String, tower: Tower) {
+		self.tower = tower
 		let keys = tokens.components(separatedBy: ";")
 		for key in keys {
 			self.tokens.append(Token.token(key: key))
 		}
 	}
 	init (string: String) {
+		tower = Tower()
 		for c in string.characters {
 			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "0")))}
 			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "1")))}
@@ -78,14 +134,14 @@ public final class Chain: CustomStringConvertible {
 		delegate?.onEdit()
 	}
 	func ok() {
-		do {
-			open = false
-			try compile()
-			tower.signal()
-			delegate?.onOK()
-		} catch {
-			print(error)
-		}
+//		do {
+//			open = false
+//			try compile()
+//			tower.signal()
+//			delegate?.onOK()
+//		} catch {
+//			print(error)
+//		}
 	}
 
 	var store: String {
@@ -104,10 +160,6 @@ public final class Chain: CustomStringConvertible {
 		return sb
 	}
 	
-	func compile() throws {
-		lambda = try parse(tokens: tokens)
-	}
-	
 //	private func add (morph: @escaping (Lambda)->()) {
 //	private func add (morph: Morph) {
 //		lambda.addMorph(morph)
@@ -116,7 +168,48 @@ public final class Chain: CustomStringConvertible {
 //		lambda.applyTag(tag)
 //	}
 	
-// Tokens ==========================================================================================
+// Parsing =========================================================================================
+	private var morphs = [Int]()
+	private var variables = [String]()
+	private var varIndexes = [Int]()
+	private var constants = [Double]()
+	private var stack = [String](repeating: "", count: 10)
+	private var sp = 0
+	
+	// Stack
+	private func push (_ key: String) {
+		stack[sp] = key;
+		sp += 1
+	}
+	private func pop() -> String {
+		sp -= 1
+		return stack[sp]
+	}
+	private func peek() -> String {
+		return stack[sp-1]
+	}
+	
+	private func addMorph (_ morph: Morph) {
+		morphs.append(morph.rawValue)
+		push("num")
+	}
+	private func addConstant (_ x: Double) {
+		constants.append(x)
+		applyTag(Tag.constant)
+	}
+
+	fileprivate func applyTag (_ tag: Tag) {
+		var key = "\(tag.key);"
+		var defKeys = [String]()
+		for _ in 0..<tag.params {
+			defKeys.append(pop())
+		}
+		for i in 0..<tag.params {
+			key += "\(defKeys[tag.params-1-i]);"
+		}
+		addMorph(Math.morph(key: key))
+	}
+	
 	private func parseOperator (tokens:[Token], i:Int, ops:Ops) throws {
 		let token: Token = tokens[i]
 		
@@ -227,7 +320,7 @@ public final class Chain: CustomStringConvertible {
 		}
 		return sb;
 	}
-	private func parseOperand (tokens:[Token], i:Int, lambda:Lambda) throws -> Int {
+	private func parseOperand (tokens:[Token], i:Int) throws -> Int {
 		var i = i
 		if (tokens.count <= i)
 		{throw ParseError.general}
@@ -246,9 +339,10 @@ public final class Chain: CustomStringConvertible {
 		if token.type == .digit {
 			let n: String = parseNumber(tokens:tokens, i:i)
 			let x: Double = Double(n)!
-			lambda.addConstant(x);
-			if let unary = unary
-			{lambda.applyTag(unary)}
+			addConstant(x);
+			if let unary = unary {
+				applyTag(unary)
+			}
 			return n.lengthOfBytes(using: .ascii) + (unary != nil ? 1 : 0)
 		} else if token == .leftParen {
 		} else if token.type == .function {
@@ -258,11 +352,11 @@ public final class Chain: CustomStringConvertible {
 			let buck = v.range(of:"$")?.lowerBound
 			let name = buck != nil ? v.substring(to: buck!) : v
 			let type = buck != nil ? "\(v.substring(from: v.index(buck!, offsetBy: 1)))Var;" : "var;num;"
-			lambda.variables.append(name)
-			lambda.addMorph(Math.morph(key: type))
+			variables.append(name)
+			addMorph(Math.morph(key: type))
 //			add(morph: Math.morph(key: type))
 			
-			if unary != nil {lambda.applyTag(unary!)}
+			if unary != nil {applyTag(unary!)}
 //			if unary != nil {apply(tag: unary!)}
 			return 1 + (unary != nil ? 1 : 0)
 			
@@ -272,21 +366,60 @@ public final class Chain: CustomStringConvertible {
 		
 		throw ParseError.general
 	}
-	private func parseTokens (tokens:[Token], start:Int, stop:Int, lambda:Lambda) throws {
+	private func parseTokens (tokens:[Token], start:Int, stop:Int) throws {
 		if (tokens.count == 0) {return}
-		let ops: Ops = Ops(lambda)
+		let ops: Ops = Ops(self)
 		var i: Int = start
-		i += try parseOperand(tokens:tokens, i:i, lambda:lambda)
+		i += try parseOperand(tokens:tokens, i:i)
 		while i < stop {
 			try parseOperator(tokens:tokens, i:i, ops:ops)
 			i += 1
-			i += try parseOperand(tokens:tokens, i:i, lambda:lambda)
+			i += try parseOperand(tokens:tokens, i:i)
 		}
 		ops.end()
 	}
-	private func parse (tokens: [Token]) throws -> Lambda {
-		try parseTokens(tokens:tokens, start:0, stop:tokens.count, lambda:lambda)
-		return lambda
+	private func parse (tokens: [Token]) throws {
+		try parseTokens(tokens:tokens, start:0, stop:tokens.count)
+	}
+	
+	public func compile (memory: UnsafeMutablePointer<Memory>) -> UnsafeMutablePointer<Lambda> {
+		do {
+			try parse(tokens: self.tokens)
+		} catch {
+			print("\(error)")
+		}
+		
+		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
+		
+		varIndexes = [Int]()
+		for name in variables {
+			varIndexes.append(Int(AEMemoryIndexForName(memory, name.toInt8())))
+		}
+		
+		let cn = constants.count
+		let c: UnsafeMutablePointer<Obj>! = UnsafeMutablePointer<Obj>.allocate(capacity: cn)
+		for i in 0..<cn {
+			c[i].a.x = constants[i]
+		}
+		
+		let vn = variables.count
+		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)
+		for i in 0..<vn {
+			v[i] = UInt8(AEMemoryIndexForName(memory, variables[i].toInt8()))
+		}
+		
+		let mn = morphs.count
+		let m: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: mn)
+		for i in 0..<mn {
+			m[i] = UInt8(morphs[i])
+		}
+
+		lambda = AELambdareate(UInt8(vi), c, UInt8(cn), v, UInt8(vn), m, UInt8(mn))
+		
+		c.deallocate(capacity: cn)
+		v.deallocate(capacity: vn)
+		m.deallocate(capacity: mn)
+		return lambda!
 	}
 	
 // CustomStringConvertible =========================================================================

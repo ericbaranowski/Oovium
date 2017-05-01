@@ -11,7 +11,7 @@ import Foundation
 public final class Mech: Aexel {
 	var resultTokens: String = ""
 	
-	var resultChain = Chain()
+	var resultChain: Chain!
 	
 	var headTower = Tower()
 	var resultTower = Tower()

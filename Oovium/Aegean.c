@@ -73,8 +73,8 @@ void AEScratchRelease(Scratch* scratch) {
 }
 
 // Lambda ==========================================================================================
-LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn) {
-	LambdaC* lambda = (LambdaC*)malloc(sizeof(LambdaC));
+Lambda* AELambdareate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn) {
+	Lambda* lambda = (Lambda*)malloc(sizeof(Lambda));
 	
 	lambda->vi = vi;
 	
@@ -95,13 +95,13 @@ LambdaC* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte 
 	
 	return lambda;
 }
-void AELambdaRelease(LambdaC* lambda) {
+void AELambdaRelease(Lambda* lambda) {
 	free(lambda->constants);
 	free(lambda->variables);
 	free(lambda->morphs);
 	free(lambda);
 }
-void AELambdaPrint (LambdaC* lambda) {
+void AELambdaPrint (Lambda* lambda) {
 	printf("[ Lambda ==================== ]\n");
 	printf("  index: %d\n", lambda->vi);
 	printf("  constants:\n");
@@ -115,7 +115,7 @@ void AELambdaPrint (LambdaC* lambda) {
 		printf("  [%2d][%2d]\n", i, lambda->morphs[i]);
 	printf("[ =========================== ]\n\n");
 }
-void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory) {
+void AELambdaExecute (Lambda* lambda, Scratch* scratch, Memory* memory) {
 	scratch->cp = 0;
 	scratch->vp = 0;
 	scratch->sp = 0;
@@ -174,7 +174,7 @@ void AELambdaExecute (LambdaC* lambda, Scratch* scratch, Memory* memory) {
 }
 
 // Task ============================================================================================
-Task* AETaskCreateLambda(LambdaC* lambda) {
+Task* AETaskCreateLambda(Lambda* lambda) {
 	Task* task = (Task*)malloc(sizeof(Task));
 	task->type = AETaskLambda;
 	task->lambda.Lambda = lambda;

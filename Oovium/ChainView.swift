@@ -14,7 +14,7 @@ protocol ChainViewDelegate {
 }
 
 class ChainView: UIView, UIKeyInput, ChainDelegate {
-	var chain: Chain = Chain()
+	var chain: Chain!
 	var delegate: ChainViewDelegate?
 	
 	init() {
