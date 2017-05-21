@@ -28,17 +28,62 @@ public final class Web: CustomStringConvertible {
 		printTowers(towers: certain)
 		
 		print("\(memory)")
-		_ = program(recipe: recipeS, towers: certain, memory: memory, n: 0)
+		_ = programS(recipe: recipeS, towers: certain, memory: memory, n: 0)
 		print("\(recipeS)")
 	}
 	
 	func strand (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>) -> RecipeS {
 		let recipeS = RecipeS()
-		_ = program(recipe: recipeS, towers: towers, memory: memory, n: 0)
+		_ = programS(recipe: recipeS, towers: towers, memory: memory, n: 0)
 		return recipeS
 	}
 	
-	func program (recipe: RecipeS, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, n: Int) -> Int {
+	func program (recipe: UnsafeMutablePointer<Recipe>, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, n: Int) -> Int {
+		var n = n
+		var progress: Bool
+		repeat {
+			progress = false
+			
+			for tower in towers {
+				guard tower.ping(memory) == .progress else {continue}
+
+				progress = true
+//				recipe.pointee.tasks = tower.task
+				n += 1
+				
+				guard tower.gate != nil else {continue}
+				
+				let ifGotoIndex = n
+				recipe.pointee.tasks[n] = AETaskCreateIfGoto(0, 0)
+				n += 1
+				var oldN = n
+				var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
+				n = program(recipe: recipe, towers: newTowers, memory: memory, n: n)
+				if oldN != n {
+					recipe.pointee.tasks[ifGotoIndex] = AETaskCreateIfGoto(AEMemoryIndexForName(memory, tower.name.toInt8()), UInt8(n+1))
+				} else {
+					n -= 1
+				}
+				
+				let gotoIndex = n
+				recipe.pointee.tasks[n] = AETaskCreateGoto(0)
+				n += 1
+				oldN = n
+				newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
+				n = program(recipe: recipe, towers: newTowers, memory: memory, n: n)
+				if oldN != n {
+					recipe.pointee.tasks[gotoIndex] = AETaskCreateGoto(UInt8(n))
+				} else {
+					n -= 1
+				}
+			}
+			
+		} while (progress)
+		
+		return n
+	}
+	
+	func programS (recipe: RecipeS, towers: Set<Tower>, memory: UnsafeMutablePointer<Memory>, n: Int) -> Int {
 		var n = n
 		
 		var progress: Bool
@@ -58,7 +103,7 @@ public final class Web: CustomStringConvertible {
 						n += 1
 						var oldN = n
 						var newTowers = head.towersStronglylinked(for: self.tail, override: tower.thenTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
+						n = programS(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
 							recipeS.replace(at: ifGotoIndex, with: IfGotoTask(name: tower.name, index: Int(AEMemoryIndexForName(memory, tower.name.toInt8())), goto: n+1))
 						} else {
@@ -71,7 +116,7 @@ public final class Web: CustomStringConvertible {
 						n += 1
 						oldN = n
 						newTowers = head.towersStronglylinked(for: self.tail, override: tower.elseTo).subtracting(towers)
-						n = program(recipe: recipe, towers: newTowers, memory:memory, n:n)
+						n = programS(recipe: recipe, towers: newTowers, memory:memory, n:n)
 						if oldN != n {
 							recipeS.replace(at: gotoIndex, with: GotoTask(goto: n))
 						} else {
