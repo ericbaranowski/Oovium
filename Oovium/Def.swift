@@ -25,9 +25,9 @@ public class Def {
 		self.init(name:name, key:key, properties:properties, order:9)
 	}
 	
-	func format (_ obj: ObjS) -> String {
-		return "format not defined"
-	}
+//	func format (_ obj: ObjS) -> String {
+//		return "format not defined"
+//	}
 	
 //	static let variable = {(lambda: Lambda)->() in
 ////		lambda.push(lambda.nextVar())

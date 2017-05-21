@@ -34,13 +34,13 @@ public final class RealDef: Def {
 		scientific_.numberStyle = .scientific
 	}
 
-	override func format (_ obj: ObjS) -> String {
-		let x = (obj as! RealObj).x
-		if (fabs(x) < 0.00000001 && x != 0) || fabs(x) > 999999999 {
-			return RealDef.scientific_.string(from: NSNumber(value: x))!
-		} else {
-			return RealDef.formatter_.string(from: NSNumber(value: x))!
-		}
-	}
+//	override func format (_ obj: ObjS) -> String {
+//		let x = (obj as! RealObj).x
+//		if (fabs(x) < 0.00000001 && x != 0) || fabs(x) > 999999999 {
+//			return RealDef.scientific_.string(from: NSNumber(value: x))!
+//		} else {
+//			return RealDef.formatter_.string(from: NSNumber(value: x))!
+//		}
+//	}
 
 }

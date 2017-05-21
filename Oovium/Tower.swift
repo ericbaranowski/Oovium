@@ -17,8 +17,9 @@ enum CalcState {
 
 public final class Tower: Hashable {
 	public var name: String
-	public var index: Int = -1
-	var task: Task?
+	public var index: UInt8 = 0
+	var task: UnsafeMutablePointer<Task>?
+//	var taskS: TaskS?
 	var token: Token!
 	
 	var upstream: Set<Tower> = Set<Tower>()
@@ -35,7 +36,7 @@ public final class Tower: Hashable {
 	init() {
 		name = "[\(arc4random_uniform(99999999))]"
 	}
-	public init (task: Task?) {
+	public init (task: UnsafeMutablePointer<Task>?) {
 		name = "[\(arc4random_uniform(99999999))]"
 		self.task = task
 	}
@@ -82,17 +83,18 @@ public final class Tower: Hashable {
 	
 	func wire (chain: Chain, memory: UnsafeMutablePointer<Memory>) {
 		
-		var lambdaC: UnsafeMutablePointer<Lambda>
+		var lambda: UnsafeMutablePointer<Lambda>
 		
-		lambdaC = chain.compile(memory: memory)
-		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
+		lambda = chain.compile(memory: memory)
+//		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
+		let lambdaTask = AETaskCreateLambda(lambda)
 //		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
 		
 		task = lambdaTask
 
-		index = Int(AEMemoryIndexForName(memory, token.tag.key.toInt8()))
+		index = AEMemoryIndexForName(memory, token.tag.key.toInt8())
 //		lambda.vi = index
-		lambdaC.pointee.vi = UInt8(index)
+		lambda.pointee.vi = UInt8(index)
 		for token in chain.tokens {
 			let tower = Tower.tower(token: token)
 			if let tower = tower {
@@ -214,49 +216,21 @@ public final class Tower: Hashable {
 			}
 		}
 
-		if let task = task {
-			state = task.calculate(memory: memory)
-			if state == .calced {
-				AEMemoryFix(memory, index)
-			}
-		}
+		_ = AETaskExecute(task, memory)
+		state = .calced
+		AEMemoryFix(memory, index)
 		
 		return .progress
 	}
 	
-//	func evaluate (vars: [String:Obj?]) -> CalcState {
-//		if (state != .uncalced || vars[task.name] != nil)
-//			{return .cached}
-//		
-//		for tower in upstream {
-//			if (tower.state == .calced) {continue}
-//			if (vars[tower.task.name] != nil) {continue}
-//			return .notReady
-//		}
-//		return task.eval(vars) == .calced ? .progress : .cached
-//	}
-//	private func loadEval (_ towers: inout Set<Tower>) {
-//		towers.insert(self)
-//		for tower in downstream
-//			{tower.loadEval(&towers)}
-//	}
-	func triggerEval (_ vars: [String:ObjS?]) {
-		
-//		var progress: Bool
-//		repeat {
-//			for tower in 
-//		} while (progress)
-	}
-	
-	
 	public static func printTowers (_ towers: Set<Tower>) {
 		var sb = String()
 		sb.append("[ Towers =================================== ]\n")
-		for tower in towers  {
-			if let task = tower.task {
-				sb.append("  \(task.label) : \(task.command)\n")
-			}
-		}
+//		for tower in towers  {
+//			if let taskS = tower.taskS {
+//				sb.append("  \(taskS.label) : \(taskS.command)\n")
+//			}
+//		}
 		sb.append("[ ========================================== ]\n\n")
 		print("\(sb)")
 	}

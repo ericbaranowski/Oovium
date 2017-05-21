@@ -39,7 +39,7 @@ typedef struct Memory {
 
 Memory* AEMemoryCreate(long sn);
 void AEMemoryRelease();
-void AEMemoryFix(Memory* memory, long index);
+void AEMemoryFix(Memory* memory, byte index);
 void AEMemoryClear(Memory* memory);
 void AEMemoryPrint(Memory* memory);
 byte AEMemoryIndexForName(Memory* memory, char* name);
@@ -127,6 +127,7 @@ Task* AETaskCreateLambda(Lambda* lambda);
 Task* AETaskCreateGoto(byte go2);
 Task* AETaskCreateIfGoto(byte index,byte go2);
 Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex);
+long AETaskExecute (Task* task, Memory* memory);
 
 // Recipe ==
 typedef struct Recipe {

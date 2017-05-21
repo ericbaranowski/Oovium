@@ -30,7 +30,7 @@ void AEMemoryRelease (Memory* memory) {
 	free(memory->slots);
 	free(memory);
 }
-void AEMemoryFix(Memory* memory, long index) {
+void AEMemoryFix(Memory* memory, byte index) {
 	memory->slots[index].fixed = 1;
 }
 void AEMemoryClear(Memory* memory) {

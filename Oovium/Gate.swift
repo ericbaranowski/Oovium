@@ -51,8 +51,9 @@ public final class Gate: Aexel {
 		elseTower.wire(chain: elseChain, memory:memory)
 		
 		let resultName = resultTower.token.tag.key
-		resultTower.index = Int(AEMemoryIndexForName(memory, resultName.toInt8()))
-		let forkTask = ForkTask(/*label: resultName, command: "\(resultName) = ~"*/ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
+		resultTower.index = AEMemoryIndexForName(memory, resultName.toInt8())
+//		let forkTask = ForkTask(/*label: resultName, command: "\(resultName) = ~"*/ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
+		let forkTask = AETaskCreateFork(ifTower.index, thenTower.index, elseTower.index, resultTower.index)
 		resultTower.task = forkTask
 		
 		ifTower.attach(resultTower)
