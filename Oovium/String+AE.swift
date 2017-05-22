@@ -1,5 +1,5 @@
 //
-//  String+MH.swift
+//  String+AE.swift
 //  Oovium
 //
 //  Created by Joe Charlier on 2/4/17.

@@ -414,7 +414,7 @@ public final class Chain: CustomStringConvertible {
 			m[i] = UInt8(morphs[i])
 		}
 
-		lambda = AELambdareate(UInt8(vi), c, UInt8(cn), v, UInt8(vn), m, UInt8(mn))
+		lambda = AELambdaCreate(UInt8(vi), c, UInt8(cn), v, UInt8(vn), m, UInt8(mn))
 		
 		c.deallocate(capacity: cn)
 		v.deallocate(capacity: vn)

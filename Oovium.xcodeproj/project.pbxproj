@@ -39,7 +39,7 @@
 		D8185C271EABFEF600011CE0 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A01DED96F900361939 /* Math.swift */; };
 		D8185C281EABFF0600011CE0 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8185C291EABFFAB00011CE0 /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
-		D8185C2B1EAD47C500011CE0 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
+		D8185C2B1EAD47C500011CE0 /* String+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+AE.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
@@ -159,8 +159,11 @@
 		D8FB18F21E1871A100350284 /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76921E185D1300A286DF /* Migrate.swift */; };
 		D8FB18F41E187DB600350284 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB18F31E187DB600350284 /* Basket.swift */; };
 		D8FB18F51E187EA700350284 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB18F31E187DB600350284 /* Basket.swift */; };
-		D8FDE1D21E46F08600B18F06 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
-		D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+MH.swift */; };
+		D8FD24FF1ED295E900E50674 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD24FE1ED295E900E50674 /* Spider.swift */; };
+		D8FD25001ED2961500E50674 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD24FE1ED295E900E50674 /* Spider.swift */; };
+		D8FD25011ED2961500E50674 /* Spider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FD24FE1ED295E900E50674 /* Spider.swift */; };
+		D8FDE1D21E46F08600B18F06 /* String+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+AE.swift */; };
+		D8FDE1D31E46F3D500B18F06 /* String+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+AE.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,7 +287,8 @@
 		D8F2BA2C1E9BC8AF006A1492 /* TokenKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenKey.swift; sourceTree = "<group>"; };
 		D8F2BA2F1E9BCB43006A1492 /* ChainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainView.swift; sourceTree = "<group>"; };
 		D8FB18F31E187DB600350284 /* Basket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
-		D8FDE1D11E46F08600B18F06 /* String+MH.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+MH.swift"; sourceTree = "<group>"; };
+		D8FD24FE1ED295E900E50674 /* Spider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spider.swift; sourceTree = "<group>"; };
+		D8FDE1D11E46F08600B18F06 /* String+AE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+AE.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -342,7 +346,6 @@
 				D8AEB7431E9B6F1600249E7E /* Extensions */,
 				D81FCDBE1E1343B100E8936E /* Satyr.swift */,
 				D82BE4D01E21A00F00E8E710 /* JSON.swift */,
-				D8FDE1D11E46F08600B18F06 /* String+MH.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -561,7 +564,6 @@
 			isa = PBXGroup;
 			children = (
 				D830C0B31E3EB57500FF25A8 /* Calculate */,
-				D89BEC031DE8D36F00B56F6A /* Compile */,
 				D89BEC021DE8D36A00B56F6A /* Parse */,
 				D80EB9A01DED96F900361939 /* Math.swift */,
 			);
@@ -571,21 +573,15 @@
 		D89BEC021DE8D36A00B56F6A /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				D89BEC041DE8D37F00B56F6A /* Defs */,
 				D89BEC2E1DE8D44500B56F6A /* Tag.swift */,
 				D89BEC2F1DE8D44500B56F6A /* Token.swift */,
 				D89BEC2C1DE8D44500B56F6A /* Chain.swift */,
 				D89BEC251DE8D42100B56F6A /* Tower.swift */,
+				D8FD24FE1ED295E900E50674 /* Spider.swift */,
 				D85EEFCE1E10544A00166C4C /* Web.swift */,
 			);
 			name = Parse;
-			sourceTree = "<group>";
-		};
-		D89BEC031DE8D36F00B56F6A /* Compile */ = {
-			isa = PBXGroup;
-			children = (
-				D89BEC041DE8D37F00B56F6A /* Defs */,
-			);
-			name = Compile;
 			sourceTree = "<group>";
 		};
 		D89BEC041DE8D37F00B56F6A /* Defs */ = {
@@ -614,6 +610,7 @@
 		D8AEB7431E9B6F1600249E7E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D8FDE1D11E46F08600B18F06 /* String+AE.swift */,
 				D8AEB7441E9B6F2700249E7E /* UIControl+AE.swift */,
 			);
 			name = Extensions;
@@ -860,6 +857,7 @@
 				D806590E1DE90EC800325182 /* DateDef.swift in Sources */,
 				D8CB767E1E17AAAF00A286DF /* Gate.swift in Sources */,
 				D84CD40A1E9A816200029120 /* Bubble.swift in Sources */,
+				D8FD25001ED2961500E50674 /* Spider.swift in Sources */,
 				D8CB76811E17AAAF00A286DF /* Input.swift in Sources */,
 				D8F2BA291E9BC57E006A1492 /* KeyPad.swift in Sources */,
 				D8CB76771E17AAAF00A286DF /* Aether.swift in Sources */,
@@ -872,7 +870,7 @@
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
 				D80EB9A21DED97EB00361939 /* Math.swift in Sources */,
 				D80659191DE90EC800325182 /* ViewController.swift in Sources */,
-				D8FDE1D31E46F3D500B18F06 /* String+MH.swift in Sources */,
+				D8FDE1D31E46F3D500B18F06 /* String+AE.swift in Sources */,
 				D8F2BA2B1E9BC584006A1492 /* Key.swift in Sources */,
 				D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
@@ -924,13 +922,14 @@
 				D8185C251EABFEF300011CE0 /* Token.swift in Sources */,
 				D8185C111EABFEAC00011CE0 /* Chain.swift in Sources */,
 				D8185C171EABFEEA00011CE0 /* RealDef.swift in Sources */,
+				D8FD25011ED2961500E50674 /* Spider.swift in Sources */,
 				D8185C181EABFEEA00011CE0 /* ComplexDef.swift in Sources */,
 				D8185C161EABFEEA00011CE0 /* Def.swift in Sources */,
 				D8185C191EABFEEA00011CE0 /* VectorDef.swift in Sources */,
 				D8185C1A1EABFEEA00011CE0 /* LambdaDef.swift in Sources */,
 				D8185C281EABFF0600011CE0 /* Aegean.c in Sources */,
 				D8185C291EABFFAB00011CE0 /* Satyr.swift in Sources */,
-				D8185C2B1EAD47C500011CE0 /* String+MH.swift in Sources */,
+				D8185C2B1EAD47C500011CE0 /* String+AE.swift in Sources */,
 				D8185C231EABFEEE00011CE0 /* Web.swift in Sources */,
 				D8185C271EABFEF600011CE0 /* Math.swift in Sources */,
 			);
@@ -958,6 +957,7 @@
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
+				D8FD24FF1ED295E900E50674 /* Spider.swift in Sources */,
 				D84CD3F81E994A3100029120 /* AetherView.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
@@ -981,7 +981,7 @@
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
 				D8AEB7401E9B6AE100249E7E /* Schematic.swift in Sources */,
-				D8FDE1D21E46F08600B18F06 /* String+MH.swift in Sources */,
+				D8FDE1D21E46F08600B18F06 /* String+AE.swift in Sources */,
 				D8CB76721E17943D00A286DF /* Anchor.swift in Sources */,
 				D8CB76701E17942A00A286DF /* State.swift in Sources */,
 				D894A05F1EA4305E00A9346A /* ChainLeaf.swift in Sources */,

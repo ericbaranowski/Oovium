@@ -15,7 +15,7 @@ enum CalcState {
 	case notReady, progress, cached
 }
 
-public final class Tower: Hashable {
+public final class Tower: Hashable, CustomStringConvertible {
 	public var name: String
 	public var index: UInt8 = 0
 	var task: UnsafeMutablePointer<Task>?
@@ -88,6 +88,9 @@ public final class Tower: Hashable {
 		lambda = chain.compile(memory: memory)
 //		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
 		let lambdaTask = AETaskCreateLambda(lambda)
+		lambdaTask?.pointee.label = token.tag.key.toInt8()
+		lambdaTask?.pointee.command = "\(token.tag.key) = \(chain.display)".toInt8()
+		
 //		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
 		
 		task = lambdaTask
@@ -188,20 +191,32 @@ public final class Tower: Hashable {
 	}
 
 // Evaluate ========================================================================================
-	func ping (_ memory: UnsafeMutablePointer<Memory>) -> CalcState {
-		if memory.pointee.slots[Int(index)].loaded != 0 {return .cached}
+	private func isCalced(_ spider: Spider) -> Bool {
+		return spider.memory.pointee.slots[Int(index)].loaded != UInt8(0)
+	}
+	func ping (_ spider: inout Spider) -> Bool {
+		if isCalced(spider) {return false}
+		
+		if let gate = gate {
+			if !gate.isCalced(spider) || !spider.needed.contains(gate) {return false}
+		}
+		
+//		var needed: Bool = false
+//		for tower in downstream {
+//			if spider.needed.contains(tower) {
+//				needed = true
+//				break
+//			}
+//		}
+//		if !needed {return false}
 		
 		for tower in upstream {
 			if tower.task == nil {continue}
-			if memory.pointee.slots[Int(tower.index)].loaded == 0 {
-				return .notReady
-			}
+			if !tower.isCalced(spider) {return false}
 		}
 		
-		memory.pointee.slots[Int(index)].loaded = 1
-//		memory.load(index, with: RealObj(0))
-		
-		return .progress
+		spider.memory.pointee.slots[Int(index)].loaded = 1
+		return true
 	}
 	
 	func calculate (_ memory: UnsafeMutablePointer<Memory>) -> CalcState {
@@ -226,6 +241,9 @@ public final class Tower: Hashable {
 	public static func printTowers (_ towers: Set<Tower>) {
 		var sb = String()
 		sb.append("[ Towers =================================== ]\n")
+		for tower in towers {
+			print("\(tower)")
+		}
 //		for tower in towers  {
 //			if let taskS = tower.taskS {
 //				sb.append("  \(taskS.label) : \(taskS.command)\n")
@@ -244,11 +262,11 @@ public final class Tower: Hashable {
 	}
 
 	
-// CustomDebugStringConvertible ====================================================================
+// CustomStringConvertible ====================================================================
 	private var display: String {
-		get {return ""}
+		return "\(name)"
 	}
-	public var debugDescription: String {
+	public var description: String {
 		var sb: String = ""
 
 		sb.append("Tower [\(display) : \(state)\n")

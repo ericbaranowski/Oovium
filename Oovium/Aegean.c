@@ -73,7 +73,7 @@ void AEScratchRelease(Scratch* scratch) {
 }
 
 // Lambda ==========================================================================================
-Lambda* AELambdareate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn) {
+Lambda* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn) {
 	Lambda* lambda = (Lambda*)malloc(sizeof(Lambda));
 	
 	lambda->vi = vi;
@@ -232,6 +232,30 @@ long AETaskExecute (Task* task, Memory* memory) {
 		} break;
 	}
 }
+char* AETaskCommand(Task* task) {
+	int n = 32;
+	char* sb = malloc(sizeof(char)*n);
+	
+	switch (task->type) {
+		case AETaskGoto: {
+			snprintf(sb, n,"GOTO %d", task->go2.go2);
+		} break;
+			
+		case AETaskIfGoto: {
+			snprintf(sb, n,"IF %d == FALSE THEN GOTO %d", task->ifGoto.index, task->ifGoto.go2);
+		} break;
+			
+		case AETaskFork: {
+			snprintf(sb, n, "fork");
+		} break;
+			
+		case AETaskLambda: {
+			snprintf(sb, n, "lambda");
+		} break;
+	}
+	
+	return sb;
+}
 
 // Recipe ==========================================================================================
 Recipe* AERecipeCreate (long tn) {
@@ -250,6 +274,14 @@ void AERecipeExecute (Recipe* recipe, Memory* memory) {
 		long go2 = AETaskExecute(recipe->tasks[tp], memory);
 		tp = go2 == -1 ? tp+1 : go2;
 	}
+}
+void AERecipePrint(Recipe* recipe) {
+	printf("[ Recipe ============================================= ]\n");
+	for (int i=0;i<recipe->tn;i++) {
+		Task* task = recipe->tasks[i];
+		printf("  %2d> %12s : %-32s\n", i, task->label, task->command);
+	}
+	printf("[ ==================================================== ]\n\n");
 }
 
 // Aegean ==========================================================================================

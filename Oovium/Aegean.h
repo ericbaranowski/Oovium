@@ -82,7 +82,7 @@ typedef struct Lambda {
 	
 } Lambda;
 
-Lambda* AELambdareate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn);
+Lambda* AELambdaCreate(byte vi, Obj* constants, byte cn, byte* variables, byte vn, byte* morphs, byte mn);
 void AELambdaRelease(Lambda* lambda);
 void AELambdaPrint(Lambda* lambda);
 void AELambdaExecute (Lambda* lambda, Scratch* scratch, Memory* memory);
@@ -115,6 +115,8 @@ typedef struct ForkTask {
 
 typedef struct Task {
 	AETask type;
+	char* label;
+	char* command;
 	union {
 		LambdaTask lambda;
 		GotoTask go2;
@@ -127,7 +129,8 @@ Task* AETaskCreateLambda(Lambda* lambda);
 Task* AETaskCreateGoto(byte go2);
 Task* AETaskCreateIfGoto(byte index,byte go2);
 Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex);
-long AETaskExecute (Task* task, Memory* memory);
+long AETaskExecute(Task* task, Memory* memory);
+void AETaskPrint(Task* task);
 
 // Recipe ==
 typedef struct Recipe {
@@ -138,5 +141,6 @@ typedef struct Recipe {
 Recipe* AERecipeCreate(long tn);
 void AERecipeRelease(Recipe* recipe);
 void AERecipeExecute(Recipe* recipe, Memory* memory);
+void AERecipePrint(Recipe* recipe);
 
 void startAegean();
