@@ -15,7 +15,17 @@ final class Vertebra: Domain {
 	
 	var chain: Chain!
 	
-	var tower = Tower()
+	var tower: Tower
+
+// Inits ===========================================================================================
+	public required init() {
+		tower = Tower(name: String(format: "I%05d", 0))
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		tower = Tower(name: String(format: "I%05d", iden))
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
 
 // Domain ==========================================================================================
 	override func properties() -> [String] {

@@ -17,11 +17,27 @@ public final class Gate: Aexel {
 	var thenChain: Chain!
 	var elseChain: Chain!
 	
-	var ifTower = Tower()
-	var thenTower = Tower()
-	var elseTower = Tower()
-	var resultTower = Tower()
-	
+	var ifTower: Tower
+	var thenTower: Tower
+	var elseTower: Tower
+	var resultTower: Tower
+
+// Inits ===========================================================================================
+	public required init() {
+		ifTower = Tower(name: String(format: "IFI%05d", 0))
+		thenTower = Tower(name: String(format: "IFT%05d", 0))
+		elseTower = Tower(name: String(format: "IFE%05d", 0))
+		resultTower = Tower(name: String(format: "IF%05d", 0))
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		ifTower = Tower(name: String(format: "IFI%05d", iden))
+		thenTower = Tower(name: String(format: "IFT%05d", iden))
+		elseTower = Tower(name: String(format: "IFE%05d", iden))
+		resultTower = Tower(name: String(format: "IF%05d", iden))
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
+
 // Aexel ===========================================================================================
 	override func plugIn() {
 		ifTower.name = String(format: "IFI%05d", iden)

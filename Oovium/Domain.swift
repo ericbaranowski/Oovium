@@ -29,6 +29,18 @@ public class Domain: NSObject {
 		super.init()
 		create()
 	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		self.iden = iden
+		self.type = type
+		super.init()
+		self.load(attributes: attributes)
+	}
+//	init (iden: Int, type: String, attributes: [String:Any]) {
+//		self.iden = attributes["iden"] as! Int
+//		self.type = Domain.nameFromClass(type(of:self))
+//		super.init()
+//		load(attributes: attributes)
+//	}
 	init (forLoad: Bool) {
 		type = Domain.nameFromClass(type(of:self))
 	}
@@ -219,8 +231,9 @@ public class Domain: NSObject {
 					for child in children as! [[String:Any]] {
 						var domain: Domain? = existing[child["iden"] as! Int]
 						if domain == nil {
-							let cls = Domain.classFromName(child["type"] as! String) as! Domain.Type
-							domain = cls.init()
+							let type = child["type"] as! String
+							let cls = Domain.classFromName(type) as! Domain.Type
+							domain = cls.init(iden: child["iden"] as! Int, type: type, attributes: child)
 						}
 						domain!.load(attributes:child)
 						domain!.parent = self

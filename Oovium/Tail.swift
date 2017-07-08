@@ -17,10 +17,24 @@ public final class Tail: Aexel {
 
 	var vertebras: [Vertebra] = []	
 	
-	var headTower = Tower()
-	var whileTower = Tower()
-	var resultTower = Tower()
+	var headTower: Tower
+	var whileTower: Tower
+	var resultTower: Tower
 
+// Inits ===========================================================================================
+	public required init() {
+		headTower = Tower(name: "")
+		whileTower = Tower(name: String(format: "ATS%05d", 0))
+		resultTower = Tower(name: String(format: "ATN%05d", 0))
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		headTower = Tower(name: "")
+		whileTower = Tower(name: String(format: "ATS%05d", iden))
+		resultTower = Tower(name: String(format: "ATN%05d", iden))
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["whileTokens", "resultTokens"]

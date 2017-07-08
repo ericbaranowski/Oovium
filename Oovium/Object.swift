@@ -11,11 +11,21 @@ import Foundation
 public final class Object: Aexel {
 	var tokens: String = ""
 	
-	var chain: Chain!
+	var chain: Chain = Chain(string: "")
 	
-	var tower = Tower()
+	var tower: Tower
 	
-// Actioms =========================================================================================
+// Inits ===========================================================================================
+	public required init() {
+		tower = Tower(name: String(format: "I%05d", 0))
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		tower = Tower(name: String(format: "I%05d", iden))
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
+	
+// Actions =========================================================================================
 	func ok() {
 	}
 	

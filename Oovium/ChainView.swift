@@ -33,7 +33,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		Skin.bubble(text: "\(chain)", x: 8, y: 8, uiColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
+		Skin.bubble(text: "\(chain!)", x: 8, y: 8, uiColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
 	}
 
 // UIKeyInput ======================================================================================

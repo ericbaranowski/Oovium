@@ -33,15 +33,19 @@ public final class Tower: Hashable, CustomStringConvertible {
 	var state: TowerState = .open
 //	var stopper: NSObject?
 	
-	init() {
-		name = "[\(arc4random_uniform(99999999))]"
+//	init() {
+//		name = "[\(arc4random_uniform(99999999))]"
+//	}
+	init(name: String) {
+		self.name = name
 	}
 	public init (task: UnsafeMutablePointer<Task>?) {
 		name = "[\(arc4random_uniform(99999999))]"
 		self.task = task
 	}
 	
-	func signal () {}
+	func signal () {
+	}
 	
 	private var _orbit: Tower?
 	var orbit: Tower? {

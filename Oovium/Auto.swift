@@ -14,18 +14,32 @@ public final class Auto: Aexel {
 	
 	var statesChain: Chain!
 	var resultChain: Chain!
+
 	
 	public var states: [State] = []
 	
-	var statesTower = Tower()
-	public var headTower = Tower()
-	public var resultTower = Tower()
+	var statesTower: Tower
+	public var headTower: Tower
+	public var resultTower: Tower
 
+// Inits ===========================================================================================
+	public required init() {
+		statesTower = Tower(name: String(format: "ATS%05d", 0))
+		headTower = Tower(name: "")
+		resultTower = Tower(name: String(format: "ATN%05d", 0))
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		statesTower = Tower(name: String(format: "ATS%05d", iden))
+		headTower = Tower(name: "")
+		resultTower = Tower(name: String(format: "ATN%05d", iden))
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
+	
 	@objc public func token (name: String) {
 	}
 	
 	public func foreshadow (_ memory: UnsafeMutablePointer<Memory>) {
-		
 		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.A", iden).toInt8()))].loaded = 1
 		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.B", iden).toInt8()))].loaded = 1
 		memory.pointee.slots[Int(AEMemoryIndexForName(memory, String(format: "Auto%d.C", iden).toInt8()))].loaded = 1

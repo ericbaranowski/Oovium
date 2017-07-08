@@ -15,7 +15,11 @@ public final class Basket {
 	public init() {}
 
 	func load (attributes: [String:Any], cls: Anchor.Type) -> Anchor {
-		let anchor = cls.init(basket: self)
+		let iden: Int = attributes["iden"] as! Int
+		let type: String = attributes["type"] as! String
+		
+		let anchor = cls.init(iden: iden, type: type, attributes: attributes)
+		anchor.basket = self
 		anchor.load(attributes: attributes)
 		cache[anchor.iden] = anchor
 		return anchor

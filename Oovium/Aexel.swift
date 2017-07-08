@@ -22,6 +22,14 @@ public class Aexel: Domain {
 	func towers() -> [Tower] {
 		return []
 	}
+	
+// Inits ===========================================================================================
+	public required init() {
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		super.init(iden: iden, type: type, attributes: attributes)
+	}
 
 // Domain ==========================================================================================
 	override func properties() -> [String] {

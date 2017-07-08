@@ -88,7 +88,7 @@ public final class Chain: CustomStringConvertible {
 		}
 	}
 	init (string: String) {
-		tower = Tower()
+		tower = Tower(name: "")
 		for c in string.characters {
 			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "0")))}
 			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "1")))}
@@ -134,14 +134,10 @@ public final class Chain: CustomStringConvertible {
 		delegate?.onEdit()
 	}
 	func ok() {
-//		do {
-//			open = false
-//			try compile()
-//			tower.signal()
-//			delegate?.onOK()
-//		} catch {
-//			print(error)
-//		}
+		open = false
+//		lambda = compile(memory: memory)
+		tower.signal()
+		delegate?.onOK()
 	}
 
 	var store: String {
