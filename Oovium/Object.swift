@@ -27,13 +27,15 @@ public final class Object: Aexel {
 	
 // Actions =========================================================================================
 	func ok() {
+//		let memory = aether.memory
+		chain.ok()
 	}
 	
 // Aexel ===========================================================================================
 	override func plugIn() {
 		tower.name = String(format: "I%05d", iden)
 		tower.token = Token.token(type: .variable, tag: Tag.tag(key: tower.name))
-		aether.link(tower)
+		Tower.register(tower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		chain = Chain(tokens: tokens, tower: tower)

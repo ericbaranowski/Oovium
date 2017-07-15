@@ -52,10 +52,10 @@ public final class Gate: Aexel {
 		resultTower.name = String(format: "IF%05d", iden)
 		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name))
 		
-		aether.link(ifTower)
-		aether.link(thenTower)
-		aether.link(elseTower)
-		aether.link(resultTower)
+		Tower.register(ifTower)
+		Tower.register(thenTower)
+		Tower.register(elseTower)
+		Tower.register(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		ifChain = Chain(tokens: ifTokens, tower: ifTower)

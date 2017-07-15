@@ -8,30 +8,35 @@
 
 import Foundation
 
-@objc public final class Aether: Anchor {
+@objc public final class Aether: Anchor, MemorySource {
 	var name: String = ""
 	var xOffset: Double = 0
 	var yOffset: Double = 0
 	var readOnly: Bool = false
 	
-	public var objects: [Object] = []
-	public var gates: [Gate] = []
-	public var crons: [Cron] = []
-	public var texts: [Text] = []
-	public var mechs: [Mech] = []
-	public var tails: [Tail] = []
+	var objects: [Object] = []
+	var gates: [Gate] = []
+	var crons: [Cron] = []
+	var texts: [Text] = []
+	var mechs: [Mech] = []
+	var tails: [Tail] = []
 	public var autos: [Auto] = []
-	public var types: [Type] = []
-	public var grids: [Grid] = []
-	public var mirus: [Miru] = []
+	var types: [Type] = []
+	var grids: [Grid] = []
+	var mirus: [Miru] = []
 	
 	var aexels: [Aexel] = []
 	var tags: [String:Tag] = [:]
 	var tokens: [String:Token] = [:]
-	public var memory: UnsafeMutablePointer<Memory>!
+	public var memory: UnsafeMutablePointer<Memory>
 	
-	public func link (_ tower: Tower) {
-		Tower.link(token: tower.token, tower: tower)
+	public required init() {
+		memory = AEMemoryCreate(0);
+		super.init()
+	}
+	public required init (iden: Int, type: String, attributes: [String:Any]) {
+		memory = AEMemoryCreate(0);
+		super.init(iden: iden, type: type, attributes: attributes)
 	}
 	
 	public func wire() {
@@ -47,6 +52,8 @@ import Foundation
 			vars.append(token.tag.key)
 		}
 		vars.sort(by: {$0<$1})
+		
+		AEMemoryRelease(memory)
 		memory = AEMemoryCreate(vars.count)
 		
 		var i = -1

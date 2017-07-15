@@ -8,9 +8,10 @@
 
 import Foundation
 
-public final class Web: CustomStringConvertible {
+public final class Web: MemorySource, CustomStringConvertible {
 	let head: Tower
 	let tail: Tower
+	var memory: UnsafeMutablePointer<Memory>
 	
 	var towers: Set<Tower>
 	public var recipe: UnsafeMutablePointer<Recipe>!
@@ -19,6 +20,7 @@ public final class Web: CustomStringConvertible {
 	public init (head: Tower, tail: Tower, memory: UnsafeMutablePointer<Memory>) {
 		self.head = head
 		self.tail = tail
+		self.memory = memory
 		
 		towers = head.towersDestined(for: self.tail)
 		Tower.printTowers(towers)
@@ -45,7 +47,7 @@ public final class Web: CustomStringConvertible {
 		return recipe
 	}
 	
-	func program (tasks: inout [UnsafeMutablePointer<Task>], memory: UnsafeMutablePointer<Memory>, towers: Set<Tower>, spider: Spider, n: Int) -> Int {
+	private func program (tasks: inout [UnsafeMutablePointer<Task>], memory: UnsafeMutablePointer<Memory>, towers: Set<Tower>, spider: Spider, n: Int) -> Int {
 		var spider = spider
 		var n = n
 		var progress: Bool

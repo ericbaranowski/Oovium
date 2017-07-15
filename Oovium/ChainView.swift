@@ -51,12 +51,11 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 		setNeedsDisplay()
 	}
 	func onEdit() {
-		ChainView.chainEditor.chain = chain
-		ChainView.chainEditor.invoke()
+		Hovers.invokeChainEditor(chain: chain)
 		delegate?.onEdit()
 	}
 	func onOK() {
-		ChainView.chainEditor.dismiss()
+		Hovers.dismissChainEditor()
 		delegate?.onOK()
 	}
 	

@@ -68,8 +68,8 @@ public final class Auto: Aexel {
 		resultTower.name = String(format: "ATN%05d", iden)
 		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name))
 		
-		aether.link(statesTower)
-		aether.link(resultTower)
+		Tower.register(statesTower)
+		Tower.register(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
 		statesChain = Chain(tokens: statesTokens, tower: statesTower)

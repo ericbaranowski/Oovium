@@ -7,13 +7,13 @@
 //
 
 /* ======================================================================================
-Token is the atomic unit of entry in Oovium; it works in concert with Sheath.  The key
+Token is the atomic unit of entry in Oovium; it works in concert with Chain.  The key
 is constructed from the token type and the tag: "type:tag".  Tokens are obtained from
 the Math appliance.  Each key is unique within the Math token registry.
 
 The tag is the unique identifier of the various Token types, such as a function name.
 For Functions and Operators each tag will map to one or more Morphs.  When compiling
-the pebble the specific Morph will be chosen based on the Types of the input parameters.
+the chain the specific Morph will be chosen based on the Types of the input parameters.
 
 parse is the exact string that is used to build up the string to be sent on to Pebble.
 Often parse and tag are equal, but for Variables in particular will have the type name
@@ -62,6 +62,10 @@ public final class Token: Hashable, CustomStringConvertible {
 	public let type: TokenType
 	public let tag: Tag
 	public let level: TokenLevel?
+	
+//	public let tag: String
+//	public let params: Int
+//	public let tower: Tower?
 	
 	var key: String {
 		get {
@@ -121,7 +125,7 @@ public final class Token: Hashable, CustomStringConvertible {
 		return token(type: type, tag: tag)
 	}
 	
-	static let add: Token				= token(type: .operator,	tag: Tag.add,			level: .add)
+	static let add: Token				= token(type: .operator,	tag:Tag.add,			level: .add)
 	static let subtract: Token			= token(type: .operator,	tag:Tag.subtract,		level: .add)
 	static let multiply: Token			= token(type: .operator,	tag:Tag.multiply,		level: .multiply)
 	static let divide: Token			= token(type: .operator,	tag:Tag.divide,			level: .multiply)

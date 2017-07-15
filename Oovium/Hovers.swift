@@ -31,7 +31,15 @@ class Hovers {
 		
 	}
 	
-	static var chainEditor: ChainEditor = {
+	static private var chainEditor: ChainEditor = {
 		return ChainEditor()
 	}()
+	
+	static func invokeChainEditor(chain: Chain) {
+		chainEditor.chain = chain
+		invoke(hover: chainEditor)
+	}
+	static func dismissChainEditor() {
+		dismiss(hover: chainEditor)
+	}
 }

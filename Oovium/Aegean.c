@@ -13,7 +13,7 @@
 #include "Aegean.h"
 
 // Memory ==========================================================================================
-Memory* AEMemoryCreate (long sn) {
+Memory* AEMemoryCreate(long sn) {
 	Memory* memory = (Memory*)malloc(sizeof(Memory));
 	memory->slots = (Slot*)malloc(sizeof(Slot)*sn);
 	memory->sn = sn;
@@ -26,7 +26,7 @@ Memory* AEMemoryCreate (long sn) {
 	
 	return memory;
 }
-void AEMemoryRelease (Memory* memory) {
+void AEMemoryRelease(Memory* memory) {
 	free(memory->slots);
 	free(memory);
 }
@@ -50,7 +50,7 @@ void AEMemoryPrint(Memory* memory) {
 	}
 	printf("[ =========================== ]\n\n");
 }
-byte AEMemoryIndexForName (Memory* memory, char* name) {
+byte AEMemoryIndexForName(Memory* memory, char* name) {
 	for (int i=0;i<memory->sn;i++) {
 		if (strcmp(name, memory->slots[i].name) == 0)
 			return i;

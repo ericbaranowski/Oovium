@@ -15,6 +15,10 @@ enum CalcState {
 	case notReady, progress, cached
 }
 
+protocol MemorySource {
+	var memory: UnsafeMutablePointer<Memory> {get}
+}
+
 public final class Tower: Hashable, CustomStringConvertible {
 	public var name: String
 	public var index: UInt8 = 0
@@ -33,6 +37,8 @@ public final class Tower: Hashable, CustomStringConvertible {
 	var state: TowerState = .open
 //	var stopper: NSObject?
 	
+	var source: MemorySource?
+	
 //	init() {
 //		name = "[\(arc4random_uniform(99999999))]"
 //	}
@@ -45,32 +51,20 @@ public final class Tower: Hashable, CustomStringConvertible {
 	}
 	
 	func signal () {
+		
 	}
 	
 	private var _orbit: Tower?
 	var orbit: Tower? {
 		set {_orbit = newValue}
 		get {
-//			if (stopper != nil) {return nil}
-			if let orbit = orbitUp() {return orbit}
-//			if let orbit = orbitDown() {return orbit}
+			if let orbit = _orbit {return orbit}
+			for tower in upstream {
+				if let orbit = tower.orbit {return orbit}
+			}
 			return nil
 		}
 	}
-	
-	private func orbitUp() -> Tower? {
-		if let orbit = orbit {return orbit}
-		for tower in upstream
-			{if let orbit = tower.orbitUp() {return orbit}}
-		return nil
-		
-	}
-//	private func orbitDown() -> Tower? {
-//		if let orbit = orbit {return orbit}
-//		for tower in downstream
-//			{if let orbit = tower.orbitDown() {return orbit}}
-//		return nil
-//	}
 	
 	public func attach (_ tower: Tower) {
 		downstream.insert(tower)
@@ -288,6 +282,9 @@ public final class Tower: Hashable, CustomStringConvertible {
 	static var lookup = [Token:Tower]()
 	static func link (token: Token, tower: Tower) {
 		Tower.lookup[token] = tower
+	}
+	static func register (_ tower: Tower) {
+		Tower.lookup[tower.token] = tower
 	}
 	static func tower (token: Token) -> Tower? {
 		return Tower.lookup[token]

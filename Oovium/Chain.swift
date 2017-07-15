@@ -134,6 +134,7 @@ public final class Chain: CustomStringConvertible {
 		delegate?.onEdit()
 	}
 	func ok() {
+//	func ok(_ memory: UnsafeMutablePointer<Memory>) {
 		open = false
 //		lambda = compile(memory: memory)
 		tower.signal()
@@ -167,7 +168,7 @@ public final class Chain: CustomStringConvertible {
 // Parsing =========================================================================================
 	private var morphs = [Int]()
 	private var variables = [String]()
-	private var varIndexes = [Int]()
+//	private var varIndexes = [Int]()
 	private var constants = [Double]()
 	private var stack = [String](repeating: "", count: 10)
 	private var sp = 0
@@ -387,21 +388,21 @@ public final class Chain: CustomStringConvertible {
 		
 		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
 		
-		varIndexes = [Int]()
-		for name in variables {
-			varIndexes.append(Int(AEMemoryIndexForName(memory, name.toInt8())))
+//		varIndexes = [Int]()
+//		for name in variables {
+//			varIndexes.append(Int(AEMemoryIndexForName(memory, name.toInt8())))
+//		}
+		
+		let vn = variables.count
+		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)
+		for i in 0..<vn {
+			v[i] = UInt8(AEMemoryIndexForName(memory, variables[i].toInt8()))
 		}
 		
 		let cn = constants.count
 		let c: UnsafeMutablePointer<Obj>! = UnsafeMutablePointer<Obj>.allocate(capacity: cn)
 		for i in 0..<cn {
 			c[i].a.x = constants[i]
-		}
-		
-		let vn = variables.count
-		let v: UnsafeMutablePointer<UInt8>! = UnsafeMutablePointer<UInt8>.allocate(capacity: vn)
-		for i in 0..<vn {
-			v[i] = UInt8(AEMemoryIndexForName(memory, variables[i].toInt8()))
 		}
 		
 		let mn = morphs.count

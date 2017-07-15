@@ -38,7 +38,7 @@ typedef struct Memory {
 } Memory;
 
 Memory* AEMemoryCreate(long sn);
-void AEMemoryRelease();
+void AEMemoryRelease(Memory* memory);
 void AEMemoryFix(Memory* memory, byte index);
 void AEMemoryClear(Memory* memory);
 void AEMemoryPrint(Memory* memory);
