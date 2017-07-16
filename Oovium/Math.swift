@@ -20,8 +20,8 @@ public final class Math {
 	static func registerMorph (key: String, morph:Morph) {
 		morphs[key] = morph
 	}
-	static func registerOperator (tag: Tag, defs: [Def], morph: Morph) {
-		var key = "\(tag.key);"
+	static func registerOperator (token: Token, defs: [Def], morph: Morph) {
+		var key = "\(token.tag);"
 		for def in defs {
 			key += "\(def.key);"
 		}
@@ -37,12 +37,12 @@ public final class Math {
 	}
 		
 	public static func start() {
-		registerOperator(tag: Tag.add,		defs: [RealDef.def, RealDef.def], morph: .add)
-		registerOperator(tag: Tag.subtract,	defs: [RealDef.def, RealDef.def], morph: .sub)
-		registerOperator(tag: Tag.multiply,	defs: [RealDef.def, RealDef.def], morph: .mul)
-		registerOperator(tag: Tag.divide,	defs: [RealDef.def, RealDef.def], morph: .div)
-		registerOperator(tag: Tag.power,	defs: [RealDef.def, RealDef.def], morph: .pow)
-		registerOperator(tag: Tag.equal,	defs: [RealDef.def, RealDef.def], morph: .equal)
+		registerOperator(token: Token.add,		defs: [RealDef.def, RealDef.def], morph: .add)
+		registerOperator(token: Token.subtract,	defs: [RealDef.def, RealDef.def], morph: .sub)
+		registerOperator(token: Token.multiply,	defs: [RealDef.def, RealDef.def], morph: .mul)
+		registerOperator(token: Token.divide,	defs: [RealDef.def, RealDef.def], morph: .div)
+		registerOperator(token: Token.power,	defs: [RealDef.def, RealDef.def], morph: .pow)
+		registerOperator(token: Token.equal,	defs: [RealDef.def, RealDef.def], morph: .equal)
 
 		registerMorph(key:"var;num;", morph:.variable)
 		registerMorph(key:"constant;", morph:.constant)

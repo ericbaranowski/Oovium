@@ -13,24 +13,27 @@ import Foundation
 	var xOffset: Double = 0
 	var yOffset: Double = 0
 	var readOnly: Bool = false
-	
-	var objects: [Object] = []
-	var gates: [Gate] = []
-	var crons: [Cron] = []
-	var texts: [Text] = []
-	var mechs: [Mech] = []
-	var tails: [Tail] = []
-	public var autos: [Auto] = []
-	var types: [Type] = []
-	var grids: [Grid] = []
-	var mirus: [Miru] = []
-	
+
 	var aexels: [Aexel] = []
-	var tags: [String:Tag] = [:]
+
+//	var objects: [Object] = []
+//	var gates: [Gate] = []
+//	var crons: [Cron] = []
+//	var texts: [Text] = []
+//	var mechs: [Mech] = []
+//	var tails: [Tail] = []
+//	public var autos: [Auto] = []
+//	var types: [Type] = []
+//	var grids: [Grid] = []
+//	var mirus: [Miru] = []
+	
+	var towers: [Tower] = []
 	var tokens: [String:Token] = [:]
 	public var memory: UnsafeMutablePointer<Memory>
 	
-	public required init() {
+	var idens: IntMap = IntMap()
+	
+	public required override init() {
 		memory = AEMemoryCreate(0);
 		super.init()
 	}
@@ -39,17 +42,40 @@ import Foundation
 		super.init(iden: iden, type: type, attributes: attributes)
 	}
 	
+	public func wireQ() {
+		// Generate Tokens
+		for aexel in aexels {
+			aexel.generateTokens()
+		}
+		
+		// Wire Towers
+		for aexel in aexels {
+			aexel.wireTowers()
+		}
+		
+		// Collect Towers
+		for aexel in aexels {
+			for tower in aexel.towers {
+				if tower.web == nil {
+					towers.append(tower)
+					tower.aether = self
+				}
+			}
+			for token in aexel.tokens {
+				tokens[token.key] = token
+			}
+		}
+	}
+	
 	public func wire() {
-		for object in objects {object.plugIn()}
-		for gate in gates {gate.plugIn()}
-		for auto in autos {auto.plugIn()}
+		for aexel in aexels {aexel.plugIn()}
 	
 		let tokens = Token.tokens
 		var vars = [String]()
 		for key in tokens.keys {
 			let token = tokens[key]!
 			if token.type != .variable {continue}
-			vars.append(token.tag.key)
+			vars.append(token.tag)
 		}
 		vars.sort(by: {$0<$1})
 		
@@ -66,21 +92,17 @@ import Foundation
 			}
 		}
 				
-		for key in tokens.keys {
-			let token = tokens[key]!
-			token.ip = Int(AEMemoryIndexForName(memory, token.tag.key.toInt8()))
-		}
+//		for key in tokens.keys {
+//			let token = tokens[key]!
+//			token.ip = Int(AEMemoryIndexForName(memory, token.tag.toInt8()))
+//		}
 
-		for object in objects {object.wire(memory)}
-		for gate in gates {gate.wire(memory)}
-		for auto in autos {auto.wire(memory)}
+		for aexel in aexels {aexel.wire(memory)}
 	}
 	
 	public func calculate() {
 		var towers = [Tower]()
-		for object in objects {towers.append(contentsOf: object.towers())}
-		for gate in gates {towers.append(contentsOf: gate.towers())}
-		for auto in autos {towers.append(contentsOf: auto.towers())}
+		for aexel in aexels {towers.append(contentsOf: aexel.towers)}
 		
 		var progress: Bool
 		repeat {
@@ -95,11 +117,68 @@ import Foundation
 		} while progress
 	}
 	
+// Aexels ==========================================================================================
+	func autoCreate() -> Auto {
+		let auto = Auto(iden: idens.increment(key: "auto"))
+		return auto
+	}
+	public func autoFirst() -> Auto? {
+		for aexel in aexels {
+			if let auto = aexel as? Auto {
+				return auto
+			}
+		}
+		return nil
+	}
+	
+	func cronCreate() -> Cron {
+		return Cron(iden: idens.increment(key: "cron"))
+	}
+	
+	func gateCreate() -> Gate {
+		return Gate(iden: idens.increment(key: "gate"))
+	}
+	
+	func mechCreate() -> Mech {
+		return Mech(iden: idens.increment(key: "mech"))
+	}
+	
+	func miruCreate() -> Miru {
+		return Miru(iden: idens.increment(key: "miru"))
+	}
+	
+	func objectCreate() -> Object {
+		return Object(iden: idens.increment(key: "object"))
+	}
+	
+	func tailCreate() -> Tail {
+		return Tail(iden: idens.increment(key: "tail"))
+	}
+	
+	func textCreate() -> Text {
+		return Text(iden: idens.increment(key: "text"))
+	}
+	
+	func typeCreate() -> Type {
+		return Type(iden: idens.increment(key: "type"))
+	}
+	
+// Events ==========================================================================================
+	override func onLoad() {
+		print("onLoad")
+		for aexel in aexels {
+			if aexel.iden > idens.get(key: aexel.type) {
+				idens.set(key: aexel.type, to: aexel.iden)
+			}
+		}
+		print("\(idens)")
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["name", "xOffset", "yOffset", "readOnly"]
 	}
 	override func children() -> [String] {
-		return super.children() + ["objects", "gates", "crons", "texts", "mechs", "tails", "autos", "types", "grids", "mirus"]
+		return super.children() + ["aexels"]
 	}
 }

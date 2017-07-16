@@ -11,49 +11,49 @@ import Foundation
 fileprivate class Ops {
 	private let chain: Chain
 	
-	private var pOp: Tag?
-	private var mOp: Tag?
-	private var aOp: Tag?
-	private var cOp: Tag?
+	private var pOp: Token?
+	private var mOp: Token?
+	private var aOp: Token?
+	private var cOp: Token?
 	
 	init (_ chain: Chain) {
 		self.chain = chain
 	}
 	
-	private func doPOP (_ tag: Tag?) {
+	private func doPOP (_ token: Token?) {
 		if let pOp = pOp {chain.applyTag(pOp)}
-		pOp = tag
+		pOp = token
 	}
-	private func doMOP (_ tag: Tag?) {
+	private func doMOP (_ token: Token?) {
 		if let mOp = mOp {chain.applyTag(mOp)}
-		mOp = tag
+		mOp = token
 	}
-	private func doAOP (_ tag: Tag?) {
+	private func doAOP (_ token: Token?) {
 		if let aOp = aOp {chain.applyTag(aOp)}
-		aOp = tag
+		aOp = token
 	}
-	private func doCOP (_ tag: Tag?) {
+	private func doCOP (_ token: Token?) {
 		if let cOp = cOp {chain.applyTag(cOp)}
-		cOp = tag
+		cOp = token
 	}
 	
-	func pOp (_ tag: Tag) {
-		doPOP(tag)
+	func pOp (_ token: Token) {
+		doPOP(token)
 	}
-	func mOp (_ tag: Tag) {
+	func mOp (_ token: Token) {
 		doPOP(nil)
-		doMOP(tag)
+		doMOP(token)
 	}
-	func aOp (_ tag: Tag) {
+	func aOp (_ token: Token) {
 		doPOP(nil)
 		doMOP(nil)
-		doAOP(tag)
+		doAOP(token)
 	}
-	func cOp (_ tag: Tag) {
+	func cOp (_ token: Token) {
 		doPOP(nil)
 		doMOP(nil)
 		doAOP(nil)
-		doCOP(tag)
+		doCOP(token)
 	}
 	func end() {
 		doPOP(nil)
@@ -73,9 +73,9 @@ protocol ChainDelegate {
 	func onOK()
 }
 
-public final class Chain: CustomStringConvertible {
+public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	var tokens = [Token]()
-	let tower: Tower
+	var tower: Tower
 	var delegate: ChainDelegate?
 	var open: Bool = false
 	var lambda: UnsafeMutablePointer<Lambda>?
@@ -90,17 +90,17 @@ public final class Chain: CustomStringConvertible {
 	init (string: String) {
 		tower = Tower(name: "")
 		for c in string.characters {
-			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "0")))}
-			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "1")))}
-			else if c == "2" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "2")))}
-			else if c == "3" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "3")))}
-			else if c == "4" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "4")))}
-			else if c == "5" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "5")))}
-			else if c == "6" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "6")))}
-			else if c == "7" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "7")))}
-			else if c == "8" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "8")))}
-			else if c == "9" {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: "9")))}
-			else if c == "." {self.tokens.append(Token.token(type: .digit, tag: Tag.tag(key: ".")))}
+			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: "0"))}
+			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: "1"))}
+			else if c == "2" {self.tokens.append(Token.token(type: .digit, tag: "2"))}
+			else if c == "3" {self.tokens.append(Token.token(type: .digit, tag: "3"))}
+			else if c == "4" {self.tokens.append(Token.token(type: .digit, tag: "4"))}
+			else if c == "5" {self.tokens.append(Token.token(type: .digit, tag: "5"))}
+			else if c == "6" {self.tokens.append(Token.token(type: .digit, tag: "6"))}
+			else if c == "7" {self.tokens.append(Token.token(type: .digit, tag: "7"))}
+			else if c == "8" {self.tokens.append(Token.token(type: .digit, tag: "8"))}
+			else if c == "9" {self.tokens.append(Token.token(type: .digit, tag: "9"))}
+			else if c == "." {self.tokens.append(Token.token(type: .digit, tag: "."))}
 			else if c == "+" {self.tokens.append(Token.add)}
 			else if c == "-" {self.tokens.append(Token.subtract)}
 			else if c == "*" {self.tokens.append(Token.multiply)}
@@ -192,17 +192,17 @@ public final class Chain: CustomStringConvertible {
 	}
 	private func addConstant (_ x: Double) {
 		constants.append(x)
-		applyTag(Tag.constant)
+		applyTag(Token.constant)
 	}
 
-	fileprivate func applyTag (_ tag: Tag) {
-		var key = "\(tag.key);"
+	fileprivate func applyTag (_ token: Token) {
+		var key = "\(token.tag);"
 		var defKeys = [String]()
-		for _ in 0..<tag.params {
+		for _ in 0..<token.params {
 			defKeys.append(pop())
 		}
-		for i in 0..<tag.params {
-			key += "\(defKeys[tag.params-1-i]);"
+		for i in 0..<token.params {
+			key += "\(defKeys[token.params-1-i]);"
 		}
 		addMorph(Math.morph(key: key))
 	}
@@ -214,10 +214,10 @@ public final class Chain: CustomStringConvertible {
 		{throw ParseError.general}
 		
 		switch token.level! {
-		case .add:			ops.aOp(token.tag)
-		case .multiply:		ops.mOp(token.tag)
-		case .power:		ops.pOp(token.tag)
-		case .compare:		ops.cOp(token.tag)
+		case .add:			ops.aOp(token)
+		case .multiply:		ops.mOp(token)
+		case .power:		ops.pOp(token)
+		case .compare:		ops.cOp(token)
 		case .separator:	ops.end()
 		}
 	}
@@ -313,7 +313,7 @@ public final class Chain: CustomStringConvertible {
 		for i in i..<tokens.count {
 			let token = tokens[i]
 			if token.type != .digit {break}
-			sb.append(token.tag.key)
+			sb.append(token.tag)
 		}
 		return sb;
 	}
@@ -324,9 +324,9 @@ public final class Chain: CustomStringConvertible {
 		
 		var token: Token = tokens[i]
 		
-		var unary: Tag?
+		var unary: Token?
 		if token == Token.subtract || token == Token.not {
-			unary = token==Token.subtract ? Tag.neg : Tag.not
+			unary = token==Token.subtract ? Token.neg : Token.not
 			i += 1
 			if (i == tokens.count)
 			{throw ParseError.general}
@@ -345,7 +345,7 @@ public final class Chain: CustomStringConvertible {
 		} else if token.type == .function {
 		} else if token == .bra {
 		} else if token.type == .variable {
-			let v: String = token.tag.key
+			let v: String = token.tag
 			let buck = v.range(of:"$")?.lowerBound
 			let name = buck != nil ? v.substring(to: buck!) : v
 			let type = buck != nil ? "\(v.substring(from: v.index(buck!, offsetBy: 1)))Var;" : "var;num;"
@@ -420,7 +420,7 @@ public final class Chain: CustomStringConvertible {
 	}
 	
 // CustomStringConvertible =========================================================================
-	public var description: String {
+	override public var description: String {
 		var sb = String()
 		for token in tokens {
 			sb.append("\(token.tag)")

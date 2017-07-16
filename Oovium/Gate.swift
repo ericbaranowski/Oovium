@@ -23,12 +23,12 @@ public final class Gate: Aexel {
 	var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		ifTower = Tower(name: String(format: "IFI%05d", 0))
 		thenTower = Tower(name: String(format: "IFT%05d", 0))
 		elseTower = Tower(name: String(format: "IFE%05d", 0))
 		resultTower = Tower(name: String(format: "IF%05d", 0))
-		super.init()
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		ifTower = Tower(name: String(format: "IFI%05d", iden))
@@ -41,16 +41,16 @@ public final class Gate: Aexel {
 // Aexel ===========================================================================================
 	override func plugIn() {
 		ifTower.name = String(format: "IFI%05d", iden)
-		ifTower.token = Token.token(type: .variable, tag: Tag.tag(key: ifTower.name))
+		ifTower.token = Token.token(type: .variable, tag: ifTower.name)
 		
 		thenTower.name = String(format: "IFT%05d", iden)
-		thenTower.token = Token.token(type: .variable, tag: Tag.tag(key: thenTower.name))
+		thenTower.token = Token.token(type: .variable, tag: thenTower.name)
 		
 		elseTower.name = String(format: "IFE%05d", iden)
-		elseTower.token = Token.token(type: .variable, tag: Tag.tag(key: elseTower.name))
+		elseTower.token = Token.token(type: .variable, tag: elseTower.name)
 		
 		resultTower.name = String(format: "IF%05d", iden)
-		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name))
+		resultTower.token = Token.token(type: .variable, tag: resultTower.name)
 		
 		Tower.register(ifTower)
 		Tower.register(thenTower)
@@ -66,7 +66,7 @@ public final class Gate: Aexel {
 		thenTower.wire(chain: thenChain, memory:memory)
 		elseTower.wire(chain: elseChain, memory:memory)
 		
-		let resultName = resultTower.token.tag.key
+		let resultName = resultTower.token.tag
 		resultTower.index = AEMemoryIndexForName(memory, resultName.toInt8())
 //		let forkTask = ForkTask(label: resultName, command: "\(resultName) = ~" ifIndex: ifTower.index, thenIndex: thenTower.index, elseIndex: elseTower.index, resultIndex: resultTower.index)
 		let forkTask = AETaskCreateFork(ifTower.index, thenTower.index, elseTower.index, resultTower.index)
@@ -84,7 +84,7 @@ public final class Gate: Aexel {
 		thenTower.attach(resultTower)
 		elseTower.attach(resultTower)
 	}
-	override func towers() -> [Tower] {
+	override var towers: [Tower] {
 		return [ifTower, thenTower, elseTower, resultTower]
 	}
 	

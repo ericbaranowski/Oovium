@@ -19,12 +19,19 @@ public class Aexel: Domain {
 	
 	func plugIn() {}
 	func wire (_ memory: UnsafeMutablePointer<Memory>) {}
-	func towers() -> [Tower] {
+	
+	var towers: [Tower] {
+		return []
+	}
+	var tokens: [Token] {
 		return []
 	}
 	
+	func generateTokens() {}
+	func wireTowers() {}
+	
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		super.init()
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {

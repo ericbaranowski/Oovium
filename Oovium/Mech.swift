@@ -17,10 +17,10 @@ public final class Mech: Aexel {
 	var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		headTower = Tower(name: "")
 		resultTower = Tower(name: "")
-		super.init()
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		headTower = Tower(name: "")

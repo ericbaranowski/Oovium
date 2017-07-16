@@ -23,11 +23,11 @@ public final class Auto: Aexel {
 	public var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		statesTower = Tower(name: String(format: "ATS%05d", 0))
 		headTower = Tower(name: "")
 		resultTower = Tower(name: String(format: "ATN%05d", 0))
-		super.init()
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		statesTower = Tower(name: String(format: "ATS%05d", iden))
@@ -52,21 +52,21 @@ public final class Auto: Aexel {
 	
 // Aexel ===========================================================================================
 	override func plugIn() {
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.A", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.B", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.C", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.D", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.E", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.F", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.G", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.H", iden))), tower: headTower)
-		Tower.link(token: Token.token(type: .variable, tag: Tag.tag(key: String(format: "Auto%d.Self", iden))), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.A", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.B", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.C", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.D", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.E", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.F", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.G", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.H", iden)), tower: headTower)
+		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.Self", iden)), tower: headTower)
 		
 		statesTower.name = String(format: "ATS%05d", iden)
-		statesTower.token = Token.token(type: .variable, tag: Tag.tag(key: statesTower.name))
+		statesTower.token = Token.token(type: .variable, tag: statesTower.name)
 		
 		resultTower.name = String(format: "ATN%05d", iden)
-		resultTower.token = Token.token(type: .variable, tag: Tag.tag(key: resultTower.name))
+		resultTower.token = Token.token(type: .variable, tag: resultTower.name)
 		
 		Tower.register(statesTower)
 		Tower.register(resultTower)
@@ -79,7 +79,7 @@ public final class Auto: Aexel {
 		headTower.state = .uncalced
 		resultTower.wire(chain:resultChain, memory:memory)
 	}
-	override func towers() -> [Tower] {
+	override var towers: [Tower] {
 		return [statesTower, headTower, resultTower]
 	}
 	

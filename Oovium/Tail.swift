@@ -22,11 +22,11 @@ public final class Tail: Aexel {
 	var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		headTower = Tower(name: "")
 		whileTower = Tower(name: String(format: "ATS%05d", 0))
 		resultTower = Tower(name: String(format: "ATN%05d", 0))
-		super.init()
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		headTower = Tower(name: "")

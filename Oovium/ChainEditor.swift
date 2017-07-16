@@ -29,23 +29,23 @@ class ChainEditor: KeyPad {
 		schematic.add(row: 1, col: 2, key: Key(text: "\u{00F7}", uiColor: banana, {self.chain.post(token: Token.divide)}))
 		schematic.add(row: 1, col: 3, key: Key(text: "\u{00D7}", uiColor: banana, {self.chain.post(token: Token.multiply)}))
 
-		schematic.add(row: 2, col: 0, key: Key(text: "7", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "7")))}))
-		schematic.add(row: 2, col: 1, key: Key(text: "8", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "8")))}))
-		schematic.add(row: 2, col: 2, key: Key(text: "9", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "9")))}))
+		schematic.add(row: 2, col: 0, key: Key(text: "7", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "7"))}))
+		schematic.add(row: 2, col: 1, key: Key(text: "8", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "8"))}))
+		schematic.add(row: 2, col: 2, key: Key(text: "9", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "9"))}))
 		schematic.add(row: 2, col: 3, key: Key(text: "\u{2212}", uiColor: banana, {self.chain.post(token: Token.subtract)}))
 
-		schematic.add(row: 3, col: 0, key: Key(text: "4", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "4")))}))
-		schematic.add(row: 3, col: 1, key: Key(text: "5", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "5")))}))
-		schematic.add(row: 3, col: 2, key: Key(text: "6", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "6")))}))
+		schematic.add(row: 3, col: 0, key: Key(text: "4", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "4"))}))
+		schematic.add(row: 3, col: 1, key: Key(text: "5", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "5"))}))
+		schematic.add(row: 3, col: 2, key: Key(text: "6", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "6"))}))
 		schematic.add(row: 3, col: 3, key: Key(text: "+", uiColor: banana, {self.chain.post(token: Token.add)}))
 
-		schematic.add(row: 4, col: 0, key: Key(text: "1", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "1")))}))
-		schematic.add(row: 4, col: 1, key: Key(text: "2", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "2")))}))
-		schematic.add(row: 4, col: 2, key: Key(text: "3", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: "3")))}))
+		schematic.add(row: 4, col: 0, key: Key(text: "1", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "1"))}))
+		schematic.add(row: 4, col: 1, key: Key(text: "2", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "2"))}))
+		schematic.add(row: 4, col: 2, key: Key(text: "3", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "3"))}))
 		schematic.add(row: 4, col: 3, w: 1, h: 2, key: Key(text: "=", uiColor: lemon, {self.chain.ok()}))
 
-		schematic.add(row: 5, col: 0, w: 2, h: 1, key: Key(text: "0", uiColor: orange, {self.chain.post(token: Token.token(type: .operator, tag: Tag.tag(key: "0")))}))
-		schematic.add(row: 5, col: 2, key: Key(text: ".", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: Tag.tag(key: ".")))}))
+		schematic.add(row: 5, col: 0, w: 2, h: 1, key: Key(text: "0", uiColor: orange, {self.chain.post(token: Token.token(type: .operator, tag: "0"))}))
+		schematic.add(row: 5, col: 2, key: Key(text: ".", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "."))}))
 		
 		self.schematic = schematic
 }

@@ -24,7 +24,7 @@ public class Domain: NSObject {
 	var status: DomainStatus = .clean
 	var parent: Domain?
 	
-	public required override init() {
+	public override init() {
 		type = Domain.nameFromClass(type(of:self))
 		super.init()
 		create()
@@ -168,6 +168,8 @@ public class Domain: NSObject {
 			let unloader = self.unloader(keyPath:keyPath)
 			if let unloader = unloader {
 				attributes[keyPath] = unloader(value!)
+			} else if let value = value as? Chain {
+				attributes[keyPath] = value.store
 			} else if let value = value as? Domain {
 				attributes[keyPath] = value.unload() as NSDictionary
 			} else
@@ -208,7 +210,9 @@ public class Domain: NSObject {
 					}
 				} else {
 					let cls: AnyClass? = classForKeyPath(keyPath)
-					if cls?.superclass() == Domain.self {
+					if cls == Chain.self {
+						value = Chain(tokens: value as! String, tower: Tower(name: ""))
+					} else if cls?.superclass() == Domain.self {
 						let domain: Domain = Domain()
 						domain.load(attributes: value as! [String:Any])
 						value = domain;

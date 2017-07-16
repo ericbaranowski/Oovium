@@ -17,7 +17,6 @@
 		D806590D1DE90EC800325182 /* StringDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC181DE8D3FA00B56F6A /* StringDef.swift */; };
 		D806590E1DE90EC800325182 /* DateDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC141DE8D3FA00B56F6A /* DateDef.swift */; };
 		D80659121DE90EC800325182 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
-		D80659141DE90EC800325182 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2E1DE8D44500B56F6A /* Tag.swift */; };
 		D80659151DE90EC800325182 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2F1DE8D44500B56F6A /* Token.swift */; };
 		D80659161DE90EC800325182 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2C1DE8D44500B56F6A /* Chain.swift */; };
 		D80659191DE90EC800325182 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBE01DE8D32B00B56F6A /* ViewController.swift */; };
@@ -34,7 +33,6 @@
 		D8185C1C1EABFEEA00011CE0 /* DateDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC141DE8D3FA00B56F6A /* DateDef.swift */; };
 		D8185C221EABFEEE00011CE0 /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
 		D8185C231EABFEEE00011CE0 /* Web.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85EEFCE1E10544A00166C4C /* Web.swift */; };
-		D8185C241EABFEF300011CE0 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2E1DE8D44500B56F6A /* Tag.swift */; };
 		D8185C251EABFEF300011CE0 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2F1DE8D44500B56F6A /* Token.swift */; };
 		D8185C271EABFEF600011CE0 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EB9A01DED96F900361939 /* Math.swift */; };
 		D8185C281EABFF0600011CE0 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
@@ -87,12 +85,14 @@
 		D89BEC201DE8D3FA00B56F6A /* VectorDef.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC191DE8D3FA00B56F6A /* VectorDef.swift */; };
 		D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC251DE8D42100B56F6A /* Tower.swift */; };
 		D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2C1DE8D44500B56F6A /* Chain.swift */; };
-		D89BEC331DE8D44500B56F6A /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2E1DE8D44500B56F6A /* Tag.swift */; };
 		D89BEC341DE8D44500B56F6A /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC2F1DE8D44500B56F6A /* Token.swift */; };
 		D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC351DE8FC9F00B56F6A /* Oovium.swift */; };
 		D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEC361DE8FC9F00B56F6A /* OoviumDelegate.swift */; };
 		D89BEC3B1DE8FD2100B56F6A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D89BEC3A1DE8FD2100B56F6A /* Default-568h@2x.png */; };
 		D8A0DFB31E40428000AE38D1 /* Oovium-Bridging-Header.h in Headers */ = {isa = PBXBuildFile; fileRef = D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */; };
+		D8A860ED1F1BEEF100BD9B45 /* IntMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A860EC1F1BEEF100BD9B45 /* IntMap.swift */; };
+		D8A860EE1F1BF03E00BD9B45 /* IntMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A860EC1F1BEEF100BD9B45 /* IntMap.swift */; };
+		D8A860EF1F1BF03F00BD9B45 /* IntMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A860EC1F1BEEF100BD9B45 /* IntMap.swift */; };
 		D8AEB7331E9B006C00249E7E /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85FD6091E9AFFCE009B621A /* Skin.swift */; };
 		D8AEB7351E9B017500249E7E /* TronSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AEB7341E9B017500249E7E /* TronSkin.swift */; };
 		D8AEB7371E9B017E00249E7E /* IvorySkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AEB7361E9B017E00249E7E /* IvorySkin.swift */; };
@@ -246,13 +246,13 @@
 		D89BEC191DE8D3FA00B56F6A /* VectorDef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorDef.swift; sourceTree = "<group>"; };
 		D89BEC251DE8D42100B56F6A /* Tower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tower.swift; sourceTree = "<group>"; };
 		D89BEC2C1DE8D44500B56F6A /* Chain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
-		D89BEC2E1DE8D44500B56F6A /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D89BEC2F1DE8D44500B56F6A /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D89BEC351DE8FC9F00B56F6A /* Oovium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oovium.swift; sourceTree = "<group>"; };
 		D89BEC361DE8FC9F00B56F6A /* OoviumDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumDelegate.swift; sourceTree = "<group>"; };
 		D89BEC3A1DE8FD2100B56F6A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Resources/Default-568h@2x.png"; sourceTree = SOURCE_ROOT; };
 		D89BEC431DE8FDAB00B56F6A /* OoviumLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OoviumLib.h; sourceTree = "<group>"; };
 		D89BEC441DE8FDAB00B56F6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8A860EC1F1BEEF100BD9B45 /* IntMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntMap.swift; sourceTree = "<group>"; };
 		D8AEB7341E9B017500249E7E /* TronSkin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TronSkin.swift; sourceTree = "<group>"; };
 		D8AEB7361E9B017E00249E7E /* IvorySkin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IvorySkin.swift; sourceTree = "<group>"; };
 		D8AEB73A1E9B04B700249E7E /* RGB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
@@ -346,6 +346,7 @@
 				D8AEB7431E9B6F1600249E7E /* Extensions */,
 				D81FCDBE1E1343B100E8936E /* Satyr.swift */,
 				D82BE4D01E21A00F00E8E710 /* JSON.swift */,
+				D8A860EC1F1BEEF100BD9B45 /* IntMap.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -574,7 +575,6 @@
 			isa = PBXGroup;
 			children = (
 				D89BEC041DE8D37F00B56F6A /* Defs */,
-				D89BEC2E1DE8D44500B56F6A /* Tag.swift */,
 				D89BEC2F1DE8D44500B56F6A /* Token.swift */,
 				D89BEC2C1DE8D44500B56F6A /* Chain.swift */,
 				D89BEC251DE8D42100B56F6A /* Tower.swift */,
@@ -881,7 +881,6 @@
 				D80659091DE90EC800325182 /* RealDef.swift in Sources */,
 				D8CB76821E17AAAF00A286DF /* Mech.swift in Sources */,
 				D80659151DE90EC800325182 /* Token.swift in Sources */,
-				D80659141DE90EC800325182 /* Tag.swift in Sources */,
 				D84CD3FC1E99503300029120 /* AetherView.swift in Sources */,
 				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
 				D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */,
@@ -892,6 +891,7 @@
 				D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */,
 				D8AEB73C1E9B084A00249E7E /* RGB.swift in Sources */,
 				D806590B1DE90EC800325182 /* VectorDef.swift in Sources */,
+				D8A860EE1F1BF03E00BD9B45 /* IntMap.swift in Sources */,
 				D8CB76891E17AAAF00A286DF /* Vertebra.swift in Sources */,
 				D8E4A0901E46767400B2C328 /* Aegean.c in Sources */,
 				D806590C1DE90EC800325182 /* LambdaDef.swift in Sources */,
@@ -917,10 +917,10 @@
 				D8185C1C1EABFEEA00011CE0 /* DateDef.swift in Sources */,
 				D8185C1B1EABFEEA00011CE0 /* StringDef.swift in Sources */,
 				D8185C0D1EABFC5300011CE0 /* main.swift in Sources */,
-				D8185C241EABFEF300011CE0 /* Tag.swift in Sources */,
 				D8185C221EABFEEE00011CE0 /* Tower.swift in Sources */,
 				D8185C251EABFEF300011CE0 /* Token.swift in Sources */,
 				D8185C111EABFEAC00011CE0 /* Chain.swift in Sources */,
+				D8A860EF1F1BF03F00BD9B45 /* IntMap.swift in Sources */,
 				D8185C171EABFEEA00011CE0 /* RealDef.swift in Sources */,
 				D87FC2691F12FF9200100873 /* Spider.swift in Sources */,
 				D8185C181EABFEEA00011CE0 /* ComplexDef.swift in Sources */,
@@ -939,7 +939,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89BEC331DE8D44500B56F6A /* Tag.swift in Sources */,
 				D89BEC341DE8D44500B56F6A /* Token.swift in Sources */,
 				D84CD4031E99D24300029120 /* AEPoint.swift in Sources */,
 				D8CB76641E1793B300A286DF /* Miru.swift in Sources */,
@@ -992,6 +991,7 @@
 				D8CB765A1E17937900A286DF /* Mech.swift in Sources */,
 				D89BEC201DE8D3FA00B56F6A /* VectorDef.swift in Sources */,
 				D85EEFCF1E10544A00166C4C /* Web.swift in Sources */,
+				D8A860ED1F1BEEF100BD9B45 /* IntMap.swift in Sources */,
 				D8AEB73E1E9B6A3900249E7E /* KeyPad.swift in Sources */,
 				D84CD3FF1E99C9D700029120 /* Bubble.swift in Sources */,
 				D8CB765C1E17938200A286DF /* Tail.swift in Sources */,

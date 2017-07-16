@@ -9,19 +9,21 @@
 import Foundation
 
 public final class Object: Aexel {
-	var tokens: String = ""
-	
 	var chain: Chain = Chain(string: "")
 	
 	var tower: Tower
+	var token: Token
 	
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		tower = Tower(name: String(format: "I%05d", 0))
-		super.init()
+		token = Token.token(type: .variable, tag: tower.name)
+//		token.tower = tower
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		tower = Tower(name: String(format: "I%05d", iden))
+		token = Token.token(type: .variable, tag: tower.name)
 		super.init(iden: iden, type: type, attributes: attributes)
 	}
 	
@@ -34,19 +36,25 @@ public final class Object: Aexel {
 // Aexel ===========================================================================================
 	override func plugIn() {
 		tower.name = String(format: "I%05d", iden)
-		tower.token = Token.token(type: .variable, tag: Tag.tag(key: tower.name))
+		tower.token = Token.token(type: .variable, tag: tower.name)
 		Tower.register(tower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		chain = Chain(tokens: tokens, tower: tower)
+		chain.tower = tower
 		tower.wire(chain:chain, memory:memory)
 	}
-	override func towers() -> [Tower] {
+	override var towers: [Tower] {
 		return [tower]
+	}
+	
+	override func generateTokens() {
+		
+	}
+	override func wireTowers() {
 	}
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["tokens"]
+		return super.properties() + ["chain"]
 	}
 }

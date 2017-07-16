@@ -23,11 +23,27 @@ public final class Tower: Hashable, CustomStringConvertible {
 	public var name: String
 	public var index: UInt8 = 0
 	var task: UnsafeMutablePointer<Task>?
-//	var taskS: TaskS?
 	var token: Token!
 	
 	var upstream: Set<Tower> = Set<Tower>()
 	var downstream: Set<Tower> = Set<Tower>()
+	
+	var aether: MemorySource!
+	var _web: Web? = nil
+	var web: Web? {
+		set {_web = newValue}
+		get {
+			if let web = _web {return web}
+			for tower in upstream {
+				if let web = tower.web {return web}
+			}
+			return nil
+		}
+	}
+	var source: MemorySource {
+		if let web = web {return web}
+		return aether
+	}
 
 	public var gateTo: Tower?
 	public var thenTo: Tower?
@@ -37,7 +53,6 @@ public final class Tower: Hashable, CustomStringConvertible {
 	var state: TowerState = .open
 //	var stopper: NSObject?
 	
-	var source: MemorySource?
 	
 //	init() {
 //		name = "[\(arc4random_uniform(99999999))]"
@@ -51,19 +66,7 @@ public final class Tower: Hashable, CustomStringConvertible {
 	}
 	
 	func signal () {
-		
-	}
-	
-	private var _orbit: Tower?
-	var orbit: Tower? {
-		set {_orbit = newValue}
-		get {
-			if let orbit = _orbit {return orbit}
-			for tower in upstream {
-				if let orbit = tower.orbit {return orbit}
-			}
-			return nil
-		}
+		AETaskExecute(task, source.memory)
 	}
 	
 	public func attach (_ tower: Tower) {
@@ -84,16 +87,16 @@ public final class Tower: Hashable, CustomStringConvertible {
 		var lambda: UnsafeMutablePointer<Lambda>
 		
 		lambda = chain.compile(memory: memory)
-//		let lambdaTask = LambdaTask(label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", lambda: lambdaC)
+//		let lambdaTask = LambdaTask(label: token.tag, command: "\(token.tag) = \(chain.display)", lambda: lambdaC)
 		let lambdaTask = AETaskCreateLambda(lambda)
-		lambdaTask?.pointee.label = token.tag.key.toInt8()
-		lambdaTask?.pointee.command = "\(token.tag.key) = \(chain.display)".toInt8()
+		lambdaTask?.pointee.label = token.tag.toInt8()
+		lambdaTask?.pointee.command = "\(token.tag) = \(chain.display)".toInt8()
 		
-//		lambdaTask.load(/*label: token.tag.key, command: "\(token.tag.key) = \(chain.display)", */)
+//		lambdaTask.load(/*label: token.tag, command: "\(token.tag) = \(chain.display)", */)
 		
 		task = lambdaTask
 
-		index = AEMemoryIndexForName(memory, token.tag.key.toInt8())
+		index = AEMemoryIndexForName(memory, token.tag.toInt8())
 //		lambda.vi = index
 		lambda.pointee.vi = UInt8(index)
 		for token in chain.tokens {

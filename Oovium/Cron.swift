@@ -37,14 +37,14 @@ public final class Cron: Aexel {
 	var whileTower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
+	public required init(iden: Int) {
 		startTower = Tower(name: String(format: "I%05d", 0))
 		stopTower = Tower(name: String(format: "I%05d", 0))
 		stepsTower = Tower(name: String(format: "I%05d", 0))
 		rateTower = Tower(name: String(format: "I%05d", 0))
 		deltaTower = Tower(name: String(format: "I%05d", 0))
 		whileTower = Tower(name: String(format: "I%05d", 0))
-		super.init()
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		startTower = Tower(name: String(format: "I%05d", iden))
