@@ -9,9 +9,6 @@
 import Foundation
 
 public final class Auto: Aexel {
-	var statesTokens: String = ""
-	var resultTokens: String = ""
-	
 	var statesChain: Chain!
 	var resultChain: Chain!
 
@@ -72,8 +69,8 @@ public final class Auto: Aexel {
 		Tower.register(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		statesChain = Chain(tokens: statesTokens, tower: statesTower)
-		resultChain = Chain(tokens: resultTokens, tower: resultTower)
+		statesChain.tower = statesTower
+		resultChain.tower = resultTower
 		
 		statesTower.wire(chain:statesChain, memory:memory)
 		headTower.state = .uncalced
@@ -85,7 +82,7 @@ public final class Auto: Aexel {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["statesTokens", "resultTokens"]
+		return super.properties() + ["statesChain", "resultChain"]
 	}
 	override func children() -> [String] {
 		return super.children() + ["states"]

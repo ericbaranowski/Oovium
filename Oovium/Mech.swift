@@ -9,8 +9,6 @@
 import Foundation
 
 public final class Mech: Aexel {
-	var resultTokens: String = ""
-	
 	var resultChain: Chain!
 	
 	var headTower: Tower
@@ -30,6 +28,6 @@ public final class Mech: Aexel {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["resultTokens"]
+		return super.properties() + ["resultChain"]
 	}
 }

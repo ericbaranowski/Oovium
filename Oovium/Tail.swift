@@ -9,9 +9,6 @@
 import Foundation
 
 public final class Tail: Aexel {
-	var whileTokens: String = ""
-	var resultTokens: String = ""
-
 	var whileChain: Chain!
 	var resultChain: Chain!
 
@@ -37,7 +34,7 @@ public final class Tail: Aexel {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["whileTokens", "resultTokens"]
+		return super.properties() + ["whileChain", "resultChain"]
 	}
 	override func children() -> [String] {
 		return super.children() + ["vertebras"]

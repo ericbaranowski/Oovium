@@ -18,12 +18,11 @@ enum OOJustify {
 public final class Col: Domain {
 	var name: String = ""
 	var def: Def = RealDef.def
-	var tokens: String = ""
+	var chain: Chain!
 	var aggregate: OOAggregate = .none
 	var justify: OOJustify = .right
 	var format: String = ""
 	
-	var chain: Chain!
 	
 	var tower: Tower
 
@@ -39,6 +38,6 @@ public final class Col: Domain {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["name", "def", "tokens", "aggregate", "justify", "format"]
+		return super.properties() + ["name", "def", "chain", "aggregate", "justify", "format"]
 	}
 }

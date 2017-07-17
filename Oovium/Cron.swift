@@ -13,21 +13,14 @@ enum OOEndMode {
 }
 
 public final class Cron: Aexel {
-	var startTokens: String = ""
-	var stopTokens: String = ""
-	var stepsTokens: String = ""
-	var rateTokens: String = ""
-	var deltaTokens: String = ""
-	var whileTokens: String = ""
-	var endMode: OOEndMode = .stop
-	var exposed: Bool = true
-	
 	var startChain: Chain!
 	var stopChain: Chain!
 	var stepsChain: Chain!
 	var rateChain: Chain!
 	var deltaChain: Chain!
 	var whileChain: Chain!
+	var endMode: OOEndMode = .stop
+	var exposed: Bool = true
 	
 	var startTower: Tower
 	var stopTower: Tower
@@ -58,6 +51,6 @@ public final class Cron: Aexel {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["startTokens", "stopTokens", "stepsTokens", "rateTokens", "deltaTokens", "whileTokens", "endMode", "exposed"]
+		return super.properties() + ["startChain", "stopChain", "stepsChain", "rateChain", "deltaChain", "whileChain", "endMode", "exposed"]
 	}
 }

@@ -16,17 +16,6 @@ import Foundation
 
 	var aexels: [Aexel] = []
 
-//	var objects: [Object] = []
-//	var gates: [Gate] = []
-//	var crons: [Cron] = []
-//	var texts: [Text] = []
-//	var mechs: [Mech] = []
-//	var tails: [Tail] = []
-//	public var autos: [Auto] = []
-//	var types: [Type] = []
-//	var grids: [Grid] = []
-//	var mirus: [Miru] = []
-	
 	var towers: [Tower] = []
 	var tokens: [String:Token] = [:]
 	public var memory: UnsafeMutablePointer<Memory>

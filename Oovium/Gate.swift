@@ -9,10 +9,6 @@
 import Foundation
 
 public final class Gate: Aexel {
-	var ifTokens: String = ""
-	var thenTokens: String = ""
-	var elseTokens: String = ""
-
 	var ifChain: Chain!
 	var thenChain: Chain!
 	var elseChain: Chain!
@@ -58,9 +54,9 @@ public final class Gate: Aexel {
 		Tower.register(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		ifChain = Chain(tokens: ifTokens, tower: ifTower)
-		thenChain = Chain(tokens: thenTokens, tower: thenTower)
-		elseChain = Chain(tokens: elseTokens, tower: elseTower)
+		ifChain.tower = ifTower
+		thenChain.tower = thenTower
+		elseChain.tower = elseTower
 		
 		ifTower.wire(chain: ifChain, memory:memory)
 		thenTower.wire(chain: thenChain, memory:memory)
@@ -90,6 +86,6 @@ public final class Gate: Aexel {
 	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
-		return super.properties() + ["ifTokens", "thenTokens", "elseTokens"]
+		return super.properties() + ["ifChain", "thenChain", "elseChain"]
 	}
 }
