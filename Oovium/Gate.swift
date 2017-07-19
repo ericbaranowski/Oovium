@@ -19,12 +19,12 @@ public final class Gate: Aexel {
 	var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init(iden: Int) {
+	public required init(iden: Int, at: V2) {
 		ifTower = Tower(name: String(format: "IFI%05d", 0))
 		thenTower = Tower(name: String(format: "IFT%05d", 0))
 		elseTower = Tower(name: String(format: "IFE%05d", 0))
 		resultTower = Tower(name: String(format: "IF%05d", 0))
-		super.init(iden:iden)
+		super.init(iden:iden, at:at)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		ifTower = Tower(name: String(format: "IFI%05d", iden))

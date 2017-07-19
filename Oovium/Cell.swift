@@ -16,9 +16,9 @@ public final class Cell: Domain {
 	var tower: Tower
 	
 // Inits ===========================================================================================
-	public required override init() {
+	public required init() {
 		tower = Tower(name: String(format: "I%05d", 0))
-		super.init()
+		super.init(iden: 0)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		tower = Tower(name: String(format: "I%05d", iden))

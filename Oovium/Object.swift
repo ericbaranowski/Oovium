@@ -15,11 +15,11 @@ public final class Object: Aexel {
 	var token: Token
 	
 // Inits ===========================================================================================
-	public required init(iden: Int) {
+	public required init(iden: Int, at: V2) {
 		tower = Tower(name: String(format: "I%05d", 0))
 		token = Token.token(type: .variable, tag: tower.name)
 //		token.tower = tower
-		super.init(iden:iden)
+		super.init(iden:iden, at:at)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		tower = Tower(name: String(format: "I%05d", iden))

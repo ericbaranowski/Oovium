@@ -18,7 +18,7 @@ class ObjectMaker: Maker {
 }
 
 class ObjectBub: Bubble, ChainLeafDelegate {
-	var object: Object = Object(iden: 0)
+	var object: Object = Object(iden: 0, at: V2(0,0))
 	
 	let chainLeaf = ChainLeaf()
 	

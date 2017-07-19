@@ -20,11 +20,11 @@ public final class Auto: Aexel {
 	public var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init(iden: Int) {
+	public required init(iden: Int, at: V2) {
 		statesTower = Tower(name: String(format: "ATS%05d", 0))
 		headTower = Tower(name: "")
 		resultTower = Tower(name: String(format: "ATN%05d", 0))
-		super.init(iden:iden)
+		super.init(iden:iden, at:at)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		statesTower = Tower(name: String(format: "ATS%05d", iden))

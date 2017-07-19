@@ -22,9 +22,9 @@ import Foundation
 	
 	var idens: IntMap = IntMap()
 	
-	public required override init() {
+	public required init() {
 		memory = AEMemoryCreate(0);
-		super.init()
+		super.init(iden: 0)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		memory = AEMemoryCreate(0);
@@ -107,11 +107,13 @@ import Foundation
 	}
 	
 // Aexels ==========================================================================================
-	func autoCreate() -> Auto {
-		let auto = Auto(iden: idens.increment(key: "auto"))
+	func createAuto(at: V2) -> Auto {
+		let iden = idens.increment(key: "auto")
+		let auto = Auto(iden:iden, at:at)
+		aexels.append(auto)
 		return auto
 	}
-	public func autoFirst() -> Auto? {
+	public func firstAuto() -> Auto? {
 		for aexel in aexels {
 			if let auto = aexel as? Auto {
 				return auto
@@ -120,36 +122,60 @@ import Foundation
 		return nil
 	}
 	
-	func cronCreate() -> Cron {
-		return Cron(iden: idens.increment(key: "cron"))
+	func createCron(at: V2) -> Cron {
+		let iden = idens.increment(key: "cron")
+		let cron = Cron(iden:iden, at:at)
+		aexels.append(cron)
+		return cron
 	}
 	
-	func gateCreate() -> Gate {
-		return Gate(iden: idens.increment(key: "gate"))
+	func createGate(at: V2) -> Gate {
+		let iden = idens.increment(key: "gate")
+		let gate = Gate(iden:iden, at:at)
+		aexels.append(gate)
+		return gate
 	}
 	
-	func mechCreate() -> Mech {
-		return Mech(iden: idens.increment(key: "mech"))
+	func createMech(at: V2) -> Mech {
+		let iden = idens.increment(key: "mech")
+		let mech = Mech(iden:iden, at:at)
+		aexels.append(mech)
+		return mech
 	}
 	
-	func miruCreate() -> Miru {
-		return Miru(iden: idens.increment(key: "miru"))
+	func createMiru(at: V2) -> Miru {
+		let iden = idens.increment(key: "miru")
+		let miru = Miru(iden:iden, at:at)
+		aexels.append(miru)
+		return miru
 	}
 	
-	func objectCreate() -> Object {
-		return Object(iden: idens.increment(key: "object"))
+	func createObject(at: V2) -> Object {
+		let iden = idens.increment(key: "object")
+		let object = Object(iden:iden, at:at)
+		aexels.append(object)
+		return object
 	}
 	
-	func tailCreate() -> Tail {
-		return Tail(iden: idens.increment(key: "tail"))
+	func createTail(at: V2) -> Tail {
+		let iden = idens.increment(key: "tail")
+		let tail = Tail(iden:iden, at:at)
+		aexels.append(tail)
+		return tail
 	}
 	
-	func textCreate() -> Text {
-		return Text(iden: idens.increment(key: "text"))
+	func createText(at: V2) -> Text {
+		let iden = idens.increment(key: "text")
+		let text = Text(iden:iden, at:at)
+		aexels.append(text)
+		return text
 	}
 	
-	func typeCreate() -> Type {
-		return Type(iden: idens.increment(key: "type"))
+	func createType(at: V2) -> Type {
+		let iden = idens.increment(key: "type")
+		let type = Type(iden:iden, at:at)
+		aexels.append(type)
+		return type
 	}
 	
 // Events ==========================================================================================

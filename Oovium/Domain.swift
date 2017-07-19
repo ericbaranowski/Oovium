@@ -24,7 +24,8 @@ public class Domain: NSObject {
 	var status: DomainStatus = .clean
 	var parent: Domain?
 	
-	public override init() {
+	public init(iden: Int) {
+		self.iden = iden
 		type = Domain.nameFromClass(type(of:self))
 		super.init()
 		create()
@@ -213,7 +214,7 @@ public class Domain: NSObject {
 					if cls == Chain.self {
 						value = Chain(tokens: value as! String, tower: Tower(name: ""))
 					} else if cls?.superclass() == Domain.self {
-						let domain: Domain = Domain()
+						let domain: Domain = Domain(iden: 0)
 						domain.load(attributes: value as! [String:Any])
 						value = domain;
 					}

@@ -31,8 +31,10 @@ public class Aexel: Domain {
 	func wireTowers() {}
 	
 // Inits ===========================================================================================
-	public required init(iden: Int) {
-		super.init()
+	public required init(iden: Int, at: V2) {
+		x = at.x
+		y = at.y
+		super.init(iden:iden)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		super.init(iden: iden, type: type, attributes: attributes)
