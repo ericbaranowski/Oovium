@@ -60,6 +60,9 @@ byte AEMemoryIndexForName(Memory* memory, char* name) {
 double AEMemoryFirstValue(Memory* memory) {
 	return memory->slots[0].obj.a.x;
 }
+double AEMemoryValue(Memory* memory, byte index) {
+	return memory->slots[index].obj.a.x;
+}
 
 // Scratch =========================================================================================
 Scratch* AEScratchCreate() {
@@ -177,7 +180,7 @@ void AELambdaExecute (Lambda* lambda, Scratch* scratch, Memory* memory) {
 Task* AETaskCreateLambda(Lambda* lambda) {
 	Task* task = (Task*)malloc(sizeof(Task));
 	task->type = AETaskLambda;
-	task->lambda.Lambda = lambda;
+	task->lambda.lambda = lambda;
 	return task;
 }
 Task* AETaskCreateGoto(byte go2) {
@@ -202,6 +205,11 @@ Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte result
 	task->fork.resultIndex = resultIndex;
 	return task;
 }
+void AETaskRelease(Task* task) {
+	if (task->type == AETaskLambda)
+		AELambdaRelease(task->lambda.lambda);
+	free(task);
+}
 
 Scratch* scratch_;
 
@@ -211,7 +219,7 @@ long AETaskExecute (Task* task, Memory* memory) {
 //			Scratch* scratch = AEScratchCreate();
 //			AELambdaPrint(task->lambda.Lambda);
 //			AEMemoryPrint(memory);
-			AELambdaExecute(task->lambda.Lambda, scratch_, memory);
+			AELambdaExecute(task->lambda.lambda, scratch_, memory);
 //			AEMemoryPrint(memory);
 //			AEScratchRelease(scratch);
 			return -1;

@@ -30,6 +30,10 @@ public class Aexel: Domain {
 	func generateTokens() {}
 	func wireTowers() {}
 	
+	var freeVars: [String] {
+		return []
+	}
+	
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2) {
 		x = at.x

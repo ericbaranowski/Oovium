@@ -66,7 +66,6 @@ public final class Tower: Hashable, CustomStringConvertible {
 	}
 	
 	func signal () {
-		AETaskExecute(task, source.memory)
 	}
 	
 	public func attach (_ tower: Tower) {

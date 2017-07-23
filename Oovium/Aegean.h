@@ -44,6 +44,7 @@ void AEMemoryClear(Memory* memory);
 void AEMemoryPrint(Memory* memory);
 byte AEMemoryIndexForName(Memory* memory, char* name);
 double AEMemoryFirstValue(Memory* memory);
+double AEMemoryValue(Memory* memory, byte index);
 
 // Scratch =
 typedef struct Scratch {
@@ -97,7 +98,7 @@ typedef enum AETask {
 } AETask;
 
 typedef struct LambdaTask {
-	Lambda* Lambda;
+	Lambda* lambda;
 } LambdaTask;
 typedef struct GotoTask {
 	byte go2;
@@ -129,6 +130,7 @@ Task* AETaskCreateLambda(Lambda* lambda);
 Task* AETaskCreateGoto(byte go2);
 Task* AETaskCreateIfGoto(byte index,byte go2);
 Task* AETaskCreateFork(byte ifIndex, byte thenIndex, byte elseIndex, byte resultIndex);
+void AETaskRelease(Task* task);
 long AETaskExecute(Task* task, Memory* memory);
 void AETaskPrint(Task* task);
 

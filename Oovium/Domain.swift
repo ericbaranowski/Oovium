@@ -46,7 +46,10 @@ public class Domain: NSObject {
 		type = Domain.nameFromClass(type(of:self))
 	}
 	
-	func add (_ domain: Domain) {}
+	func add (_ domain: Domain) {
+		domain.parent = self
+		domain.onAdded()
+	}
 	func remove (_ domain: Domain) {}
 	func load (_ domain: Domain) {}
 	

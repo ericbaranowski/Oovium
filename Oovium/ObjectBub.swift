@@ -9,8 +9,9 @@
 import UIKit
 
 class ObjectMaker: Maker {
-	func make (origin: CGPoint) -> Bubble {
-		return ObjectBub(origin: origin)
+	func make(aether: Aether, at: V2) -> Bubble {
+		let object = aether.createObject(at: at)
+		return ObjectBub(object:object)
 	}
 	func icon() -> UIImage {
 		return UIImage()
@@ -18,18 +19,20 @@ class ObjectMaker: Maker {
 }
 
 class ObjectBub: Bubble, ChainLeafDelegate {
-	var object: Object = Object(iden: 0, at: V2(0,0))
+	var object: Object
 	
 	let chainLeaf = ChainLeaf()
 	
-	required init (origin: CGPoint) {
-		super.init(hitch: .center, origin: origin, size: CGSize(width: 200, height: 48))
+	required init (object: Object) {
+		self.object = object
+		
+		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 200, height: 48))
 //		self.backgroundColor = UIColor.green.withAlphaComponent(0.5)
 	
 		chainLeaf.delegate = self
 		chainLeaf.frame = bounds
 		chainLeaf.chainView.chain = object.chain
-		object.chain.delegate = chainLeaf.chainView
+		self.object.chain.delegate = chainLeaf.chainView
 		addSubview(chainLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
@@ -43,6 +46,6 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	func onEdit() {
 	}
 	func onOK() {
-		object.ok()
+		object.onOK()
 	}
 }

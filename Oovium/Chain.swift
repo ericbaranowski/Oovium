@@ -87,6 +87,9 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			self.tokens.append(Token.token(key: key))
 		}
 	}
+	init (tower: Tower) {
+		self.tower = tower
+	}
 	init (string: String) {
 		tower = Tower(name: "")
 		for c in string.characters {
@@ -386,7 +389,8 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			print("\(error)")
 		}
 		
-		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
+//		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
+		let vi = 0
 		
 //		varIndexes = [Int]()
 //		for name in variables {
@@ -422,8 +426,14 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 // CustomStringConvertible =========================================================================
 	override public var description: String {
 		var sb = String()
-		for token in tokens {
-			sb.append("\(token.tag)")
+		if open {
+			for token in tokens {
+				sb.append("\(token.tag)")
+			}
+		} else {
+			let memory: UnsafeMutablePointer<Memory> = tower.source.memory
+			AEMemoryPrint(memory)
+			sb.append("\(AEMemoryValue(memory, tower.index))")
 		}
 		return sb
 	}

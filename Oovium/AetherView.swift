@@ -28,7 +28,7 @@ public class AetherView: UIScrollView {
 // Events ==========================================================================================
 	func onDoubleTap (_ gesture: UITapGestureRecognizer) {
 		let origin = gesture.location(in: self)
-		let bubble = maker.make(origin: origin)
+		let bubble = maker.make(aether:aether, at:V2(Double(origin.x), Double(origin.y)))
 		addBubble(bubble)
 		bubble.create()
 	}

@@ -9,31 +9,55 @@
 import Foundation
 
 public final class Object: Aexel {
-	var chain: Chain = Chain(string: "")
+	var chain: Chain
 	
 	var tower: Tower
 	var token: Token
 	
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2) {
-		tower = Tower(name: String(format: "I%05d", 0))
+		let name = "Ob_\(iden)"
+		tower = Tower(name: name)
 		token = Token.token(type: .variable, tag: tower.name)
-//		token.tower = tower
+		chain = Chain(tower: tower)
 		super.init(iden:iden, at:at)
+		self.name = name
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		tower = Tower(name: String(format: "I%05d", iden))
+		let name = "Ob_\(iden)"
+		tower = Tower(name: name)
 		token = Token.token(type: .variable, tag: tower.name)
+		chain = Chain(tower: tower)
 		super.init(iden: iden, type: type, attributes: attributes)
+		self.name = name
 	}
 	
 // Actions =========================================================================================
 	func ok() {
-//		let memory = aether.memory
 		chain.ok()
 	}
 	
+// Events ==========================================================================================
+	func onOK() {
+		if let task = tower.task {
+			AETaskRelease(task)
+		}
+		
+		tower.task = AETaskCreateLambda(chain.compile(memory: aether.memory))
+		AEMemoryPrint(aether.memory)
+		AETaskExecute(tower.task, aether.memory)
+		AEMemoryPrint(aether.memory)
+	}
+	override func onAdded() {
+		tower.aether = parent as! Aether
+	}
+	
 // Aexel ===========================================================================================
+	override var freeVars: [String] {
+		guard tower.web == nil else {return super.freeVars}
+		return [name]
+	}
+	
 	override func plugIn() {
 		tower.name = String(format: "I%05d", iden)
 		tower.token = Token.token(type: .variable, tag: tower.name)

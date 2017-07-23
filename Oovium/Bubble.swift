@@ -9,7 +9,7 @@
 import UIKit
 
 protocol Maker {
-	func make (origin: CGPoint) -> Bubble;
+	func make (aether: Aether, at: V2) -> Bubble;
 	func icon() -> UIImage;
 }
 

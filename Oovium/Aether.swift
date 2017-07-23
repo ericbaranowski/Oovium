@@ -23,12 +23,31 @@ import Foundation
 	var idens: IntMap = IntMap()
 	
 	public required init() {
-		memory = AEMemoryCreate(0);
+		memory = AEMemoryCreate(1);
 		super.init(iden: 0)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		memory = AEMemoryCreate(0);
+		memory = AEMemoryCreate(1);
 		super.init(iden: iden, type: type, attributes: attributes)
+	}
+	
+	private func renderMemory() {
+		var vars = [String]()
+		for aexel in aexels {
+			vars += aexel.freeVars
+		}
+		AEMemoryRelease(memory);
+		memory = AEMemoryCreate(vars.count)
+
+		var i = 0
+		for variable in vars {
+			withUnsafeMutablePointer(to: &memory.pointee.slots[i].name) {
+				$0.withMemoryRebound(to: Int8.self, capacity: MemoryLayout.size(ofValue: memory.pointee.slots[i].name)) {
+					_ = strlcpy($0, variable, MemoryLayout.size(ofValue: memory.pointee.slots[i].name))
+				}
+			}
+			i += 1
+		}
 	}
 	
 	public func wireQ() {
@@ -107,10 +126,15 @@ import Foundation
 	}
 	
 // Aexels ==========================================================================================
+	private func addAexel(_ aexel: Aexel) {
+		add(aexel)
+		aexels.append(aexel)
+		renderMemory()
+	}
 	func createAuto(at: V2) -> Auto {
 		let iden = idens.increment(key: "auto")
 		let auto = Auto(iden:iden, at:at)
-		aexels.append(auto)
+		addAexel(auto)
 		return auto
 	}
 	public func firstAuto() -> Auto? {
@@ -125,56 +149,56 @@ import Foundation
 	func createCron(at: V2) -> Cron {
 		let iden = idens.increment(key: "cron")
 		let cron = Cron(iden:iden, at:at)
-		aexels.append(cron)
+		addAexel(cron)
 		return cron
 	}
 	
 	func createGate(at: V2) -> Gate {
 		let iden = idens.increment(key: "gate")
 		let gate = Gate(iden:iden, at:at)
-		aexels.append(gate)
+		addAexel(gate)
 		return gate
 	}
 	
 	func createMech(at: V2) -> Mech {
 		let iden = idens.increment(key: "mech")
 		let mech = Mech(iden:iden, at:at)
-		aexels.append(mech)
+		addAexel(mech)
 		return mech
 	}
 	
 	func createMiru(at: V2) -> Miru {
 		let iden = idens.increment(key: "miru")
 		let miru = Miru(iden:iden, at:at)
-		aexels.append(miru)
+		addAexel(miru)
 		return miru
 	}
 	
 	func createObject(at: V2) -> Object {
 		let iden = idens.increment(key: "object")
 		let object = Object(iden:iden, at:at)
-		aexels.append(object)
+		addAexel(object)
 		return object
 	}
 	
 	func createTail(at: V2) -> Tail {
 		let iden = idens.increment(key: "tail")
 		let tail = Tail(iden:iden, at:at)
-		aexels.append(tail)
+		addAexel(tail)
 		return tail
 	}
 	
 	func createText(at: V2) -> Text {
 		let iden = idens.increment(key: "text")
 		let text = Text(iden:iden, at:at)
-		aexels.append(text)
+		addAexel(text)
 		return text
 	}
 	
 	func createType(at: V2) -> Type {
 		let iden = idens.increment(key: "type")
 		let type = Type(iden:iden, at:at)
-		aexels.append(type)
+		addAexel(type)
 		return type
 	}
 	

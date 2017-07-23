@@ -57,6 +57,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	func onOK() {
 		Hovers.dismissChainEditor()
 		delegate?.onOK()
+		setNeedsDisplay()
 	}
 	
 // Static ==========================================================================================
