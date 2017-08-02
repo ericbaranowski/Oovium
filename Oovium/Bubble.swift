@@ -43,4 +43,10 @@ class Bubble: UIView {
 	func create() {
 		onCreate()
 	}
+	
+// UIView ==========================================================================================
+	override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+		let area = self.bounds.insetBy(dx: -5, dy: -5)
+		return area.contains(point)
+	}
 }

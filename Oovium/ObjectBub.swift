@@ -26,7 +26,7 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	required init (object: Object) {
 		self.object = object
 		
-		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 200, height: 48))
+		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 36, height: 36))
 //		self.backgroundColor = UIColor.green.withAlphaComponent(0.5)
 	
 		chainLeaf.delegate = self

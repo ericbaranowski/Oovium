@@ -612,6 +612,101 @@
 			path = OoviumLib;
 			sourceTree = "<group>";
 		};
+		D8A544041F2A39E8007CB595 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB764F1E17933100A286DF /* Object.swift */,
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
+		D8A544051F2A39FC007CB595 /* Mech */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76651E1793D700A286DF /* Input.swift */,
+				D8CB76591E17937900A286DF /* Mech.swift */,
+			);
+			name = Mech;
+			sourceTree = "<group>";
+		};
+		D8A544061F2A3A12007CB595 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB766D1E1793FC00A286DF /* Cell.swift */,
+				D8CB766B1E1793F000A286DF /* Col.swift */,
+				D8CB76611E1793A200A286DF /* Grid.swift */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
+		D8A544071F2A3A29007CB595 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76571E17937100A286DF /* Edge.swift */,
+				D8CB76551E17935D00A286DF /* Text.swift */,
+			);
+			name = Text;
+			sourceTree = "<group>";
+		};
+		D8A544081F2A3A3D007CB595 /* Tail */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76671E1793E200A286DF /* Vertebra.swift */,
+				D8CB765B1E17938200A286DF /* Tail.swift */,
+			);
+			name = Tail;
+			sourceTree = "<group>";
+		};
+		D8A544091F2A3A56007CB595 /* Gate */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76511E17934100A286DF /* Gate.swift */,
+			);
+			name = Gate;
+			sourceTree = "<group>";
+		};
+		D8A5440A1F2A3A6F007CB595 /* Miru */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76631E1793B300A286DF /* Miru.swift */,
+			);
+			name = Miru;
+			sourceTree = "<group>";
+		};
+		D8A5440B1F2A3A7F007CB595 /* Type */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76691E1793E900A286DF /* Field.swift */,
+				D8CB765F1E17939A00A286DF /* Type.swift */,
+			);
+			name = Type;
+			sourceTree = "<group>";
+		};
+		D8A5440C1F2A3A94007CB595 /* Auto */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB766F1E17942A00A286DF /* State.swift */,
+				D8CB765D1E17938A00A286DF /* Auto.swift */,
+			);
+			name = Auto;
+			sourceTree = "<group>";
+		};
+		D8A5440D1F2A3AA2007CB595 /* Cron */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB76531E17934F00A286DF /* Cron.swift */,
+			);
+			name = Cron;
+			sourceTree = "<group>";
+		};
+		D8A5440E1F2A3ABD007CB595 /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				D8CB764D1E17932900A286DF /* Import.swift */,
+			);
+			name = Import;
+			sourceTree = "<group>";
+		};
 		D8AEB7431E9B6F1600249E7E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,24 +721,17 @@
 			children = (
 				D8CB764B1E17932000A286DF /* Aether.swift */,
 				D8CB768C1E18402C00A286DF /* Aexel.swift */,
-				D8CB765D1E17938A00A286DF /* Auto.swift */,
-				D8CB766D1E1793FC00A286DF /* Cell.swift */,
-				D8CB766B1E1793F000A286DF /* Col.swift */,
-				D8CB76531E17934F00A286DF /* Cron.swift */,
-				D8CB76571E17937100A286DF /* Edge.swift */,
-				D8CB76691E1793E900A286DF /* Field.swift */,
-				D8CB76511E17934100A286DF /* Gate.swift */,
-				D8CB76611E1793A200A286DF /* Grid.swift */,
-				D8CB764D1E17932900A286DF /* Import.swift */,
-				D8CB76651E1793D700A286DF /* Input.swift */,
-				D8CB76591E17937900A286DF /* Mech.swift */,
-				D8CB76631E1793B300A286DF /* Miru.swift */,
-				D8CB764F1E17933100A286DF /* Object.swift */,
-				D8CB766F1E17942A00A286DF /* State.swift */,
-				D8CB765B1E17938200A286DF /* Tail.swift */,
-				D8CB76551E17935D00A286DF /* Text.swift */,
-				D8CB765F1E17939A00A286DF /* Type.swift */,
-				D8CB76671E1793E200A286DF /* Vertebra.swift */,
+				D8A544041F2A39E8007CB595 /* Object */,
+				D8A544091F2A3A56007CB595 /* Gate */,
+				D8A544051F2A39FC007CB595 /* Mech */,
+				D8A544081F2A3A3D007CB595 /* Tail */,
+				D8A5440C1F2A3A94007CB595 /* Auto */,
+				D8A544061F2A3A12007CB595 /* Grid */,
+				D8A5440B1F2A3A7F007CB595 /* Type */,
+				D8A5440A1F2A3A6F007CB595 /* Miru */,
+				D8A5440D1F2A3AA2007CB595 /* Cron */,
+				D8A544071F2A3A29007CB595 /* Text */,
+				D8A5440E1F2A3ABD007CB595 /* Import */,
 			);
 			name = Domain;
 			sourceTree = "<group>";

@@ -8,5 +8,5 @@
 
 import Foundation
 
-public final class Import {
+public final class Import: Aexel {
 }

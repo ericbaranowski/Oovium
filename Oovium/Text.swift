@@ -18,6 +18,11 @@ public final class Text: Aexel {
 	
 	var edges: [Edge] = []
 
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["color", "shape"]

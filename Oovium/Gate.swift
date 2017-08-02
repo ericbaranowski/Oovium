@@ -35,6 +35,10 @@ public final class Gate: Aexel {
 	}
 
 // Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 	override func plugIn() {
 		ifTower.name = String(format: "IFI%05d", iden)
 		ifTower.token = Token.token(type: .variable, tag: ifTower.name)

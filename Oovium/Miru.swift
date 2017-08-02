@@ -11,6 +11,11 @@ import Foundation
 public final class Miru: Aexel {
 	var gridID: Int = 0
 
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["gridID"]

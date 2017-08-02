@@ -26,6 +26,11 @@ public final class Mech: Aexel {
 		super.init(iden: iden, type: type, attributes: attributes)
 	}
 	
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["resultChain"]

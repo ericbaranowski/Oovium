@@ -15,6 +15,12 @@ public final class Grid: Aexel {
 	var cols: [Col] = []
 	var cells: [Cell] = []
 
+
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["typeID", "rows"]

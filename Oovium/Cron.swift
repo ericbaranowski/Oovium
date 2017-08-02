@@ -29,6 +29,11 @@ public final class Cron: Aexel {
 	var deltaTower: Tower
 	var whileTower: Tower
 
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2) {
 		startTower = Tower(name: String(format: "I%05d", 0))

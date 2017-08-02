@@ -48,6 +48,10 @@ public final class Auto: Aexel {
 	}
 	
 // Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 	override func plugIn() {
 		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.A", iden)), tower: headTower)
 		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.B", iden)), tower: headTower)

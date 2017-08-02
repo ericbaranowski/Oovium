@@ -13,6 +13,11 @@ public final class Type: Aexel {
 	
 	var fields: [Field] = []
 
+// Aexel ===========================================================================================
+	override var freeVars: [String] {
+		return []
+	}
+	
 // Domain ==========================================================================================
 	override func properties() -> [String] {
 		return super.properties() + ["color"]
