@@ -11,7 +11,9 @@ import Foundation
 class TokenKey: Key {
 	let token: Token
 	
-	init (token: Token) {
-		self.token = token
-	}
+//	init (token: Token) {
+//		self.token = token
+//		super.init(te)
+//	}
+	required init?(coder aDecoder: NSCoder) {fatalError()}
 }

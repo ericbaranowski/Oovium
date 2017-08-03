@@ -1,5 +1,5 @@
 //
-//  AEPoint.swift
+//  Position.swift
 //  Oovium
 //
 //  Created by Joe Charlier on 4/8/17.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AEPoint {
+public enum Position {
 	case center, top, bottom, left, right, topLeft, topRight, bottomLeft, bottomRight
 	
 	func isRight() -> Bool {

@@ -37,6 +37,8 @@ public final class Math {
 	}
 		
 	public static func start() {
+		startAegean()
+
 		registerOperator(token: Token.add,		defs: [RealDef.def, RealDef.def], morph: .add)
 		registerOperator(token: Token.subtract,	defs: [RealDef.def, RealDef.def], morph: .sub)
 		registerOperator(token: Token.multiply,	defs: [RealDef.def, RealDef.def], morph: .mul)

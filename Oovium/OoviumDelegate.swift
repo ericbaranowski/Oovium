@@ -11,8 +11,6 @@ import UIKit
 @UIApplicationMain
 class OoviumDelegate: UIResponder, UIApplicationDelegate {
 
-	var window: UIWindow?
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		Oovium.start()
 		return true

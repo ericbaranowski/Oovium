@@ -11,7 +11,7 @@ import UIKit
 class Hover: UIView {
 	static var s: CGFloat = 1
 	
-	init (anchor: AEPoint, offset: UIOffset, size: CGSize) {
+	init (anchor: Position, offset: UIOffset, size: CGSize) {
 		
 		var x: CGFloat
 		var y: CGFloat

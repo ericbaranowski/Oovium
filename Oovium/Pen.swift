@@ -35,6 +35,6 @@ class Pen {
 		self.style.lineBreakMode = .byWordWrapping
 	}
 	convenience init() {
-		self.init(font: UIFont(name: "Trajan Pro", size: 12)!)
+		self.init(font: UIFont.systemFont(ofSize: 12))
 	}
 }

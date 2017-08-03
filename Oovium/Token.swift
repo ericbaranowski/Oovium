@@ -66,9 +66,10 @@ public final class Token: Hashable, CustomStringConvertible {
 	public let tower: Tower?
 	
 	var key: String {
-		get {
-			return "\(type.rawValue):\(tag)"
-		}
+		return "\(type.rawValue):\(tag)"
+	}
+	var display: String {
+		return tag
 	}
 	
 	private init (type: TokenType, tag: String) {

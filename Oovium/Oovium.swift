@@ -13,11 +13,12 @@ class Oovium {
 
 	static func start() {
 		print("Oovium =============================================================================")
+		Math.start()
+		
 		window_ = UIWindow(frame: UIScreen.main.bounds)
 		window_.makeKeyAndVisible()
-		window_.backgroundColor = UIColor.red
 		
-		window_.rootViewController = ViewController()
+		window_.rootViewController = OoviumController()
 		
 	}
 }

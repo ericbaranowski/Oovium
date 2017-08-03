@@ -9,7 +9,7 @@
 import UIKit
 
 class Leaf: UIView {
-	var hitch: AEPoint = .center
+	var hitch: Position = .center
 	
 	init() {
 		super.init(frame: CGRect.zero)

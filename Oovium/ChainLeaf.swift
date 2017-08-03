@@ -54,6 +54,15 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 	}
 
 // ChainViewDelegate ===============================================================================
+	var color: UIColor {
+		return UIColor.green
+	}
+	
+	func onChange() {
+		let newWidth = max(chainView.width+6, 36)
+		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 36)
+		setNeedsDisplay()
+	}
 	func onEdit() {
 		uiColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 		setNeedsDisplay()

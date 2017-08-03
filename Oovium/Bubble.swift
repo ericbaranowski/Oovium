@@ -14,9 +14,9 @@ protocol Maker {
 }
 
 class Bubble: UIView {
-	var hitch: AEPoint
+	var hitch: Position
 	
-	init (hitch: AEPoint, origin: CGPoint, size: CGSize) {
+	init (hitch: Position, origin: CGPoint, size: CGSize) {
 		self.hitch = hitch
 		
 		var x: CGFloat = origin.x

@@ -78,6 +78,7 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	var tower: Tower
 	var delegate: ChainDelegate?
 	var open: Bool = false
+	var cursor: Int = 0
 	var lambda: UnsafeMutablePointer<Lambda>?
 	
 	public init (tokens: String, tower: Tower) {
