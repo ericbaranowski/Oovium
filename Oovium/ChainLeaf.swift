@@ -22,7 +22,7 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 		super.init()
 		
 		self.backgroundColor = UIColor.clear
-		chainView.frame = CGRect(x: 0, y: 0, width: 200, height: 48)
+		chainView.frame = CGRect(x: 18, y: 12, width: 200, height: 21)
 		chainView.delegate = self
 		addSubview(chainView)
 		
@@ -55,22 +55,26 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 
 // ChainViewDelegate ===============================================================================
 	var color: UIColor {
-		return UIColor.green
+		return uiColor
 	}
 	
 	func onChange() {
-		let newWidth = max(chainView.width+6, 36)
-		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 36)
+		let newWidth = max(chainView.width+24, 36)
+		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		setNeedsDisplay()
 	}
 	func onEdit() {
+		let newWidth = max(chainView.width+24, 36)
+		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		uiColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 		setNeedsDisplay()
 		delegate?.onEdit()
 	}
 	func onOK() {
+		delegate?.onOK()
+		let newWidth = max(chainView.calcWidth()+24, 36)
+		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		uiColor = UIColor.green
 		setNeedsDisplay()
-		delegate?.onOK()
 	}
 }

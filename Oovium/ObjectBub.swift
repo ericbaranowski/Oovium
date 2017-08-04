@@ -47,5 +47,6 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	}
 	func onOK() {
 		object.onOK()
+		aetherView?.stretch()
 	}
 }

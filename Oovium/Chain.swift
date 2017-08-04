@@ -124,11 +124,13 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	
 	func post (token: Token) {
 		tokens.append(token)
+		cursor += 1
 		delegate?.onChange()
 	}
 	func backspace() {
 		guard tokens.count > 0 else {return}
 		tokens.removeLast()
+		cursor -= 1
 		delegate?.onChange()
 	}
 	func token() {
@@ -181,9 +183,11 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	private func push (_ key: String) {
 		stack[sp] = key;
 		sp += 1
+		if sp == 10 {sp = 0}
 	}
 	private func pop() -> String {
 		sp -= 1
+		if sp == -1 {sp = 9}
 		return stack[sp]
 	}
 	private func peek() -> String {

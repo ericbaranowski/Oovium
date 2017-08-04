@@ -17,7 +17,7 @@ class Skin {
 	func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {}
 	
 // Static ==========================================================================================
-	static var skin: Skin = IvorySkin()
+	static var skin: Skin = TronSkin()
 	
 	static func panel (path: CGPath, uiColor: UIColor) {
 		skin.panel(path: path, uiColor: uiColor)

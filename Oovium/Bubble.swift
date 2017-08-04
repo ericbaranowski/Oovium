@@ -15,6 +15,7 @@ protocol Maker {
 
 class Bubble: UIView {
 	var hitch: Position
+	var aetherView: AetherView?
 	
 	init (hitch: Position, origin: CGPoint, size: CGSize) {
 		self.hitch = hitch
@@ -46,7 +47,7 @@ class Bubble: UIView {
 	
 // UIView ==========================================================================================
 	override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-		let area = self.bounds.insetBy(dx: -5, dy: -5)
+		let area = self.bounds.insetBy(dx: -16, dy: -16)
 		return area.contains(point)
 	}
 }

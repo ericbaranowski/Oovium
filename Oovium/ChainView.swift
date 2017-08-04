@@ -32,27 +32,33 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	
 	
 	func calcWidth() -> CGFloat {
-		
-		let sb = NSMutableString()
+		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
 		var x: CGFloat = 0
-		var token: Token
-		let to = chain.tokens.count
-		let pen = Pen(font: UIFont.systemFont(ofSize: 19))
-		
-		var i: Int = 0
-		while i < to {
-			repeat {
-				token = chain.tokens[i]
-				sb.append(token.display)
-				i += 1
-			} while (i < to)
-			if sb.length > 0 {
-				x += sb.size(attributes: pen.attributes).width
-				sb.setString("")
-			}
-			if token.type == .variable {}
-		}
 
+		if !chain.open {
+			x = ("\(chain!)" as NSString).size(attributes: pen.attributes).width
+			
+		} else {
+			let sb = NSMutableString()
+			var token: Token
+			let to = chain.tokens.count
+			
+			var i: Int = 0
+			while i < to {
+				repeat {
+					token = chain.tokens[i]
+					sb.append(token.display)
+					i += 1
+				} while (i < to)
+				if sb.length > 0 {
+					x += sb.size(attributes: pen.attributes).width
+					sb.setString("")
+				}
+				if token.type == .variable {}
+			}
+			x += 3
+		}
+		
 		return x
 	}
 	
@@ -79,7 +85,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 			} while (pos < to)
 			if sb.length > 0 {
 				Skin.bubble(text: sb as String, x: x, y: 0, uiColor: delegate.color)
-				let pen = Pen(font: UIFont.systemFont(ofSize: 19))
+				let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
 				x += sb.size(attributes: pen.attributes).width
 				sb.setString("")
 			}
@@ -92,11 +98,20 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	}
 	override func draw(_ rect: CGRect) {
 		if !chain.open {
-			Skin.bubble(text: "\(chain!)", x: 8, y: 8, uiColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
+			Skin.bubble(text: "\(chain!)", x: 0, y: 0, uiColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
 		} else {
-			let x: CGFloat = drawTokens(at: 6, from: 0, to: chain.cursor)
+			let x: CGFloat = drawTokens(at: 0, from: 0, to: chain.cursor)
 			// Cursor
-//			if
+			if chain.tokens.count > 0 {
+				let path = CGMutablePath()
+				path.move(to: CGPoint(x: x+1, y: 1))
+				path.addLine(to: CGPoint(x: x+1, y: 20))
+				let c = UIGraphicsGetCurrentContext()!
+				c.setStrokeColor(UIColor.white.cgColor)
+				c.setLineWidth(2)
+				c.addPath(path)
+				c.drawPath(using: .stroke)
+			}
 
 			_ = drawTokens(at: x, from: chain.cursor, to: chain.tokens.count)
 		}
@@ -114,18 +129,21 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	
 // ChainDelegate ===================================================================================
 	func onChange() {
-		self.frame = CGRect(x: 0, y: 0, width: 12+calcWidth(), height: 25)
-		delegate.onChange()
+		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
 		setNeedsDisplay()
+		delegate.onChange()
 	}
 	func onEdit() {
+		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
+		setNeedsDisplay()
 		Hovers.invokeChainEditor(chain: chain)
 		delegate.onEdit()
 	}
 	func onOK() {
-		Hovers.dismissChainEditor()
 		delegate.onOK()
+		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
 		setNeedsDisplay()
+		Hovers.dismissChainEditor()
 	}
 	
 // Static ==========================================================================================
