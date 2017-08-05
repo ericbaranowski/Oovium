@@ -8,5 +8,10 @@
 
 import UIKit
 
-class GateTool: Tool {
+class GateTool: BubbleTool {
+	
+	init() {
+		super.init(maker: GateMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

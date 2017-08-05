@@ -131,6 +131,40 @@ import Foundation
 		aexels.append(aexel)
 		renderMemory()
 	}
+	
+	// Object
+	func createObject(at: V2) -> Object {
+		let iden = idens.increment(key: "object")
+		let object = Object(iden:iden, at:at)
+		addAexel(object)
+		return object
+	}
+	
+	// Gate
+	func createGate(at: V2) -> Gate {
+		let iden = idens.increment(key: "gate")
+		let gate = Gate(iden:iden, at:at)
+		addAexel(gate)
+		return gate
+	}
+	
+	// Mech
+	func createMech(at: V2) -> Mech {
+		let iden = idens.increment(key: "mech")
+		let mech = Mech(iden:iden, at:at)
+		addAexel(mech)
+		return mech
+	}
+	
+	// Tail
+	func createTail(at: V2) -> Tail {
+		let iden = idens.increment(key: "tail")
+		let tail = Tail(iden:iden, at:at)
+		addAexel(tail)
+		return tail
+	}
+	
+	// Auto
 	func createAuto(at: V2) -> Auto {
 		let iden = idens.increment(key: "auto")
 		let auto = Auto(iden:iden, at:at)
@@ -146,55 +180,15 @@ import Foundation
 		return nil
 	}
 	
-	func createCron(at: V2) -> Cron {
-		let iden = idens.increment(key: "cron")
-		let cron = Cron(iden:iden, at:at)
-		addAexel(cron)
-		return cron
+	// Grid
+	func createGrid(at: V2) -> Grid {
+		let iden = idens.increment(key: "grid")
+		let grid = Grid(iden:iden, at:at)
+		addAexel(grid)
+		return grid
 	}
 	
-	func createGate(at: V2) -> Gate {
-		let iden = idens.increment(key: "gate")
-		let gate = Gate(iden:iden, at:at)
-		addAexel(gate)
-		return gate
-	}
-	
-	func createMech(at: V2) -> Mech {
-		let iden = idens.increment(key: "mech")
-		let mech = Mech(iden:iden, at:at)
-		addAexel(mech)
-		return mech
-	}
-	
-	func createMiru(at: V2) -> Miru {
-		let iden = idens.increment(key: "miru")
-		let miru = Miru(iden:iden, at:at)
-		addAexel(miru)
-		return miru
-	}
-	
-	func createObject(at: V2) -> Object {
-		let iden = idens.increment(key: "object")
-		let object = Object(iden:iden, at:at)
-		addAexel(object)
-		return object
-	}
-	
-	func createTail(at: V2) -> Tail {
-		let iden = idens.increment(key: "tail")
-		let tail = Tail(iden:iden, at:at)
-		addAexel(tail)
-		return tail
-	}
-	
-	func createText(at: V2) -> Text {
-		let iden = idens.increment(key: "text")
-		let text = Text(iden:iden, at:at)
-		addAexel(text)
-		return text
-	}
-	
+	// Type
 	func createType(at: V2) -> Type {
 		let iden = idens.increment(key: "type")
 		let type = Type(iden:iden, at:at)
@@ -202,6 +196,39 @@ import Foundation
 		return type
 	}
 	
+	// Miru
+	func createMiru(at: V2) -> Miru {
+		let iden = idens.increment(key: "miru")
+		let miru = Miru(iden:iden, at:at)
+		addAexel(miru)
+		return miru
+	}
+	
+	// Cron
+	func createCron(at: V2) -> Cron {
+		let iden = idens.increment(key: "cron")
+		let cron = Cron(iden:iden, at:at)
+		addAexel(cron)
+		return cron
+	}
+	
+	// Text
+	func createText(at: V2) -> Text {
+		let iden = idens.increment(key: "text")
+		let text = Text(iden:iden, at:at)
+		addAexel(text)
+		return text
+	}
+	
+	// Join
+	func createAlso(at: V2) -> Also {
+		let iden = idens.increment(key: "also")
+		let also = Also(iden:iden, at:at)
+		addAexel(also)
+		return also
+	}
+	
+
 // Events ==========================================================================================
 	override func onLoad() {
 		print("onLoad")

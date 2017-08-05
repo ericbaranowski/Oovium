@@ -1,5 +1,5 @@
 //
-//  Import.swift
+//  Also.swift
 //  Oovium
 //
 //  Created by Joe Charlier on 12/30/16.
@@ -8,5 +8,5 @@
 
 import Foundation
 
-public final class Import: Aexel {
+public final class Also: Aexel {
 }

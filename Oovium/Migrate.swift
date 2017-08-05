@@ -309,7 +309,7 @@ public class Migrate {
 					atts["y"] = 0.0
 					array.append(atts)
 				}
-				aether["imports"] = array
+				aether["alsos"] = array
 			}
 			
 			return aether

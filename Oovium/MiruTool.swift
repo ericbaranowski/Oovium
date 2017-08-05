@@ -8,5 +8,10 @@
 
 import UIKit
 
-class MiruTool: Tool {
+class MiruTool: BubbleTool {
+	
+	init() {
+		super.init(maker: MiruMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

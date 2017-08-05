@@ -8,5 +8,9 @@
 
 import UIKit
 
-class GridTool: Tool {
+class GridTool: BubbleTool {
+	init() {
+		super.init(maker: GridMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

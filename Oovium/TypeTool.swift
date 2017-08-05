@@ -8,5 +8,10 @@
 
 import UIKit
 
-class TypeTool: Tool {
+class TypeTool: BubbleTool {
+	
+	init() {
+		super.init(maker: TypeMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

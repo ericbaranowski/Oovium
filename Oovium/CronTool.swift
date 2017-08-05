@@ -8,5 +8,10 @@
 
 import UIKit
 
-class CronTool: Tool {
+class CronTool: BubbleTool {
+	
+	init() {
+		super.init(maker: CronMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

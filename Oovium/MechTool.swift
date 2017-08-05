@@ -8,5 +8,10 @@
 
 import UIKit
 
-class MechTool: Tool {
+class MechTool: BubbleTool {
+	
+	init() {
+		super.init(maker: MechMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

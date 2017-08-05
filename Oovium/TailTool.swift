@@ -8,5 +8,10 @@
 
 import UIKit
 
-class TailTool: Tool {
+class TailTool: BubbleTool {
+	
+	init() {
+		super.init(maker: TailMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

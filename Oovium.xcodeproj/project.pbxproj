@@ -87,6 +87,28 @@
 		D81DC9791F355982000140DF /* ImportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9771F355982000140DF /* ImportTool.swift */; };
 		D81DC97E1F361D26000140DF /* UIColor+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC97D1F361D26000140DF /* UIColor+AE.swift */; };
 		D81DC97F1F361D26000140DF /* UIColor+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC97D1F361D26000140DF /* UIColor+AE.swift */; };
+		D81DC9811F362FC7000140DF /* BubbleTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9801F362FC7000140DF /* BubbleTool.swift */; };
+		D81DC9821F362FC7000140DF /* BubbleTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9801F362FC7000140DF /* BubbleTool.swift */; };
+		D81DC98C1F36317B000140DF /* GateBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC98B1F36317B000140DF /* GateBub.swift */; };
+		D81DC98D1F36317B000140DF /* GateBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC98B1F36317B000140DF /* GateBub.swift */; };
+		D81DC98F1F363268000140DF /* MechBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC98E1F363268000140DF /* MechBub.swift */; };
+		D81DC9901F363268000140DF /* MechBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC98E1F363268000140DF /* MechBub.swift */; };
+		D81DC9921F36332A000140DF /* TailBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9911F36332A000140DF /* TailBub.swift */; };
+		D81DC9931F36332A000140DF /* TailBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9911F36332A000140DF /* TailBub.swift */; };
+		D81DC9951F363374000140DF /* AutoBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9941F363374000140DF /* AutoBub.swift */; };
+		D81DC9961F363374000140DF /* AutoBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9941F363374000140DF /* AutoBub.swift */; };
+		D81DC9981F3633B2000140DF /* GridBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9971F3633B2000140DF /* GridBub.swift */; };
+		D81DC9991F3633B2000140DF /* GridBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9971F3633B2000140DF /* GridBub.swift */; };
+		D81DC99B1F365B0A000140DF /* TypeBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC99A1F365B0A000140DF /* TypeBub.swift */; };
+		D81DC99C1F365B0A000140DF /* TypeBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC99A1F365B0A000140DF /* TypeBub.swift */; };
+		D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC99D1F365B5D000140DF /* MiruBub.swift */; };
+		D81DC99F1F365B5D000140DF /* MiruBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC99D1F365B5D000140DF /* MiruBub.swift */; };
+		D81DC9A11F365BA6000140DF /* CronBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A01F365BA6000140DF /* CronBub.swift */; };
+		D81DC9A21F365BA6000140DF /* CronBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A01F365BA6000140DF /* CronBub.swift */; };
+		D81DC9A41F365BF1000140DF /* TextBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A31F365BF1000140DF /* TextBub.swift */; };
+		D81DC9A51F365BF1000140DF /* TextBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A31F365BF1000140DF /* TextBub.swift */; };
+		D81DC9A71F365C27000140DF /* AlsoBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A61F365C27000140DF /* AlsoBub.swift */; };
+		D81DC9A81F365C27000140DF /* AlsoBub.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9A61F365C27000140DF /* AlsoBub.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
@@ -171,7 +193,7 @@
 		D8AEB7451E9B6F2700249E7E /* UIControl+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AEB7441E9B6F2700249E7E /* UIControl+AE.swift */; };
 		D8AEB7461E9B6F4800249E7E /* UIControl+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AEB7441E9B6F2700249E7E /* UIControl+AE.swift */; };
 		D8CB764C1E17932000A286DF /* Aether.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764B1E17932000A286DF /* Aether.swift */; };
-		D8CB764E1E17932900A286DF /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764D1E17932900A286DF /* Import.swift */; };
+		D8CB764E1E17932900A286DF /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764D1E17932900A286DF /* Also.swift */; };
 		D8CB76501E17933100A286DF /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764F1E17933100A286DF /* Object.swift */; };
 		D8CB76521E17934100A286DF /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76511E17934100A286DF /* Gate.swift */; };
 		D8CB76541E17934F00A286DF /* Cron.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76531E17934F00A286DF /* Cron.swift */; };
@@ -202,7 +224,7 @@
 		D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76691E1793E900A286DF /* Field.swift */; };
 		D8CB767E1E17AAAF00A286DF /* Gate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76511E17934100A286DF /* Gate.swift */; };
 		D8CB767F1E17AAAF00A286DF /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76611E1793A200A286DF /* Grid.swift */; };
-		D8CB76801E17AAAF00A286DF /* Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764D1E17932900A286DF /* Import.swift */; };
+		D8CB76801E17AAAF00A286DF /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB764D1E17932900A286DF /* Also.swift */; };
 		D8CB76811E17AAAF00A286DF /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76651E1793D700A286DF /* Input.swift */; };
 		D8CB76821E17AAAF00A286DF /* Mech.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76591E17937900A286DF /* Mech.swift */; };
 		D8CB76831E17AAAF00A286DF /* Miru.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76631E1793B300A286DF /* Miru.swift */; };
@@ -286,6 +308,17 @@
 		D81DC9741F35596C000140DF /* TextTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTool.swift; sourceTree = "<group>"; };
 		D81DC9771F355982000140DF /* ImportTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportTool.swift; sourceTree = "<group>"; };
 		D81DC97D1F361D26000140DF /* UIColor+AE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AE.swift"; sourceTree = "<group>"; };
+		D81DC9801F362FC7000140DF /* BubbleTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTool.swift; sourceTree = "<group>"; };
+		D81DC98B1F36317B000140DF /* GateBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateBub.swift; sourceTree = "<group>"; };
+		D81DC98E1F363268000140DF /* MechBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MechBub.swift; sourceTree = "<group>"; };
+		D81DC9911F36332A000140DF /* TailBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailBub.swift; sourceTree = "<group>"; };
+		D81DC9941F363374000140DF /* AutoBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoBub.swift; sourceTree = "<group>"; };
+		D81DC9971F3633B2000140DF /* GridBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridBub.swift; sourceTree = "<group>"; };
+		D81DC99A1F365B0A000140DF /* TypeBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeBub.swift; sourceTree = "<group>"; };
+		D81DC99D1F365B5D000140DF /* MiruBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiruBub.swift; sourceTree = "<group>"; };
+		D81DC9A01F365BA6000140DF /* CronBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CronBub.swift; sourceTree = "<group>"; };
+		D81DC9A31F365BF1000140DF /* TextBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextBub.swift; sourceTree = "<group>"; };
+		D81DC9A61F365C27000140DF /* AlsoBub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlsoBub.swift; sourceTree = "<group>"; };
 		D81FCDBE1E1343B100E8936E /* Satyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satyr.swift; sourceTree = "<group>"; };
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumLookup.swift; sourceTree = "<group>"; };
@@ -350,7 +383,7 @@
 		D8AEB7411E9B6BA800249E7E /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		D8AEB7441E9B6F2700249E7E /* UIControl+AE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+AE.swift"; sourceTree = "<group>"; };
 		D8CB764B1E17932000A286DF /* Aether.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aether.swift; sourceTree = "<group>"; };
-		D8CB764D1E17932900A286DF /* Import.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Import.swift; sourceTree = "<group>"; };
+		D8CB764D1E17932900A286DF /* Also.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Also.swift; sourceTree = "<group>"; };
 		D8CB764F1E17933100A286DF /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		D8CB76511E17934100A286DF /* Gate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gate.swift; sourceTree = "<group>"; };
 		D8CB76531E17934F00A286DF /* Cron.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cron.swift; sourceTree = "<group>"; };
@@ -487,9 +520,66 @@
 				D81DC9711F355958000140DF /* CronTool.swift */,
 				D81DC9741F35596C000140DF /* TextTool.swift */,
 				D81DC9771F355982000140DF /* ImportTool.swift */,
+				D81DC9801F362FC7000140DF /* BubbleTool.swift */,
 				D81DC9471F355552000140DF /* BubbleToolBar.swift */,
 			);
 			name = Bubble;
+			sourceTree = "<group>";
+		};
+		D81DC9831F3630D1000140DF /* TailBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9911F36332A000140DF /* TailBub.swift */,
+			);
+			name = TailBub;
+			sourceTree = "<group>";
+		};
+		D81DC9841F3630D9000140DF /* GridBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9971F3633B2000140DF /* GridBub.swift */,
+			);
+			name = GridBub;
+			sourceTree = "<group>";
+		};
+		D81DC9851F3630E3000140DF /* TypeBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC99A1F365B0A000140DF /* TypeBub.swift */,
+			);
+			name = TypeBub;
+			sourceTree = "<group>";
+		};
+		D81DC9861F3630EC000140DF /* MiruBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC99D1F365B5D000140DF /* MiruBub.swift */,
+			);
+			name = MiruBub;
+			sourceTree = "<group>";
+		};
+		D81DC9871F3630F4000140DF /* CronBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9A01F365BA6000140DF /* CronBub.swift */,
+			);
+			name = CronBub;
+			sourceTree = "<group>";
+		};
+		D81DC9881F3630FA000140DF /* TextBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9A31F365BF1000140DF /* TextBub.swift */,
+			);
+			name = TextBub;
+			sourceTree = "<group>";
+		};
+		D81DC98A1F363126000140DF /* AlsoBub */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9A61F365C27000140DF /* AlsoBub.swift */,
+			);
+			name = AlsoBub;
 			sourceTree = "<group>";
 		};
 		D81FCDBB1E13416C00E8936E /* Utility */ = {
@@ -519,9 +609,16 @@
 				D84CD3F71E994A3100029120 /* AetherView.swift */,
 				D84CD3FD1E99C95000029120 /* Structure */,
 				D84CD3F61E994A1300029120 /* ObjectBub */,
-				D84CD3F91E994AA500029120 /* IfBub */,
+				D84CD3F91E994AA500029120 /* GateBub */,
 				D84CD3FA1E994B1800029120 /* MechBub */,
+				D81DC9831F3630D1000140DF /* TailBub */,
 				D84CD3FB1E994B1F00029120 /* AutoBub */,
+				D81DC9841F3630D9000140DF /* GridBub */,
+				D81DC9851F3630E3000140DF /* TypeBub */,
+				D81DC9861F3630EC000140DF /* MiruBub */,
+				D81DC9871F3630F4000140DF /* CronBub */,
+				D81DC9881F3630FA000140DF /* TextBub */,
+				D81DC98A1F363126000140DF /* AlsoBub */,
 			);
 			name = Aether;
 			sourceTree = "<group>";
@@ -534,16 +631,18 @@
 			name = ObjectBub;
 			sourceTree = "<group>";
 		};
-		D84CD3F91E994AA500029120 /* IfBub */ = {
+		D84CD3F91E994AA500029120 /* GateBub */ = {
 			isa = PBXGroup;
 			children = (
+				D81DC98B1F36317B000140DF /* GateBub.swift */,
 			);
-			name = IfBub;
+			name = GateBub;
 			sourceTree = "<group>";
 		};
 		D84CD3FA1E994B1800029120 /* MechBub */ = {
 			isa = PBXGroup;
 			children = (
+				D81DC98E1F363268000140DF /* MechBub.swift */,
 			);
 			name = MechBub;
 			sourceTree = "<group>";
@@ -551,6 +650,7 @@
 		D84CD3FB1E994B1F00029120 /* AutoBub */ = {
 			isa = PBXGroup;
 			children = (
+				D81DC9941F363374000140DF /* AutoBub.swift */,
 			);
 			name = AutoBub;
 			sourceTree = "<group>";
@@ -851,12 +951,12 @@
 			name = Cron;
 			sourceTree = "<group>";
 		};
-		D8A5440E1F2A3ABD007CB595 /* Import */ = {
+		D8A5440E1F2A3ABD007CB595 /* Also */ = {
 			isa = PBXGroup;
 			children = (
-				D8CB764D1E17932900A286DF /* Import.swift */,
+				D8CB764D1E17932900A286DF /* Also.swift */,
 			);
-			name = Import;
+			name = Also;
 			sourceTree = "<group>";
 		};
 		D8ADD7A81F32755200EB3136 /* Icons */ = {
@@ -904,7 +1004,7 @@
 				D8A5440A1F2A3A6F007CB595 /* Miru */,
 				D8A5440D1F2A3AA2007CB595 /* Cron */,
 				D8A544071F2A3A29007CB595 /* Text */,
-				D8A5440E1F2A3ABD007CB595 /* Import */,
+				D8A5440E1F2A3ABD007CB595 /* Also */,
 			);
 			name = Domain;
 			sourceTree = "<group>";
@@ -1120,7 +1220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8CB76801E17AAAF00A286DF /* Import.swift in Sources */,
+				D8CB76801E17AAAF00A286DF /* Also.swift in Sources */,
 				D8F2BA2A1E9BC582006A1492 /* Schematic.swift in Sources */,
 				D81DC93C1F34FC1C000140DF /* LinksMenu.swift in Sources */,
 				D81DC9521F355651000140DF /* Tool.swift in Sources */,
@@ -1137,10 +1237,12 @@
 				D80659121DE90EC800325182 /* Tower.swift in Sources */,
 				D8CB76791E17AAAF00A286DF /* Cell.swift in Sources */,
 				D81DC94C1F35555E000140DF /* ShapeToolBar.swift in Sources */,
+				D81DC99C1F365B0A000140DF /* TypeBub.swift in Sources */,
 				D81DC9641F3558C4000140DF /* TailTool.swift in Sources */,
 				D8CB76761E17AAAF00A286DF /* Anchor.swift in Sources */,
 				D806590E1DE90EC800325182 /* DateDef.swift in Sources */,
 				D81DC95B1F3557CD000140DF /* ObjectTool.swift in Sources */,
+				D81DC9821F362FC7000140DF /* BubbleTool.swift in Sources */,
 				D8CB767E1E17AAAF00A286DF /* Gate.swift in Sources */,
 				D84CD40A1E9A816200029120 /* Bubble.swift in Sources */,
 				D87FC2681F12FF9100100873 /* Spider.swift in Sources */,
@@ -1154,6 +1256,7 @@
 				D8CB76881E17AAAF00A286DF /* Type.swift in Sources */,
 				D84CD4121E9AAE6600029120 /* ObjectBub.swift in Sources */,
 				D8CB767C1E17AAAF00A286DF /* Edge.swift in Sources */,
+				D81DC9A81F365C27000140DF /* AlsoBub.swift in Sources */,
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
 				D81DC9491F355552000140DF /* BubbleToolBar.swift in Sources */,
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
@@ -1165,6 +1268,7 @@
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
 				D81DC9421F34FC3E000140DF /* TutorialsMenu.swift in Sources */,
+				D81DC9901F363268000140DF /* MechBub.swift in Sources */,
 				D80659161DE90EC800325182 /* Chain.swift in Sources */,
 				D81DC9361F34F102000140DF /* RootMenu.swift in Sources */,
 				D85EEFD01E10B47700166C4C /* Web.swift in Sources */,
@@ -1173,14 +1277,18 @@
 				D80659091DE90EC800325182 /* RealDef.swift in Sources */,
 				D8CB76821E17AAAF00A286DF /* Mech.swift in Sources */,
 				D80659151DE90EC800325182 /* Token.swift in Sources */,
+				D81DC9A51F365BF1000140DF /* TextBub.swift in Sources */,
+				D81DC9991F3633B2000140DF /* GridBub.swift in Sources */,
 				D84CD3FC1E99503300029120 /* AetherView.swift in Sources */,
 				D81DC93F1F34FC26000140DF /* HelpMenu.swift in Sources */,
 				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
 				D81DC9761F35596C000140DF /* TextTool.swift in Sources */,
 				D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */,
 				D806590A1DE90EC800325182 /* ComplexDef.swift in Sources */,
+				D81DC9A21F365BA6000140DF /* CronBub.swift in Sources */,
 				D81DC9331F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D80659081DE90EC800325182 /* Def.swift in Sources */,
+				D81DC98D1F36317B000140DF /* GateBub.swift in Sources */,
 				D81DC9391F34FBFE000140DF /* AetherMenu.swift in Sources */,
 				D81DC96D1F355922000140DF /* TypeTool.swift in Sources */,
 				D8CB76841E17AAAF00A286DF /* Object.swift in Sources */,
@@ -1200,12 +1308,15 @@
 				D8F2BA311E9BCB62006A1492 /* ChainView.swift in Sources */,
 				D8AEB7461E9B6F4800249E7E /* UIControl+AE.swift in Sources */,
 				D8CB76871E17AAAF00A286DF /* Text.swift in Sources */,
+				D81DC99F1F365B5D000140DF /* MiruBub.swift in Sources */,
 				D8AEB7381E9B020600249E7E /* TronSkin.swift in Sources */,
 				D81DC9701F355944000140DF /* MiruTool.swift in Sources */,
 				D8CB767A1E17AAAF00A286DF /* Col.swift in Sources */,
 				D8FB18F51E187EA700350284 /* Basket.swift in Sources */,
 				D8AEB7331E9B006C00249E7E /* Skin.swift in Sources */,
 				D894A0601EA4458200A9346A /* ChainLeaf.swift in Sources */,
+				D81DC9931F36332A000140DF /* TailBub.swift in Sources */,
+				D81DC9961F363374000140DF /* AutoBub.swift in Sources */,
 				D81DC9581F3557B9000140DF /* ShapeTool.swift in Sources */,
 				D84CD40B1E9A816500029120 /* Leaf.swift in Sources */,
 				D84CD40D1E9A816C00029120 /* OoviumView.swift in Sources */,
@@ -1244,14 +1355,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D81DC98C1F36317B000140DF /* GateBub.swift in Sources */,
 				D89BEC341DE8D44500B56F6A /* Token.swift in Sources */,
 				D81DC9301F34D6D2000140DF /* RedDot.swift in Sources */,
 				D84CD4031E99D24300029120 /* Position.swift in Sources */,
 				D8CB76641E1793B300A286DF /* Miru.swift in Sources */,
 				D81DC9691F35590C000140DF /* GridTool.swift in Sources */,
+				D81DC9951F363374000140DF /* AutoBub.swift in Sources */,
 				D8AEB7351E9B017500249E7E /* TronSkin.swift in Sources */,
 				D89BEBE11DE8D32B00B56F6A /* OoviumController.swift in Sources */,
 				D81DC94B1F35555E000140DF /* ShapeToolBar.swift in Sources */,
+				D81DC9A41F365BF1000140DF /* TextBub.swift in Sources */,
 				D81DC9571F3557B9000140DF /* ShapeTool.swift in Sources */,
 				D8CB766E1E1793FC00A286DF /* Cell.swift in Sources */,
 				D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */,
@@ -1262,9 +1376,12 @@
 				D84CD4011E99CAE500029120 /* Leaf.swift in Sources */,
 				D84CD41C1E9AE87D00029120 /* ChainEditor.swift in Sources */,
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
+				D81DC9981F3633B2000140DF /* GridBub.swift in Sources */,
+				D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D8FA15571F32E24100697D7C /* UIView+AE.swift in Sources */,
+				D81DC9811F362FC7000140DF /* BubbleTool.swift in Sources */,
 				D81DC95D1F35587B000140DF /* GateTool.swift in Sources */,
 				D81DC9411F34FC3E000140DF /* TutorialsMenu.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
@@ -1272,14 +1389,17 @@
 				D87FC2671F12FF7700100873 /* Spider.swift in Sources */,
 				D84CD3F81E994A3100029120 /* AetherView.swift in Sources */,
 				D85AA8981F1F2D30004D0F81 /* V2.swift in Sources */,
+				D81DC9921F36332A000140DF /* TailBub.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
 				D81DC93E1F34FC26000140DF /* HelpMenu.swift in Sources */,
+				D81DC99B1F365B0A000140DF /* TypeBub.swift in Sources */,
 				D81DC95A1F3557CD000140DF /* ObjectTool.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
 				D8CB76521E17934100A286DF /* Gate.swift in Sources */,
 				D8AEB73B1E9B04B700249E7E /* RGB.swift in Sources */,
-				D8CB764E1E17932900A286DF /* Import.swift in Sources */,
+				D8CB764E1E17932900A286DF /* Also.swift in Sources */,
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,
+				D81DC9A11F365BA6000140DF /* CronBub.swift in Sources */,
 				D81DC9481F355552000140DF /* BubbleToolBar.swift in Sources */,
 				D8CB765E1E17938A00A286DF /* Auto.swift in Sources */,
 				D81DC9451F35552A000140DF /* ToolBar.swift in Sources */,
@@ -1303,6 +1423,7 @@
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
 				D8AEB7401E9B6AE100249E7E /* Schematic.swift in Sources */,
+				D81DC9A71F365C27000140DF /* AlsoBub.swift in Sources */,
 				D81DC9511F355651000140DF /* Tool.swift in Sources */,
 				D8FDE1D21E46F08600B18F06 /* String+AE.swift in Sources */,
 				D81DC96F1F355944000140DF /* MiruTool.swift in Sources */,
@@ -1330,6 +1451,7 @@
 				D81DC9381F34FBFE000140DF /* AetherMenu.swift in Sources */,
 				D81DC9541F3556EE000140DF /* ColorTool.swift in Sources */,
 				D8CB76561E17935D00A286DF /* Text.swift in Sources */,
+				D81DC98F1F363268000140DF /* MechBub.swift in Sources */,
 				D85FD60A1E9AFFCE009B621A /* Skin.swift in Sources */,
 				D8CB764C1E17932000A286DF /* Aether.swift in Sources */,
 				D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */,

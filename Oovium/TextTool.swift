@@ -8,5 +8,10 @@
 
 import UIKit
 
-class TextTool: Tool {
+class TextTool: BubbleTool {
+	
+	init() {
+		super.init(maker: TextMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

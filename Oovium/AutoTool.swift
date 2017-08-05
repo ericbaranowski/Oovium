@@ -8,5 +8,10 @@
 
 import UIKit
 
-class AutoTool: Tool {
+class AutoTool: BubbleTool {
+	
+	init() {
+		super.init(maker: AutoMaker())
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
 }
