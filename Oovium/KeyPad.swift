@@ -9,17 +9,13 @@
 import UIKit
 
 class KeyPad: Hover {
-	private var _schematic: Schematic = Schematic(rows: 1, cols: 1)
 	var schematic: Schematic {
-		set {
-			_schematic = newValue
-			renderSchematic()
-		}
-		get {return _schematic}
+		didSet {renderSchematic()}
 	}
 	
-	init (size: CGSize) {
-		super.init(anchor: .bottomRight, offset: UIOffset(horizontal: -7, vertical: -7), size: size)
+	init (anchor: Position, offset: UIOffset, size: CGSize, schematic: Schematic) {
+		self.schematic = schematic
+		super.init(anchor: anchor, offset: offset, size: size)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

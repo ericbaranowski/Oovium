@@ -36,6 +36,57 @@
 		D8185C281EABFF0600011CE0 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8185C291EABFFAB00011CE0 /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D8185C2B1EAD47C500011CE0 /* String+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FDE1D11E46F08600B18F06 /* String+AE.swift */; };
+		D81DC9301F34D6D2000140DF /* RedDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC92F1F34D6D2000140DF /* RedDot.swift */; };
+		D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */; };
+		D81DC9331F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */; };
+		D81DC9351F34F102000140DF /* RootMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9341F34F102000140DF /* RootMenu.swift */; };
+		D81DC9361F34F102000140DF /* RootMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9341F34F102000140DF /* RootMenu.swift */; };
+		D81DC9381F34FBFE000140DF /* AetherMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9371F34FBFE000140DF /* AetherMenu.swift */; };
+		D81DC9391F34FBFE000140DF /* AetherMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9371F34FBFE000140DF /* AetherMenu.swift */; };
+		D81DC93B1F34FC1C000140DF /* LinksMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC93A1F34FC1C000140DF /* LinksMenu.swift */; };
+		D81DC93C1F34FC1C000140DF /* LinksMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC93A1F34FC1C000140DF /* LinksMenu.swift */; };
+		D81DC93E1F34FC26000140DF /* HelpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC93D1F34FC26000140DF /* HelpMenu.swift */; };
+		D81DC93F1F34FC26000140DF /* HelpMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC93D1F34FC26000140DF /* HelpMenu.swift */; };
+		D81DC9411F34FC3E000140DF /* TutorialsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9401F34FC3E000140DF /* TutorialsMenu.swift */; };
+		D81DC9421F34FC3E000140DF /* TutorialsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9401F34FC3E000140DF /* TutorialsMenu.swift */; };
+		D81DC9451F35552A000140DF /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9441F35552A000140DF /* ToolBar.swift */; };
+		D81DC9461F35552A000140DF /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9441F35552A000140DF /* ToolBar.swift */; };
+		D81DC9481F355552000140DF /* BubbleToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9471F355552000140DF /* BubbleToolBar.swift */; };
+		D81DC9491F355552000140DF /* BubbleToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9471F355552000140DF /* BubbleToolBar.swift */; };
+		D81DC94B1F35555E000140DF /* ShapeToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC94A1F35555E000140DF /* ShapeToolBar.swift */; };
+		D81DC94C1F35555E000140DF /* ShapeToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC94A1F35555E000140DF /* ShapeToolBar.swift */; };
+		D81DC94E1F355568000140DF /* ColorToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC94D1F355568000140DF /* ColorToolBar.swift */; };
+		D81DC94F1F355568000140DF /* ColorToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC94D1F355568000140DF /* ColorToolBar.swift */; };
+		D81DC9511F355651000140DF /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9501F355651000140DF /* Tool.swift */; };
+		D81DC9521F355651000140DF /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9501F355651000140DF /* Tool.swift */; };
+		D81DC9541F3556EE000140DF /* ColorTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9531F3556EE000140DF /* ColorTool.swift */; };
+		D81DC9551F3556EE000140DF /* ColorTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9531F3556EE000140DF /* ColorTool.swift */; };
+		D81DC9571F3557B9000140DF /* ShapeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9561F3557B9000140DF /* ShapeTool.swift */; };
+		D81DC9581F3557B9000140DF /* ShapeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9561F3557B9000140DF /* ShapeTool.swift */; };
+		D81DC95A1F3557CD000140DF /* ObjectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9591F3557CD000140DF /* ObjectTool.swift */; };
+		D81DC95B1F3557CD000140DF /* ObjectTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9591F3557CD000140DF /* ObjectTool.swift */; };
+		D81DC95D1F35587B000140DF /* GateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC95C1F35587B000140DF /* GateTool.swift */; };
+		D81DC95E1F35587B000140DF /* GateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC95C1F35587B000140DF /* GateTool.swift */; };
+		D81DC9601F35589B000140DF /* MechTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC95F1F35589B000140DF /* MechTool.swift */; };
+		D81DC9611F35589B000140DF /* MechTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC95F1F35589B000140DF /* MechTool.swift */; };
+		D81DC9631F3558C4000140DF /* TailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9621F3558C4000140DF /* TailTool.swift */; };
+		D81DC9641F3558C4000140DF /* TailTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9621F3558C4000140DF /* TailTool.swift */; };
+		D81DC9661F3558DB000140DF /* AutoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9651F3558DB000140DF /* AutoTool.swift */; };
+		D81DC9671F3558DB000140DF /* AutoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9651F3558DB000140DF /* AutoTool.swift */; };
+		D81DC9691F35590C000140DF /* GridTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9681F35590C000140DF /* GridTool.swift */; };
+		D81DC96A1F35590C000140DF /* GridTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9681F35590C000140DF /* GridTool.swift */; };
+		D81DC96C1F355922000140DF /* TypeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC96B1F355922000140DF /* TypeTool.swift */; };
+		D81DC96D1F355922000140DF /* TypeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC96B1F355922000140DF /* TypeTool.swift */; };
+		D81DC96F1F355944000140DF /* MiruTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC96E1F355944000140DF /* MiruTool.swift */; };
+		D81DC9701F355944000140DF /* MiruTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC96E1F355944000140DF /* MiruTool.swift */; };
+		D81DC9721F355958000140DF /* CronTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9711F355958000140DF /* CronTool.swift */; };
+		D81DC9731F355958000140DF /* CronTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9711F355958000140DF /* CronTool.swift */; };
+		D81DC9751F35596C000140DF /* TextTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9741F35596C000140DF /* TextTool.swift */; };
+		D81DC9761F35596C000140DF /* TextTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9741F35596C000140DF /* TextTool.swift */; };
+		D81DC9781F355982000140DF /* ImportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9771F355982000140DF /* ImportTool.swift */; };
+		D81DC9791F355982000140DF /* ImportTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC9771F355982000140DF /* ImportTool.swift */; };
+		D81DC97E1F361D26000140DF /* UIColor+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC97D1F361D26000140DF /* UIColor+AE.swift */; };
+		D81DC97F1F361D26000140DF /* UIColor+AE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81DC97D1F361D26000140DF /* UIColor+AE.swift */; };
 		D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81FCDBE1E1343B100E8936E /* Satyr.swift */; };
 		D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
@@ -209,6 +260,32 @@
 		D80EB9A01DED96F900361939 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		D8185C0A1EABFC5300011CE0 /* Oov */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Oov; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8185C0C1EABFC5300011CE0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		D81DC92F1F34D6D2000140DF /* RedDot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedDot.swift; sourceTree = "<group>"; };
+		D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AETouchGestureRecognizer.swift; sourceTree = "<group>"; };
+		D81DC9341F34F102000140DF /* RootMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootMenu.swift; sourceTree = "<group>"; };
+		D81DC9371F34FBFE000140DF /* AetherMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherMenu.swift; sourceTree = "<group>"; };
+		D81DC93A1F34FC1C000140DF /* LinksMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinksMenu.swift; sourceTree = "<group>"; };
+		D81DC93D1F34FC26000140DF /* HelpMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpMenu.swift; sourceTree = "<group>"; };
+		D81DC9401F34FC3E000140DF /* TutorialsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialsMenu.swift; sourceTree = "<group>"; };
+		D81DC9441F35552A000140DF /* ToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
+		D81DC9471F355552000140DF /* BubbleToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleToolBar.swift; sourceTree = "<group>"; };
+		D81DC94A1F35555E000140DF /* ShapeToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeToolBar.swift; sourceTree = "<group>"; };
+		D81DC94D1F355568000140DF /* ColorToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorToolBar.swift; sourceTree = "<group>"; };
+		D81DC9501F355651000140DF /* Tool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		D81DC9531F3556EE000140DF /* ColorTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTool.swift; sourceTree = "<group>"; };
+		D81DC9561F3557B9000140DF /* ShapeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeTool.swift; sourceTree = "<group>"; };
+		D81DC9591F3557CD000140DF /* ObjectTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectTool.swift; sourceTree = "<group>"; };
+		D81DC95C1F35587B000140DF /* GateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GateTool.swift; sourceTree = "<group>"; };
+		D81DC95F1F35589B000140DF /* MechTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MechTool.swift; sourceTree = "<group>"; };
+		D81DC9621F3558C4000140DF /* TailTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TailTool.swift; sourceTree = "<group>"; };
+		D81DC9651F3558DB000140DF /* AutoTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTool.swift; sourceTree = "<group>"; };
+		D81DC9681F35590C000140DF /* GridTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridTool.swift; sourceTree = "<group>"; };
+		D81DC96B1F355922000140DF /* TypeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeTool.swift; sourceTree = "<group>"; };
+		D81DC96E1F355944000140DF /* MiruTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiruTool.swift; sourceTree = "<group>"; };
+		D81DC9711F355958000140DF /* CronTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CronTool.swift; sourceTree = "<group>"; };
+		D81DC9741F35596C000140DF /* TextTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextTool.swift; sourceTree = "<group>"; };
+		D81DC9771F355982000140DF /* ImportTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportTool.swift; sourceTree = "<group>"; };
+		D81DC97D1F361D26000140DF /* UIColor+AE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+AE.swift"; sourceTree = "<group>"; };
 		D81FCDBE1E1343B100E8936E /* Satyr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Satyr.swift; sourceTree = "<group>"; };
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* OoviumLookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OoviumLookup.swift; sourceTree = "<group>"; };
@@ -353,6 +430,68 @@
 			name = "Support Files";
 			sourceTree = "<group>";
 		};
+		D81DC92E1F34D653000140DF /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC92F1F34D6D2000140DF /* RedDot.swift */,
+				D81DC9341F34F102000140DF /* RootMenu.swift */,
+				D81DC9371F34FBFE000140DF /* AetherMenu.swift */,
+				D81DC93A1F34FC1C000140DF /* LinksMenu.swift */,
+				D81DC93D1F34FC26000140DF /* HelpMenu.swift */,
+				D81DC9401F34FC3E000140DF /* TutorialsMenu.swift */,
+			);
+			name = Menu;
+			sourceTree = "<group>";
+		};
+		D81DC9431F352EB8000140DF /* BubbleMaker */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9501F355651000140DF /* Tool.swift */,
+				D81DC9441F35552A000140DF /* ToolBar.swift */,
+				D81DC97C1F355A76000140DF /* Bubble */,
+				D81DC97B1F355A71000140DF /* Shape */,
+				D81DC97A1F355A52000140DF /* Color */,
+			);
+			name = BubbleMaker;
+			sourceTree = "<group>";
+		};
+		D81DC97A1F355A52000140DF /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9531F3556EE000140DF /* ColorTool.swift */,
+				D81DC94D1F355568000140DF /* ColorToolBar.swift */,
+			);
+			name = Color;
+			sourceTree = "<group>";
+		};
+		D81DC97B1F355A71000140DF /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9561F3557B9000140DF /* ShapeTool.swift */,
+				D81DC94A1F35555E000140DF /* ShapeToolBar.swift */,
+			);
+			name = Shape;
+			sourceTree = "<group>";
+		};
+		D81DC97C1F355A76000140DF /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				D81DC9591F3557CD000140DF /* ObjectTool.swift */,
+				D81DC95C1F35587B000140DF /* GateTool.swift */,
+				D81DC95F1F35589B000140DF /* MechTool.swift */,
+				D81DC9621F3558C4000140DF /* TailTool.swift */,
+				D81DC9651F3558DB000140DF /* AutoTool.swift */,
+				D81DC9681F35590C000140DF /* GridTool.swift */,
+				D81DC96B1F355922000140DF /* TypeTool.swift */,
+				D81DC96E1F355944000140DF /* MiruTool.swift */,
+				D81DC9711F355958000140DF /* CronTool.swift */,
+				D81DC9741F35596C000140DF /* TextTool.swift */,
+				D81DC9771F355982000140DF /* ImportTool.swift */,
+				D81DC9471F355552000140DF /* BubbleToolBar.swift */,
+			);
+			name = Bubble;
+			sourceTree = "<group>";
+		};
 		D81FCDBB1E13416C00E8936E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +580,8 @@
 			children = (
 				D84CD4181E9AE30600029120 /* Hovers.swift */,
 				D84CD4151E9AD3E900029120 /* Structure */,
+				D81DC92E1F34D653000140DF /* Menu */,
+				D81DC9431F352EB8000140DF /* BubbleMaker */,
 				D84CD41A1E9AE85000029120 /* ChainEditor */,
 			);
 			name = Hovers;
@@ -480,6 +621,7 @@
 		D894A0571EA26DDA00A9346A /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */,
 				D894A0581EA26E1B00A9346A /* Pen.swift */,
 			);
 			name = Utility;
@@ -740,6 +882,7 @@
 			isa = PBXGroup;
 			children = (
 				D8FDE1D11E46F08600B18F06 /* String+AE.swift */,
+				D81DC97D1F361D26000140DF /* UIColor+AE.swift */,
 				D8AEB7441E9B6F2700249E7E /* UIControl+AE.swift */,
 				D8FA15561F32E24100697D7C /* UIView+AE.swift */,
 			);
@@ -979,29 +1122,40 @@
 			files = (
 				D8CB76801E17AAAF00A286DF /* Import.swift in Sources */,
 				D8F2BA2A1E9BC582006A1492 /* Schematic.swift in Sources */,
+				D81DC93C1F34FC1C000140DF /* LinksMenu.swift in Sources */,
+				D81DC9521F355651000140DF /* Tool.swift in Sources */,
+				D81DC96A1F35590C000140DF /* GridTool.swift in Sources */,
 				D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */,
 				D8AEB7391E9B020800249E7E /* IvorySkin.swift in Sources */,
 				D84CD41D1E9AE8AC00029120 /* ChainEditor.swift in Sources */,
 				D8CB767B1E17AAAF00A286DF /* Cron.swift in Sources */,
+				D81DC9671F3558DB000140DF /* AutoTool.swift in Sources */,
 				D8FA15581F32E24900697D7C /* UIView+AE.swift in Sources */,
+				D81DC97F1F361D26000140DF /* UIColor+AE.swift in Sources */,
 				D8CB76831E17AAAF00A286DF /* Miru.swift in Sources */,
 				D84CD4071E9A804200029120 /* Position.swift in Sources */,
 				D80659121DE90EC800325182 /* Tower.swift in Sources */,
 				D8CB76791E17AAAF00A286DF /* Cell.swift in Sources */,
+				D81DC94C1F35555E000140DF /* ShapeToolBar.swift in Sources */,
+				D81DC9641F3558C4000140DF /* TailTool.swift in Sources */,
 				D8CB76761E17AAAF00A286DF /* Anchor.swift in Sources */,
 				D806590E1DE90EC800325182 /* DateDef.swift in Sources */,
+				D81DC95B1F3557CD000140DF /* ObjectTool.swift in Sources */,
 				D8CB767E1E17AAAF00A286DF /* Gate.swift in Sources */,
 				D84CD40A1E9A816200029120 /* Bubble.swift in Sources */,
 				D87FC2681F12FF9100100873 /* Spider.swift in Sources */,
+				D81DC9461F35552A000140DF /* ToolBar.swift in Sources */,
 				D8CB76811E17AAAF00A286DF /* Input.swift in Sources */,
 				D8F2BA291E9BC57E006A1492 /* KeyPad.swift in Sources */,
 				D8CB76771E17AAAF00A286DF /* Aether.swift in Sources */,
+				D81DC9611F35589B000140DF /* MechTool.swift in Sources */,
 				D8CB76851E17AAAF00A286DF /* State.swift in Sources */,
 				D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */,
 				D8CB76881E17AAAF00A286DF /* Type.swift in Sources */,
 				D84CD4121E9AAE6600029120 /* ObjectBub.swift in Sources */,
 				D8CB767C1E17AAAF00A286DF /* Edge.swift in Sources */,
 				D806590D1DE90EC800325182 /* StringDef.swift in Sources */,
+				D81DC9491F355552000140DF /* BubbleToolBar.swift in Sources */,
 				D8FB18F21E1871A100350284 /* Migrate.swift in Sources */,
 				D80EB9A21DED97EB00361939 /* Math.swift in Sources */,
 				D80659191DE90EC800325182 /* OoviumController.swift in Sources */,
@@ -1010,17 +1164,25 @@
 				D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
+				D81DC9421F34FC3E000140DF /* TutorialsMenu.swift in Sources */,
 				D80659161DE90EC800325182 /* Chain.swift in Sources */,
+				D81DC9361F34F102000140DF /* RootMenu.swift in Sources */,
 				D85EEFD01E10B47700166C4C /* Web.swift in Sources */,
 				D8CB76751E17AAAF00A286DF /* Domain.swift in Sources */,
+				D81DC9791F355982000140DF /* ImportTool.swift in Sources */,
 				D80659091DE90EC800325182 /* RealDef.swift in Sources */,
 				D8CB76821E17AAAF00A286DF /* Mech.swift in Sources */,
 				D80659151DE90EC800325182 /* Token.swift in Sources */,
 				D84CD3FC1E99503300029120 /* AetherView.swift in Sources */,
+				D81DC93F1F34FC26000140DF /* HelpMenu.swift in Sources */,
 				D82BE4D91E2369FC00E8E710 /* OoviumLookup.swift in Sources */,
+				D81DC9761F35596C000140DF /* TextTool.swift in Sources */,
 				D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */,
 				D806590A1DE90EC800325182 /* ComplexDef.swift in Sources */,
+				D81DC9331F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D80659081DE90EC800325182 /* Def.swift in Sources */,
+				D81DC9391F34FBFE000140DF /* AetherMenu.swift in Sources */,
+				D81DC96D1F355922000140DF /* TypeTool.swift in Sources */,
 				D8CB76841E17AAAF00A286DF /* Object.swift in Sources */,
 				D894A05A1EA26FA400A9346A /* Pen.swift in Sources */,
 				D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */,
@@ -1030,19 +1192,25 @@
 				D8A860EE1F1BF03E00BD9B45 /* IntMap.swift in Sources */,
 				D8CB76891E17AAAF00A286DF /* Vertebra.swift in Sources */,
 				D8E4A0901E46767400B2C328 /* Aegean.c in Sources */,
+				D81DC95E1F35587B000140DF /* GateTool.swift in Sources */,
 				D806590C1DE90EC800325182 /* LambdaDef.swift in Sources */,
+				D81DC94F1F355568000140DF /* ColorToolBar.swift in Sources */,
 				D8CB767F1E17AAAF00A286DF /* Grid.swift in Sources */,
+				D81DC9731F355958000140DF /* CronTool.swift in Sources */,
 				D8F2BA311E9BCB62006A1492 /* ChainView.swift in Sources */,
 				D8AEB7461E9B6F4800249E7E /* UIControl+AE.swift in Sources */,
 				D8CB76871E17AAAF00A286DF /* Text.swift in Sources */,
 				D8AEB7381E9B020600249E7E /* TronSkin.swift in Sources */,
+				D81DC9701F355944000140DF /* MiruTool.swift in Sources */,
 				D8CB767A1E17AAAF00A286DF /* Col.swift in Sources */,
 				D8FB18F51E187EA700350284 /* Basket.swift in Sources */,
 				D8AEB7331E9B006C00249E7E /* Skin.swift in Sources */,
 				D894A0601EA4458200A9346A /* ChainLeaf.swift in Sources */,
+				D81DC9581F3557B9000140DF /* ShapeTool.swift in Sources */,
 				D84CD40B1E9A816500029120 /* Leaf.swift in Sources */,
 				D84CD40D1E9A816C00029120 /* OoviumView.swift in Sources */,
 				D8CB76861E17AAAF00A286DF /* Tail.swift in Sources */,
+				D81DC9551F3556EE000140DF /* ColorTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,10 +1245,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D89BEC341DE8D44500B56F6A /* Token.swift in Sources */,
+				D81DC9301F34D6D2000140DF /* RedDot.swift in Sources */,
 				D84CD4031E99D24300029120 /* Position.swift in Sources */,
 				D8CB76641E1793B300A286DF /* Miru.swift in Sources */,
+				D81DC9691F35590C000140DF /* GridTool.swift in Sources */,
 				D8AEB7351E9B017500249E7E /* TronSkin.swift in Sources */,
 				D89BEBE11DE8D32B00B56F6A /* OoviumController.swift in Sources */,
+				D81DC94B1F35555E000140DF /* ShapeToolBar.swift in Sources */,
+				D81DC9571F3557B9000140DF /* ShapeTool.swift in Sources */,
 				D8CB766E1E1793FC00A286DF /* Cell.swift in Sources */,
 				D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */,
 				D8AEB7371E9B017E00249E7E /* IvorySkin.swift in Sources */,
@@ -1091,27 +1263,39 @@
 				D84CD41C1E9AE87D00029120 /* ChainEditor.swift in Sources */,
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
+				D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D8FA15571F32E24100697D7C /* UIView+AE.swift in Sources */,
+				D81DC95D1F35587B000140DF /* GateTool.swift in Sources */,
+				D81DC9411F34FC3E000140DF /* TutorialsMenu.swift in Sources */,
 				D89BEC311DE8D44500B56F6A /* Chain.swift in Sources */,
 				D89BEC1B1DE8D3FA00B56F6A /* DateDef.swift in Sources */,
 				D87FC2671F12FF7700100873 /* Spider.swift in Sources */,
 				D84CD3F81E994A3100029120 /* AetherView.swift in Sources */,
 				D85AA8981F1F2D30004D0F81 /* V2.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
+				D81DC93E1F34FC26000140DF /* HelpMenu.swift in Sources */,
+				D81DC95A1F3557CD000140DF /* ObjectTool.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
 				D8CB76521E17934100A286DF /* Gate.swift in Sources */,
 				D8AEB73B1E9B04B700249E7E /* RGB.swift in Sources */,
 				D8CB764E1E17932900A286DF /* Import.swift in Sources */,
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,
+				D81DC9481F355552000140DF /* BubbleToolBar.swift in Sources */,
 				D8CB765E1E17938A00A286DF /* Auto.swift in Sources */,
+				D81DC9451F35552A000140DF /* ToolBar.swift in Sources */,
 				D8CB76581E17937100A286DF /* Edge.swift in Sources */,
 				D8AEB7451E9B6F2700249E7E /* UIControl+AE.swift in Sources */,
+				D81DC96C1F355922000140DF /* TypeTool.swift in Sources */,
 				D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */,
 				D894A0591EA26E1B00A9346A /* Pen.swift in Sources */,
+				D81DC9351F34F102000140DF /* RootMenu.swift in Sources */,
 				D8F2BA2D1E9BC8AF006A1492 /* TokenKey.swift in Sources */,
 				D8FB18F41E187DB600350284 /* Basket.swift in Sources */,
 				D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */,
+				D81DC9601F35589B000140DF /* MechTool.swift in Sources */,
 				D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */,
+				D81DC9751F35596C000140DF /* TextTool.swift in Sources */,
+				D81DC9661F3558DB000140DF /* AutoTool.swift in Sources */,
 				D89BEC1D1DE8D3FA00B56F6A /* LambdaDef.swift in Sources */,
 				D8CB76661E1793D700A286DF /* Input.swift in Sources */,
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
@@ -1119,23 +1303,32 @@
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
 				D8AEB7401E9B6AE100249E7E /* Schematic.swift in Sources */,
+				D81DC9511F355651000140DF /* Tool.swift in Sources */,
 				D8FDE1D21E46F08600B18F06 /* String+AE.swift in Sources */,
+				D81DC96F1F355944000140DF /* MiruTool.swift in Sources */,
 				D8CB76721E17943D00A286DF /* Anchor.swift in Sources */,
 				D8CB76701E17942A00A286DF /* State.swift in Sources */,
+				D81DC97E1F361D26000140DF /* UIColor+AE.swift in Sources */,
 				D894A05F1EA4305E00A9346A /* ChainLeaf.swift in Sources */,
 				D82BE4D81E2369D600E8E710 /* OoviumLookup.swift in Sources */,
 				D84CD4171E9AD3F900029120 /* Hover.swift in Sources */,
 				D8CB76931E185D1300A286DF /* Migrate.swift in Sources */,
 				D8CB76681E1793E200A286DF /* Vertebra.swift in Sources */,
+				D81DC9631F3558C4000140DF /* TailTool.swift in Sources */,
 				D8CB765A1E17937900A286DF /* Mech.swift in Sources */,
 				D89BEC201DE8D3FA00B56F6A /* VectorDef.swift in Sources */,
 				D85EEFCF1E10544A00166C4C /* Web.swift in Sources */,
 				D8A860ED1F1BEEF100BD9B45 /* IntMap.swift in Sources */,
+				D81DC9721F355958000140DF /* CronTool.swift in Sources */,
 				D8AEB73E1E9B6A3900249E7E /* KeyPad.swift in Sources */,
 				D84CD3FF1E99C9D700029120 /* Bubble.swift in Sources */,
+				D81DC93B1F34FC1C000140DF /* LinksMenu.swift in Sources */,
 				D8CB765C1E17938200A286DF /* Tail.swift in Sources */,
 				D8F2BA301E9BCB43006A1492 /* ChainView.swift in Sources */,
+				D81DC9781F355982000140DF /* ImportTool.swift in Sources */,
 				D89BEC1C1DE8D3FA00B56F6A /* Def.swift in Sources */,
+				D81DC9381F34FBFE000140DF /* AetherMenu.swift in Sources */,
+				D81DC9541F3556EE000140DF /* ColorTool.swift in Sources */,
 				D8CB76561E17935D00A286DF /* Text.swift in Sources */,
 				D85FD60A1E9AFFCE009B621A /* Skin.swift in Sources */,
 				D8CB764C1E17932000A286DF /* Aether.swift in Sources */,
@@ -1145,6 +1338,7 @@
 				D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */,
 				D8CB766A1E1793E900A286DF /* Field.swift in Sources */,
 				D8CB76741E17944500A286DF /* Domain.swift in Sources */,
+				D81DC94E1F355568000140DF /* ColorToolBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

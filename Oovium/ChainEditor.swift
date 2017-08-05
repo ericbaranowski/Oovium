@@ -12,13 +12,13 @@ class ChainEditor: KeyPad {
 	var chain: Chain!
 	
 	init() {
-		super.init(size: CGSize(width: 204, height: 251))
+		let schematic = Schematic(rows: 6, cols: 4)
+		super.init(anchor: .bottomRight,offset: UIOffset(horizontal: -7, vertical: -7), size: CGSize(width: 204, height: 251), schematic: schematic)
 		
 		let lemon = UIColor(red: 0.95, green: 0.85, blue: 0.55, alpha: 1)
 		let banana = UIColor(red: 1, green: 0.85, blue: 0.27, alpha: 1)
 		let orange = UIColor(red: 1, green: 0.6, blue: 0.18, alpha: 1)
 		
-		let schematic = Schematic(rows: 6, cols: 4)
 		
 		schematic.add(row: 0, col: 0, key: Key(text: "", uiColor: UIColor.cyan, {self.toggleIndexer()}))
 		schematic.add(row: 0, col: 1, key: Key(text: "(,)", uiColor: banana, {self.chain.post(token: Token.comma)}))
@@ -48,7 +48,7 @@ class ChainEditor: KeyPad {
 		schematic.add(row: 5, col: 2, key: Key(text: ".", uiColor: orange, {self.chain.post(token: Token.token(type: .digit, tag: "."))}))
 		
 		self.schematic = schematic
-}
+	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 
 	func toggleIndexer() {}

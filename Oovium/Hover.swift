@@ -31,17 +31,32 @@ class Hover: UIView {
 		self.backgroundColor = UIColor.clear
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+	
+	var isInvoked: Bool {
+		return Hovers.isInvoked(hover: self)
+	}
 
 // Events ==========================================================================================
+	func onFadeIn() {}
+	func onInvoke() {}
+	func onDismiss() {}
 	
 // Actions =========================================================================================
 	func invoke() {
 		Hovers.invoke(hover: self)
+		onInvoke()
 	}
 	func dismiss() {
 		Hovers.dismiss(hover: self)
+		onDismiss()
 	}
-	func toggle() {}
+	func toggle() {
+		if isInvoked {
+			dismiss()
+		} else {
+			invoke()
+		}
+	}
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {

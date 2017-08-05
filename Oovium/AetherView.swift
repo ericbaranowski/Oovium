@@ -71,9 +71,6 @@ public class AetherView: UIScrollView {
 		stretch(animated: true)
 	}
 	
-	//	[self setContentOffset:CGPointMake(offset.x-dx,offset.y-dy)];
-	//	[self setContentOffset:CGPointMake([AetherView homing:offset.x-dx extend:wx+maxLeft-minRight],[AetherView homing:offset.y-dy extend:wy+maxTop-minBottom-20]) animated:animate];
-	
 // Events ==========================================================================================
 	func onDoubleTap (_ gesture: UITapGestureRecognizer) {
 		let origin = gesture.location(in: self)
