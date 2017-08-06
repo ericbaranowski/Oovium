@@ -11,7 +11,7 @@ import UIKit
 class ShapeToolBar: ToolBar {
 	
 	init() {
-		var tools: [[Tool]] = []
+		var tools: [[Tool?]] = []
 		
 		tools[0][0] = ShapeTool()
 		tools[0][1] = ShapeTool()

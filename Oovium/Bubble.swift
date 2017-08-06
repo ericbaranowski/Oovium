@@ -9,8 +9,8 @@
 import UIKit
 
 protocol Maker {
-	func make (aether: Aether, at: V2) -> Bubble;
-	func icon() -> UIImage;
+	func make (aether: Aether, at: V2) -> Bubble
+	func drawIcon()
 }
 
 class Bubble: UIView {

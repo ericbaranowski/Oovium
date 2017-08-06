@@ -11,12 +11,11 @@ import UIKit
 class TailMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
-	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let tail = aether.createTail(at: at)
 		return TailBub(tail)
+	}
+	func drawIcon() {
 	}
 }
 

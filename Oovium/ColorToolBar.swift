@@ -11,7 +11,7 @@ import UIKit
 class ColorToolBar: ToolBar {
 	
 	init() {
-		var tools: [[Tool]] = []
+		var tools: [[Tool?]] = []
 		
 		tools[0][0] = ColorTool()
 		tools[0][1] = ColorTool()

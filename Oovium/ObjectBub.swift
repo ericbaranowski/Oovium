@@ -14,8 +14,28 @@ class ObjectMaker: Maker {
 		let object = aether.createObject(at: at)
 		return ObjectBub(object:object)
 	}
-	func icon() -> UIImage {
-		return UIImage()
+	func drawIcon() {
+		let bw = 20
+		let bh = 20
+		let r: CGFloat = 6
+
+		let x1 = bw-10
+		let x2 = bw
+		let x3 = bw+10
+		
+		let y1 = bh-8
+		let y2 = bh
+		let y3 = bh+8
+		
+		let path = CGMutablePath()
+		path.move(to: CGPoint(x: x1, y: y2))
+		path.addArc(tangent1End: CGPoint(x: x1, y: y1), tangent2End: CGPoint(x: x2, y: y1), radius: r)
+		path.addArc(tangent1End: CGPoint(x: x3, y: y1), tangent2End: CGPoint(x: x3, y: y2), radius: r)
+		path.addArc(tangent1End: CGPoint(x: x3, y: y3), tangent2End: CGPoint(x: x2, y: y3), radius: r)
+		path.addArc(tangent1End: CGPoint(x: x1, y: y3), tangent2End: CGPoint(x: x1, y: y2), radius: r)
+		path.closeSubpath()
+		
+		Skin.bubble(path: path, uiColor: UIColor.green)
 	}
 }
 

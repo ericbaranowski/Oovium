@@ -11,12 +11,11 @@ import UIKit
 class TextMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
-	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let text = aether.createText(at: at)
 		return TextBub(text)
+	}
+	func drawIcon() {
 	}
 }
 

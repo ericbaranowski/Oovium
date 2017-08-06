@@ -13,12 +13,11 @@ import UIKit
 class TypeMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
-	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let type = aether.createType(at: at)
 		return TypeBub(type)
+	}
+	func drawIcon() {
 	}
 }
 

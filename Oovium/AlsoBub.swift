@@ -11,8 +11,7 @@ import UIKit
 class AlsoMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
+	func drawIcon() {
 	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let also = aether.createAlso(at: at)

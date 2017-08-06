@@ -13,12 +13,11 @@ import UIKit
 class MiruMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
-	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let miru = aether.createMiru(at: at)
 		return MiruBub(miru)
+	}
+	func drawIcon() {
 	}
 }
 

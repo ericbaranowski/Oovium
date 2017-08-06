@@ -1,5 +1,5 @@
 //
-//  OoviumLookup.swift
+//  Oo.swift
 //  Oovium
 //
 //  Created by Joe Charlier on 1/8/17.
@@ -48,4 +48,8 @@ public enum OOColor: Int {
 			case .cgaLightMagenta:	return UIColor(red: 255.0/255, green:  85.0/255, blue: 255.0/255, alpha: 1)
 		}
 	}
+}
+
+class Oo {
+	static var s: CGFloat = 1.5
 }

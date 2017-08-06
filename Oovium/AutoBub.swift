@@ -11,12 +11,11 @@ import UIKit
 class AutoMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func icon() -> UIImage {
-		return UIImage()
-	}
 	func make(aether: Aether, at: V2) -> Bubble {
 		let auto = aether.createAuto(at: at)
 		return AutoBub(auto)
+	}
+	func drawIcon() {
 	}
 }
 

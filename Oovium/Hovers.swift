@@ -81,6 +81,9 @@ class Hovers {
 
 // ToolBars ========================================================================================
 	static let bubbleToolBar_ = BubbleToolBar()
+	static func invokeBubbleToolBar() {
+		bubbleToolBar_.invoke()
+	}
 	
 	static let shapeToolBar_ = ShapeToolBar()
 	

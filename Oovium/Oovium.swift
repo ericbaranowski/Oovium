@@ -21,5 +21,6 @@ class Oovium {
 		window_.rootViewController = OoviumController()
 		
 		Hovers.invokeRedDot()
+		Hovers.invokeBubbleToolBar()
 	}
 }
