@@ -111,6 +111,16 @@
 		D84CD41D1E9AE8AC00029120 /* ChainEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD41B1E9AE87D00029120 /* ChainEditor.swift */; };
 		D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4181E9AE30600029120 /* Hovers.swift */; };
 		D84CD41F1E9AE8B100029120 /* Hover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD4161E9AD3F900029120 /* Hover.swift */; };
+		D8502F621F38E84E005F00B5 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F611F38E84E005F00B5 /* Shape.swift */; };
+		D8502F651F38E87C005F00B5 /* EllipseShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F641F38E87C005F00B5 /* EllipseShape.swift */; };
+		D8502F661F38E882005F00B5 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F611F38E84E005F00B5 /* Shape.swift */; };
+		D8502F671F38E882005F00B5 /* EllipseShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F641F38E87C005F00B5 /* EllipseShape.swift */; };
+		D8502F691F38E8AF005F00B5 /* RectangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F681F38E8AF005F00B5 /* RectangleShape.swift */; };
+		D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F6A1F38E8CF005F00B5 /* RoundedShape.swift */; };
+		D8502F6D1F38E8EC005F00B5 /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F6C1F38E8EC005F00B5 /* DiamondShape.swift */; };
+		D8502F711F390C6D005F00B5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */; };
+		D8502F721F390C6D005F00B5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F701F390C6D005F00B5 /* Fabric.framework */; };
+		D8502F7C1F391A41005F00B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8502F7E1F391A41005F00B5 /* Localizable.strings */; };
 		D85AA8981F1F2D30004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
 		D85AA8991F1F2D4C004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
 		D85AA89A1F1F2D4D004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
@@ -299,6 +309,16 @@
 		D84CD4161E9AD3F900029120 /* Hover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hover.swift; sourceTree = "<group>"; };
 		D84CD4181E9AE30600029120 /* Hovers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hovers.swift; sourceTree = "<group>"; };
 		D84CD41B1E9AE87D00029120 /* ChainEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainEditor.swift; sourceTree = "<group>"; };
+		D8502F611F38E84E005F00B5 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		D8502F641F38E87C005F00B5 /* EllipseShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EllipseShape.swift; sourceTree = "<group>"; };
+		D8502F681F38E8AF005F00B5 /* RectangleShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleShape.swift; sourceTree = "<group>"; };
+		D8502F6A1F38E8CF005F00B5 /* RoundedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
+		D8502F6C1F38E8EC005F00B5 /* DiamondShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondShape.swift; sourceTree = "<group>"; };
+		D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		D8502F701F390C6D005F00B5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		D8502F7D1F391A41005F00B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8502F7F1F391A4F005F00B5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8502F801F391A60005F00B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D85AA8971F1F2D30004D0F81 /* V2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2.swift; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85FD6091E9AFFCE009B621A /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
@@ -400,6 +420,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8502F711F390C6D005F00B5 /* Crashlytics.framework in Frameworks */,
+				D8502F721F390C6D005F00B5 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +547,7 @@
 		D81DC9881F3630FA000140DF /* TextBub */ = {
 			isa = PBXGroup;
 			children = (
+				D8502F631F38E86A005F00B5 /* Shapes */,
 				D81DC9A31F365BF1000140DF /* TextBub.swift */,
 			);
 			name = TextBub;
@@ -655,6 +678,27 @@
 			name = ChainEditor;
 			sourceTree = "<group>";
 		};
+		D8502F631F38E86A005F00B5 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				D8502F611F38E84E005F00B5 /* Shape.swift */,
+				D8502F641F38E87C005F00B5 /* EllipseShape.swift */,
+				D8502F6A1F38E8CF005F00B5 /* RoundedShape.swift */,
+				D8502F681F38E8AF005F00B5 /* RectangleShape.swift */,
+				D8502F6C1F38E8EC005F00B5 /* DiamondShape.swift */,
+			);
+			name = Shapes;
+			sourceTree = "<group>";
+		};
+		D8502F6E1F390C5A005F00B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */,
+				D8502F701F390C6D005F00B5 /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D85FD6081E9AFFA8009B621A /* Skin */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +737,7 @@
 				D8185C0B1EABFC5300011CE0 /* Oov */,
 				D89BEBFE1DE8D34B00B56F6A /* Resources */,
 				D89BEBF21DE8D32B00B56F6A /* OoviumTests */,
+				D8502F6E1F390C5A005F00B5 /* Frameworks */,
 				D89BEBDC1DE8D32B00B56F6A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -737,6 +782,7 @@
 				D8ADD7A81F32755200EB3136 /* Icons */,
 				D894A05B1EA3EA3400A9346A /* Images */,
 				D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */,
+				D8502F7E1F391A41005F00B5 /* Localizable.strings */,
 			);
 			name = Resources;
 			path = Oovium;
@@ -1040,6 +1086,7 @@
 				D89BEBD71DE8D32B00B56F6A /* Sources */,
 				D89BEBD81DE8D32B00B56F6A /* Frameworks */,
 				D89BEBD91DE8D32B00B56F6A /* Resources */,
+				D8502F731F390CB3005F00B5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1109,6 +1156,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				de,
 			);
 			mainGroup = D89BEBD21DE8D32B00B56F6A;
 			productRefGroup = D89BEBDC1DE8D32B00B56F6A /* Products */;
@@ -1135,6 +1184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8502F7C1F391A41005F00B5 /* Localizable.strings in Resources */,
 				D8ADD7B71F32756600EB3136 /* Icon60.png in Resources */,
 				D894A05D1EA3EA4700A9346A /* Icon20.png in Resources */,
 				D8ADD7B61F32756600EB3136 /* Icon58.png in Resources */,
@@ -1163,6 +1213,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D8502F731F390CB3005F00B5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" 63d29c28375b7a0e457318ae8f00a86352e9423d 5ce56d2ff9bb5300776199be69ee0884ae080921cfbbc6879e9fb62a095afd00";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D80658F11DE90DC300325182 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1186,6 +1252,7 @@
 				D81DC99C1F365B0A000140DF /* TypeBub.swift in Sources */,
 				D8CB76761E17AAAF00A286DF /* Anchor.swift in Sources */,
 				D806590E1DE90EC800325182 /* DateDef.swift in Sources */,
+				D8502F671F38E882005F00B5 /* EllipseShape.swift in Sources */,
 				D81DC9821F362FC7000140DF /* BubbleTool.swift in Sources */,
 				D8CB767E1E17AAAF00A286DF /* Gate.swift in Sources */,
 				D84CD40A1E9A816200029120 /* Bubble.swift in Sources */,
@@ -1195,6 +1262,7 @@
 				D8F2BA291E9BC57E006A1492 /* KeyPad.swift in Sources */,
 				D8CB76771E17AAAF00A286DF /* Aether.swift in Sources */,
 				D8CB76851E17AAAF00A286DF /* State.swift in Sources */,
+				D8502F661F38E882005F00B5 /* Shape.swift in Sources */,
 				D81FCDC01E13457F00E8936E /* Satyr.swift in Sources */,
 				D8CB76881E17AAAF00A286DF /* Type.swift in Sources */,
 				D84CD4121E9AAE6600029120 /* ObjectBub.swift in Sources */,
@@ -1294,6 +1362,7 @@
 			files = (
 				D81DC98C1F36317B000140DF /* GateBub.swift in Sources */,
 				D89BEC341DE8D44500B56F6A /* Token.swift in Sources */,
+				D8502F6D1F38E8EC005F00B5 /* DiamondShape.swift in Sources */,
 				D81DC9301F34D6D2000140DF /* RedDot.swift in Sources */,
 				D84CD4031E99D24300029120 /* Position.swift in Sources */,
 				D8CB76641E1793B300A286DF /* Miru.swift in Sources */,
@@ -1312,6 +1381,7 @@
 				D84CD4011E99CAE500029120 /* Leaf.swift in Sources */,
 				D84CD41C1E9AE87D00029120 /* ChainEditor.swift in Sources */,
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
+				D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */,
 				D81DC9981F3633B2000140DF /* GridBub.swift in Sources */,
 				D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
@@ -1330,6 +1400,7 @@
 				D81DC99B1F365B0A000140DF /* TypeBub.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,
 				D8CB76521E17934100A286DF /* Gate.swift in Sources */,
+				D8502F651F38E87C005F00B5 /* EllipseShape.swift in Sources */,
 				D8AEB73B1E9B04B700249E7E /* RGB.swift in Sources */,
 				D8CB764E1E17932900A286DF /* Also.swift in Sources */,
 				D80EB9A11DED96F900361939 /* Math.swift in Sources */,
@@ -1347,6 +1418,7 @@
 				D89BEC2A1DE8D42100B56F6A /* Tower.swift in Sources */,
 				D81FCDBF1E1343B100E8936E /* Satyr.swift in Sources */,
 				D89BEC1D1DE8D3FA00B56F6A /* LambdaDef.swift in Sources */,
+				D8502F621F38E84E005F00B5 /* Shape.swift in Sources */,
 				D8CB76661E1793D700A286DF /* Input.swift in Sources */,
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
 				D84CD4061E9A800600029120 /* OoviumView.swift in Sources */,
@@ -1371,6 +1443,7 @@
 				D8AEB73E1E9B6A3900249E7E /* KeyPad.swift in Sources */,
 				D84CD3FF1E99C9D700029120 /* Bubble.swift in Sources */,
 				D81DC93B1F34FC1C000140DF /* LinksMenu.swift in Sources */,
+				D8502F691F38E8AF005F00B5 /* RectangleShape.swift in Sources */,
 				D8CB765C1E17938200A286DF /* Tail.swift in Sources */,
 				D8F2BA301E9BCB43006A1492 /* ChainView.swift in Sources */,
 				D89BEC1C1DE8D3FA00B56F6A /* Def.swift in Sources */,
@@ -1407,6 +1480,19 @@
 			targetProxy = D89BEBF01DE8D32B00B56F6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D8502F7E1F391A41005F00B5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D8502F7D1F391A41005F00B5 /* en */,
+				D8502F7F1F391A4F005F00B5 /* ja */,
+				D8502F801F391A60005F00B5 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D80659001DE90DC300325182 /* Debug */ = {
@@ -1484,6 +1570,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1504,7 +1591,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1535,6 +1622,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1583,6 +1671,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Z6PFG8RC6V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aepryus.Oovium;
@@ -1601,6 +1693,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = Z6PFG8RC6V;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.aepryus.Oovium;

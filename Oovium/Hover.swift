@@ -56,13 +56,5 @@ class Hover: UIView {
 		} else {
 			invoke()
 		}
-	}
-	
-// UIView ==========================================================================================
-	override func draw(_ rect: CGRect) {
-		let s = Hover.s
-		let path = CGMutablePath()
-		path.addRoundedRect(in: rect.insetBy(dx: 3*s, dy: 3*s), cornerWidth: 10*s, cornerHeight: 10*s)
-		Skin.panel(path: path, uiColor: UIColor.orange)
-	}
+	}	
 }

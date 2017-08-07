@@ -16,6 +16,7 @@ class TextMaker: Maker {
 		return TextBub(text)
 	}
 	func drawIcon() {
+		OOShape.ellipse.shape.drawIcon(color: UIColor.orange)
 	}
 }
 

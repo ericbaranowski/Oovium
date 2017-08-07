@@ -86,8 +86,14 @@ class Hovers {
 	}
 	
 	static let shapeToolBar_ = ShapeToolBar()
+	static func invokeShapeToolBar() {
+		shapeToolBar_.invoke()
+	}
 	
 	static let ColorToolBar_ = ColorToolBar()
+	static func invokeColorToolBar() {
+		ColorToolBar_.invoke()
+	}
 	
 // Editors =========================================================================================
 	static private var chainEditor: ChainEditor = {

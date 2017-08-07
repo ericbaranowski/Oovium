@@ -22,9 +22,7 @@ class BubbleToolBar: ToolBar {
 		tools[0][4] = BubbleTool(maker: CronMaker())
 		tools[0][5] = BubbleTool(maker: TextMaker())
 		
-		super.init(tools: tools)
-		
-		self.backgroundColor = UIColor.red
+		super.init(tools: tools, offset: UIOffset(horizontal: -9, vertical: 29))
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

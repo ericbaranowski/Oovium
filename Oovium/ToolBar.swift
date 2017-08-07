@@ -13,12 +13,12 @@ class ToolBar: Hover {
 	var current: Tool
 	var expanded: Bool
 	
-	init(tools: [[Tool?]]) {
+	init(tools: [[Tool?]], offset: UIOffset) {
 		self.tools = tools
 		current = self.tools[0][0]!
 		expanded = false
 		
-		super.init(anchor: .topRight, offset: UIOffset(horizontal: -9, vertical: 29), size: CGSize(width: 40*tools.count, height: 40*tools[0].count))
+		super.init(anchor: .topRight, offset: offset, size: CGSize(width: 40*tools.count, height: 40*tools[0].count))
 		
 		let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
 		addGestureRecognizer(gesture)

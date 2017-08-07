@@ -12,7 +12,6 @@ class Oovium {
 	static var window_: UIWindow!
 
 	static func start() {
-		print("Oovium =============================================================================")
 		Math.start()
 		
 		window_ = UIWindow(frame: UIScreen.main.bounds)
@@ -22,5 +21,7 @@ class Oovium {
 		
 		Hovers.invokeRedDot()
 		Hovers.invokeBubbleToolBar()
+		Hovers.invokeShapeToolBar()
+		Hovers.invokeColorToolBar()
 	}
 }

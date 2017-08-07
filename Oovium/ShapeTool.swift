@@ -9,4 +9,17 @@
 import UIKit
 
 class ShapeTool: Tool {
+	let shape: OOShape
+	
+	init(shape: OOShape) {
+		self.shape = shape
+		super.init(frame: CGRect.zero)
+	}
+	required init? (coder aDecoder: NSCoder) {fatalError()}
+
+// UIView ==========================================================================================
+	override func draw(_ rect: CGRect) {
+		super.draw(rect)
+		shape.shape.drawIcon(color: UIColor.lightGray)
+	}
 }
