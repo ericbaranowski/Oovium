@@ -118,9 +118,9 @@
 		D8502F691F38E8AF005F00B5 /* RectangleShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F681F38E8AF005F00B5 /* RectangleShape.swift */; };
 		D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F6A1F38E8CF005F00B5 /* RoundedShape.swift */; };
 		D8502F6D1F38E8EC005F00B5 /* DiamondShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8502F6C1F38E8EC005F00B5 /* DiamondShape.swift */; };
-		D8502F711F390C6D005F00B5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */; };
-		D8502F721F390C6D005F00B5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F701F390C6D005F00B5 /* Fabric.framework */; };
-		D8502F7C1F391A41005F00B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8502F7E1F391A41005F00B5 /* Localizable.strings */; };
+		D8502F831F392DB1005F00B5 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F811F392DB1005F00B5 /* Crashlytics.framework */; };
+		D8502F841F392DB2005F00B5 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8502F821F392DB1005F00B5 /* Fabric.framework */; };
+		D8502F871F392DD6005F00B5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D8502F891F392DD6005F00B5 /* Localizable.strings */; };
 		D85AA8981F1F2D30004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
 		D85AA8991F1F2D4C004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
 		D85AA89A1F1F2D4D004D0F81 /* V2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA8971F1F2D30004D0F81 /* V2.swift */; };
@@ -314,11 +314,11 @@
 		D8502F681F38E8AF005F00B5 /* RectangleShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleShape.swift; sourceTree = "<group>"; };
 		D8502F6A1F38E8CF005F00B5 /* RoundedShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedShape.swift; sourceTree = "<group>"; };
 		D8502F6C1F38E8EC005F00B5 /* DiamondShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiamondShape.swift; sourceTree = "<group>"; };
-		D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		D8502F701F390C6D005F00B5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		D8502F7D1F391A41005F00B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D8502F7F1F391A4F005F00B5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D8502F801F391A60005F00B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8502F811F392DB1005F00B5 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = Frameworks/Crashlytics.framework; sourceTree = "<group>"; };
+		D8502F821F392DB1005F00B5 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Frameworks/Fabric.framework; sourceTree = "<group>"; };
+		D8502F881F392DD6005F00B5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8502F8A1F392DD8005F00B5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D8502F8B1F392DD9005F00B5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D85AA8971F1F2D30004D0F81 /* V2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = V2.swift; sourceTree = "<group>"; };
 		D85EEFCE1E10544A00166C4C /* Web.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Web.swift; sourceTree = "<group>"; };
 		D85FD6091E9AFFCE009B621A /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
@@ -420,8 +420,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8502F711F390C6D005F00B5 /* Crashlytics.framework in Frameworks */,
-				D8502F721F390C6D005F00B5 /* Fabric.framework in Frameworks */,
+				D8502F831F392DB1005F00B5 /* Crashlytics.framework in Frameworks */,
+				D8502F841F392DB2005F00B5 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,8 +693,8 @@
 		D8502F6E1F390C5A005F00B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D8502F6F1F390C6D005F00B5 /* Crashlytics.framework */,
-				D8502F701F390C6D005F00B5 /* Fabric.framework */,
+				D8502F811F392DB1005F00B5 /* Crashlytics.framework */,
+				D8502F821F392DB1005F00B5 /* Fabric.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -782,7 +782,7 @@
 				D8ADD7A81F32755200EB3136 /* Icons */,
 				D894A05B1EA3EA3400A9346A /* Images */,
 				D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */,
-				D8502F7E1F391A41005F00B5 /* Localizable.strings */,
+				D8502F891F392DD6005F00B5 /* Localizable.strings */,
 			);
 			name = Resources;
 			path = Oovium;
@@ -1184,7 +1184,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8502F7C1F391A41005F00B5 /* Localizable.strings in Resources */,
+				D8502F871F392DD6005F00B5 /* Localizable.strings in Resources */,
 				D8ADD7B71F32756600EB3136 /* Icon60.png in Resources */,
 				D894A05D1EA3EA4700A9346A /* Icon20.png in Resources */,
 				D8ADD7B61F32756600EB3136 /* Icon58.png in Resources */,
@@ -1482,12 +1482,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D8502F7E1F391A41005F00B5 /* Localizable.strings */ = {
+		D8502F891F392DD6005F00B5 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				D8502F7D1F391A41005F00B5 /* en */,
-				D8502F7F1F391A4F005F00B5 /* ja */,
-				D8502F801F391A60005F00B5 /* de */,
+				D8502F881F392DD6005F00B5 /* en */,
+				D8502F8A1F392DD8005F00B5 /* ja */,
+				D8502F8B1F392DD9005F00B5 /* de */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1674,6 +1674,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1696,6 +1697,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Oovium/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
