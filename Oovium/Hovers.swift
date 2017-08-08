@@ -107,4 +107,11 @@ class Hovers {
 	static func dismissChainEditor() {
 		dismiss(hover: chainEditor)
 	}
+	
+// Miscellaneous ===================================================================================
+	static let messageHover_ = MessageHover()
+	static func invokeMessageHover(_ message: String) {
+		messageHover_.message = message
+		invoke(hover: messageHover_)
+	}
 }

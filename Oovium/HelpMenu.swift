@@ -13,11 +13,24 @@ class HelpMenu: KeyPad {
 		let schematic = Schematic(rows: 5, cols: 1)
 		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 84, vertical: -6), size: CGSize(width: 114, height: 214), schematic: schematic)
 		
-		schematic.add(row: 0, col: 0, key: Key(text: "about", uiColor: UIColor.orange, {}))
-		schematic.add(row: 1, col: 0, key: Key(text: "what's new", uiColor: UIColor.orange, {}))
-		schematic.add(row: 2, col: 0, key: Key(text: "oovium", uiColor: UIColor.orange, {}))
-		schematic.add(row: 3, col: 0, key: Key(text: "anchoring", uiColor: UIColor.orange, {}))
-		schematic.add(row: 4, col: 0, key: Key(text: "tutorial", uiColor: UIColor.orange, {Hovers.toggleTutorialsMenu()}))
+		schematic.add(row: 0, col: 0, key: Key(text: NSLocalizedString("about", comment: ""), uiColor: UIColor.orange, {
+		}))
+		
+		schematic.add(row: 1, col: 0, key: Key(text: NSLocalizedString("whatsnew", comment: ""), uiColor: UIColor.orange, {
+			Hovers.invokeMessageHover(NSLocalizedString("whatsnewText", comment: ""))
+		}))
+		
+		schematic.add(row: 2, col: 0, key: Key(text: NSLocalizedString("oovium", comment: ""), uiColor: UIColor.orange, {
+			Hovers.invokeMessageHover(NSLocalizedString("ooviumText", comment: ""))
+		}))
+		
+		schematic.add(row: 3, col: 0, key: Key(text: NSLocalizedString("anchoring", comment: ""), uiColor: UIColor.orange, {
+			Hovers.invokeMessageHover(NSLocalizedString("anchoringText", comment: ""))
+		}))
+		
+		schematic.add(row: 4, col: 0, key: Key(text: NSLocalizedString("tutorial", comment: ""), uiColor: UIColor.orange, {
+			Hovers.toggleTutorialsMenu()
+		}))
 		
 		self.schematic = schematic
 	}

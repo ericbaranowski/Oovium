@@ -15,6 +15,7 @@ class Skin {
 	func key (text: String, rect: CGRect, font: UIFont) {}
 	func bubble (path: CGPath, uiColor: UIColor) {}
 	func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {}
+	func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {}
 	
 // Static ==========================================================================================
 	static var skin: Skin = TronSkin()
@@ -33,5 +34,8 @@ class Skin {
 	}
 	static func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {
 		skin.bubble(text: text, x: x, y: y, uiColor: uiColor)
+	}
+	static func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
+		skin.message(text: text, rect: rect, uiColor: uiColor, font: font)
 	}
 }

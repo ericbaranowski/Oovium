@@ -81,4 +81,19 @@ class TronSkin: Skin {
 		pen.color = UIColor.white
 		(text as NSString).draw(at: CGPoint(x: x, y: y), withAttributes: pen.attributes)
 	}
+	override func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
+		let style = NSMutableParagraphStyle()
+		style.lineBreakMode = .byWordWrapping
+		
+		let pen = Pen(font: font)
+		pen.alignment = .left
+		pen.style = style
+		
+		pen.color = uiColor.alpha(0.4)
+		(text as NSString).draw(in: rect.offsetBy(dx: -1, dy: 1), withAttributes: pen.attributes)
+		(text as NSString).draw(in: rect.offsetBy(dx: 1, dy: 1), withAttributes: pen.attributes)
+		
+		pen.color = UIColor.white
+		(text as NSString).draw(in: rect, withAttributes: pen.attributes)
+	}
 }
