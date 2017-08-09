@@ -23,5 +23,6 @@ class Oovium {
 		Hovers.invokeBubbleToolBar()
 		Hovers.invokeShapeToolBar()
 		Hovers.invokeColorToolBar()
+		Hovers.invokeAetherPicker()
 	}
 }

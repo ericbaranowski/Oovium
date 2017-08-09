@@ -90,9 +90,15 @@ class Hovers {
 		shapeToolBar_.invoke()
 	}
 	
-	static let ColorToolBar_ = ColorToolBar()
+	static let colorToolBar_ = ColorToolBar()
 	static func invokeColorToolBar() {
-		ColorToolBar_.invoke()
+		colorToolBar_.invoke()
+	}
+	
+// AetherPicker ====================================================================================
+	static let aetherPicker_ = AetherPicker()
+	static func invokeAetherPicker() {
+		aetherPicker_.invoke()
 	}
 	
 // Editors =========================================================================================

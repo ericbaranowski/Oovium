@@ -29,6 +29,9 @@ struct RGB {
 	init (r: Float, g: Float, b: Float) {
 		self.init(r: r, g: g, b: b, a: 1)
 	}
+	init (r: Int, g: Int, b: Int) {
+		self.init(r: Float(r)/255.0, g: Float(g)/255.0, b: Float(b)/255.0)
+	}
 	init (uiColor: UIColor) {
 		let c = uiColor.cgColor.components!
 		self.init(r: Float(c[0]), g: Float(c[1]), b: Float(c[2]), a: Float(c[3]), uiColor: uiColor)
@@ -47,6 +50,15 @@ struct RGB {
 	func blend (rgb: RGB, percent: Float) -> RGB {
 		return self + (rgb - self) * percent
 	}
+	func tint(_ percent: Float) -> RGB {
+		return blend(rgb: RGB.white, percent: percent)
+	}
+	func tone(_ percent: Float) -> RGB {
+		return blend(rgb: RGB.grey, percent: percent)
+	}
+	func shade(_ percent: Float) -> RGB {
+		return blend(rgb: RGB.black, percent: percent)
+	}
 	
 	var cgColor: CGColor {
 		return uiColor.cgColor
@@ -56,6 +68,7 @@ struct RGB {
 // Static ==========================================================================================
 	static var black = RGB(r: 0, g: 0, b: 0, a: 1)
 	static var white = RGB(r: 1, g: 1, b: 1, a: 1)
+	static var grey = RGB(r: 0.5, g: 0.5, b: 0.5, a: 1)
 	
 	static func tint (color: UIColor, percent: Double) -> UIColor {
 		return UIColor.white

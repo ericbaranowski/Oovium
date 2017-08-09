@@ -16,6 +16,10 @@ class Skin {
 	func bubble (path: CGPath, uiColor: UIColor) {}
 	func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {}
 	func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {}
+	func aetherPicker (path: CGPath) {}
+	func aetherPickerList (path: CGPath) {}
+	func aetherCell (path: CGPath) {}
+	func aetherCell (text: String, rect: CGRect) {}
 	
 // Static ==========================================================================================
 	static var skin: Skin = TronSkin()
@@ -38,4 +42,17 @@ class Skin {
 	static func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
 		skin.message(text: text, rect: rect, uiColor: uiColor, font: font)
 	}
+	static func aetherPicker (path: CGPath) {
+		skin.aetherPicker(path: path)
+	}
+	static func aetherPickerList (path: CGPath) {
+		skin.aetherPickerList(path: path)
+	}
+	static func aetherCell (path: CGPath) {
+		skin.aetherCell(path: path)
+	}
+	static func aetherCell (text: String, rect: CGRect) {
+		skin.aetherCell(text: text, rect: rect)
+	}
+	
 }

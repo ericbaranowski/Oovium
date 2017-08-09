@@ -93,6 +93,10 @@
 		D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
 		D82BE4D81E2369D600E8E710 /* Oo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* Oo.swift */; };
 		D82BE4D91E2369FC00E8E710 /* Oo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* Oo.swift */; };
+		D83DAFA81F3A2D0200A0A6C6 /* AetherPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */; };
+		D83DAFA91F3A2D0500A0A6C6 /* AetherPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */; };
+		D83DAFAB1F3A323200A0A6C6 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */; };
+		D83DAFAD1F3A76EE00A0A6C6 /* AetherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFAC1F3A76EE00A0A6C6 /* AetherCell.swift */; };
 		D84CD3F81E994A3100029120 /* AetherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD3F71E994A3100029120 /* AetherView.swift */; };
 		D84CD3FC1E99503300029120 /* AetherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD3F71E994A3100029120 /* AetherView.swift */; };
 		D84CD3FF1E99C9D700029120 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84CD3FE1E99C9D700029120 /* Bubble.swift */; };
@@ -303,6 +307,9 @@
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* Oo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oo.swift; sourceTree = "<group>"; };
 		D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oovium-Bridging-Header.h"; sourceTree = "<group>"; };
+		D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherPicker.swift; sourceTree = "<group>"; };
+		D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
+		D83DAFAC1F3A76EE00A0A6C6 /* AetherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherCell.swift; sourceTree = "<group>"; };
 		D84CD3F71E994A3100029120 /* AetherView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherView.swift; sourceTree = "<group>"; };
 		D84CD3FE1E99C9D700029120 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		D84CD4001E99CAE500029120 /* Leaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaf.swift; sourceTree = "<group>"; };
@@ -586,6 +593,15 @@
 			name = Calculate;
 			sourceTree = "<group>";
 		};
+		D83DAFA61F3A2C6000A0A6C6 /* AetherPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D83DAFAC1F3A76EE00A0A6C6 /* AetherCell.swift */,
+				D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */,
+			);
+			name = AetherPicker;
+			sourceTree = "<group>";
+		};
 		D84CD3F51E994A0500029120 /* Aether */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +673,7 @@
 				D84CD4151E9AD3E900029120 /* Structure */,
 				D81DC92E1F34D653000140DF /* Menu */,
 				D81DC9431F352EB8000140DF /* BubbleMaker */,
+				D83DAFA61F3A2C6000A0A6C6 /* AetherPicker */,
 				D84CD41A1E9AE85000029120 /* ChainEditor */,
 				D8502F8C1F39496B005F00B5 /* Miscellaneous */,
 			);
@@ -727,6 +744,7 @@
 			isa = PBXGroup;
 			children = (
 				D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */,
+				D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */,
 				D894A0581EA26E1B00A9346A /* Pen.swift */,
 			);
 			name = Utility;
@@ -1293,6 +1311,7 @@
 				D84CD41E1E9AE8AF00029120 /* Hovers.swift in Sources */,
 				D8CB76781E17AAAF00A286DF /* Auto.swift in Sources */,
 				D8CB767D1E17AAAF00A286DF /* Field.swift in Sources */,
+				D83DAFA91F3A2D0500A0A6C6 /* AetherPicker.swift in Sources */,
 				D81DC9421F34FC3E000140DF /* TutorialsMenu.swift in Sources */,
 				D81DC9901F363268000140DF /* MechBub.swift in Sources */,
 				D80659161DE90EC800325182 /* Chain.swift in Sources */,
@@ -1439,6 +1458,7 @@
 				D8CB76501E17933100A286DF /* Object.swift in Sources */,
 				D84CD4061E9A800600029120 /* OoviumView.swift in Sources */,
 				D8CB76601E17939A00A286DF /* Type.swift in Sources */,
+				D83DAFAB1F3A323200A0A6C6 /* MaskView.swift in Sources */,
 				D89BEC1A1DE8D3FA00B56F6A /* ComplexDef.swift in Sources */,
 				D8AEB7401E9B6AE100249E7E /* Schematic.swift in Sources */,
 				D81DC9A71F365C27000140DF /* AlsoBub.swift in Sources */,
@@ -1463,8 +1483,10 @@
 				D8CB765C1E17938200A286DF /* Tail.swift in Sources */,
 				D8F2BA301E9BCB43006A1492 /* ChainView.swift in Sources */,
 				D89BEC1C1DE8D3FA00B56F6A /* Def.swift in Sources */,
+				D83DAFA81F3A2D0200A0A6C6 /* AetherPicker.swift in Sources */,
 				D81DC9381F34FBFE000140DF /* AetherMenu.swift in Sources */,
 				D81DC9541F3556EE000140DF /* ColorTool.swift in Sources */,
+				D83DAFAD1F3A76EE00A0A6C6 /* AetherCell.swift in Sources */,
 				D8CB76561E17935D00A286DF /* Text.swift in Sources */,
 				D81DC98F1F363268000140DF /* MechBub.swift in Sources */,
 				D85FD60A1E9AFFCE009B621A /* Skin.swift in Sources */,

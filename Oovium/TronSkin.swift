@@ -81,6 +81,7 @@ class TronSkin: Skin {
 		pen.color = UIColor.white
 		(text as NSString).draw(at: CGPoint(x: x, y: y), withAttributes: pen.attributes)
 	}
+	// Miscellaneous
 	override func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
 		let style = NSMutableParagraphStyle()
 		style.lineBreakMode = .byWordWrapping
@@ -95,5 +96,48 @@ class TronSkin: Skin {
 		
 		pen.color = UIColor.white
 		(text as NSString).draw(in: rect, withAttributes: pen.attributes)
+	}
+	// AetherPicker
+	override func aetherPicker (path: CGPath) {
+		let rgb = RGB(uiColor: UIColor.green)
+		let c = UIGraphicsGetCurrentContext()!
+		c.setStrokeColor(rgb.shade(0.4).cgColor)
+		c.setFillColor(rgb.tint(0.9).uiColor.alpha(0.85).cgColor)
+		c.setLineWidth(2)
+		c.addPath(path)
+		c.drawPath(using: .fillStroke)
+	}
+	override func aetherPickerList (path: CGPath) {
+		let rgb = RGB(uiColor: UIColor.orange)
+		let c = UIGraphicsGetCurrentContext()!
+		c.setStrokeColor(rgb.shade(0.4).cgColor)
+		c.setFillColor(rgb.tint(0.9).uiColor.alpha(0.85).cgColor)
+		c.setLineWidth(2)
+		c.addPath(path)
+		c.drawPath(using: .fillStroke)
+	}
+	// AetherCell
+	override func aetherCell (path: CGPath) {
+		let rgb = RGB(r: 0, g: 191, b: 255)
+		let field = rgb.blend(rgb: RGB.white, percent: 0.6)
+		let accent = rgb.blend(rgb: RGB.white, percent: 0.8)
+		let c = UIGraphicsGetCurrentContext()!
+		field.uiColor.alpha(0.7).setFill()
+		accent.uiColor.setStroke()
+		c.setLineWidth(2)
+		c.addPath(path)
+		c.drawPath(using: .fillStroke)
+	}
+	override func aetherCell (text: String, rect: CGRect) {
+		let rgb = RGB(uiColor: UIColor.cyan)
+		let accent = rgb.blend(rgb: RGB.white, percent: 0.9)
+		let c = UIGraphicsGetCurrentContext()!
+		c.saveGState()
+		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)
+		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 14)!)
+		pen.color = accent.uiColor
+		pen.alignment = .center
+		(text as NSString).draw(in: rect, withAttributes: pen.attributes)
+		c.restoreGState()
 	}
 }
