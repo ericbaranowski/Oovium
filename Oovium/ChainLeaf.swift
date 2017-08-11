@@ -9,16 +9,20 @@
 import UIKit
 
 protocol ChainLeafDelegate {
+	func onChange()
 	func onEdit()
 	func onOK()
+	func referencingThis() -> Bool
 }
 
 class ChainLeaf: Leaf, ChainViewDelegate {
 	let chainView: ChainView = ChainView()
-	var delegate: ChainLeafDelegate?
+	var delegate: ChainLeafDelegate
 	var uiColor: UIColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 	
-	override init() {
+	init(delegate: ChainLeafDelegate) {
+		self.delegate = delegate
+		
 		super.init()
 		
 		self.backgroundColor = UIColor.clear
@@ -40,10 +44,14 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 	
 // Events ==========================================================================================
 	func onTap(_ gesture: UITapGestureRecognizer) {
-		if chainView.chain.open {
-			ok()
-		} else {
-			edit()
+		print("onTap")
+
+		if !delegate.referencingThis() {
+			if chainView.chain.open {
+				ok()
+			} else {
+				edit()
+			}
 		}
 	}
 	
@@ -60,21 +68,23 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 	
 	func onChange() {
 		let newWidth = max(chainView.width+24, 36)
-		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
+		self.frame = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		setNeedsDisplay()
+		delegate.onChange()
 	}
 	func onEdit() {
 		let newWidth = max(chainView.width+24, 36)
-		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
+		self.frame = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		uiColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 		setNeedsDisplay()
-		delegate?.onEdit()
+		delegate.onEdit()
 	}
 	func onOK() {
-		delegate?.onOK()
+		delegate.onOK()
 		let newWidth = max(chainView.calcWidth()+24, 36)
-		self.bounds = CGRect(x: 0, y: 0, width: newWidth, height: 35)
+		self.frame = CGRect(x: 0, y: 0, width: newWidth, height: 35)
 		uiColor = UIColor.green
 		setNeedsDisplay()
+		delegate.onChange()
 	}
 }

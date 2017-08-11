@@ -29,8 +29,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 		self.backgroundColor = UIColor.clear
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
-	
-	
+
 	func calcWidth() -> CGFloat {
 		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
 		var x: CGFloat = 0
@@ -47,6 +46,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 			while i < to {
 				repeat {
 					token = chain.tokens[i]
+					if token.type == .variable {break}
 					sb.append(token.display)
 					i += 1
 				} while (i < to)
@@ -54,7 +54,10 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 					x += sb.size(attributes: pen.attributes).width
 					sb.setString("")
 				}
-				if token.type == .variable {}
+				if token.type == .variable {
+					x += (token.display as NSString).size(attributes: pen.attributes).width+9
+					i += 1
+				}
 			}
 			x += 3
 		}
@@ -90,7 +93,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 				sb.setString("")
 			}
 			if token.type == .variable {
-//				x += Skin.
+				x += Skin.wafer(text: token.display, x: x, y: 0, uiColor: UIColor.green)
 				pos += 1
 			}
 		}
@@ -98,7 +101,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	}
 	override func draw(_ rect: CGRect) {
 		if !chain.open {
-			Skin.bubble(text: "\(chain!)", x: 0, y: 0, uiColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1))
+			Skin.bubble(text: "\(chain!)", x: 0, y: 0, uiColor: delegate.color)
 		} else {
 			let x: CGFloat = drawTokens(at: 0, from: 0, to: chain.cursor)
 			// Cursor

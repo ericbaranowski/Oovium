@@ -20,6 +20,7 @@ class Skin {
 	func aetherPickerList (path: CGPath) {}
 	func aetherCell (path: CGPath) {}
 	func aetherCell (text: String, rect: CGRect) {}
+	func wafer(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) -> CGFloat {return 0}
 	
 // Static ==========================================================================================
 	static var skin: Skin = TronSkin()
@@ -54,5 +55,7 @@ class Skin {
 	static func aetherCell (text: String, rect: CGRect) {
 		skin.aetherCell(text: text, rect: rect)
 	}
-	
+	static func wafer(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) -> CGFloat {
+		return skin.wafer(text: text, x: x, y: y, uiColor: uiColor)
+	}
 }

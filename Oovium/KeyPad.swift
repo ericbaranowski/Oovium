@@ -9,19 +9,29 @@
 import UIKit
 
 class KeyPad: Hover {
+	let uiColor: UIColor
 	var schematic: Schematic {
 		didSet {renderSchematic()}
 	}
 	
+	init (anchor: Position, offset: UIOffset, size: CGSize, uiColor: UIColor, schematic: Schematic) {
+		self.uiColor = uiColor
+		self.schematic = schematic
+		super.init(anchor: anchor, offset: offset, size: size)
+	}
 	init (anchor: Position, offset: UIOffset, size: CGSize, schematic: Schematic) {
+		self.uiColor = UIColor.orange
 		self.schematic = schematic
 		super.init(anchor: anchor, offset: offset, size: size)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 
 	private func renderSchematic() {
-		let s = Hover.s
-		let margin = 7*s
+		for view in subviews {
+			view.removeFromSuperview()
+		}
+		
+		let margin: CGFloat = 6
 		let bw: CGFloat = (frame.size.width - 2*margin) / CGFloat(schematic.cols)
 		let bh: CGFloat = (frame.size.height - 2*margin) / CGFloat(schematic.rows)
 		
@@ -36,6 +46,6 @@ class KeyPad: Hover {
 		let s = Hover.s
 		let path = CGMutablePath()
 		path.addRoundedRect(in: rect.insetBy(dx: 3*s, dy: 3*s), cornerWidth: 10*s, cornerHeight: 10*s)
-		Skin.panel(path: path, uiColor: UIColor.orange)
+		Skin.panel(path: path, uiColor: uiColor)
 	}
 }

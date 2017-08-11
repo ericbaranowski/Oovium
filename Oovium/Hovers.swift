@@ -108,16 +108,16 @@ class Hovers {
 	
 	static func invokeChainEditor(chain: Chain) {
 		chainEditor.chain = chain
-		invoke(hover: chainEditor)
+		chainEditor.invoke()
 	}
 	static func dismissChainEditor() {
-		dismiss(hover: chainEditor)
+		chainEditor.dismiss()
 	}
 	
 // Miscellaneous ===================================================================================
 	static let messageHover_ = MessageHover()
 	static func invokeMessageHover(_ message: String) {
 		messageHover_.message = message
-		invoke(hover: messageHover_)
+		messageHover_.invoke()
 	}
 }

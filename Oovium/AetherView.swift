@@ -12,9 +12,13 @@ public class AetherView: UIScrollView {
 	var aether: Aether = Aether()
 	var maker: Maker = ObjectMaker()
 	var bubbles: [Bubble] = [Bubble]()
+	var currentlyEditing: Chain?
 	
 	public init() {
 		super.init(frame: CGRect.zero)
+		
+		showsVerticalScrollIndicator = false
+		showsHorizontalScrollIndicator = false
 		
 		let gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
 		gesture.numberOfTapsRequired = 2
@@ -22,10 +26,19 @@ public class AetherView: UIScrollView {
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
 	
-	func addBubble (_ bubble: Bubble) {
+	func addBubble(_ bubble: Bubble) {
 		bubbles.append(bubble)
 		addSubview(bubble)
 		bubble.aetherView = self
+		stretch()
+	}
+	func removeBubble(_ bubble: Bubble) {
+		if let i = bubbles.index(of: bubble) {
+			bubbles.remove(at: i)
+		}
+		bubble.removeFromSuperview()
+		bubble.aetherView = nil
+		stretch()
 	}
 	
 // Stretch =========================================================================================

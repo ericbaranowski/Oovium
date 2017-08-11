@@ -394,8 +394,8 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			print("\(error)")
 		}
 		
-//		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
-		let vi = 0
+		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
+//		let vi = 0
 		
 //		varIndexes = [Int]()
 //		for name in variables {
@@ -437,8 +437,21 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			}
 		} else {
 			let memory: UnsafeMutablePointer<Memory> = tower.source.memory
-			AEMemoryPrint(memory)
-			sb.append("\(AEMemoryValue(memory, tower.index))")
+			let value: Double = AEMemoryValueForName(memory, tower.name.toInt8())
+			
+			if (abs(value) < 0.00000001 && value != 0) || abs(value) > 999999999999 {
+				let formatter = NumberFormatter()
+				formatter.maximumIntegerDigits = 1
+				formatter.maximumFractionDigits = 8
+				formatter.exponentSymbol = "e"
+				formatter.numberStyle = .scientific
+				sb.append(formatter.string(from: NSNumber(value: value))!)
+			} else {
+				let formatter = NumberFormatter()
+				formatter.positiveFormat = "#,##0.########"
+				formatter.negativeFormat = "#,##0.########"
+				sb.append(formatter.string(from: NSNumber(value: value))!)
+			}
 		}
 		return sb
 	}

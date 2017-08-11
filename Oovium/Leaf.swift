@@ -18,7 +18,7 @@ class Leaf: UIView {
 
 // UIView ==========================================================================================
 	override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-		let area = self.bounds.insetBy(dx: -16, dy: -16)
+		let area = self.bounds.insetBy(dx: -20, dy: -20)
 		return area.contains(point)
 	}
 }

@@ -15,24 +15,19 @@ class Key: UIControl {
 	
 	private var current: UIColor
 	
-	init (text: String, uiColor: UIColor, font: UIFont) {
+	init (text: String, uiColor: UIColor, font: UIFont, _ closure: @escaping()->()) {
 		self.text = text
 		self.uiColor = uiColor
 		self.font = font
 		self.current = self.uiColor
 		super.init(frame: .zero)
-		backgroundColor = UIColor.clear
-	}
-	init (text: String, uiColor: UIColor, _ closure: @escaping()->()) {
-		self.text = text
-		self.uiColor = uiColor
-		self.font = UIFont(name: "Verdana", size: 16.4*Hover.s)!
-		self.current = self.uiColor
-		super.init(frame: .zero)
-		add(for: .touchUpInside) { 
+		add(for: .touchUpInside) {
 			closure()
 		}
 		backgroundColor = UIColor.clear
+	}
+	convenience init (text: String, uiColor: UIColor, _ closure: @escaping()->()) {
+		self.init(text: text, uiColor: uiColor, font: UIFont(name: "Verdana", size: 14*Oo.s)!, closure)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	

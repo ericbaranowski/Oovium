@@ -45,6 +45,8 @@ void AEMemoryPrint(Memory* memory);
 byte AEMemoryIndexForName(Memory* memory, char* name);
 double AEMemoryFirstValue(Memory* memory);
 double AEMemoryValue(Memory* memory, byte index);
+double AEMemoryValueForName(Memory* memory, char* name);
+void AEMemoryLoad(Memory* memory, Memory* from);
 
 // Scratch =
 typedef struct Scratch {

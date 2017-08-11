@@ -140,4 +140,23 @@ class TronSkin: Skin {
 		(text as NSString).draw(in: rect, withAttributes: pen.attributes)
 		c.restoreGState()
 	}
+	override func wafer(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) -> CGFloat {
+		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
+		let size: CGSize = (text as NSString).size(attributes: pen.attributes)
+		let width: CGFloat = max(size.width, 9)
+		let c = UIGraphicsGetCurrentContext()!
+
+		let rect = CGRect(x: x+1, y: y+1, width: width+7, height: size.height-1)
+		let path = CGPath(roundedRect: rect, cornerWidth: 8, cornerHeight: 8, transform: nil)
+		c.setFillColor(uiColor.alpha(0.3).cgColor)
+		c.setStrokeColor(uiColor.alpha(0.7).cgColor)
+		c.setLineWidth(0.5)
+		c.addPath(path)
+		c.drawPath(using: .fillStroke)
+		
+		pen.color = UIColor.white
+		(text as NSString).draw(at: CGPoint(x: x+5, y: y), withAttributes: pen.attributes)
+		
+		return width+9
+	}
 }

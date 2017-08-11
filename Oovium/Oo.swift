@@ -51,5 +51,5 @@ public enum OOColor: Int {
 }
 
 class Oo {
-	static var s: CGFloat = 1.5
+	static var s: CGFloat = 1
 }

@@ -46,7 +46,7 @@ void AEMemoryPrint(Memory* memory) {
 			sprintf(value, "%.0lf", memory->slots[i].obj.a.x);
 		else
 			sprintf(value, "-");
-		printf("  [%2d][%c][%c][%-12s][%s]\n", i, memory->slots[i].fixed?'O':' ', memory->slots[i].loaded?'O':' ', memory->slots[i].name, value);
+		printf("  [%2d][%c][%c][%-12s][%s]\n", i, memory->slots[i].fixed?'X':' ', memory->slots[i].loaded?'X':' ', memory->slots[i].name, value);
 	}
 	printf("[ =========================== ]\n\n");
 }
@@ -62,6 +62,18 @@ double AEMemoryFirstValue(Memory* memory) {
 }
 double AEMemoryValue(Memory* memory, byte index) {
 	return memory->slots[index].obj.a.x;
+}
+double AEMemoryValueForName(Memory* memory, char* name) {
+	return AEMemoryValue(memory, AEMemoryIndexForName(memory, name));
+}
+void AEMemoryLoad(Memory* memory, Memory* from) {
+	for (int i=0;i<from->sn;i++) {
+		int index = AEMemoryIndexForName(memory, from->slots[i].name);
+		if (index == -1) continue;
+		memory->slots[index].fixed = from->slots[i].fixed;
+		memory->slots[index].loaded = from->slots[i].loaded;
+		memory->slots[index].obj = from->slots[i].obj;
+	}
 }
 
 // Scratch =========================================================================================

@@ -44,8 +44,8 @@ public final class Object: Aexel {
 		}
 		
 		tower.task = AETaskCreateLambda(chain.compile(memory: aether.memory))
-		AEMemoryPrint(aether.memory)
 		AETaskExecute(tower.task, aether.memory)
+		token.display = "\(chain.display)"
 		AEMemoryPrint(aether.memory)
 	}
 	override func onAdded() {

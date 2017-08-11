@@ -64,12 +64,10 @@ public final class Token: Hashable, CustomStringConvertible {
 	public let params: Int
 	public let level: TokenLevel?
 	public let tower: Tower?
+	var display: String
 	
 	var key: String {
 		return "\(type.rawValue):\(tag)"
-	}
-	var display: String {
-		return tag
 	}
 	
 	private init (type: TokenType, tag: String) {
@@ -78,6 +76,7 @@ public final class Token: Hashable, CustomStringConvertible {
 		self.params = 1
 		self.level = .add
 		self.tower = nil
+		self.display = tag
 	}
 	private init (type: TokenType, tag: String, params: Int, level: TokenLevel) {
 		self.type = type
@@ -85,6 +84,7 @@ public final class Token: Hashable, CustomStringConvertible {
 		self.params = params
 		self.level = level
 		self.tower = nil
+		self.display = tag
 	}
 	
 // Hashable ========================================================================================

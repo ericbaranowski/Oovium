@@ -42,19 +42,19 @@ class ObjectMaker: Maker {
 class ObjectBub: Bubble, ChainLeafDelegate {
 	var object: Object
 	
-	let chainLeaf = ChainLeaf()
+	lazy var chainLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
 	
 	required init (object: Object) {
 		self.object = object
 		
 		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 36, height: 36))
-//		self.backgroundColor = UIColor.green.withAlphaComponent(0.5)
 	
 		chainLeaf.delegate = self
 		chainLeaf.frame = bounds
 		chainLeaf.chainView.chain = object.chain
 		self.object.chain.delegate = chainLeaf.chainView
 		addSubview(chainLeaf)
+		
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
@@ -64,10 +64,30 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	}
 	
 // ChainLeafDelegate ===============================================================================
+	func onChange() {
+		bounds = chainLeaf.bounds
+	}
 	func onEdit() {
+		aetherView?.currentlyEditing = object.chain
+		bounds = chainLeaf.bounds
 	}
 	func onOK() {
+		aetherView?.currentlyEditing = nil
+		if object.chain.tokens.count != 0 {
+			bounds = chainLeaf.bounds
+		} else {
+			aetherView?.aether.removeAexel(object)
+			aetherView?.removeBubble(self)
+		}
 		object.onOK()
 		aetherView?.stretch()
+	}
+	func referencingThis() -> Bool {
+		if let chain = aetherView?.currentlyEditing, chain != object.chain {
+			chain.post(token: object.token)
+			return true
+		} else {
+			return false
+		}
 	}
 }

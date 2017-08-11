@@ -36,7 +36,8 @@ import Foundation
 		for aexel in aexels {
 			vars += aexel.freeVars
 		}
-		AEMemoryRelease(memory);
+		
+		let oldMemory: UnsafeMutablePointer<Memory> = memory
 		memory = AEMemoryCreate(vars.count)
 
 		var i = 0
@@ -48,6 +49,9 @@ import Foundation
 			}
 			i += 1
 		}
+		
+		AEMemoryLoad(memory, oldMemory)
+		AEMemoryRelease(oldMemory)
 	}
 	
 	public func wireQ() {
@@ -129,6 +133,13 @@ import Foundation
 	private func addAexel(_ aexel: Aexel) {
 		add(aexel)
 		aexels.append(aexel)
+		renderMemory()
+	}
+	func removeAexel(_ aexel: Aexel) {
+		remove(aexel)
+		if let i = aexels.index(of: aexel) {
+			aexels.remove(at: i)
+		}
 		renderMemory()
 	}
 	
