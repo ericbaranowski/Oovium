@@ -19,7 +19,7 @@ class MessageHover: Hover {
 		scrollView = UIScrollView()
 		imageView = UIImageView()
 		
-		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 500, height: 400))
+		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 500, height: 400), fixedOffset: UIOffset.zero)
 		
 		let n: CGFloat = 7
 		scrollView.frame = CGRect(x: n, y: n, width: self.width-2*n, height: self.height-2*n)
@@ -36,7 +36,14 @@ class MessageHover: Hover {
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
-	func render() {
+// Events ==========================================================================================
+	func onTap() {
+		dismiss()
+	}
+	
+// Hover ===========================================================================================
+	override func render() {
+		super.render()
 		let style = NSMutableParagraphStyle()
 		style.lineBreakMode = .byWordWrapping
 		
@@ -51,7 +58,7 @@ class MessageHover: Hover {
 		let h = size.height
 		
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: w, height: h), false, 0.0)
-
+		
 		Skin.message(text: message, rect: CGRect(x: 0, y: 0, width: w, height: h), uiColor: UIColor.orange, font: UIFont(name: "Verdana", size: 18)!)
 		
 		let image = UIGraphicsGetImageFromCurrentImageContext()
@@ -63,12 +70,7 @@ class MessageHover: Hover {
 		scrollView.contentSize = CGSize(width: w+2*p, height: max(h+2*p, scrollView.height+1))
 		scrollView.contentOffset = CGPoint(x: 0, y: 0)
 	}
-	
-// Events ==========================================================================================
-	func onTap() {
-		dismiss()
-	}
-	
+
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
 		Skin.bubble(path: CGPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerWidth: 10, cornerHeight: 10, transform: nil), uiColor: UIColor.orange)

@@ -15,14 +15,14 @@ class MechMaker: Maker {
 		return MechBub(mech)
 	}
 	func drawIcon() {
-		let w: CGFloat = 27.0
-		let p: CGFloat = 3.0
-		let or: CGFloat = 4.0
-		let r: CGFloat = 1.0
-		let lh: CGFloat = 7.0
+		let w: CGFloat = 27.0*Oo.s
+		let p: CGFloat = 3.0*Oo.s
+		let or: CGFloat = 4.0*Oo.s
+		let r: CGFloat = 1.0*Oo.s
+		let lh: CGFloat = 7.0*Oo.s
 		let n: CGFloat = 1.0
 		
-		let x1: CGFloat = 8.0
+		let x1: CGFloat = 8.0*Oo.s
 		let x2 = x1+r
 		let x3 = x1+2*r
 		let x4 = x1+w/2
@@ -30,7 +30,7 @@ class MechMaker: Maker {
 		let x6 = x1+w-p-r
 		let x7 = x1+w-p
 		
-		let y1 = p+6.0
+		let y1 = p+6.0*Oo.s
 		let y2 = y1+lh/2.0
 		let y3 = y1+lh
 		let y4 = y3+r+n*lh/2

@@ -11,7 +11,7 @@ import UIKit
 class HelpMenu: KeyPad {
 	init() {
 		let schematic = Schematic(rows: 5, cols: 1)
-		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 84, vertical: -6), size: CGSize(width: 114, height: 214), schematic: schematic)
+		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 78, vertical: 0), size: CGSize(width: 114, height: 214), fixedOffset: UIOffset(horizontal: 6, vertical: -6), schematic: schematic)
 		
 		schematic.add(row: 0, col: 0, key: Key(text: NSLocalizedString("about", comment: ""), uiColor: UIColor.orange, {
 		}))

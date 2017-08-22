@@ -19,21 +19,21 @@ class TypeMaker: Maker {
 	}
 	func drawIcon() {
 		
-		let w: CGFloat = 34
-		let p: CGFloat = 3
-		let or: CGFloat = 4
-		let r: CGFloat = 2
-		let lh: CGFloat = 7
+		let w: CGFloat = 34*Oo.s
+		let p: CGFloat = 3*Oo.s
+		let or: CGFloat = 4*Oo.s
+		let r: CGFloat = 2*Oo.s
+		let lh: CGFloat = 7*Oo.s
 		let n: CGFloat = 2
-		let q: CGFloat = 3
+		let q: CGFloat = 3*Oo.s
 		
-		let x1: CGFloat = 9
+		let x1: CGFloat = 9*Oo.s
 		let x2 = x1+q
 		let x4 = w/2
 		let x7 = w-p
 		let x6 = x7-q
 		
-		let y1: CGFloat = 7+p-1
+		let y1: CGFloat = 7*Oo.s+p-1*Oo.s
 		let y2 = y1+or
 		let y3 = y2+or
 		let y4 = y3+n*lh

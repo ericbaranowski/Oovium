@@ -62,7 +62,7 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		
 		aetherList = UITableView(frame: CGRect(x: x1, y: y1, width: w-2*p, height: h-2*p))
 
-		super.init(anchor: .topLeft, offset: UIOffset(horizontal: 3+9, vertical: 23+9), size: CGSize(width: 300, height: 300))
+		super.init(anchor: .topLeft, offset: UIOffset(horizontal: 9, vertical: 9), size: CGSize(width: 300, height: 300), fixedOffset: UIOffset(horizontal: 3, vertical: 23))
 
 		aetherList.delegate = self
 		aetherList.dataSource = self
@@ -91,15 +91,17 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
-	func render() {
-	}
-	
 // Events ==========================================================================================
 	func onTap() {
 		expanded = !expanded
 		render()
 	}
 	
+// Hover ===========================================================================================
+	override func render() {
+		super.render()
+	}
+		
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
 		let p: CGFloat = 3

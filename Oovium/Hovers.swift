@@ -36,6 +36,13 @@ class Hovers {
 		
 	}
 	
+// Admin ===========================================================================================
+	static func render() {
+		for hover in invoked {
+			hover.render()
+		}
+	}
+
 // Menu ============================================================================================
 	static let redDot_ = RedDot()
 	static func invokeRedDot() {
@@ -80,17 +87,31 @@ class Hovers {
 	}
 
 // ToolBars ========================================================================================
-	static let bubbleToolBar_ = BubbleToolBar()
+	static let bubbleToolBar_: BubbleToolBar = {
+		let toolBar = BubbleToolBar(aetherView: Oovium.aetherView)
+		toolBar.onSelect = {(tool: Tool) in
+			let bubbleTool: BubbleTool = tool as! BubbleTool
+			toolBar.aetherView.maker = bubbleTool.maker
+			print(String(describing: type(of: bubbleTool.maker)))
+		}
+		return toolBar
+	}()
 	static func invokeBubbleToolBar() {
 		bubbleToolBar_.invoke()
 	}
 	
-	static let shapeToolBar_ = ShapeToolBar()
+	static let shapeToolBar_: ShapeToolBar = {
+		let toolBar = ShapeToolBar(aetherView: Oovium.aetherView)
+		return toolBar
+	}()
 	static func invokeShapeToolBar() {
 		shapeToolBar_.invoke()
 	}
 	
-	static let colorToolBar_ = ColorToolBar()
+	static let colorToolBar_: ColorToolBar = {
+		let toolBar = ColorToolBar(aetherView: Oovium.aetherView)
+		return toolBar
+	}()
 	static func invokeColorToolBar() {
 		colorToolBar_.invoke()
 	}
@@ -102,16 +123,22 @@ class Hovers {
 	}
 	
 // Editors =========================================================================================
-	static private var chainEditor: ChainEditor = {
-		return ChainEditor()
-	}()
-	
+	static private var chainEditor_ = ChainEditor()
 	static func invokeChainEditor(chain: Chain) {
-		chainEditor.chain = chain
-		chainEditor.invoke()
+		chainEditor_.chain = chain
+		chainEditor_.invoke()
 	}
 	static func dismissChainEditor() {
-		chainEditor.dismiss()
+		chainEditor_.dismiss()
+	}
+	
+// Settings ========================================================================================
+	static private var settingsHover_ = SettingsHover()
+	static func invokeSettingsHover() {
+		settingsHover_.invoke()
+	}
+	static func dismissSettingsHover() {
+		settingsHover_.dismiss()
 	}
 	
 // Miscellaneous ===================================================================================

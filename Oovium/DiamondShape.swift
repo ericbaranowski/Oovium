@@ -11,11 +11,11 @@ import UIKit
 class DiamondShape: Shape {
 // Shape ===========================================================================================
 	override func drawIcon(color: UIColor) {
-		let p: CGFloat = 8
-		let q: CGFloat = 8
-		let r: CGFloat = 4
-		let w: CGFloat = 40
-		let h: CGFloat = 40
+		let p: CGFloat = 8*Oo.s
+		let q: CGFloat = 8*Oo.s
+		let r: CGFloat = 4*Oo.s
+		let w: CGFloat = 40*Oo.s
+		let h: CGFloat = 40*Oo.s
 		
 		let x1 = p
 		let x3 = w/2

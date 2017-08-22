@@ -14,6 +14,7 @@ class OoviumController: UIViewController {
 	init() {
 		aetherView = AetherView()
 		super.init(nibName: nil, bundle: nil)
+		Oovium.aetherView_ = aetherView
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

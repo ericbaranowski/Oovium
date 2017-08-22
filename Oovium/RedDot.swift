@@ -11,7 +11,7 @@ import UIKit
 class RedDot: Hover, UIGestureRecognizerDelegate {
 	
 	init() {
-		super.init(anchor: .bottomLeft, offset: UIOffset.zero, size: CGSize(width: 46, height: 46))
+		super.init(anchor: .bottomLeft, offset: UIOffset.zero, size: CGSize(width: 46, height: 46), fixedOffset: UIOffset.zero)
 		
 		var gesture: UIGestureRecognizer = AETouchGestureRecognizer(target: self, action: #selector(onTouch))
 		gesture.delegate = self

@@ -17,26 +17,26 @@ class CronMaker: Maker {
 	}
 	func drawIcon() {
 		
-		let p: CGFloat = 2
-		let sw: CGFloat = 5.0/1.5
-		let cw: CGFloat = 6.0/1.5
-		let ah: CGFloat = 7.0/1.5
-		let bh: CGFloat = 7.0/1.5
-		let ch: CGFloat = 7.0/1.5
+		let p: CGFloat = 2*Oo.s
+		let sw: CGFloat = 5.0/1.5*Oo.s
+		let cw: CGFloat = 6.0/1.5*Oo.s
+		let ah: CGFloat = 7.0/1.5*Oo.s
+		let bh: CGFloat = 7.0/1.5*Oo.s
+		let ch: CGFloat = 7.0/1.5*Oo.s
 		
-		let bl: CGFloat = 2.0/1.5
-		let ml: CGFloat = 2.0/1.5
-		let qw: CGFloat = 2.0/1.5
-		let qh: CGFloat = 2.0/1.5
-		let ps: CGFloat = 1.0/1.5
+		let bl: CGFloat = 2.0/1.5*Oo.s
+		let ml: CGFloat = 2.0/1.5*Oo.s
+		let qw: CGFloat = 2.0/1.5*Oo.s
+		let qh: CGFloat = 2.0/1.5*Oo.s
+		let ps: CGFloat = 1.0/1.5*Oo.s
 		let pw: CGFloat = qw*ps/1.5
 		let ph: CGFloat = qh*ps/1.5
 		
-		let w: CGFloat = 8.0/1.5
-		let h: CGFloat = 4.0/1.5
-		let r: CGFloat = 4.0/1.5
+		let w: CGFloat = 8.0/1.5*Oo.s
+		let h: CGFloat = 4.0/1.5*Oo.s
+		let r: CGFloat = 4.0/1.5*Oo.s
 		
-		let x1 = p+11.0/1.5
+		let x1 = p+11.0/1.5*Oo.s
 		let x2 = x1+sw
 		let x3 = x2+sw
 		let x4 = x3+cw
@@ -46,14 +46,14 @@ class CronMaker: Maker {
 		let x8 = x4-w
 		let x9 = x4+w
 		
-		let y1 = p+6.0/1.5
+		let y1 = p+6.0/1.5*Oo.s
 		let y2 = y1+ah
 		let y3 = y2+bh
 		let y4 = y3+ch
 		let y5 = y4+ch
 		let y6 = y5+bh
 		let y7 = y6+ah
-		let y8 = y1+5.0/1.5
+		let y8 = y1+5.0/1.5*Oo.s
 		let y9 = y8+h
 		let y10 = y9+h
 		
@@ -85,11 +85,11 @@ class CronMaker: Maker {
 		
 		Skin.bubble(path: path, uiColor: OOColor.cobolt.uiColor)
 		
-		let ir: CGFloat = 5.0/1.5
+		let ir: CGFloat = 5.0/1.5*Oo.s
 		
 		let ix1 = x4-ir
 		
-		let iy1 = y1+26.5/1.5
+		let iy1 = y1+26.5/1.5*Oo.s
 		
 		path = CGMutablePath()
 		path.addEllipse(in: CGRect(x: ix1, y: iy1, width: 2*ir, height: 2*ir))

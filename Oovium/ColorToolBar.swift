@@ -10,7 +10,7 @@ import UIKit
 
 class ColorToolBar: ToolBar {
 	
-	init() {
+	init(aetherView: AetherView) {
 		var tools: [[Tool?]] = Array(repeating: Array(repeating: nil, count: 4), count: 4)
 		
 		tools[0][0] = ColorTool(color: .lime)
@@ -30,7 +30,7 @@ class ColorToolBar: ToolBar {
 		tools[3][2] = ColorTool(color: .magenta)
 		tools[3][3] = ColorTool(color: .violet)
 		
-		super.init(tools: tools, offset: UIOffset(horizontal: -129-16, vertical: 29))
+		super.init(aetherView: aetherView, tools: tools, offset: UIOffset(horizontal: -80, vertical: 0), fixedOffset: UIOffset(horizontal: 0, vertical: 20))
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

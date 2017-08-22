@@ -15,17 +15,17 @@ class ObjectMaker: Maker {
 		return ObjectBub(object:object)
 	}
 	func drawIcon() {
-		let bw = 20
-		let bh = 20
-		let r: CGFloat = 6
+		let bw = 20*Oo.s
+		let bh = 20*Oo.s
+		let r: CGFloat = 6*Oo.s
 
-		let x1 = bw-10
+		let x1 = bw-10*Oo.s
 		let x2 = bw
-		let x3 = bw+10
+		let x3 = bw+10*Oo.s
 		
-		let y1 = bh-8
+		let y1 = bh-8*Oo.s
 		let y2 = bh
-		let y3 = bh+8
+		let y3 = bh+8*Oo.s
 		
 		let path = CGMutablePath()
 		path.move(to: CGPoint(x: x1, y: y2))

@@ -10,8 +10,8 @@ import UIKit
 
 class LinksMenu: KeyPad {
 	init() {
-		let schematic = Schematic(rows: 4, cols: 1)
-		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 84, vertical: -6), size: CGSize(width: 104, height: 214), schematic: schematic)
+		let schematic = Schematic(rows: 5, cols: 1)
+		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 78, vertical: 0), size: CGSize(width: 104, height: 214), fixedOffset: UIOffset(horizontal: 6, vertical: -6), schematic: schematic)
 		
 		schematic.add(row: 0, col: 0, key: Key(text: NSLocalizedString("oovium", comment: ""), uiColor: UIColor.orange, {
 			UIApplication.shared.open(URL(string: "http://aepryus.com/Principia?view=article&articleID=3")!, options: [:], completionHandler: nil)
@@ -28,7 +28,11 @@ class LinksMenu: KeyPad {
 		schematic.add(row: 3, col: 0, key: Key(text: NSLocalizedString("review", comment: ""), uiColor: UIColor.orange, {
 			UIApplication.shared.open(URL(string: "http://itunes.apple.com/app/oovium/id336573328?mt=8")!, options: [:], completionHandler: nil)
 		}))
-		
+
+		schematic.add(row: 4, col: 0, key: Key(text: NSLocalizedString("settings", comment: ""), uiColor: UIColor.orange, {
+			Hovers.invokeSettingsHover()
+		}))
+
 		self.schematic = schematic
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}

@@ -11,10 +11,10 @@ import UIKit
 class EllipseShape: Shape {
 // Shape ===========================================================================================
 	override func drawIcon(color: UIColor) {
-		let p: CGFloat = 8
-		let q: CGFloat = 13
-		let w: CGFloat = 40-2*p
-		let h: CGFloat = 40-2*q
+		let p: CGFloat = 8*Oo.s
+		let q: CGFloat = 13*Oo.s
+		let w: CGFloat = 40*Oo.s-2*p
+		let h: CGFloat = 40*Oo.s-2*q
 		
 		let x1 = p
 		let y1 = q

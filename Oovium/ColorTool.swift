@@ -13,7 +13,7 @@ class ColorTool: Tool {
 	
 	init(color: OOColor) {
 		self.color = color
-		super.init(frame: CGRect.zero)
+		super.init()
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 
@@ -22,7 +22,7 @@ class ColorTool: Tool {
 		super.draw(rect)
 		
 		let c = UIGraphicsGetCurrentContext()!
-		c.addPath(CGPath(roundedRect: rect.insetBy(dx: 10, dy: 10), cornerWidth: 5, cornerHeight: 5, transform: nil))
+		c.addPath(CGPath(roundedRect: rect.insetBy(dx: 10*Oo.s, dy: 10*Oo.s), cornerWidth: 5*Oo.s, cornerHeight: 5*Oo.s, transform: nil))
 		color.uiColor.setFill()
 		c.fillPath()
 	}

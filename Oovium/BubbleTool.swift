@@ -13,20 +13,32 @@ class BubbleTool: Tool {
 	
 	init(maker: Maker) {
 		self.maker = maker
-		super.init(frame: CGRect.zero)
+		super.init()
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 	lazy var image: UIImage = {
-		UIGraphicsBeginImageContextWithOptions(CGSize(width: 40, height: 40), false, 0.0)
+		UIGraphicsBeginImageContextWithOptions(CGSize(width: 40*Oo.s, height: 40*Oo.s), false, 0.0)
 		
 		self.maker.drawIcon()
 		
-		let image = UIGraphicsGetImageFromCurrentImageContext()
+		let image = UIGraphicsGetImageFromCurrentImageContext()!
 		UIGraphicsEndImageContext()
 		
-		return image!
+		return image
 	}()
+	
+// Tool ============================================================================================
+	override func render() {
+		UIGraphicsBeginImageContextWithOptions(CGSize(width: 40*Oo.s, height: 40*Oo.s), false, 0.0)
+		
+		self.maker.drawIcon()
+		
+		let image = UIGraphicsGetImageFromCurrentImageContext()!
+		UIGraphicsEndImageContext()
+		
+		self.image = image
+	}
 
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {

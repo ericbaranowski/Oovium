@@ -10,7 +10,7 @@ import UIKit
 
 class BubbleToolBar: ToolBar {
 	
-	init() {
+	init(aetherView: AetherView) {
 		var tools: [[Tool?]] = Array(repeating: Array(repeating: nil, count: 6), count: 2)
 		
 		tools[0][0] = BubbleTool(maker: ObjectMaker())
@@ -22,7 +22,7 @@ class BubbleToolBar: ToolBar {
 		tools[0][4] = BubbleTool(maker: CronMaker())
 		tools[0][5] = BubbleTool(maker: TextMaker())
 		
-		super.init(tools: tools, offset: UIOffset(horizontal: -9, vertical: 29))
+		super.init(aetherView: aetherView, tools: tools, offset: UIOffset.zero, fixedOffset: UIOffset(horizontal: 0, vertical: 20))
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

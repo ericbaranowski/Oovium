@@ -10,6 +10,11 @@ import UIKit
 
 class Oovium {
 	static var window_: UIWindow!
+	static var aetherView_: AetherView!
+	static var aetherView: AetherView {
+		set {aetherView_ = newValue}
+		get {return aetherView_}
+	}
 
 	static func start() {
 		Math.start()

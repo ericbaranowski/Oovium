@@ -39,8 +39,7 @@ class Key: UIControl {
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		let s = Hover.s
-		let path = CGPath(roundedRect: rect.insetBy(dx: 3*s, dy: 3*s), cornerWidth: 7*s, cornerHeight: 7*s, transform: nil)
+		let path = CGPath(roundedRect: rect.insetBy(dx: 3*Oo.s, dy: 3*Oo.s), cornerWidth: 7*Oo.s, cornerHeight: 7*Oo.s, transform: nil)
 		Skin.key(path: path, uiColor: current)
 		Skin.key(text: text, rect: rect, font: font)
 	}

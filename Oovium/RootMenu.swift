@@ -11,7 +11,7 @@ import UIKit
 class RootMenu: KeyPad {
 	init() {
 		let schematic = Schematic(rows: 3, cols: 1)
-		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 6, vertical: -46), size: CGSize(width: 78, height: 220), schematic: schematic)
+		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 0, vertical: -40), size: CGSize(width: 78, height: 220), fixedOffset: UIOffset(horizontal: 6, vertical: -6), schematic: schematic)
 		
 		schematic.add(row: 0, col: 0, key: Key(text: "aether", uiColor: UIColor.orange, {Hovers.toggleAetherMenu()}))
 		schematic.add(row: 1, col: 0, key: Key(text: "links", uiColor: UIColor.orange, {Hovers.toggleLinksMenu()}))

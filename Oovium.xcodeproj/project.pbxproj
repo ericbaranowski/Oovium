@@ -233,6 +233,8 @@
 		D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB768E1E1840C100A286DF /* Aexel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB768C1E18402C00A286DF /* Aexel.swift */; };
 		D8CB76931E185D1300A286DF /* Migrate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB76921E185D1300A286DF /* Migrate.swift */; };
+		D8E0E6091F4A3479002A82F9 /* SettingsHover.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0E6081F4A3479002A82F9 /* SettingsHover.swift */; };
+		D8E0E60B1F4A3C41002A82F9 /* ScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8E0E60A1F4A3C41002A82F9 /* ScaleView.swift */; };
 		D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
 		D8E4A08F1E46764C00B2C328 /* Aegean.h in Headers */ = {isa = PBXBuildFile; fileRef = D8E4A08C1E4673D600B2C328 /* Aegean.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8E4A0901E46767400B2C328 /* Aegean.c in Sources */ = {isa = PBXBuildFile; fileRef = D8E4A08B1E4673D600B2C328 /* Aegean.c */; };
@@ -405,6 +407,8 @@
 		D8CB76731E17944500A286DF /* Domain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		D8CB768C1E18402C00A286DF /* Aexel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aexel.swift; sourceTree = "<group>"; };
 		D8CB76921E185D1300A286DF /* Migrate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Migrate.swift; sourceTree = "<group>"; };
+		D8E0E6081F4A3479002A82F9 /* SettingsHover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHover.swift; sourceTree = "<group>"; };
+		D8E0E60A1F4A3C41002A82F9 /* ScaleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleView.swift; sourceTree = "<group>"; };
 		D8E4A08B1E4673D600B2C328 /* Aegean.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Aegean.c; sourceTree = "<group>"; };
 		D8E4A08C1E4673D600B2C328 /* Aegean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aegean.h; sourceTree = "<group>"; };
 		D8F2BA2C1E9BC8AF006A1492 /* TokenKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenKey.swift; sourceTree = "<group>"; };
@@ -677,6 +681,7 @@
 				D81DC9431F352EB8000140DF /* BubbleMaker */,
 				D83DAFA61F3A2C6000A0A6C6 /* AetherPicker */,
 				D84CD41A1E9AE85000029120 /* ChainEditor */,
+				D8E0E6071F4A344D002A82F9 /* Settings */,
 				D8502F8C1F39496B005F00B5 /* Miscellaneous */,
 			);
 			name = Hovers;
@@ -1063,6 +1068,15 @@
 			name = Migration;
 			sourceTree = "<group>";
 		};
+		D8E0E6071F4A344D002A82F9 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D8E0E60A1F4A3C41002A82F9 /* ScaleView.swift */,
+				D8E0E6081F4A3479002A82F9 /* SettingsHover.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1421,6 +1435,7 @@
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
 				D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */,
 				D81DC9981F3633B2000140DF /* GridBub.swift in Sources */,
+				D8E0E60B1F4A3C41002A82F9 /* ScaleView.swift in Sources */,
 				D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
 				D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
@@ -1498,6 +1513,7 @@
 				D89BEC381DE8FC9F00B56F6A /* OoviumDelegate.swift in Sources */,
 				D84CD4111E9AAD0700029120 /* ObjectBub.swift in Sources */,
 				D8CB768D1E18402C00A286DF /* Aexel.swift in Sources */,
+				D8E0E6091F4A3479002A82F9 /* SettingsHover.swift in Sources */,
 				D82BE4D11E21A00F00E8E710 /* JSON.swift in Sources */,
 				D8CB766A1E1793E900A286DF /* Field.swift in Sources */,
 				D8CB76741E17944500A286DF /* Domain.swift in Sources */,

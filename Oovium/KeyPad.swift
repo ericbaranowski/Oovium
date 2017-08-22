@@ -14,15 +14,15 @@ class KeyPad: Hover {
 		didSet {renderSchematic()}
 	}
 	
-	init (anchor: Position, offset: UIOffset, size: CGSize, uiColor: UIColor, schematic: Schematic) {
+	init (anchor: Position, offset: UIOffset, size: CGSize, fixedOffset: UIOffset, uiColor: UIColor, schematic: Schematic) {
 		self.uiColor = uiColor
 		self.schematic = schematic
-		super.init(anchor: anchor, offset: offset, size: size)
+		super.init(anchor: anchor, offset: offset, size: size, fixedOffset: fixedOffset)
 	}
-	init (anchor: Position, offset: UIOffset, size: CGSize, schematic: Schematic) {
+	init (anchor: Position, offset: UIOffset, size: CGSize, fixedOffset: UIOffset, schematic: Schematic) {
 		self.uiColor = UIColor.orange
 		self.schematic = schematic
-		super.init(anchor: anchor, offset: offset, size: size)
+		super.init(anchor: anchor, offset: offset, size: size, fixedOffset: fixedOffset)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 
@@ -43,9 +43,8 @@ class KeyPad: Hover {
 
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		let s = Hover.s
 		let path = CGMutablePath()
-		path.addRoundedRect(in: rect.insetBy(dx: 3*s, dy: 3*s), cornerWidth: 10*s, cornerHeight: 10*s)
+		path.addRoundedRect(in: rect.insetBy(dx: 3*Oo.s, dy: 3*Oo.s), cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s)
 		Skin.panel(path: path, uiColor: uiColor)
 	}
 }

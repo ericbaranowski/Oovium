@@ -13,7 +13,7 @@ class ShapeTool: Tool {
 	
 	init(shape: OOShape) {
 		self.shape = shape
-		super.init(frame: CGRect.zero)
+		super.init()
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

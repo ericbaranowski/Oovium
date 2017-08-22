@@ -16,15 +16,15 @@ class GridMaker: Maker {
 		return GridBub(grid)
 	}
 	func drawIcon() {
-		let lw: CGFloat = 15
+		let lw: CGFloat = 15*Oo.s
 		let cw: CGFloat = lw
-		let rh: CGFloat = 7
-		let v: CGFloat = 1
-		let r: CGFloat = 4
-		let ir: CGFloat = 1
+		let rh: CGFloat = 7*Oo.s
+		let v: CGFloat = 1*Oo.s
+		let r: CGFloat = 4*Oo.s
+		let ir: CGFloat = 1*Oo.s
 		let hh = 2*r
 		
-		let x1: CGFloat = 6
+		let x1: CGFloat = 6*Oo.s
 		let x2 = x1+r+v
 		let x3 = x2+ir+v
 		let x4 = x3+r
@@ -34,7 +34,7 @@ class GridMaker: Maker {
 		let x8 = x7+ir+v
 		let x9 = x8+r+v
 		
-		let y1: CGFloat = 10
+		let y1: CGFloat = 10*Oo.s
 		let y2 = y1+r
 		let y3 = y1+hh
 		let y4 = y3+rh-r

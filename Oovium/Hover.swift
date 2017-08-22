@@ -9,26 +9,21 @@
 import UIKit
 
 class Hover: UIView {
-	static var s: CGFloat = 1
+	let anchor: Position
+	let offset: UIOffset
+	let size: CGSize
+	let fixedOffset: UIOffset
 	
-	init (anchor: Position, offset: UIOffset, size: CGSize) {
+	init (anchor: Position, offset: UIOffset, size: CGSize, fixedOffset: UIOffset) {
+		self.anchor = anchor
+		self.offset = offset
+		self.size = size
+		self.fixedOffset = fixedOffset
 		
-		var x: CGFloat
-		var y: CGFloat
+		super.init(frame: CGRect.zero)
 		
-		let parent: CGSize = UIScreen.main.bounds.size
-		let s = Hover.s
-		
-		if anchor.isLeft() {x = offset.horizontal*s}
-		else if anchor.isRight() {x = parent.width - size.width*s + offset.horizontal*s}
-		else {x = (parent.width - size.width*s) / 2 + offset.horizontal*s}
-		
-		if anchor.isTop() {y = offset.vertical*s}
-		else if anchor.isBottom() {y = parent.height - size.height*s + offset.vertical*s}
-		else {y = (parent.height - size.height*s) / 2 + offset.vertical*s}
-		
-		super.init(frame: CGRect(x: x, y: y, width: size.width*s, height: size.height*s))
-		self.backgroundColor = UIColor.clear
+		backgroundColor = UIColor.clear
+		render()
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
@@ -56,5 +51,25 @@ class Hover: UIView {
 		} else {
 			invoke()
 		}
-	}	
+	}
+	
+	func render() {
+		var x: CGFloat
+		var y: CGFloat
+		
+		let parent: CGSize = UIScreen.main.bounds.size
+		
+		let offsetX: CGFloat = offset.horizontal*Oo.s + fixedOffset.horizontal
+		let offsetY: CGFloat = offset.vertical*Oo.s + fixedOffset.vertical
+		
+		if anchor.isLeft() {x = offsetX}
+		else if anchor.isRight() {x = parent.width - size.width*Oo.s + offsetX}
+		else {x = (parent.width - size.width*Oo.s) / 2 + offsetX}
+		
+		if anchor.isTop() {y = offsetY}
+		else if anchor.isBottom() {y = parent.height - size.height*Oo.s + offsetY}
+		else {y = (parent.height - size.height*Oo.s) / 2 + offsetY}
+
+		self.frame = CGRect(x: x, y: y, width: size.width*Oo.s, height: size.height*Oo.s)
+	}
 }
