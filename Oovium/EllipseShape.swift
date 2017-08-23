@@ -21,6 +21,6 @@ class EllipseShape: Shape {
 
 		let path = CGMutablePath()
 		path.addEllipse(in: CGRect(x: x1, y: y1, width: w, height: h))
-		Skin.bubble(path: path, uiColor: color)
+		Skin.bubble(path: path, uiColor: color, width: 2*Oo.s)
 	}
 }

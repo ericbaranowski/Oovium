@@ -111,7 +111,7 @@ class TailMaker: Maker {
 		c.addPath(arrow)
 		c.drawPath(using: .fillStroke)
 		
-		Skin.bubble(path: path, uiColor: UIColor.blue)
+		Skin.bubble(path: path, uiColor: UIColor.blue, width: 4.0/3.0*Oo.s)
 	}
 }
 

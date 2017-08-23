@@ -80,7 +80,7 @@ class GateMaker: Maker {
 		c.addPath(arrow)
 		c.drawPath(using: .fillStroke)
 		
-		Skin.bubble(path: path, uiColor: OOColor.marine.uiColor)
+		Skin.bubble(path: path, uiColor: OOColor.marine.uiColor, width: 4.0/3.0*Oo.s)
 	}
 }
 

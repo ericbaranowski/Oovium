@@ -65,7 +65,7 @@ class GridMaker: Maker {
 		path.move(to: CGPoint(x: x3, y: y5))
 		path.addLine(to: CGPoint(x: x6, y: y5))
 
-		Skin.bubble(path: path, uiColor: UIColor.purple)
+		Skin.bubble(path: path, uiColor: UIColor.purple, width: 4.0/3.0*Oo.s)
 	}
 }
 

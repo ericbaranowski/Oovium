@@ -44,7 +44,7 @@ class IvorySkin: Skin {
 		(text as NSString).draw(in: inside, withAttributes: pen.attributes)
 		c.restoreGState()
 	}
-	override func bubble (path: CGPath, uiColor: UIColor) {
+	override func bubble (path: CGPath, uiColor: UIColor, width: CGFloat) {
 		let rgb = RGB(uiColor: uiColor)
 		let field = rgb.blend(rgb: RGB.white, percent: 0.5)
 		let accent = rgb.blend(rgb: RGB.black, percent: 0.5)

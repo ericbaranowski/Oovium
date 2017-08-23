@@ -35,7 +35,7 @@ class ObjectMaker: Maker {
 		path.addArc(tangent1End: CGPoint(x: x1, y: y3), tangent2End: CGPoint(x: x1, y: y2), radius: r)
 		path.closeSubpath()
 		
-		Skin.bubble(path: path, uiColor: UIColor.green)
+		Skin.bubble(path: path, uiColor: UIColor.green, width: 4.0/3.0*Oo.s)
 	}
 }
 

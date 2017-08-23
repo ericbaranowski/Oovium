@@ -20,6 +20,6 @@ class RoundedShape: Shape {
 		let y1 = q
 		
 		let path = CGPath(roundedRect: CGRect(x: x1, y: y1, width: w, height: h), cornerWidth: 5, cornerHeight: 5, transform: nil)
-		Skin.bubble(path: path, uiColor: color)
+		Skin.bubble(path: path, uiColor: color, width: 2*Oo.s)
 	}
 }

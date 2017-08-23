@@ -62,7 +62,7 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		
 		aetherList = UITableView(frame: CGRect(x: x1, y: y1, width: w-2*p, height: h-2*p))
 
-		super.init(anchor: .topLeft, offset: UIOffset(horizontal: 9, vertical: 9), size: CGSize(width: 300, height: 300), fixedOffset: UIOffset(horizontal: 3, vertical: 23))
+		super.init(anchor: .topLeft, offset: UIOffset(horizontal: 9, vertical: 9), size: CGSize(width: w/Oo.s, height: h/Oo.s), fixedOffset: UIOffset(horizontal: 3, vertical: 23))
 
 		aetherList.delegate = self
 		aetherList.dataSource = self
@@ -181,7 +181,7 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 			path.addArc(tangent1End: CGPoint(x: x1, y: y5), tangent2End: CGPoint(x: x1, y: y4), radius: rr)
 			path.closeSubpath()
 			
-			Skin.bubble(path: path, uiColor: UIColor.orange)
+			Skin.bubble(path: path, uiColor: UIColor.orange, width: 4.0/3.0*Oo.s)
 		}
 		
 //		UIColor* color = [UIColor greenColor];

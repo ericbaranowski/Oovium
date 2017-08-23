@@ -73,7 +73,7 @@ class CronMaker: Maker {
 		glass.addCurve(to: CGPoint(x: x1, y: y2), control1: CGPoint(x: x2-qw,	y: y3-qh), control2: CGPoint(x: x1,		y: y2+bl))
 		glass.closeSubpath()
 		
-		Skin.bubble(path: glass, uiColor: OOColor.cobolt.uiColor)
+		Skin.bubble(path: glass, uiColor: OOColor.cobolt.uiColor, width: 4.0/3.0*Oo.s)
 		
 		var path = CGMutablePath()
 		path.move(to: CGPoint(x: x8, y: y9))
@@ -83,7 +83,7 @@ class CronMaker: Maker {
 		path.addArc(tangent1End: CGPoint(x: x8, y: y10), tangent2End: CGPoint(x: x8, y: y9), radius: r)
 		path.closeSubpath()
 		
-		Skin.bubble(path: path, uiColor: OOColor.cobolt.uiColor)
+		Skin.bubble(path: path, uiColor: OOColor.cobolt.uiColor, width: 4.0/3.0*Oo.s)
 		
 		let ir: CGFloat = 5.0/1.5*Oo.s
 		
@@ -94,7 +94,7 @@ class CronMaker: Maker {
 		path = CGMutablePath()
 		path.addEllipse(in: CGRect(x: ix1, y: iy1, width: 2*ir, height: 2*ir))
 		
-		Skin.bubble(path: path, uiColor: OOColor.cobolt.uiColor)
+		Skin.bubble(path: path, uiColor: OOColor.cobolt.uiColor, width: 4.0/3.0*Oo.s)
 	}
 }
 

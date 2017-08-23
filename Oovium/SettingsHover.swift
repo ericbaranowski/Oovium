@@ -13,13 +13,13 @@ class SettingsHover: Hover {
 	let scaleView = ScaleView()
 	
 	init() {
-		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 300, height: 300), fixedOffset: UIOffset.zero)
+		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 200, height: 200), fixedOffset: UIOffset.zero)
 		super.render()
 		
 		scaleView.frame = CGRect(x: 50, y: 50, width: 200, height: 100)
 		scaleView.onChange = {(scale: CGFloat) in
 			Oo.s = scale
-			Hovers.render()
+			Hovers.rescale()
 		}
 		addSubview(scaleView)
 		
@@ -34,13 +34,12 @@ class SettingsHover: Hover {
 	}
 	
 // Hover ===========================================================================================
-	override func render() {
-	}
+	override func rescale() {}
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
 		let path = CGMutablePath()
-		path.addRoundedRect(in: rect.insetBy(dx: 3*Oo.s, dy: 3*Oo.s), cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s)
-		Skin.bubble(path: path, uiColor: OOColor.marine.uiColor)
+		path.addRoundedRect(in: rect.insetBy(dx: 2*Oo.s, dy: 2*Oo.s), cornerWidth: 6*Oo.s, cornerHeight: 6*Oo.s)
+		Skin.bubble(path: path, uiColor: OOColor.marine.uiColor, width: 4.0/3.0*Oo.s)
 	}
 }

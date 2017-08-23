@@ -11,7 +11,9 @@ import UIKit
 class Hover: UIView {
 	let anchor: Position
 	let offset: UIOffset
-	let size: CGSize
+	var size: CGSize {
+		didSet {resize()}
+	}
 	let fixedOffset: UIOffset
 	
 	init (anchor: Position, offset: UIOffset, size: CGSize, fixedOffset: UIOffset) {
@@ -29,6 +31,26 @@ class Hover: UIView {
 	
 	var isInvoked: Bool {
 		return Hovers.isInvoked(hover: self)
+	}
+	
+	private func resize() {
+		var x: CGFloat
+		var y: CGFloat
+		
+		let parent: CGSize = UIScreen.main.bounds.size
+		
+		let offsetX: CGFloat = offset.horizontal*Oo.s + fixedOffset.horizontal
+		let offsetY: CGFloat = offset.vertical*Oo.s + fixedOffset.vertical
+		
+		if anchor.isLeft() {x = offsetX}
+		else if anchor.isRight() {x = parent.width - size.width*Oo.s + offsetX}
+		else {x = (parent.width - size.width*Oo.s) / 2 + offsetX}
+		
+		if anchor.isTop() {y = offsetY}
+		else if anchor.isBottom() {y = parent.height - size.height*Oo.s + offsetY}
+		else {y = (parent.height - size.height*Oo.s) / 2 + offsetY}
+		
+		self.frame = CGRect(x: x, y: y, width: size.width*Oo.s, height: size.height*Oo.s)
 	}
 
 // Events ==========================================================================================
@@ -54,22 +76,10 @@ class Hover: UIView {
 	}
 	
 	func render() {
-		var x: CGFloat
-		var y: CGFloat
-		
-		let parent: CGSize = UIScreen.main.bounds.size
-		
-		let offsetX: CGFloat = offset.horizontal*Oo.s + fixedOffset.horizontal
-		let offsetY: CGFloat = offset.vertical*Oo.s + fixedOffset.vertical
-		
-		if anchor.isLeft() {x = offsetX}
-		else if anchor.isRight() {x = parent.width - size.width*Oo.s + offsetX}
-		else {x = (parent.width - size.width*Oo.s) / 2 + offsetX}
-		
-		if anchor.isTop() {y = offsetY}
-		else if anchor.isBottom() {y = parent.height - size.height*Oo.s + offsetY}
-		else {y = (parent.height - size.height*Oo.s) / 2 + offsetY}
-
-		self.frame = CGRect(x: x, y: y, width: size.width*Oo.s, height: size.height*Oo.s)
+		resize()
 	}
+	func rescale() {
+		resize()
+	}
+	func retract() {}
 }

@@ -49,7 +49,7 @@ class TronSkin: Skin {
 	}
 	
 	// Bubble
-	override func bubble (path: CGPath, uiColor: UIColor) {
+	override func bubble (path: CGPath, uiColor: UIColor, width: CGFloat) {
 		let c = UIGraphicsGetCurrentContext()!
 		
 		c.setFillColor(UIColor.black.withAlphaComponent(0.7).cgColor)
@@ -57,17 +57,17 @@ class TronSkin: Skin {
 		c.drawPath(using: .fill)
 		
 		c.setStrokeColor(uiColor.withAlphaComponent(0.4).cgColor)
-		c.setLineWidth(6)
+		c.setLineWidth(width*3)
 		c.addPath(path)
 		c.drawPath(using: .stroke)
 
 		c.setStrokeColor(uiColor.withAlphaComponent(0.6).cgColor)
-		c.setLineWidth(4)
+		c.setLineWidth(width*2)
 		c.addPath(path)
 		c.drawPath(using: .stroke)
 
 		c.setStrokeColor(UIColor.white.cgColor)
-		c.setLineWidth(2)
+		c.setLineWidth(width)
 		c.addPath(path)
 		c.drawPath(using: .stroke)
 	}

@@ -20,9 +20,12 @@ public class AetherView: UIScrollView {
 		showsVerticalScrollIndicator = false
 		showsHorizontalScrollIndicator = false
 		
-		let gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
+		var gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
 		gesture.numberOfTapsRequired = 2
-		addGestureRecognizer(gesture)		
+		addGestureRecognizer(gesture)
+		
+		gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+		addGestureRecognizer(gesture)
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
 	
@@ -85,10 +88,17 @@ public class AetherView: UIScrollView {
 	}
 	
 // Events ==========================================================================================
+	func onTap() {
+		Hovers.retract()
+	}
 	func onDoubleTap (_ gesture: UITapGestureRecognizer) {
 		let origin = gesture.location(in: self)
 		let bubble = maker.make(aether:aether, at:V2(Double(origin.x), Double(origin.y)))
 		addBubble(bubble)
 		bubble.create()
+		Hovers.bubbleToolBar_.recoil()
 	}
+	
+// UIGestureRecognizerDelegate =====================================================================
+	
 }

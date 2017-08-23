@@ -37,6 +37,6 @@ class DiamondShape: Shape {
 		path.addArc(tangent1End: CGPoint(x: x1, y: y3), tangent2End: CGPoint(x: x2, y: y2), radius: r)
 		path.closeSubpath()
 		
-		Skin.bubble(path: path, uiColor: UIColor.lightGray)
+		Skin.bubble(path: path, uiColor: UIColor.lightGray, width: 2*Oo.s)
 	}
 }

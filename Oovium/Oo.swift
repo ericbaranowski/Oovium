@@ -51,5 +51,12 @@ public enum OOColor: Int {
 }
 
 class Oo {
-	static var s: CGFloat = 1
+	static var iPhone: Bool {
+		return UIDevice.current.userInterfaceIdiom == .phone
+	}
+	static var iPad: Bool {
+		return UIDevice.current.userInterfaceIdiom == .pad
+	}
+	
+	static var s: CGFloat = Oo.iPhone ? 1 : 1.5
 }

@@ -20,6 +20,6 @@ class RectangleShape: Shape {
 		let y1 = q
 		
 		let path = CGPath(rect: CGRect(x: x1, y: y1, width: w, height: h), transform: nil)
-		Skin.bubble(path: path, uiColor: color)
+		Skin.bubble(path: path, uiColor: color, width: 4.0/3.0*Oo.s)
 	}
 }

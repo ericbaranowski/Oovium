@@ -21,11 +21,14 @@ class Tool: UIView {
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 	func render() {}
+	func rescale() {}
 	
 // Events ==========================================================================================
 	func onTap() {
 		toolBar.select(tool: self)
 	}
+	func onSelect() {}
+	func onDeselect() {}
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {

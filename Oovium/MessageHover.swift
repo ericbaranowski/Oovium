@@ -73,6 +73,6 @@ class MessageHover: Hover {
 
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		Skin.bubble(path: CGPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerWidth: 10, cornerHeight: 10, transform: nil), uiColor: UIColor.orange)
+		Skin.bubble(path: CGPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerWidth: 10, cornerHeight: 10, transform: nil), uiColor: UIColor.orange, width: 4.0/3.0*Oo.s)
 	}
 }

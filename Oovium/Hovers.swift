@@ -11,6 +11,7 @@ import UIKit
 class Hovers {
 	static let window = UIApplication.shared.keyWindow!
 	
+	static var hovers = Set<Hover>()
 	static var invoked = [Hover]()
 	
 	static func isInvoked(hover: Hover) -> Bool {
@@ -37,9 +38,31 @@ class Hovers {
 	}
 	
 // Admin ===========================================================================================
-	static func render() {
+	static func initialize() {
+		hovers.insert(redDot_)
+		hovers.insert(rootMenu_)
+		hovers.insert(aetherMenu_)
+		hovers.insert(linksMenu_)
+		hovers.insert(helpMenu_)
+		hovers.insert(tutorialsMenu_)
+		
+		hovers.insert(bubbleToolBar_)
+		hovers.insert(shapeToolBar_)
+		hovers.insert(colorToolBar_)
+
+		hovers.insert(aetherPicker_)
+		hovers.insert(chainEditor_)
+		hovers.insert(settingsHover_)
+		hovers.insert(messageHover_)
+	}
+	static func rescale() {
+		for hover in hovers {
+			hover.rescale()
+		}
+	}
+	static func retract() {
 		for hover in invoked {
-			hover.render()
+			hover.retract()
 		}
 	}
 
@@ -92,7 +115,6 @@ class Hovers {
 		toolBar.onSelect = {(tool: Tool) in
 			let bubbleTool: BubbleTool = tool as! BubbleTool
 			toolBar.aetherView.maker = bubbleTool.maker
-			print(String(describing: type(of: bubbleTool.maker)))
 		}
 		return toolBar
 	}()
@@ -107,6 +129,12 @@ class Hovers {
 	static func invokeShapeToolBar() {
 		shapeToolBar_.invoke()
 	}
+	static func dismissShapeToolBar() {
+		shapeToolBar_.dismiss()
+	}
+	static func contractShapeToolBar() {
+		shapeToolBar_.contract()
+	}
 	
 	static let colorToolBar_: ColorToolBar = {
 		let toolBar = ColorToolBar(aetherView: Oovium.aetherView)
@@ -114,6 +142,12 @@ class Hovers {
 	}()
 	static func invokeColorToolBar() {
 		colorToolBar_.invoke()
+	}
+	static func dismissColorToolBar() {
+		colorToolBar_.dismiss()
+	}
+	static func contractColorToolBar() {
+		colorToolBar_.contract()
 	}
 	
 // AetherPicker ====================================================================================

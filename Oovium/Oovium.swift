@@ -24,10 +24,9 @@ class Oovium {
 		
 		window_.rootViewController = OoviumController()
 		
+		Hovers.initialize()
 		Hovers.invokeRedDot()
 		Hovers.invokeBubbleToolBar()
-		Hovers.invokeShapeToolBar()
-		Hovers.invokeColorToolBar()
 		Hovers.invokeAetherPicker()
 	}
 }

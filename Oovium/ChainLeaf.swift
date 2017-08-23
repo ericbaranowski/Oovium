@@ -58,7 +58,7 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
 		let path = CGPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerWidth: 10, cornerHeight: 10, transform: nil)
-		Skin.bubble(path: path, uiColor: uiColor)
+		Skin.bubble(path: path, uiColor: uiColor, width: 4.0/3.0*Oo.s)
 	}
 
 // ChainViewDelegate ===============================================================================

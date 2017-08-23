@@ -59,7 +59,7 @@ class MechMaker: Maker {
 			path.addLine(to: CGPoint(x: x5, y: y3+r+CGFloat(i)*lh))
 		}
 		
-		Skin.bubble(path: path, uiColor: UIColor.blue)
+		Skin.bubble(path: path, uiColor: UIColor.blue, width: 4.0/3.0*Oo.s)
 	}
 }
 

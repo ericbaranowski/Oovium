@@ -21,4 +21,9 @@ class ShapeToolBar: ToolBar {
 		super.init(aetherView: aetherView, tools: tools, offset: UIOffset(horizontal: -40, vertical: 0), fixedOffset: UIOffset(horizontal: 0, vertical: 20))
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+	
+// Events ==========================================================================================
+	override func onExpand() {
+		Hovers.contractColorToolBar()
+	}
 }
