@@ -44,8 +44,6 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 	
 // Events ==========================================================================================
 	func onTap(_ gesture: UITapGestureRecognizer) {
-		print("onTap")
-
 		if !delegate.referencingThis() {
 			if chainView.chain.open {
 				ok()

@@ -231,7 +231,7 @@ import Foundation
 		return text
 	}
 	
-	// Join
+	// Also
 	func createAlso(at: V2) -> Also {
 		let iden = idens.increment(key: "also")
 		let also = Also(iden:iden, at:at)
