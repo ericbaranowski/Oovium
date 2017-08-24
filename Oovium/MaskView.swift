@@ -10,11 +10,17 @@ import UIKit
 
 class MaskView: UIView {
 	let content: UIView
-	let path: CGPath
+	var path: CGPath {
+		set {
+			(layer.mask! as! CAShapeLayer).path = newValue
+		}
+		get {
+			return (layer.mask! as! CAShapeLayer).path!
+		}
+	}
 	
 	init(frame: CGRect, content: UIView, path: CGPath) {
 		self.content = content
-		self.path = path
 
 		super.init(frame: frame)
 

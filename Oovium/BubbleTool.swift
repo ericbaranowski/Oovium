@@ -35,20 +35,6 @@ class BubbleTool: Tool {
 		return image
 	}()
 	
-// Events ==========================================================================================
-	override func onSelect() {
-		if maker is TextMaker {
-			Hovers.invokeShapeToolBar()
-			Hovers.invokeColorToolBar()
-		}
-	}
-//	override func onDeselect() {
-//		if maker is TextMaker {
-//			Hovers.dismissShapeToolBar()
-//			Hovers.dismissColorToolBar()
-//		}
-//	}
-
 // Tool ============================================================================================
 	override func render() {
 		UIGraphicsBeginImageContextWithOptions(CGSize(width: 40*Oo.s, height: 40*Oo.s), false, 0.0)

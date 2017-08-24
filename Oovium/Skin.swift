@@ -10,7 +10,8 @@ import UIKit
 
 class Skin {
 	
-	func panel (path: CGPath, uiColor: UIColor) {}
+	func panel(path: CGPath, uiColor: UIColor) {}
+	func panel(text: String, rect: CGRect, pen: Pen) {}
 	func key (path: CGPath, uiColor: UIColor) {}
 	func key (text: String, rect: CGRect, font: UIFont) {}
 	func bubble (path: CGPath, uiColor: UIColor, width: CGFloat) {}
@@ -25,8 +26,11 @@ class Skin {
 // Static ==========================================================================================
 	static var skin: Skin = TronSkin()
 	
-	static func panel (path: CGPath, uiColor: UIColor) {
+	static func panel(path: CGPath, uiColor: UIColor) {
 		skin.panel(path: path, uiColor: uiColor)
+	}
+	static func panel(text: String, rect: CGRect, pen: Pen) {
+		skin.panel(text: text, rect: rect, pen: pen)
 	}
 	static func key (path: CGPath, uiColor: UIColor) {
 		skin.key(path: path, uiColor: uiColor)

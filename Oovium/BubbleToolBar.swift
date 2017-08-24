@@ -36,11 +36,19 @@ class BubbleToolBar: ToolBar {
 	
 // Events ==========================================================================================
 	override func onExpand() {
-		if let bubbleTool = selected as? BubbleTool, bubbleTool.maker is TextMaker {
+		let bubbleTool = selected as! BubbleTool
+		if bubbleTool.maker is TextMaker {
 			Hovers.contractShapeToolBar()
 			Hovers.contractColorToolBar()
 			Hovers.dismissShapeToolBar()
 			Hovers.dismissColorToolBar()
+		}
+	}
+	override func onContract() {
+		let bubbleTool = selected as! BubbleTool
+		if bubbleTool.maker is TextMaker {
+			Hovers.invokeShapeToolBar()
+			Hovers.invokeColorToolBar()
 		}
 	}
 }

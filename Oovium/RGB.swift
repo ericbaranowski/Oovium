@@ -70,13 +70,13 @@ struct RGB {
 	static var white = RGB(r: 1, g: 1, b: 1, a: 1)
 	static var grey = RGB(r: 0.5, g: 0.5, b: 0.5, a: 1)
 	
-	static func tint (color: UIColor, percent: Double) -> UIColor {
-		return UIColor.white
+	static func tint (color: UIColor, percent: Float) -> UIColor {
+		return RGB(uiColor: color).blend(rgb: white, percent: percent).uiColor
 	}
-	static func tone (color: UIColor, percent: Double) -> UIColor {
-		return UIColor.white
+	static func tone (color: UIColor, percent: Float) -> UIColor {
+		return RGB(uiColor: color).blend(rgb: grey, percent: percent).uiColor
 	}
-	static func shade (color: UIColor, percent: Double) -> UIColor {
-		return UIColor.white
+	static func shade (color: UIColor, percent: Float) -> UIColor {
+		return RGB(uiColor: color).blend(rgb: black, percent: percent).uiColor
 	}
 }

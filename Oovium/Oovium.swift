@@ -28,5 +28,21 @@ class Oovium {
 		Hovers.invokeRedDot()
 		Hovers.invokeBubbleToolBar()
 		Hovers.invokeAetherPicker()
+		
+		print("\(Local.aetherNames())")
+		
+		if !Local.hasAether(name: "Apple") {
+			var aether = Aether()
+			aether.name = "Apple"
+			Local.storeAether(aether: aether)
+			
+			aether = Aether()
+			aether.name = "Banana"
+			Local.storeAether(aether: aether)
+			
+			aether = Aether()
+			aether.name = "Coconut"
+			Local.storeAether(aether: aether)
+		}
 	}
 }

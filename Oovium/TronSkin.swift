@@ -23,6 +23,15 @@ class TronSkin: Skin {
 		c.addPath(path)
 		c.drawPath(using: .fillStroke)
 	}
+	override func panel(text: String, rect: CGRect, pen: Pen) {
+		pen.color = RGB.shade(color: pen.color, percent: 0.7)
+//		pen.color = RGB(uiColor: pen.color).blend(rgb: RGB.black, percent: 0.7).uiColor
+		let c = UIGraphicsGetCurrentContext()!
+		c.saveGState()
+		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)
+		(text as NSString).draw(in: rect, withAttributes: pen.attributes)
+		c.restoreGState()
+	}
 	
 	// Key
 	override func key (path: CGPath, uiColor: UIColor) {
@@ -103,7 +112,7 @@ class TronSkin: Skin {
 		let c = UIGraphicsGetCurrentContext()!
 		c.setStrokeColor(rgb.shade(0.4).cgColor)
 		c.setFillColor(rgb.tint(0.9).uiColor.alpha(0.85).cgColor)
-		c.setLineWidth(2)
+		c.setLineWidth(4/3*Oo.s)
 		c.addPath(path)
 		c.drawPath(using: .fillStroke)
 	}
@@ -124,7 +133,7 @@ class TronSkin: Skin {
 		let c = UIGraphicsGetCurrentContext()!
 		field.uiColor.alpha(0.7).setFill()
 		accent.uiColor.setStroke()
-		c.setLineWidth(2)
+		c.setLineWidth(4.0/3.0*Oo.s)
 		c.addPath(path)
 		c.drawPath(using: .fillStroke)
 	}
