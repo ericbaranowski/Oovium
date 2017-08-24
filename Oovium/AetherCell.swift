@@ -58,6 +58,6 @@ class AetherCell: UITableViewCell {
 		path.closeSubpath()
 
 		Skin.aetherCell(path: path)
-		Skin.aetherCell(text: aetherName, rect: CGRect(x: x2, y: 4*Oo.s, width: x6-x2, height: y3-y1))
+		Skin.aetherCell(text: aetherName, rect: CGRect(x: x2, y: 4*Oo.s+0.5, width: x6-x2, height: y3-y1))
 	}
 }

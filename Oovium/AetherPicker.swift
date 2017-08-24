@@ -186,8 +186,6 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		aetherButton.frame = CGRect(x: 0, y: 0, width: x14+p, height: y7+p)
 		aetherButton.path = path
 
-		aetherList.frame = CGRect(x: x1, y: y1, width: w-2*p, height: h-2*p)
-		
 		aetherList.rowHeight = 26*Oo.s
 		aetherList.contentInset = UIEdgeInsets(top: y3+2*Oo.s, left: 0, bottom: 0, right: 0)
 		
@@ -202,6 +200,7 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		path.closeSubpath()
 		
 		listMask.frame = CGRect(x: 0, y: 0, width: x7+p, height: y5+p)
+		aetherList.frame = listMask.bounds
 		listMask.path = path
 		
 		aetherList.reloadData()

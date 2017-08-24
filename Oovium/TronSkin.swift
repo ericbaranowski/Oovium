@@ -143,7 +143,7 @@ class TronSkin: Skin {
 		let c = UIGraphicsGetCurrentContext()!
 		c.saveGState()
 		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)
-		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 14)!)
+		let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 14*Oo.s)!)
 		pen.color = accent.uiColor
 		pen.alignment = .center
 		(text as NSString).draw(in: rect, withAttributes: pen.attributes)

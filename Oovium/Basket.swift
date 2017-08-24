@@ -8,11 +8,15 @@
 
 import Foundation
 
-public final class Basket {
+class Basket {
+	let persist: Persist
+	
 	var cache = [Int:Anchor]()
 	var blocks: [String:(Domain)->()] = [:]
 	
-	public init() {}
+	init(persist: Persist) {
+		self.persist = persist
+	}
 
 	func load (attributes: [String:Any], cls: Anchor.Type) -> Anchor {
 		let iden: Int = attributes["iden"] as! Int
@@ -35,5 +39,16 @@ public final class Basket {
 	
 	func blocksFor (class: Domain.Type, action: DomainAction) -> [(Domain)->()] {
 		return []
+	}
+	
+// Memory ==========================================================================================
+	func set(key: String, value: String) {
+		persist.set(key: key, value: value)
+	}
+	func get(key: String) -> String? {
+		return persist.get(key: key)
+	}
+	func unset(key: String) {
+		persist.unset(key: key)
 	}
 }

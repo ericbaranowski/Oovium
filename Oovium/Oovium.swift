@@ -44,5 +44,12 @@ class Oovium {
 			aether.name = "Coconut"
 			Local.storeAether(aether: aether)
 		}
+		
+		let currentAether = Storage.get(key: "currentAether")
+		if let currentAether = currentAether {
+			print("\(currentAether)")
+		} else {
+			Storage.set(key: "currentAether", value: "Banana")
+		}
 	}
 }

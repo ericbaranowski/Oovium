@@ -143,6 +143,11 @@
 		D894A05D1EA3EA4700A9346A /* Icon20.png in Resources */ = {isa = PBXBuildFile; fileRef = D894A05C1EA3EA4700A9346A /* Icon20.png */; };
 		D894A05F1EA4305E00A9346A /* ChainLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894A05E1EA4305E00A9346A /* ChainLeaf.swift */; };
 		D894A0601EA4458200A9346A /* ChainLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894A05E1EA4305E00A9346A /* ChainLeaf.swift */; };
+		D896B45F1F4E3C4E004A32C8 /* PathButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B45E1F4E3C4E004A32C8 /* PathButton.swift */; };
+		D896B4621F4E7C08004A32C8 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4611F4E7C08004A32C8 /* Local.swift */; };
+		D896B4641F4F37F2004A32C8 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4631F4F37F2004A32C8 /* Persist.swift */; };
+		D896B4681F4F3A4F004A32C8 /* iOSPersist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */; };
+		D896B46A1F4F7078004A32C8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4691F4F7078004A32C8 /* Storage.swift */; };
 		D89BEBE11DE8D32B00B56F6A /* OoviumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBE01DE8D32B00B56F6A /* OoviumController.swift */; };
 		D89BEBE61DE8D32B00B56F6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */; };
 		D89BEBF41DE8D32B00B56F6A /* OoviumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBF31DE8D32B00B56F6A /* OoviumTests.swift */; };
@@ -341,6 +346,11 @@
 		D894A0581EA26E1B00A9346A /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		D894A05C1EA3EA4700A9346A /* Icon20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon20.png; path = Resources/Icon20.png; sourceTree = SOURCE_ROOT; };
 		D894A05E1EA4305E00A9346A /* ChainLeaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainLeaf.swift; sourceTree = "<group>"; };
+		D896B45E1F4E3C4E004A32C8 /* PathButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathButton.swift; sourceTree = "<group>"; };
+		D896B4611F4E7C08004A32C8 /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		D896B4631F4F37F2004A32C8 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
+		D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSPersist.swift; sourceTree = "<group>"; };
+		D896B4691F4F7078004A32C8 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		D89BEBDB1DE8D32B00B56F6A /* Oovium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oovium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89BEBE01DE8D32B00B56F6A /* OoviumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OoviumController.swift; sourceTree = "<group>"; };
 		D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -753,6 +763,7 @@
 			children = (
 				D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */,
 				D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */,
+				D896B45E1F4E3C4E004A32C8 /* PathButton.swift */,
 				D894A0581EA26E1B00A9346A /* Pen.swift */,
 			);
 			name = Utility;
@@ -766,6 +777,30 @@
 				D8ADD7C91F327D6C00EB3136 /* BackiPad.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		D896B4601F4E7BA4004A32C8 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D896B4611F4E7C08004A32C8 /* Local.swift */,
+				D896B4691F4F7078004A32C8 /* Storage.swift */,
+			);
+			name = Storage;
+			sourceTree = "<group>";
+		};
+		D896B4651F4F3A0E004A32C8 /* SQLitePersist */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SQLitePersist;
+			sourceTree = "<group>";
+		};
+		D896B4661F4F3A23004A32C8 /* iOSPersist */ = {
+			isa = PBXGroup;
+			children = (
+				D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */,
+			);
+			name = iOSPersist;
 			sourceTree = "<group>";
 		};
 		D89BEBD21DE8D32B00B56F6A = {
@@ -799,6 +834,7 @@
 				D89BEC011DE8D36200B56F6A /* Math */,
 				D8CB76481E1792EF00A286DF /* Loom */,
 				D8CB76471E1792CF00A286DF /* Domain */,
+				D896B4601F4E7BA4004A32C8 /* Storage */,
 				D89BEC001DE8D35900B56F6A /* Interface */,
 				D8CB76901E185CC300A286DF /* Other */,
 				D89BEBFF1DE8D35100B56F6A /* Globals */,
@@ -1045,9 +1081,12 @@
 		D8CB76481E1792EF00A286DF /* Loom */ = {
 			isa = PBXGroup;
 			children = (
-				D8CB76731E17944500A286DF /* Domain.swift */,
 				D8CB76711E17943D00A286DF /* Anchor.swift */,
 				D8FB18F31E187DB600350284 /* Basket.swift */,
+				D8CB76731E17944500A286DF /* Domain.swift */,
+				D896B4631F4F37F2004A32C8 /* Persist.swift */,
+				D896B4661F4F3A23004A32C8 /* iOSPersist */,
+				D896B4651F4F3A0E004A32C8 /* SQLitePersist */,
 			);
 			name = Loom;
 			sourceTree = "<group>";
@@ -1423,6 +1462,7 @@
 				D81DC94B1F35555E000140DF /* ShapeToolBar.swift in Sources */,
 				D81DC9A41F365BF1000140DF /* TextBub.swift in Sources */,
 				D81DC9571F3557B9000140DF /* ShapeTool.swift in Sources */,
+				D896B4621F4E7C08004A32C8 /* Local.swift in Sources */,
 				D8CB766E1E1793FC00A286DF /* Cell.swift in Sources */,
 				D89BEC371DE8FC9F00B56F6A /* Oovium.swift in Sources */,
 				D8AEB7371E9B017E00249E7E /* IvorySkin.swift in Sources */,
@@ -1430,14 +1470,18 @@
 				D88AC1861F3B661000E0AA53 /* CyanKeyPad.swift in Sources */,
 				D89BEC1F1DE8D3FA00B56F6A /* StringDef.swift in Sources */,
 				D8CB76541E17934F00A286DF /* Cron.swift in Sources */,
+				D896B4641F4F37F2004A32C8 /* Persist.swift in Sources */,
 				D84CD4011E99CAE500029120 /* Leaf.swift in Sources */,
+				D896B45F1F4E3C4E004A32C8 /* PathButton.swift in Sources */,
 				D84CD41C1E9AE87D00029120 /* ChainEditor.swift in Sources */,
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
 				D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */,
 				D81DC9981F3633B2000140DF /* GridBub.swift in Sources */,
 				D8E0E60B1F4A3C41002A82F9 /* ScaleView.swift in Sources */,
 				D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */,
+				D896B46A1F4F7078004A32C8 /* Storage.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
+				D896B4681F4F3A4F004A32C8 /* iOSPersist.swift in Sources */,
 				D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D8FA15571F32E24100697D7C /* UIView+AE.swift in Sources */,
 				D81DC9811F362FC7000140DF /* BubbleTool.swift in Sources */,
