@@ -9,12 +9,14 @@
 import UIKit
 
 public class AetherView: UIScrollView {
-	var aether: Aether = Aether()
+	var aether: Aether
 	var maker: Maker = ObjectMaker()
 	var bubbles: [Bubble] = [Bubble]()
 	var currentlyEditing: Chain?
 	
-	public init() {
+	public init(aether: Aether) {
+		self.aether = aether
+		
 		super.init(frame: CGRect.zero)
 		
 		showsVerticalScrollIndicator = false
@@ -41,6 +43,41 @@ public class AetherView: UIScrollView {
 		}
 		bubble.removeFromSuperview()
 		bubble.aetherView = nil
+		stretch()
+	}
+	func removeAllBubbles() {
+		for bubble in bubbles {
+			bubble.aetherView = nil
+			bubble.removeFromSuperview()
+		}
+		bubbles.removeAll()
+	}
+	
+	func loadAether(name: String) {
+		Local.storeAether(aether: aether)
+		removeAllBubbles()
+		
+		aether = Local.loadAether(name: name)
+		Hovers.aetherPicker_.aetherButton.setNeedsDisplay()
+		Hovers.retractAetherPicker()
+		Storage.set(key: "currentAether", value: name)
+		
+		for aexel in aether.aexels {
+			switch aexel.type {
+				case "object":	addBubble(ObjectBub(aexel as! Object))
+				case "gate":	addBubble(GateBub(aexel as! Gate))
+				case "mech":	addBubble(MechBub(aexel as! Mech))
+				case "tail":	addBubble(TailBub(aexel as! Tail))
+				case "auto":	addBubble(AutoBub(aexel as! Auto))
+				case "grid":	addBubble(GridBub(aexel as! Grid))
+				case "type":	addBubble(TypeBub(aexel as! Type))
+				case "miru":	addBubble(MiruBub(aexel as! Miru))
+				case "cron":	addBubble(CronBub(aexel as! Cron))
+				case "text":	addBubble(TextBub(aexel as! Text))
+				case "also":	addBubble(AlsoBub(aexel as! Also))
+				default:		print("invalid type")
+			}
+		}
 		stretch()
 	}
 	
@@ -98,7 +135,4 @@ public class AetherView: UIScrollView {
 		bubble.create()
 		Hovers.bubbleToolBar_.recoil()
 	}
-	
-// UIGestureRecognizerDelegate =====================================================================
-	
 }

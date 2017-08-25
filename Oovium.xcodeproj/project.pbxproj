@@ -143,7 +143,7 @@
 		D894A05D1EA3EA4700A9346A /* Icon20.png in Resources */ = {isa = PBXBuildFile; fileRef = D894A05C1EA3EA4700A9346A /* Icon20.png */; };
 		D894A05F1EA4305E00A9346A /* ChainLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894A05E1EA4305E00A9346A /* ChainLeaf.swift */; };
 		D894A0601EA4458200A9346A /* ChainLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D894A05E1EA4305E00A9346A /* ChainLeaf.swift */; };
-		D896B45F1F4E3C4E004A32C8 /* PathButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B45E1F4E3C4E004A32C8 /* PathButton.swift */; };
+		D896B45F1F4E3C4E004A32C8 /* AetherButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B45E1F4E3C4E004A32C8 /* AetherButton.swift */; };
 		D896B4621F4E7C08004A32C8 /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4611F4E7C08004A32C8 /* Local.swift */; };
 		D896B4641F4F37F2004A32C8 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4631F4F37F2004A32C8 /* Persist.swift */; };
 		D896B4681F4F3A4F004A32C8 /* iOSPersist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */; };
@@ -346,7 +346,7 @@
 		D894A0581EA26E1B00A9346A /* Pen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pen.swift; sourceTree = "<group>"; };
 		D894A05C1EA3EA4700A9346A /* Icon20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon20.png; path = Resources/Icon20.png; sourceTree = SOURCE_ROOT; };
 		D894A05E1EA4305E00A9346A /* ChainLeaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainLeaf.swift; sourceTree = "<group>"; };
-		D896B45E1F4E3C4E004A32C8 /* PathButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathButton.swift; sourceTree = "<group>"; };
+		D896B45E1F4E3C4E004A32C8 /* AetherButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherButton.swift; sourceTree = "<group>"; };
 		D896B4611F4E7C08004A32C8 /* Local.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		D896B4631F4F37F2004A32C8 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSPersist.swift; sourceTree = "<group>"; };
@@ -612,6 +612,7 @@
 		D83DAFA61F3A2C6000A0A6C6 /* AetherPicker */ = {
 			isa = PBXGroup;
 			children = (
+				D896B45E1F4E3C4E004A32C8 /* AetherButton.swift */,
 				D83DAFAC1F3A76EE00A0A6C6 /* AetherCell.swift */,
 				D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */,
 			);
@@ -763,7 +764,6 @@
 			children = (
 				D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */,
 				D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */,
-				D896B45E1F4E3C4E004A32C8 /* PathButton.swift */,
 				D894A0581EA26E1B00A9346A /* Pen.swift */,
 			);
 			name = Utility;
@@ -1472,7 +1472,7 @@
 				D8CB76541E17934F00A286DF /* Cron.swift in Sources */,
 				D896B4641F4F37F2004A32C8 /* Persist.swift in Sources */,
 				D84CD4011E99CAE500029120 /* Leaf.swift in Sources */,
-				D896B45F1F4E3C4E004A32C8 /* PathButton.swift in Sources */,
+				D896B45F1F4E3C4E004A32C8 /* AetherButton.swift in Sources */,
 				D84CD41C1E9AE87D00029120 /* ChainEditor.swift in Sources */,
 				D84CD4191E9AE30600029120 /* Hovers.swift in Sources */,
 				D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */,

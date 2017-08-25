@@ -11,7 +11,7 @@ import UIKit
 class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 	var aetherNames: [String]
 	
-	let aetherButton: PathButton
+	let aetherButton: AetherButton
 	var listMask: MaskView!
 	let aetherList: UITableView
 	var expanded: Bool = false
@@ -70,7 +70,7 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		path.addArc(tangent1End: CGPoint(x: x10, y: y7), tangent2End: CGPoint(x: x9, y: y6), radius: or)
 		path.closeSubpath()
 		
-		aetherButton = PathButton(frame: CGRect(x: 0, y: 0, width: x14+p, height: y7+p), path: path)
+		aetherButton = AetherButton(frame: CGRect(x: 0, y: 0, width: x14+p, height: y7+p), path: path)
 
 		aetherList = UITableView(frame: CGRect(x: x1, y: y1, width: w-2*p, height: h-2*p))
 		
@@ -274,6 +274,9 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 		
 		Skin.aetherPicker(path: path)
 		
+		let pen: Pen = Pen(font: UIFont(name: "HelveticaNeue", size: 14*Oo.s)!)
+		pen.alignment = .center
+
 		if expanded {
 			path = CGMutablePath()
 			path.move(to: CGPoint(x: x1, y: x4))
@@ -287,11 +290,12 @@ class AetherPicker: Hover, UITableViewDelegate, UITableViewDataSource {
 			
 			Skin.bubble(path: path, uiColor: UIColor.orange, width: 4.0/3.0*Oo.s)
 
-			let pen: Pen = Pen(font: UIFont(name: "HelveticaNeue", size: 14*Oo.s)!)
 			pen.color = UIColor.green
-			pen.alignment = .center
 			Skin.panel(text: NSLocalizedString("new", comment: ""), rect: CGRect(x: x16, y: y1+2.5, width: x20-x16, height: y7-y1), pen: pen)
 		}
+		
+		pen.color = UIColor.green
+		Skin.panel(text: Oovium.aetherView.aether.name, rect: CGRect(x: x9, y: y1+2*Oo.s, width: x13-x9, height: y7-y1), pen: pen)
 		
 //		UIColor* color = [UIColor greenColor];
 //		if (![Oovium aetherView].readOnly || _expanded)

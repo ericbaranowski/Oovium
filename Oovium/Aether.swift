@@ -242,13 +242,13 @@ import Foundation
 
 // Events ==========================================================================================
 	override func onLoad() {
-		print("onLoad")
 		for aexel in aexels {
 			if aexel.iden > idens.get(key: aexel.type) {
 				idens.set(key: aexel.type, to: aexel.iden)
 			}
 		}
-		print("\(idens)")
+		wire()
+		calculate()
 	}
 	
 // Domain ==========================================================================================

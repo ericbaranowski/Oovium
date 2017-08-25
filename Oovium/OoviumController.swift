@@ -11,10 +11,9 @@ import UIKit
 class OoviumController: UIViewController {
 	let aetherView: AetherView
 	
-	init() {
-		aetherView = AetherView()
+	init(aetherView: AetherView) {
+		self.aetherView = aetherView
 		super.init(nibName: nil, bundle: nil)
-		Oovium.aetherView_ = aetherView
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

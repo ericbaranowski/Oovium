@@ -25,7 +25,6 @@ class TronSkin: Skin {
 	}
 	override func panel(text: String, rect: CGRect, pen: Pen) {
 		pen.color = RGB.shade(color: pen.color, percent: 0.7)
-//		pen.color = RGB(uiColor: pen.color).blend(rgb: RGB.black, percent: 0.7).uiColor
 		let c = UIGraphicsGetCurrentContext()!
 		c.saveGState()
 		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)

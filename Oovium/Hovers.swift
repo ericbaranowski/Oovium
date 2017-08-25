@@ -155,6 +155,9 @@ class Hovers {
 	static func invokeAetherPicker() {
 		aetherPicker_.invoke()
 	}
+	static func retractAetherPicker() {
+		aetherPicker_.retract()
+	}
 	
 // Editors =========================================================================================
 	static private var chainEditor_ = ChainEditor()

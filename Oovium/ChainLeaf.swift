@@ -18,7 +18,7 @@ protocol ChainLeafDelegate {
 class ChainLeaf: Leaf, ChainViewDelegate {
 	let chainView: ChainView = ChainView()
 	var delegate: ChainLeafDelegate
-	var uiColor: UIColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+	var uiColor: UIColor = UIColor.green
 	
 	init(delegate: ChainLeafDelegate) {
 		self.delegate = delegate

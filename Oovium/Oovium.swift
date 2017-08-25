@@ -10,11 +10,7 @@ import UIKit
 
 class Oovium {
 	static var window_: UIWindow!
-	static var aetherView_: AetherView!
-	static var aetherView: AetherView {
-		set {aetherView_ = newValue}
-		get {return aetherView_}
-	}
+	static var aetherView: AetherView!
 
 	static func start() {
 		Math.start()
@@ -22,7 +18,18 @@ class Oovium {
 		window_ = UIWindow(frame: UIScreen.main.bounds)
 		window_.makeKeyAndVisible()
 		
-		window_.rootViewController = OoviumController()
+
+		let currentAether = Storage.get(key: "currentAether")
+		if let currentAether = currentAether {
+			print("currentAether:\(currentAether)")
+			let aether = Local.loadAether(name: currentAether)
+			aetherView = AetherView(aether: aether)
+		} else {
+			Storage.set(key: "currentAether", value: "Banana")
+		}
+		
+		
+		window_.rootViewController = OoviumController(aetherView: aetherView)
 		
 		Hovers.initialize()
 		Hovers.invokeRedDot()
@@ -45,11 +52,5 @@ class Oovium {
 			Local.storeAether(aether: aether)
 		}
 		
-		let currentAether = Storage.get(key: "currentAether")
-		if let currentAether = currentAether {
-			print("\(currentAether)")
-		} else {
-			Storage.set(key: "currentAether", value: "Banana")
-		}
 	}
 }

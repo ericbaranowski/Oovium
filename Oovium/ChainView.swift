@@ -17,7 +17,11 @@ protocol ChainViewDelegate {
 }
 
 class ChainView: UIView, UIKeyInput, ChainDelegate {
-	var chain: Chain!
+	var chain: Chain! {
+		didSet {
+			onChange()
+		}
+	}
 	var delegate: ChainViewDelegate!
 	var anchor: Position
 	var at: CGPoint

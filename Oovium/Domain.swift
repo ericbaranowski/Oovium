@@ -45,13 +45,21 @@ public class Domain: NSObject {
 	init (forLoad: Bool) {
 		type = Domain.nameFromClass(type(of:self))
 	}
+	deinit {
+		if status == .clean {
+			unsubscribe()
+		}
+	}
 	
-	func add (_ domain: Domain) {
+	func load (_ domain: Domain) {
 		domain.parent = self
+		domain.onLoaded()
+	}
+	func add (_ domain: Domain) {
+		load(domain)
 		domain.onAdded()
 	}
 	func remove (_ domain: Domain) {}
-	func load (_ domain: Domain) {}
 	
 	func allDomainChildren() -> [Domain] {
 		var result: [Domain] = []
@@ -138,6 +146,7 @@ public class Domain: NSObject {
 	func onCreate() {}
 	func onEdit() {}
 	func onDelete() {}
+	func onLoaded() {}
 	func onAdded() {}
 	func onRemoved() {}
 	func onInit() {}
@@ -244,7 +253,7 @@ public class Domain: NSObject {
 							domain = cls.init(iden: child["iden"] as! Int, type: type, attributes: child)
 						}
 						domain!.load(attributes:child)
-						domain!.parent = self
+						load(domain!)
 						array.append(domain!)
 					}
 				} else {

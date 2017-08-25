@@ -9,7 +9,9 @@
 import Foundation
 
 public final class Object: Aexel {
-	var chain: Chain
+	var chain: Chain {
+		didSet {chain.tower = tower}
+	}
 	
 	var tower: Tower
 	var token: Token
@@ -48,7 +50,7 @@ public final class Object: Aexel {
 		token.display = "\(chain.display)"
 		AEMemoryPrint(aether.memory)
 	}
-	override func onAdded() {
+	override func onLoaded() {
 		tower.aether = parent as! Aether
 	}
 	
@@ -59,7 +61,7 @@ public final class Object: Aexel {
 	}
 	
 	override func plugIn() {
-		tower.name = String(format: "I%05d", iden)
+		tower.name = "Ob_\(iden)"
 		tower.token = Token.token(type: .variable, tag: tower.name)
 		Tower.register(tower)
 	}

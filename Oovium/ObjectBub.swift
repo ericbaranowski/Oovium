@@ -12,7 +12,7 @@ class ObjectMaker: Maker {
 // Maker ===========================================================================================
 	func make(aether: Aether, at: V2) -> Bubble {
 		let object = aether.createObject(at: at)
-		return ObjectBub(object:object)
+		return ObjectBub(object)
 	}
 	func drawIcon() {
 		let bw = 20*Oo.s
@@ -44,15 +44,15 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	
 	lazy var chainLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
 	
-	required init (object: Object) {
+	required init (_ object: Object) {
 		self.object = object
 		
 		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 36, height: 36))
 	
 		chainLeaf.delegate = self
 		chainLeaf.frame = bounds
-		chainLeaf.chainView.chain = object.chain
 		self.object.chain.delegate = chainLeaf.chainView
+		chainLeaf.chainView.chain = object.chain
 		addSubview(chainLeaf)
 		
 	}

@@ -14,8 +14,16 @@ class AetherCell: UITableViewCell {
 	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		self.backgroundColor = UIColor.clear
+		
+		let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+		addGestureRecognizer(gesture)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+	
+// Events ==========================================================================================
+	func onTap() {
+		Oovium.aetherView.loadAether(name: aetherName)
+	}
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
