@@ -83,6 +83,9 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	
 	public init (tokens: String, tower: Tower) {
 		self.tower = tower
+
+		guard tokens.length > 0 else {return}
+		
 		let keys = tokens.components(separatedBy: ";")
 		for key in keys {
 			self.tokens.append(Token.token(key: key))
@@ -143,7 +146,6 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 //	func ok(_ memory: UnsafeMutablePointer<Memory>) {
 		open = false
 //		lambda = compile(memory: memory)
-		tower.signal()
 		delegate?.onOK()
 	}
 
@@ -152,7 +154,9 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			for token in tokens {
 				sb.append("\(token.key);")
 			}
-			sb.remove(at: sb.index(before: sb.endIndex))
+			if sb.length > 0 {
+				sb.remove(at: sb.index(before: sb.endIndex))
+			}
 			return sb
 	}
 	var display: String {
@@ -394,8 +398,8 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			print("\(error)")
 		}
 		
-		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
-//		let vi = 0
+//		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
+		let vi = 0
 		
 //		varIndexes = [Int]()
 //		for name in variables {
@@ -436,8 +440,8 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 				sb.append("\(token.tag)")
 			}
 		} else {
-			let memory: UnsafeMutablePointer<Memory> = tower.source.memory
-			let value: Double = AEMemoryValueForName(memory, tower.name.toInt8())
+//			let memory: UnsafeMutablePointer<Memory> = tower.source.memory
+			let value: Double = 0.0//AEMemoryValueForName(memory, tower.name.toInt8())
 			
 			if (abs(value) < 0.00000001 && value != 0) || abs(value) > 999999999999 {
 				let formatter = NumberFormatter()

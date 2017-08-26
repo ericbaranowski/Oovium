@@ -17,7 +17,9 @@ public class AetherView: UIScrollView {
 	public init(aether: Aether) {
 		self.aether = aether
 		
-		super.init(frame: CGRect.zero)
+		super.init(frame: UIScreen.main.bounds)
+		
+		openAether(aether)
 		
 		showsVerticalScrollIndicator = false
 		showsHorizontalScrollIndicator = false
@@ -53,14 +55,15 @@ public class AetherView: UIScrollView {
 		bubbles.removeAll()
 	}
 	
-	func loadAether(name: String) {
+	private func closeCurrentAether() {
+		aether.xOffset = Double(contentOffset.x)
+		aether.yOffset = Double(contentOffset.y)
 		Local.storeAether(aether: aether)
 		removeAllBubbles()
-		
-		aether = Local.loadAether(name: name)
+	}
+	private func openAether(_ aether: Aether) {
 		Hovers.aetherPicker_.aetherButton.setNeedsDisplay()
-		Hovers.retractAetherPicker()
-		Storage.set(key: "currentAether", value: name)
+		Storage.set(key: "currentAether", value: aether.name)
 		
 		for aexel in aether.aexels {
 			switch aexel.type {
@@ -79,6 +82,13 @@ public class AetherView: UIScrollView {
 			}
 		}
 		stretch()
+		setContentOffset(CGPoint(x: aether.xOffset, y: aether.yOffset), animated: false)
+	}
+	func swapToAether(name: String) {
+		Hovers.retractAetherPicker()
+		closeCurrentAether()
+		aether = Local.loadAether(name: name)
+		openAether(aether)
 	}
 	
 // Stretch =========================================================================================

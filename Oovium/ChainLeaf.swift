@@ -20,6 +20,16 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 	var delegate: ChainLeafDelegate
 	var uiColor: UIColor = UIColor.green
 	
+	var chain: Chain {
+		set {
+			chainView.chain = newValue
+			newValue.delegate = chainView
+		}
+		get {
+			return chainView.chain
+		}
+	}
+	
 	init(delegate: ChainLeafDelegate) {
 		self.delegate = delegate
 		

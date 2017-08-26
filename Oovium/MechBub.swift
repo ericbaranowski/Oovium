@@ -63,12 +63,25 @@ class MechMaker: Maker {
 	}
 }
 
-class MechBub: Bubble {
+class MechBub: Bubble, ChainLeafDelegate {
 	let mech: Mech
-	
+
+	lazy var resultLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+
 	init(_ mech: Mech) {
 		self.mech = mech
 		super.init(hitch: .center, origin: CGPoint(x: self.mech.x, y: self.mech.y), size: CGSize(width: 36, height: 36))
+		
+		resultLeaf.chain = mech.resultChain
+		resultLeaf.uiColor = UIColor.blue
+		resultLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(resultLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+
+// ChainLeafDelegate ===============================================================================
+	func onChange() {}
+	func onEdit() {}
+	func onOK() {}
+	func referencingThis() -> Bool {return false}
 }

@@ -49,10 +49,8 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 		
 		super.init(hitch: .center, origin: CGPoint(x: self.object.x, y: self.object.y), size: CGSize(width: 36, height: 36))
 	
-		chainLeaf.delegate = self
+		chainLeaf.chain = object.chain
 		chainLeaf.frame = bounds
-		self.object.chain.delegate = chainLeaf.chainView
-		chainLeaf.chainView.chain = object.chain
 		addSubview(chainLeaf)
 		
 	}

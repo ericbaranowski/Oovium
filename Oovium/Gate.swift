@@ -9,9 +9,9 @@
 import Foundation
 
 public final class Gate: Aexel {
-	var ifChain: Chain!
-	var thenChain: Chain!
-	var elseChain: Chain!
+	var ifChain: Chain
+	var thenChain: Chain
+	var elseChain: Chain
 	
 	var ifTower: Tower
 	var thenTower: Tower
@@ -20,36 +20,54 @@ public final class Gate: Aexel {
 
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2) {
-		ifTower = Tower(name: String(format: "IFI%05d", 0))
-		thenTower = Tower(name: String(format: "IFT%05d", 0))
-		elseTower = Tower(name: String(format: "IFE%05d", 0))
-		resultTower = Tower(name: String(format: "IF%05d", 0))
+		ifTower = Tower(name: "GtI_\(iden)")
+		thenTower = Tower(name: "GtT_\(iden)")
+		elseTower = Tower(name: "GtE_\(iden)")
+		resultTower = Tower(name: "GtR_\(iden)")
+		
+		ifChain = Chain(tower: ifTower)
+		thenChain = Chain(tower: thenTower)
+		elseChain = Chain(tower: elseTower)
+		
 		super.init(iden:iden, at:at)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		ifTower = Tower(name: String(format: "IFI%05d", iden))
-		thenTower = Tower(name: String(format: "IFT%05d", iden))
-		elseTower = Tower(name: String(format: "IFE%05d", iden))
-		resultTower = Tower(name: String(format: "IF%05d", iden))
+		ifTower = Tower(name: "GtI_\(iden)")
+		thenTower = Tower(name: "GtT_\(iden)")
+		elseTower = Tower(name: "GtE_\(iden)")
+		resultTower = Tower(name: "GtR_\(iden)")
+		
+		ifChain = Chain(tower: ifTower)
+		thenChain = Chain(tower: thenTower)
+		elseChain = Chain(tower: elseTower)
+		
 		super.init(iden: iden, type: type, attributes: attributes)
 	}
 
+// Events ==========================================================================================
+	override func onLoaded() {
+		ifTower.aether = parent as! Aether
+		thenTower.aether = parent as! Aether
+		elseTower.aether = parent as! Aether
+		resultTower.aether = parent as! Aether
+	}
+	
 // Aexel ===========================================================================================
 	override var freeVars: [String] {
 		return []
 	}
 	
 	override func plugIn() {
-		ifTower.name = String(format: "IFI%05d", iden)
+		ifTower.name = "GtI_\(iden)"
 		ifTower.token = Token.token(type: .variable, tag: ifTower.name)
 		
-		thenTower.name = String(format: "IFT%05d", iden)
+		thenTower.name = "GtT_\(iden)"
 		thenTower.token = Token.token(type: .variable, tag: thenTower.name)
 		
-		elseTower.name = String(format: "IFE%05d", iden)
+		elseTower.name = "GtR_\(iden)"
 		elseTower.token = Token.token(type: .variable, tag: elseTower.name)
 		
-		resultTower.name = String(format: "IF%05d", iden)
+		resultTower.name = "GtR_\(iden)"
 		resultTower.token = Token.token(type: .variable, tag: resultTower.name)
 		
 		Tower.register(ifTower)

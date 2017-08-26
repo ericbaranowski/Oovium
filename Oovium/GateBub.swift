@@ -84,12 +84,37 @@ class GateMaker: Maker {
 	}
 }
 
-class GateBub: Bubble {
+class GateBub: Bubble, ChainLeafDelegate {
 	let gate: Gate
+	
+	lazy var ifLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var thenLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var elseLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
 	
 	init(_ gate: Gate) {
 		self.gate = gate
-		super.init(hitch: .center, origin: CGPoint(x: self.gate.x, y: self.gate.y), size: CGSize(width: 36, height: 36))
+		super.init(hitch: .center, origin: CGPoint(x: self.gate.x, y: self.gate.y), size: CGSize(width: 100, height: 50))
+		
+		ifLeaf.chain = gate.ifChain
+		ifLeaf.uiColor = OOColor.marine.uiColor
+		ifLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(ifLeaf)
+		
+		thenLeaf.chain = gate.thenChain
+		thenLeaf.uiColor = OOColor.marine.uiColor
+		thenLeaf.frame = CGRect(x: 50, y: 0, width: 36, height: 36)
+		addSubview(thenLeaf)
+		
+		elseLeaf.chain = gate.elseChain
+		elseLeaf.uiColor = OOColor.marine.uiColor
+		elseLeaf.frame = CGRect(x: 25, y: 40, width: 36, height: 36)
+		addSubview(elseLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+	
+// ChainLeafDelegate ===============================================================================
+	func onChange() {}
+	func onEdit() {}
+	func onOK() {}
+	func referencingThis() -> Bool {return false}
 }

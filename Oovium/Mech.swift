@@ -9,26 +9,40 @@
 import Foundation
 
 public final class Mech: Aexel {
-	var resultChain: Chain!
+	var resultChain: Chain
 	
 	var headTower: Tower
-	var resultTower: Tower
+	let resultTower: Tower
 
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2) {
 		headTower = Tower(name: "")
-		resultTower = Tower(name: "")
+		resultTower = Tower(name: "Mc_\(iden)")
+		
+		resultChain = Chain(tower: resultTower)
+		
 		super.init(iden:iden, at:at)
 	}
 	public required init (iden: Int, type: String, attributes: [String:Any]) {
 		headTower = Tower(name: "")
-		resultTower = Tower(name: String(format: "ATN%05d", iden))
+		resultTower = Tower(name: "Mc_\(iden)")
+		
+		resultChain = Chain(tower: resultTower)
+
 		super.init(iden: iden, type: type, attributes: attributes)
+	}
+	
+// Events ==========================================================================================
+	override func onLoaded() {
+		resultTower.aether = parent as! Aether
 	}
 	
 // Aexel ===========================================================================================
 	override var freeVars: [String] {
 		return []
+	}
+	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
+		resultChain.tower = resultTower
 	}
 	
 // Domain ==========================================================================================

@@ -22,7 +22,7 @@ class AetherCell: UITableViewCell {
 	
 // Events ==========================================================================================
 	func onTap() {
-		Oovium.aetherView.loadAether(name: aetherName)
+		Oovium.aetherView.swapToAether(name: aetherName)
 	}
 	
 // UIView ==========================================================================================
