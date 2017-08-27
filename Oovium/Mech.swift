@@ -9,32 +9,34 @@
 import Foundation
 
 public final class Mech: Aexel {
-	var resultChain: Chain
+	var resultChain: Chain!
 	
 	var headTower: Tower
 	let resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
-		headTower = Tower(name: "")
-		resultTower = Tower(name: "Mc_\(iden)")
+	public required init(iden: Int, at: V2, aether: Aether) {
+		headTower = Tower(aether: aether, name: "Me_\(iden)")
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "MeR_\(iden)"))
 		
-		resultChain = Chain(tower: resultTower)
-		
-		super.init(iden:iden, at:at)
+		super.init(iden:iden, at:at, aether: aether)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		headTower = Tower(name: "")
-		resultTower = Tower(name: "Mc_\(iden)")
+//	public required init (iden: Int, type: String, attributes: [String:Any]) {
+//		headTower = Tower(name: "")
+//		resultTower = Tower(name: "Mc_\(iden)")
+//		
+//		resultChain = Chain()
+//
+//		super.init(iden: iden, type: type, attributes: attributes)
+//	}
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
 		
-		resultChain = Chain(tower: resultTower)
-
-		super.init(iden: iden, type: type, attributes: attributes)
-	}
-	
-// Events ==========================================================================================
-	override func onLoaded() {
-		resultTower.aether = parent as! Aether
+		headTower = Tower(aether: aether, name: "Me_\(iden)")
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "MeR_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 // Aexel ===========================================================================================
@@ -42,7 +44,6 @@ public final class Mech: Aexel {
 		return []
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		resultChain.tower = resultTower
 	}
 	
 // Domain ==========================================================================================

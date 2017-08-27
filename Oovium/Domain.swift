@@ -18,33 +18,29 @@ public enum DomainAction: String {
 class NotFound {}
 
 public class Domain: NSObject {
-	var iden: Int = 0
+	var iden: Int
 	var type: String
 	
 	var status: DomainStatus = .clean
-	var parent: Domain?
+	var parent: Domain? = nil
 	
+//	public required init(iden: Int) {
+//		self.iden = iden
+//		type = Domain.nameFromClass(type(of:self))
+//		super.init()
+//		create()
+//	}
 	public init(iden: Int) {
 		self.iden = iden
-		type = Domain.nameFromClass(type(of:self))
-		super.init()
-		create()
+		self.type = Domain.nameFromClass(type(of:self))
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		self.iden = iden
-		self.type = type
-		super.init()
-		self.load(attributes: attributes)
-	}
-//	init (iden: Int, type: String, attributes: [String:Any]) {
-//		self.iden = attributes["iden"] as! Int
-//		self.type = Domain.nameFromClass(type(of:self))
-//		super.init()
-//		load(attributes: attributes)
-//	}
-	init (forLoad: Bool) {
+	public required init(attributes: [String:Any], parent: Domain) {
+		self.iden = attributes["iden"] as! Int
+		self.type = attributes["type"] as! String
+		self.parent = parent
 		type = Domain.nameFromClass(type(of:self))
 	}
+	
 	deinit {
 		if status == .clean {
 			unsubscribe()
@@ -224,7 +220,7 @@ public class Domain: NSObject {
 				} else {
 					let cls: AnyClass? = classForKeyPath(keyPath)
 					if cls == Chain.self {
-						value = Chain(tokens: value as! String, tower: Tower(name: ""))
+						value = Chain(tokens: value as! String)
 					} else if cls?.superclass() == Domain.self {
 						let domain: Domain = Domain(iden: 0)
 						domain.load(attributes: value as! [String:Any])
@@ -250,7 +246,7 @@ public class Domain: NSObject {
 						if domain == nil {
 							let type = child["type"] as! String
 							let cls = Domain.classFromName(type) as! Domain.Type
-							domain = cls.init(iden: child["iden"] as! Int, type: type, attributes: child)
+							domain = cls.init(attributes: child, parent: self)
 						}
 						domain!.load(attributes:child)
 						load(domain!)

@@ -75,15 +75,18 @@ protocol ChainDelegate {
 
 public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	var tokens = [Token]()
-	var tower: Tower
+	
 	var delegate: ChainDelegate?
+	
 	var open: Bool = false
 	var cursor: Int = 0
 	var lambda: UnsafeMutablePointer<Lambda>?
 	
-	public init (tokens: String, tower: Tower) {
-		self.tower = tower
-
+	override init() {
+	}
+	init(natural: String) {
+	}
+	init(tokens: String) {
 		guard tokens.length > 0 else {return}
 		
 		let keys = tokens.components(separatedBy: ";")
@@ -91,39 +94,6 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 			self.tokens.append(Token.token(key: key))
 		}
 	}
-	init (tower: Tower) {
-		self.tower = tower
-	}
-//	init (string: String) {
-//		tower = Tower(name: "")
-//		for c in string.characters {
-//			if c == "0" {self.tokens.append(Token.token(type: .digit, tag: "0"))}
-//			else if c == "1" {self.tokens.append(Token.token(type: .digit, tag: "1"))}
-//			else if c == "2" {self.tokens.append(Token.token(type: .digit, tag: "2"))}
-//			else if c == "3" {self.tokens.append(Token.token(type: .digit, tag: "3"))}
-//			else if c == "4" {self.tokens.append(Token.token(type: .digit, tag: "4"))}
-//			else if c == "5" {self.tokens.append(Token.token(type: .digit, tag: "5"))}
-//			else if c == "6" {self.tokens.append(Token.token(type: .digit, tag: "6"))}
-//			else if c == "7" {self.tokens.append(Token.token(type: .digit, tag: "7"))}
-//			else if c == "8" {self.tokens.append(Token.token(type: .digit, tag: "8"))}
-//			else if c == "9" {self.tokens.append(Token.token(type: .digit, tag: "9"))}
-//			else if c == "." {self.tokens.append(Token.token(type: .digit, tag: "."))}
-//			else if c == "+" {self.tokens.append(Token.add)}
-//			else if c == "-" {self.tokens.append(Token.subtract)}
-//			else if c == "*" {self.tokens.append(Token.multiply)}
-//			else if c == "/" {self.tokens.append(Token.divide)}
-//			else if c == "^" {self.tokens.append(Token.power)}
-//		}
-//	}
-	
-//	- (NSString*) dehydrate {
-//	if (![_tokens count]) return @"";
-//	NSMutableString* tokens = [[NSMutableString alloc] init];
-//	for (AEToken* token in _tokens)
-//	[tokens appendFormat:@"%@;",[token key]];
-//	[tokens deleteCharactersInRange:NSMakeRange([tokens length]-1,1)];
-//	return tokens;
-//	}
 	
 	func post (token: Token) {
 		tokens.append(token)
@@ -143,9 +113,7 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 		delegate?.onEdit()
 	}
 	func ok() {
-//	func ok(_ memory: UnsafeMutablePointer<Memory>) {
 		open = false
-//		lambda = compile(memory: memory)
 		delegate?.onOK()
 	}
 

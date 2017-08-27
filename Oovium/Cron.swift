@@ -35,23 +35,38 @@ public final class Cron: Aexel {
 	}
 	
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
-		startTower = Tower(name: String(format: "I%05d", 0))
-		stopTower = Tower(name: String(format: "I%05d", 0))
-		stepsTower = Tower(name: String(format: "I%05d", 0))
-		rateTower = Tower(name: String(format: "I%05d", 0))
-		deltaTower = Tower(name: String(format: "I%05d", 0))
-		whileTower = Tower(name: String(format: "I%05d", 0))
-		super.init(iden:iden, at:at)
+	public required init(iden: Int, at: V2, aether: Aether) {
+		
+		startTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSta_\(iden)"))
+		stopTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSto_\(iden)"))
+		stepsTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSte_\(iden)"))
+		rateTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrR_\(iden)"))
+		deltaTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrD_\(iden)"))
+		whileTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrW_\(iden)"))
+
+		super.init(iden: iden, at: at, aether: aether)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		startTower = Tower(name: String(format: "I%05d", iden))
-		stopTower = Tower(name: String(format: "I%05d", iden))
-		stepsTower = Tower(name: String(format: "I%05d", iden))
-		rateTower = Tower(name: String(format: "I%05d", iden))
-		deltaTower = Tower(name: String(format: "I%05d", iden))
-		whileTower = Tower(name: String(format: "I%05d", iden))
-		super.init(iden: iden, type: type, attributes: attributes)
+//	public required init (iden: Int, type: String, attributes: [String:Any]) {
+//		startTower = Tower(name: String(format: "I%05d", iden))
+//		stopTower = Tower(name: String(format: "I%05d", iden))
+//		stepsTower = Tower(name: String(format: "I%05d", iden))
+//		rateTower = Tower(name: String(format: "I%05d", iden))
+//		deltaTower = Tower(name: String(format: "I%05d", iden))
+//		whileTower = Tower(name: String(format: "I%05d", iden))
+//		super.init(iden: iden, type: type, attributes: attributes)
+//	}
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
+		
+		startTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSta_\(iden)"))
+		stopTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSto_\(iden)"))
+		stepsTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSte_\(iden)"))
+		rateTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrR_\(iden)"))
+		deltaTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrD_\(iden)"))
+		whileTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrW_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 // Domain ==========================================================================================

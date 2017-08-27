@@ -35,13 +35,16 @@ public class Aexel: Domain {
 	}
 	
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
+	public required init(iden: Int, at: V2, aether: Aether) {
 		x = at.x
 		y = at.y
-		super.init(iden:iden)
+		super.init(iden: iden)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		super.init(iden: iden, type: type, attributes: attributes)
+//	public required init (iden: Int, type: String, attributes: [String:Any]) {
+//		super.init(iden: iden, type: type, attributes: attributes)
+//	}
+	public required init(attributes: [String:Any], parent: Domain) {
+		super.init(attributes: attributes, parent: parent)
 	}
 
 // Domain ==========================================================================================

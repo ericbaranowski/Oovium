@@ -27,13 +27,19 @@ public final class Col: Domain {
 	var tower: Tower
 
 // Inits ===========================================================================================
-	public required init() {
-		tower = Tower(name: String(format: "I%05d", 0))
-		super.init(iden: 0)
+	public init(grid: Grid) {
+		let iden: Int = 0
+		tower = Tower(aether: grid.aether, token: Token.token(type: .variable, tag: "Co_\(iden)"))
+
+		super.init(iden: iden)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		tower = Tower(name: String(format: "I%05d", iden))
-		super.init(iden: iden, type: type, attributes: attributes)
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
+		
+		tower = Tower(aether: aether, token: Token.token(type: .variable, tag: "Co_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 // Domain ==========================================================================================

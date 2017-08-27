@@ -20,15 +20,16 @@ protocol MemorySource {
 }
 
 public final class Tower: Hashable, CustomStringConvertible {
-	public var name: String
-	public var index: UInt8 = 0
+	let aether: Aether
+	let name: String
+	let token: Token?
+
+	var index: UInt8 = 0
 	var task: UnsafeMutablePointer<Task>?
-	var token: Token!
-	
+
 	var upstream: Set<Tower> = Set<Tower>()
 	var downstream: Set<Tower> = Set<Tower>()
 	
-	var aether: MemorySource!
 	var _web: Web? = nil
 	var web: Web? {
 		set {_web = newValue}
@@ -40,30 +41,38 @@ public final class Tower: Hashable, CustomStringConvertible {
 			return nil
 		}
 	}
+	
 	var source: MemorySource {
 		if let web = web {return web}
 		return aether
 	}
+
+	var state: TowerState = .open
 
 	public var gateTo: Tower?
 	public var thenTo: Tower?
 	public var elseTo: Tower?
 	public var gate: Tower?
 
-	var state: TowerState = .open
-//	var stopper: NSObject?
-	
-	
-//	init() {
-//		name = "[\(arc4random_uniform(99999999))]"
-//	}
-	init(name: String) {
+
+	init(aether: Aether, token: Token) {
+		self.aether = aether
+		self.name = token.tag
+		self.token = token
+	}
+	init(aether: Aether, name: String) {
+		self.aether = aether
 		self.name = name
+		self.token = nil
 	}
-	public init (task: UnsafeMutablePointer<Task>?) {
-		name = "[\(arc4random_uniform(99999999))]"
-		self.task = task
-	}
+	
+//	init(name: String) {
+//		self.name = name
+//	}
+//	public init (task: UnsafeMutablePointer<Task>?) {
+//		name = "[\(arc4random_uniform(99999999))]"
+//		self.task = task
+//	}
 	
 	func signal () {
 	}
@@ -82,6 +91,7 @@ public final class Tower: Hashable, CustomStringConvertible {
 	}
 	
 	func wire (chain: Chain, memory: UnsafeMutablePointer<Memory>) {
+		guard let token = token else {return}
 		
 		var lambda: UnsafeMutablePointer<Lambda>
 		
@@ -220,6 +230,10 @@ public final class Tower: Hashable, CustomStringConvertible {
 	}
 	
 	func calculate (_ memory: UnsafeMutablePointer<Memory>) -> CalcState {
+		// temporary guard
+		guard task != nil else {return .cached}
+		// temporary guard
+		
 		if state != .open {return .cached}
 		
 		for tower in upstream {
@@ -286,7 +300,7 @@ public final class Tower: Hashable, CustomStringConvertible {
 		Tower.lookup[token] = tower
 	}
 	static func register (_ tower: Tower) {
-		Tower.lookup[tower.token] = tower
+		Tower.lookup[tower.token!] = tower
 	}
 	static func tower (token: Token) -> Tower? {
 		return Tower.lookup[token]

@@ -11,6 +11,15 @@ import Foundation
 public class Anchor: Domain {
 	var basket: Basket!
 	
+	override public init(iden: Int) {
+		super.init(iden: iden)
+	}
+	public required init(attributes: [String:Any]) {
+		let iden: Int = attributes["iden"] as! Int
+		
+		super.init(iden: iden)
+	}
+	public required init(attributes: [String:Any], parent: Domain) {fatalError()}
 //	public required init() {
 //		super.init()
 //	}

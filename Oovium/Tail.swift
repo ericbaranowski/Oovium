@@ -19,17 +19,28 @@ public final class Tail: Aexel {
 	var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
-		headTower = Tower(name: "")
-		whileTower = Tower(name: String(format: "ATS%05d", 0))
-		resultTower = Tower(name: String(format: "ATN%05d", 0))
-		super.init(iden:iden, at:at)
+	public required init(iden: Int, at: V2, aether: Aether) {
+		headTower = Tower(aether: aether, name: "Ta_\(iden)")
+		whileTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaW_\(iden)"))
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaR_\(iden)"))
+
+		super.init(iden:iden, at:at, aether: aether)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		headTower = Tower(name: "")
-		whileTower = Tower(name: String(format: "ATS%05d", iden))
-		resultTower = Tower(name: String(format: "ATN%05d", iden))
-		super.init(iden: iden, type: type, attributes: attributes)
+//	public required init (iden: Int, type: String, attributes: [String:Any]) {
+//		headTower = Tower(name: "")
+//		whileTower = Tower(name: String(format: "ATS%05d", iden))
+//		resultTower = Tower(name: String(format: "ATN%05d", iden))
+//		super.init(iden: iden, type: type, attributes: attributes)
+//	}
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
+		
+		headTower = Tower(aether: aether, name: "Ta_\(iden)")
+		whileTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaW_\(iden)"))
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaR_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 // Aexel ===========================================================================================

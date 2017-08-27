@@ -9,29 +9,35 @@
 import Foundation
 
 public final class Object: Aexel {
-	var chain: Chain {
-		didSet {chain.tower = tower}
-	}
+	var chain: Chain!
 	
 	var tower: Tower
-	var token: Token
+	
+	var token: Token {
+		return tower.token!
+	}
 	
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
-		let name = "Ob_\(iden)"
-		tower = Tower(name: name)
-		token = Token.token(type: .variable, tag: tower.name)
-		chain = Chain(tower: tower)
-		super.init(iden:iden, at:at)
+	public required init(iden: Int, at: V2, aether: Aether) {
+		tower = Tower(aether: aether, token: Token.token(type: .variable, tag: "Ob_\(iden)"))
+//		chain = Chain()
+		super.init(iden:iden, at:at, aether: aether)
 		self.name = name
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		let name = "Ob_\(iden)"
-		tower = Tower(name: name)
-		token = Token.token(type: .variable, tag: tower.name)
-		chain = Chain(tower: tower)
-		super.init(iden: iden, type: type, attributes: attributes)
-		self.name = name
+//	public required init (iden: Int, type: String, attributes: [String:Any]) {
+//		let name = "Ob_\(iden)"
+//		tower = Tower(name: name)
+//		chain = Chain()
+//		super.init(iden: iden, type: type, attributes: attributes)
+//		self.name = name
+//	}
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
+		
+		tower = Tower(aether: aether, token: Token.token(type: .variable, tag: "Ob_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 // Actions =========================================================================================
@@ -50,9 +56,9 @@ public final class Object: Aexel {
 		token.display = "\(chain.display)"
 		AEMemoryPrint(aether.memory)
 	}
-	override func onLoaded() {
-		tower.aether = parent as! Aether
-	}
+//	override func onLoaded() {
+//		tower.aether = parent as! Aether
+//	}
 	
 // Aexel ===========================================================================================
 	override var freeVars: [String] {
@@ -61,12 +67,12 @@ public final class Object: Aexel {
 	}
 	
 	override func plugIn() {
-		tower.name = "Ob_\(iden)"
-		tower.token = Token.token(type: .variable, tag: tower.name)
+//		tower.name = "Ob_\(iden)"
+//		tower.token = Token.token(type: .variable, tag: tower.name)
 		Tower.register(tower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		chain.tower = tower
+//		chain.tower = tower
 		tower.wire(chain:chain, memory:memory)
 	}
 	override var towers: [Tower] {

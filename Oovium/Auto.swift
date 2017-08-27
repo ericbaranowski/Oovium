@@ -20,17 +20,22 @@ public final class Auto: Aexel {
 	public var resultTower: Tower
 
 // Inits ===========================================================================================
-	public required init(iden: Int, at: V2) {
-		statesTower = Tower(name: String(format: "ATS%05d", 0))
-		headTower = Tower(name: "")
-		resultTower = Tower(name: String(format: "ATN%05d", 0))
-		super.init(iden:iden, at:at)
+	public required init(iden: Int, at: V2, aether: Aether) {
+		headTower = Tower(aether: aether, name: "AtH_\(iden)")
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "AtR_\(iden)"))
+		statesTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "AtS_\(iden)"))
+
+		super.init(iden:iden, at:at, aether: aether)
 	}
-	public required init (iden: Int, type: String, attributes: [String:Any]) {
-		statesTower = Tower(name: String(format: "ATS%05d", iden))
-		headTower = Tower(name: "")
-		resultTower = Tower(name: String(format: "ATN%05d", iden))
-		super.init(iden: iden, type: type, attributes: attributes)
+	public required init(attributes: [String:Any], parent: Domain) {
+		let aether: Aether = parent as! Aether
+		let iden: Int = attributes["iden"] as! Int
+		
+		headTower = Tower(aether: aether, name: "AtH_\(iden)")
+		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "AtR_\(iden)"))
+		statesTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "AtS_\(iden)"))
+		
+		super.init(attributes: attributes, parent: parent)
 	}
 	
 	@objc public func token (name: String) {
@@ -63,18 +68,18 @@ public final class Auto: Aexel {
 		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.H", iden)), tower: headTower)
 		Tower.link(token: Token.token(type: .variable, tag: String(format: "Auto%d.Self", iden)), tower: headTower)
 		
-		statesTower.name = String(format: "ATS%05d", iden)
-		statesTower.token = Token.token(type: .variable, tag: statesTower.name)
-		
-		resultTower.name = String(format: "ATN%05d", iden)
-		resultTower.token = Token.token(type: .variable, tag: resultTower.name)
+//		statesTower.name = String(format: "ATS%05d", iden)
+//		statesTower.token = Token.token(type: .variable, tag: statesTower.name)
+//		
+//		resultTower.name = String(format: "ATN%05d", iden)
+//		resultTower.token = Token.token(type: .variable, tag: resultTower.name)
 		
 		Tower.register(statesTower)
 		Tower.register(resultTower)
 	}
 	override func wire (_ memory: UnsafeMutablePointer<Memory>) {
-		statesChain.tower = statesTower
-		resultChain.tower = resultTower
+//		statesChain.tower = statesTower
+//		resultChain.tower = resultTower
 		
 		statesTower.wire(chain:statesChain, memory:memory)
 		headTower.state = .uncalced
