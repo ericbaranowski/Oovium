@@ -95,7 +95,7 @@ public final class Tower: Hashable, CustomStringConvertible {
 		
 		var lambda: UnsafeMutablePointer<Lambda>
 		
-		lambda = chain.compile(memory: memory)
+		lambda = chain.compile(name: name, memory: memory)
 //		let lambdaTask = LambdaTask(label: token.tag, command: "\(token.tag) = \(chain.display)", lambda: lambdaC)
 		let lambdaTask = AETaskCreateLambda(lambda)
 		lambdaTask?.pointee.label = token.tag.toInt8()

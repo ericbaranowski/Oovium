@@ -95,6 +95,24 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 		}
 	}
 	
+	var store: String {
+		var sb = String()
+		for token in tokens {
+			sb.append("\(token.key);")
+		}
+		if sb.length > 0 {
+			sb.remove(at: sb.index(before: sb.endIndex))
+		}
+		return sb
+	}
+	var display: String {
+		var sb = String()
+		for token in tokens {
+			sb.append("\(token.tag)")
+		}
+		return sb
+	}
+	
 	func post (token: Token) {
 		tokens.append(token)
 		cursor += 1
@@ -117,24 +135,6 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 		delegate?.onOK()
 	}
 
-	var store: String {
-			var sb = String()
-			for token in tokens {
-				sb.append("\(token.key);")
-			}
-			if sb.length > 0 {
-				sb.remove(at: sb.index(before: sb.endIndex))
-			}
-			return sb
-	}
-	var display: String {
-		var sb = String()
-		for token in tokens {
-			sb.append("\(token.tag)")
-		}
-		return sb
-	}
-	
 //	private func add (morph: @escaping (Lambda)->()) {
 //	private func add (morph: Morph) {
 //		lambda.addMorph(morph)
@@ -359,15 +359,21 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 		try parseTokens(tokens:tokens, start:0, stop:tokens.count)
 	}
 	
-	public func compile (memory: UnsafeMutablePointer<Memory>) -> UnsafeMutablePointer<Lambda> {
+// Compiling =======================================================================================
+	var name: String? = nil
+	var memory: UnsafeMutablePointer<Memory>? = nil
+	
+	public func compile (name: String, memory: UnsafeMutablePointer<Memory>) -> UnsafeMutablePointer<Lambda> {
+		self.name = name
+		self.memory = memory
+		
 		do {
 			try parse(tokens: self.tokens)
 		} catch {
 			print("\(error)")
 		}
 		
-//		let vi = AEMemoryIndexForName(memory, tower.name.toInt8())
-		let vi = 0
+		let vi = AEMemoryIndexForName(memory, name.toInt8())
 		
 //		varIndexes = [Int]()
 //		for name in variables {
@@ -408,8 +414,11 @@ public final class Chain: NSObject/*, CustomStringConvertible*/ {
 				sb.append("\(token.tag)")
 			}
 		} else {
-//			let memory: UnsafeMutablePointer<Memory> = tower.source.memory
-			let value: Double = 0.0//AEMemoryValueForName(memory, tower.name.toInt8())
+			var value: Double = 0
+			
+			if let name = name, let memory = memory {
+				value = AEMemoryValueForName(memory, name.toInt8())
+			}
 			
 			if (abs(value) < 0.00000001 && value != 0) || abs(value) > 999999999999 {
 				let formatter = NumberFormatter()

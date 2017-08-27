@@ -51,10 +51,14 @@ public final class Object: Aexel {
 			AETaskRelease(task)
 		}
 		
-		tower.task = AETaskCreateLambda(chain.compile(memory: aether.memory))
+		tower.task = AETaskCreateLambda(chain.compile(name: tower.name, memory: aether.memory))
 		AETaskExecute(tower.task, aether.memory)
 		token.display = "\(chain.display)"
 		AEMemoryPrint(aether.memory)
+	}
+	override func onLoad() {
+		let task = AETaskCreateLambda(chain.compile(name: tower.name, memory: aether.memory))
+		tower.task = task
 	}
 //	override func onLoaded() {
 //		tower.aether = parent as! Aether
