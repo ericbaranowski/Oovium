@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChainLeafDelegate {
+protocol ChainLeafDelegate: class {
 	func onChange()
 	func onEdit()
 	func onOK()
@@ -17,7 +17,7 @@ protocol ChainLeafDelegate {
 
 class ChainLeaf: Leaf, ChainViewDelegate {
 	let chainView: ChainView = ChainView()
-	var delegate: ChainLeafDelegate
+	unowned let delegate: ChainLeafDelegate
 	var uiColor: UIColor = UIColor.green
 	
 	var chain: Chain {

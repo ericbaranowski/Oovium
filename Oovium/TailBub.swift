@@ -115,12 +115,31 @@ class TailMaker: Maker {
 	}
 }
 
-class TailBub: Bubble {
+class TailBub: Bubble, ChainLeafDelegate {
 	let tail: Tail
-	
+
+	lazy var whileLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var resultLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+
 	init(_ tail: Tail) {
 		self.tail = tail
-		super.init(hitch: .center, origin: CGPoint(x: self.tail.x, y: self.tail.y), size: CGSize(width: 36, height: 36))
+		super.init(hitch: .center, origin: CGPoint(x: self.tail.x, y: self.tail.y), size: CGSize(width: 36, height: 80))
+
+		whileLeaf.chain = tail.whileChain
+		whileLeaf.uiColor = UIColor.blue
+		whileLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(whileLeaf)
+
+		resultLeaf.chain = tail.resultChain
+		resultLeaf.uiColor = UIColor.blue
+		resultLeaf.frame = CGRect(x: 0, y: 40, width: 36, height: 36)
+		addSubview(resultLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+
+// ChainLeafDelegate ===============================================================================
+	func onChange() {}
+	func onEdit() {}
+	func onOK() {}
+	func referencingThis() -> Bool {return false}
 }

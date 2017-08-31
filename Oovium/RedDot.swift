@@ -9,22 +9,22 @@
 import UIKit
 
 class RedDot: Hover, UIGestureRecognizerDelegate {
-	
 	init() {
 		super.init(anchor: .bottomLeft, offset: UIOffset.zero, size: CGSize(width: 46, height: 46), fixedOffset: UIOffset.zero)
-		
+
 		var gesture: UIGestureRecognizer = AETouchGestureRecognizer(target: self, action: #selector(onTouch))
 		gesture.delegate = self
-//		addGestureRecognizer(gesture)
+		addGestureRecognizer(gesture)
 		
 		gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+		gesture.delegate = self
 		addGestureRecognizer(gesture)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 	func fade() {
 		alpha = 1
-		UIView.animate(withDuration: 0.5, delay: 2, options: [], animations: {
+		UIView.animate(withDuration: 0.5, delay: 2, options: [.allowUserInteraction], animations: {
 			self.alpha = 0.5
 		}, completion: nil)
 	}
@@ -35,6 +35,7 @@ class RedDot: Hover, UIGestureRecognizerDelegate {
 	}
 	func onTap() {
 		Hovers.toggleRootMenu()
+		superview?.bringSubview(toFront: self)
 	}
 	override func onFadeIn() {
 		fade()
@@ -42,8 +43,8 @@ class RedDot: Hover, UIGestureRecognizerDelegate {
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		let rect = CGRect(x: 13, y: 13, width: 20, height: 20)
-		let path = CGPath(roundedRect: rect, cornerWidth: 10, cornerHeight: 10, transform: nil)
+		let rect = CGRect(x: 13*Oo.s, y: 13*Oo.s, width: 20*Oo.s, height: 20*Oo.s)
+		let path = CGPath(roundedRect: rect, cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s, transform: nil)
 		let c = UIGraphicsGetCurrentContext()!
 		
 		c.setStrokeColor(UIColor.red.withAlphaComponent(0.3).cgColor)
@@ -67,7 +68,7 @@ class RedDot: Hover, UIGestureRecognizerDelegate {
 	}
 	
 // UIGestureRecognizerDelegate =====================================================================
-	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-		return false
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
 	}
 }

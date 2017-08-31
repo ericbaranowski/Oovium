@@ -11,12 +11,14 @@ import UIKit
 class AetherMenu: KeyPad {
 	init() {
 		let schematic = Schematic(rows: 4, cols: 1)
-		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 78, vertical: 0), size: CGSize(width: 94, height: 214), fixedOffset: UIOffset(horizontal: 6, vertical: -6), schematic: schematic)
+		super.init(anchor: .bottomLeft, offset: UIOffset(horizontal: 78+6, vertical: -6), size: CGSize(width: 94, height: 214), fixedOffset: UIOffset(horizontal: 0, vertical: 0), schematic: schematic)
 		
-		schematic.add(row: 0, col: 0, key: Key(text: "clear", uiColor: UIColor.orange, {}))
-		schematic.add(row: 1, col: 0, key: Key(text: "album", uiColor: UIColor.orange, {}))
-		schematic.add(row: 2, col: 0, key: Key(text: "dropbox", uiColor: UIColor.orange, {}))
-		schematic.add(row: 3, col: 0, key: Key(text: "logoff", uiColor: UIColor.orange, {}))
+		let apricot = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 1)
+
+		schematic.add(row: 0, col: 0, key: Key(text: "clear", uiColor: apricot, {}))
+		schematic.add(row: 1, col: 0, key: Key(text: "album", uiColor: apricot, {}))
+		schematic.add(row: 2, col: 0, key: Key(text: "dropbox", uiColor: apricot, {}))
+		schematic.add(row: 3, col: 0, key: Key(text: "logoff", uiColor: apricot, {}))
 		
 		self.schematic = schematic
 	}

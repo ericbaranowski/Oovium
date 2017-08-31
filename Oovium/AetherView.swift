@@ -21,6 +21,7 @@ public class AetherView: UIScrollView {
 		
 		openAether(aether)
 		
+		scrollsToTop = false
 		showsVerticalScrollIndicator = false
 		showsHorizontalScrollIndicator = false
 		

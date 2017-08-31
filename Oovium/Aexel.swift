@@ -40,9 +40,6 @@ public class Aexel: Domain {
 		y = at.y
 		super.init(iden: iden)
 	}
-//	public required init (iden: Int, type: String, attributes: [String:Any]) {
-//		super.init(iden: iden, type: type, attributes: attributes)
-//	}
 	public required init(attributes: [String:Any], parent: Domain) {
 		super.init(attributes: attributes, parent: parent)
 	}

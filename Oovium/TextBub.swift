@@ -20,12 +20,23 @@ class TextMaker: Maker {
 	}
 }
 
-class TextBub: Bubble {
+class TextBub: Bubble, TextLeafDelegate {
 	let text: Text
+	
+	lazy var textLeaf: TextLeaf = {TextLeaf(delegate: self)}()
 	
 	init(_ text: Text) {
 		self.text = text
+		
 		super.init(hitch: .center, origin: CGPoint(x: self.text.x, y: self.text.y), size: CGSize(width: 36, height: 36))
+		
+		textLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(textLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+	
+// TextLeafDelegate ================================================================================
+	var uiColor: UIColor {
+		return text.color.uiColor
+	}
 }

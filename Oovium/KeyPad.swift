@@ -31,20 +31,23 @@ class KeyPad: Hover {
 			view.removeFromSuperview()
 		}
 		
-		let margin: CGFloat = 6
-		let bw: CGFloat = (frame.size.width - 2*margin) / CGFloat(schematic.cols)
-		let bh: CGFloat = (frame.size.height - 2*margin) / CGFloat(schematic.rows)
+		schematic.render(rect: bounds)
 		
 		for keySlot in schematic.keySlots {
-			keySlot.key.frame = CGRect(x: margin+keySlot.col*bw, y: margin+keySlot.row*bh, width: keySlot.w*bw, height: keySlot.h*bh)
 			addSubview(keySlot.key)
 		}
+	}
+	
+// Hover ===========================================================================================
+	override func rescale() {
+		super.rescale()
+		renderSchematic()
 	}
 
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
 		let path = CGMutablePath()
-		path.addRoundedRect(in: rect.insetBy(dx: 3*Oo.s, dy: 3*Oo.s), cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s)
-		Skin.panel(path: path, uiColor: uiColor)
+		path.addRoundedRect(in: rect.insetBy(dx: 2*Oo.s, dy: 2*Oo.s), cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s)
+		Skin.bubble(path: path, uiColor: UIColor.orange, width: 4/3*Oo.s)
 	}
 }

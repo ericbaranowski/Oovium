@@ -64,9 +64,17 @@ class TypeMaker: Maker {
 class TypeBub: Bubble {
 	let type: Type
 	
+	let typeLeaf: TypeLeaf
+	
 	init(_ type: Type) {
 		self.type = type
+		
+		typeLeaf = TypeLeaf()
+		
 		super.init(hitch: .center, origin: CGPoint(x: self.type.x, y: self.type.y), size: CGSize(width: 36, height: 36))
+		
+		typeLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(typeLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

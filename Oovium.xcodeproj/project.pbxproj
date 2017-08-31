@@ -148,6 +148,12 @@
 		D896B4641F4F37F2004A32C8 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4631F4F37F2004A32C8 /* Persist.swift */; };
 		D896B4681F4F3A4F004A32C8 /* iOSPersist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */; };
 		D896B46A1F4F7078004A32C8 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4691F4F7078004A32C8 /* Storage.swift */; };
+		D896B46C1F54F304004A32C8 /* TextLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B46B1F54F304004A32C8 /* TextLeaf.swift */; };
+		D896B46E1F55B7DB004A32C8 /* GridLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B46D1F55B7DB004A32C8 /* GridLeaf.swift */; };
+		D896B46F1F55B7E3004A32C8 /* TextLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B46B1F54F304004A32C8 /* TextLeaf.swift */; };
+		D896B4701F55B7EC004A32C8 /* GridLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B46D1F55B7DB004A32C8 /* GridLeaf.swift */; };
+		D896B4721F55C609004A32C8 /* TypeLeaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4711F55C609004A32C8 /* TypeLeaf.swift */; };
+		D896B4741F566FF4004A32C8 /* MessagesMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D896B4731F566FF4004A32C8 /* MessagesMenu.swift */; };
 		D89BEBE11DE8D32B00B56F6A /* OoviumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBE01DE8D32B00B56F6A /* OoviumController.swift */; };
 		D89BEBE61DE8D32B00B56F6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */; };
 		D89BEBF41DE8D32B00B56F6A /* OoviumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89BEBF31DE8D32B00B56F6A /* OoviumTests.swift */; };
@@ -351,6 +357,10 @@
 		D896B4631F4F37F2004A32C8 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 		D896B4671F4F3A4F004A32C8 /* iOSPersist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSPersist.swift; sourceTree = "<group>"; };
 		D896B4691F4F7078004A32C8 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		D896B46B1F54F304004A32C8 /* TextLeaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextLeaf.swift; sourceTree = "<group>"; };
+		D896B46D1F55B7DB004A32C8 /* GridLeaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLeaf.swift; sourceTree = "<group>"; };
+		D896B4711F55C609004A32C8 /* TypeLeaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeLeaf.swift; sourceTree = "<group>"; };
+		D896B4731F566FF4004A32C8 /* MessagesMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesMenu.swift; sourceTree = "<group>"; };
 		D89BEBDB1DE8D32B00B56F6A /* Oovium.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oovium.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D89BEBE01DE8D32B00B56F6A /* OoviumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OoviumController.swift; sourceTree = "<group>"; };
 		D89BEBE51DE8D32B00B56F6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -485,8 +495,9 @@
 				D81DC92F1F34D6D2000140DF /* RedDot.swift */,
 				D81DC9341F34F102000140DF /* RootMenu.swift */,
 				D81DC9371F34FBFE000140DF /* AetherMenu.swift */,
-				D81DC93A1F34FC1C000140DF /* LinksMenu.swift */,
 				D81DC93D1F34FC26000140DF /* HelpMenu.swift */,
+				D896B4731F566FF4004A32C8 /* MessagesMenu.swift */,
+				D81DC93A1F34FC1C000140DF /* LinksMenu.swift */,
 				D81DC9401F34FC3E000140DF /* TutorialsMenu.swift */,
 			);
 			name = Menu;
@@ -542,6 +553,7 @@
 		D81DC9841F3630D9000140DF /* GridBub */ = {
 			isa = PBXGroup;
 			children = (
+				D896B46D1F55B7DB004A32C8 /* GridLeaf.swift */,
 				D81DC9971F3633B2000140DF /* GridBub.swift */,
 			);
 			name = GridBub;
@@ -550,6 +562,7 @@
 		D81DC9851F3630E3000140DF /* TypeBub */ = {
 			isa = PBXGroup;
 			children = (
+				D896B4711F55C609004A32C8 /* TypeLeaf.swift */,
 				D81DC99A1F365B0A000140DF /* TypeBub.swift */,
 			);
 			name = TypeBub;
@@ -575,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				D8502F631F38E86A005F00B5 /* Shapes */,
+				D896B46B1F54F304004A32C8 /* TextLeaf.swift */,
 				D81DC9A31F365BF1000140DF /* TextBub.swift */,
 			);
 			name = TextBub;
@@ -1328,6 +1342,7 @@
 				D81DC9521F355651000140DF /* Tool.swift in Sources */,
 				D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */,
 				D8AEB7391E9B020800249E7E /* IvorySkin.swift in Sources */,
+				D896B46F1F55B7E3004A32C8 /* TextLeaf.swift in Sources */,
 				D84CD41D1E9AE8AC00029120 /* ChainEditor.swift in Sources */,
 				D8CB767B1E17AAAF00A286DF /* Cron.swift in Sources */,
 				D8FA15581F32E24900697D7C /* UIView+AE.swift in Sources */,
@@ -1335,6 +1350,7 @@
 				D8CB76831E17AAAF00A286DF /* Miru.swift in Sources */,
 				D84CD4071E9A804200029120 /* Position.swift in Sources */,
 				D80659121DE90EC800325182 /* Tower.swift in Sources */,
+				D896B4701F55B7EC004A32C8 /* GridLeaf.swift in Sources */,
 				D8CB76791E17AAAF00A286DF /* Cell.swift in Sources */,
 				D81DC94C1F35555E000140DF /* ShapeToolBar.swift in Sources */,
 				D81DC99C1F365B0A000140DF /* TypeBub.swift in Sources */,
@@ -1478,9 +1494,11 @@
 				D8502F6B1F38E8CF005F00B5 /* RoundedShape.swift in Sources */,
 				D81DC9981F3633B2000140DF /* GridBub.swift in Sources */,
 				D8E0E60B1F4A3C41002A82F9 /* ScaleView.swift in Sources */,
+				D896B4721F55C609004A32C8 /* TypeLeaf.swift in Sources */,
 				D81DC99E1F365B5D000140DF /* MiruBub.swift in Sources */,
 				D896B46A1F4F7078004A32C8 /* Storage.swift in Sources */,
 				D8CB76621E1793A200A286DF /* Grid.swift in Sources */,
+				D896B46E1F55B7DB004A32C8 /* GridLeaf.swift in Sources */,
 				D896B4681F4F3A4F004A32C8 /* iOSPersist.swift in Sources */,
 				D81DC9321F34E26E000140DF /* AETouchGestureRecognizer.swift in Sources */,
 				D8FA15571F32E24100697D7C /* UIView+AE.swift in Sources */,
@@ -1508,6 +1526,7 @@
 				D81DC9451F35552A000140DF /* ToolBar.swift in Sources */,
 				D8CB76581E17937100A286DF /* Edge.swift in Sources */,
 				D8AEB7451E9B6F2700249E7E /* UIControl+AE.swift in Sources */,
+				D896B46C1F54F304004A32C8 /* TextLeaf.swift in Sources */,
 				D8E4A08D1E4673D600B2C328 /* Aegean.c in Sources */,
 				D894A0591EA26E1B00A9346A /* Pen.swift in Sources */,
 				D81DC9351F34F102000140DF /* RootMenu.swift in Sources */,
@@ -1533,6 +1552,7 @@
 				D894A05F1EA4305E00A9346A /* ChainLeaf.swift in Sources */,
 				D82BE4D81E2369D600E8E710 /* Oo.swift in Sources */,
 				D84CD4171E9AD3F900029120 /* Hover.swift in Sources */,
+				D896B4741F566FF4004A32C8 /* MessagesMenu.swift in Sources */,
 				D8CB76931E185D1300A286DF /* Migrate.swift in Sources */,
 				D8CB76681E1793E200A286DF /* Vertebra.swift in Sources */,
 				D8CB765A1E17937900A286DF /* Mech.swift in Sources */,

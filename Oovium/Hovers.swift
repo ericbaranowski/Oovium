@@ -22,19 +22,20 @@ class Hovers {
 		Hovers.invoked.append(hover)
 		Hovers.window.addSubview(hover)
 		hover.alpha = 0
-		UIView.animate(withDuration: 0.2) {
+		UIView.animate(withDuration: 0.2, animations: { 
 			hover.alpha = 1
+		}) { (canceled: Bool) in
+			hover.onFadeIn()
 		}
 	}
 	static func dismiss (hover: Hover) {
 		guard isInvoked(hover: hover) else {return}
+		Hovers.invoked.remove(at: Hovers.invoked.index(of: hover)!)
 		UIView.animate(withDuration: 0.2, animations: {
 			hover.alpha = 0
 		}) { (canceled: Bool) in
 			hover.removeFromSuperview();
-			Hovers.invoked.remove(at: Hovers.invoked.index(of: hover)!)
 		}
-		
 	}
 	
 // Admin ===========================================================================================
@@ -42,8 +43,9 @@ class Hovers {
 		hovers.insert(redDot_)
 		hovers.insert(rootMenu_)
 		hovers.insert(aetherMenu_)
-		hovers.insert(linksMenu_)
 		hovers.insert(helpMenu_)
+		hovers.insert(messagesMenu_)
+		hovers.insert(linksMenu_)
 		hovers.insert(tutorialsMenu_)
 		
 		hovers.insert(bubbleToolBar_)
@@ -76,6 +78,9 @@ class Hovers {
 	static func toggleRootMenu() {
 		rootMenu_.toggle()
 	}
+	static func dismissRootMenu() {
+		rootMenu_.dismiss()
+	}
 	
 	static let aetherMenu_ = AetherMenu()
 	static func toggleAetherMenu() {
@@ -85,20 +90,28 @@ class Hovers {
 		aetherMenu_.dismiss()
 	}
 	
-	static let linksMenu_ = LinksMenu()
-	static func toggleLinksMenu() {
-		linksMenu_.toggle()
-	}
-	static func dismissLinksMenu() {
-		linksMenu_.dismiss()
-	}
-	
 	static let helpMenu_ = HelpMenu()
 	static func toggleHelpMenu() {
 		helpMenu_.toggle()
 	}
 	static func dismissHelpMenu() {
 		helpMenu_.dismiss()
+	}
+	
+	static let messagesMenu_ = MessagesMenu()
+	static func toggleMessagesMenu() {
+		messagesMenu_.toggle()
+	}
+	static func dismissMessagesMenu() {
+		messagesMenu_.dismiss()
+	}
+	
+	static let linksMenu_ = LinksMenu()
+	static func toggleLinksMenu() {
+		linksMenu_.toggle()
+	}
+	static func dismissLinksMenu() {
+		linksMenu_.dismiss()
 	}
 	
 	static let tutorialsMenu_ = TutorialsMenu()

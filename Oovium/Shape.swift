@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum OOShape {
+@objc enum OOShape: Int {
 	case ellipse, rounded, rectangle, diamond
 
 	static let ellipseShape_ = EllipseShape()

@@ -19,7 +19,7 @@ class MessageHover: Hover {
 		scrollView = UIScrollView()
 		imageView = UIImageView()
 		
-		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 500, height: 400), fixedOffset: UIOffset.zero)
+		super.init(anchor: .center, offset: UIOffset.zero, size: CGSize(width: 500/1.5, height: 400/1.5), fixedOffset: UIOffset.zero)
 		
 		let n: CGFloat = 7
 		scrollView.frame = CGRect(x: n, y: n, width: self.width-2*n, height: self.height-2*n)

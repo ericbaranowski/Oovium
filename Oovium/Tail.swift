@@ -20,6 +20,9 @@ public final class Tail: Aexel {
 
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2, aether: Aether) {
+		whileChain = Chain()
+		resultChain = Chain()
+		
 		headTower = Tower(aether: aether, name: "Ta_\(iden)")
 		whileTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaW_\(iden)"))
 		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "TaR_\(iden)"))

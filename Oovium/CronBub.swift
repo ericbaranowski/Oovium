@@ -98,12 +98,46 @@ class CronMaker: Maker {
 	}
 }
 
-class CronBub: Bubble {
+class CronBub: Bubble, ChainLeafDelegate {
 	let cron: Cron
-	
+
+	lazy var startLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var stopLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var stepsLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var rateLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var deltaLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+	lazy var whileLeaf: ChainLeaf = {ChainLeaf(delegate: self)}()
+
 	init(_ cron: Cron) {
 		self.cron = cron
-		super.init(hitch: .center, origin: CGPoint(x: self.cron.x, y: self.cron.y), size: CGSize(width: 36, height: 36))
+		super.init(hitch: .center, origin: CGPoint(x: self.cron.x, y: self.cron.y), size: CGSize(width: 80, height: 80))
+		
+		startLeaf.chain = cron.startChain
+		startLeaf.uiColor = OOColor.cobolt.uiColor
+		startLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(startLeaf)
+
+		stopLeaf.chain = cron.stopChain
+		stopLeaf.uiColor = OOColor.cobolt.uiColor
+		stopLeaf.frame = CGRect(x: 40, y: 0, width: 36, height: 36)
+		addSubview(stopLeaf)
+		
+		stepsLeaf.chain = cron.stepsChain
+		stepsLeaf.uiColor = OOColor.cobolt.uiColor
+		stepsLeaf.frame = CGRect(x: 0, y: 40, width: 36, height: 36)
+		addSubview(stepsLeaf)
+		
+		rateLeaf.chain = cron.rateChain
+		rateLeaf.uiColor = OOColor.cobolt.uiColor
+		rateLeaf.frame = CGRect(x: 40, y: 40, width: 36, height: 36)
+		addSubview(rateLeaf)
+		
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+
+// ChainLeafDelegate ===============================================================================
+	func onChange() {}
+	func onEdit() {}
+	func onOK() {}
+	func referencingThis() -> Bool {return false}
 }

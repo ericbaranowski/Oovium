@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChainViewDelegate {
+protocol ChainViewDelegate: class {
 	var color: UIColor {get}
 	
 	func onChange()
@@ -22,7 +22,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 			onChange()
 		}
 	}
-	var delegate: ChainViewDelegate!
+	weak var delegate: ChainViewDelegate?
 	var anchor: Position
 	var at: CGPoint
 	
@@ -91,7 +91,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 				pos += 1
 			} while (pos < to)
 			if sb.length > 0 {
-				Skin.bubble(text: sb as String, x: x, y: 0, uiColor: delegate.color)
+				Skin.bubble(text: sb as String, x: x, y: 0, uiColor: delegate?.color ?? UIColor.green)
 				let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
 				x += sb.size(attributes: pen.attributes).width
 				sb.setString("")
@@ -105,7 +105,7 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	}
 	override func draw(_ rect: CGRect) {
 		if !chain.open {
-			Skin.bubble(text: "\(chain!)", x: 0, y: 0, uiColor: delegate.color)
+			Skin.bubble(text: "\(chain!)", x: 0, y: 0, uiColor: delegate?.color ?? UIColor.green)
 		} else {
 			let x: CGFloat = drawTokens(at: 0, from: 0, to: chain.cursor)
 			// Cursor
@@ -138,16 +138,16 @@ class ChainView: UIView, UIKeyInput, ChainDelegate {
 	func onChange() {
 		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
 		setNeedsDisplay()
-		delegate.onChange()
+		delegate?.onChange()
 	}
 	func onEdit() {
 		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
 		setNeedsDisplay()
 		Hovers.invokeChainEditor(chain: chain)
-		delegate.onEdit()
+		delegate?.onEdit()
 	}
 	func onOK() {
-		delegate.onOK()
+		delegate?.onOK()
 		self.frame = CGRect(x: 12.75, y: 7, width: calcWidth(), height: 21)
 		setNeedsDisplay()
 		Hovers.dismissChainEditor()

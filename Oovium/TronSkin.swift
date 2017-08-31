@@ -35,22 +35,23 @@ class TronSkin: Skin {
 	// Key
 	override func key (path: CGPath, uiColor: UIColor) {
 		let rgb = RGB(uiColor: uiColor)
-		let field = rgb.blend(rgb: RGB.white, percent: 0.5)
+		let field = rgb.blend(rgb: RGB.white, percent: 0.25)
 		let accent = rgb.blend(rgb: RGB.black, percent: 0.5)
 		
 		let c = UIGraphicsGetCurrentContext()!
 		c.setFillColor(field.cgColor)
 		c.setStrokeColor(accent.cgColor)
+		c.setLineWidth(1*Oo.s)
 		c.addPath(path)
 		c.drawPath(using: .fillStroke)
 	}
 	override func key (text: String, rect: CGRect, font: UIFont) {
 		let pen = Pen(font: font)
+		pen.color = UIColor.black
 		let size = (text as NSString).size(attributes: pen.attributes)
 		let c = UIGraphicsGetCurrentContext()!
 		c.saveGState()
 		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)
-		c.setFillColor(UIColor.white.cgColor)
 		let inside = CGRect(x: (rect.size.width-size.width)/2, y: (rect.size.height-size.height)/2, width: size.width, height: size.height)
 		(text as NSString).draw(in: inside, withAttributes: pen.attributes)
 		c.restoreGState()

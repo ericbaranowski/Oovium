@@ -72,9 +72,17 @@ class GridMaker: Maker {
 class GridBub: Bubble {
 	let grid: Grid
 	
+	let gridLeaf: GridLeaf
+	
 	init(_ grid: Grid) {
 		self.grid = grid
+		
+		gridLeaf = GridLeaf()
+		
 		super.init(hitch: .center, origin: CGPoint(x: self.grid.x, y: self.grid.y), size: CGSize(width: 36, height: 36))
+		
+		gridLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
+		addSubview(gridLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

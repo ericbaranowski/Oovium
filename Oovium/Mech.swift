@@ -16,6 +16,8 @@ public final class Mech: Aexel {
 
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2, aether: Aether) {
+		resultChain = Chain()
+		
 		headTower = Tower(aether: aether, name: "Me_\(iden)")
 		resultTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "MeR_\(iden)"))
 		

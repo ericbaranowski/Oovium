@@ -40,4 +40,16 @@ class Schematic {
 	func add (row: CGFloat, col: CGFloat, key: Key) {
 		add(row: row, col: col, w: 1, h: 1, key: key)
 	}
+	
+	func render(rect: CGRect) {
+		let margin: CGFloat = 6*Oo.s
+		let bw: CGFloat = (rect.size.width - 2*margin) / CGFloat(cols)
+		let bh: CGFloat = (rect.size.height - 2*margin) / CGFloat(rows)
+		
+		for keySlot in keySlots {
+			keySlot.key.frame = CGRect(x: margin+keySlot.col*bw, y: margin+keySlot.row*bh, width: keySlot.w*bw, height: keySlot.h*bh)
+			keySlot.key.font = UIFont(name: "Verdana", size: 14*Oo.s)!
+		}
+	}
+	
 }

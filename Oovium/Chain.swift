@@ -67,7 +67,7 @@ enum ParseError: Error {
 	case general
 }
 
-protocol ChainDelegate {
+protocol ChainDelegate: class {
 	func onChange()
 	func onEdit()
 	func onOK()
@@ -76,7 +76,7 @@ protocol ChainDelegate {
 public final class Chain: NSObject/*, CustomStringConvertible*/ {
 	var tokens = [Token]()
 	
-	var delegate: ChainDelegate?
+	weak var delegate: ChainDelegate?
 	
 	var open: Bool = false
 	var cursor: Int = 0

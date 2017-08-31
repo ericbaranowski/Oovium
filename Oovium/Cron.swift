@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum OOEndMode {
+@objc enum OOEndMode: Int {
 	case stop, `repeat`, bounce, endless, `while`
 }
 
@@ -36,6 +36,12 @@ public final class Cron: Aexel {
 	
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2, aether: Aether) {
+		startChain = Chain()
+		stopChain = Chain()
+		stepsChain = Chain()
+		rateChain = Chain()
+		deltaChain = Chain()
+		whileChain = Chain()
 		
 		startTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSta_\(iden)"))
 		stopTower = Tower(aether: aether, token: Token.token(type: .variable, tag: "CrSto_\(iden)"))

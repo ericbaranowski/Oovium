@@ -11,7 +11,7 @@ import UIKit
 class Key: UIControl {
 	let text: String
 	let uiColor: UIColor
-	let font: UIFont
+	var font: UIFont
 	
 	private var current: UIColor
 	
