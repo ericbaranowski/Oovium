@@ -20,9 +20,9 @@ public final class Object: Aexel {
 // Inits ===========================================================================================
 	public required init(iden: Int, at: V2, aether: Aether) {
 		tower = Tower(aether: aether, token: Token.token(type: .variable, tag: "Ob_\(iden)"))
-//		chain = Chain()
+		chain = Chain()
 		super.init(iden:iden, at:at, aether: aether)
-		self.name = name
+		self.name = tower.name
 	}
 //	public required init (iden: Int, type: String, attributes: [String:Any]) {
 //		let name = "Ob_\(iden)"
@@ -56,10 +56,10 @@ public final class Object: Aexel {
 		token.display = "\(chain.display)"
 		AEMemoryPrint(aether.memory)
 	}
-	override func onLoad() {
-		let task = AETaskCreateLambda(chain.compile(name: tower.name, memory: aether.memory))
-		tower.task = task
-	}
+//	override func onLoad() {
+//		let task = AETaskCreateLambda(chain.compile(name: tower.name, memory: aether.memory))
+//		tower.task = task
+//	}
 //	override func onLoaded() {
 //		tower.aether = parent as! Aether
 //	}

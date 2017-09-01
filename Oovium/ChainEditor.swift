@@ -19,7 +19,7 @@ class ChainEditor: KeyPad {
 	private let misSchematic = Schematic(rows: 5, cols: 3)
 	
 	init() {
-		super.init(anchor: .bottomRight,offset: UIOffset.zero, size: CGSize(width: 174, height: 214), fixedOffset: UIOffset(horizontal: -6, vertical: -6), schematic: numSchematic)
+		super.init(anchor: .bottomRight,offset: UIOffset(horizontal: -6, vertical: -6), size: CGSize(width: 174, height: 214), fixedOffset: UIOffset(horizontal: 0, vertical: 0), schematic: numSchematic)
 
 		renderNumSchematic()
 		renderSciSchematic()
@@ -260,5 +260,9 @@ class ChainEditor: KeyPad {
 	}
 	override func onDismiss() {
 		cyanKeyPad.dismiss()
+	}
+	override func rescale() {
+		super.rescale()
+		cyanKeyPad.rescale()
 	}
 }

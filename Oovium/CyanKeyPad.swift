@@ -16,7 +16,7 @@ class CyanKeyPad: KeyPad {
 		
 		let schematic = Schematic(rows: 5, cols: 1)
 		
-		super.init(anchor: .bottomRight, offset: UIOffset(horizontal: -170-1, vertical: 0), size: CGSize(width: 54, height: 214), fixedOffset: UIOffset(horizontal: -6, vertical: -6), uiColor: UIColor.cyan, schematic: schematic)
+		super.init(anchor: .bottomRight, offset: UIOffset(horizontal: -174-6-1, vertical: -6), size: CGSize(width: 54, height: 214), fixedOffset: UIOffset(horizontal: 0, vertical: 0), uiColor: UIColor.cyan, schematic: schematic)
 		
 		schematic.add(row: 0, col: 0, key: Key(text: "num", uiColor: UIColor.cyan, {
 			self.chainEditor.presentNumSchematic()

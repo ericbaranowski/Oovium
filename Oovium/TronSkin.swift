@@ -41,7 +41,7 @@ class TronSkin: Skin {
 		let c = UIGraphicsGetCurrentContext()!
 		c.setFillColor(field.cgColor)
 		c.setStrokeColor(accent.cgColor)
-		c.setLineWidth(1*Oo.s)
+		c.setLineWidth(2/3*Oo.s)
 		c.addPath(path)
 		c.drawPath(using: .fillStroke)
 	}
@@ -52,7 +52,7 @@ class TronSkin: Skin {
 		let c = UIGraphicsGetCurrentContext()!
 		c.saveGState()
 		c.setShadow(offset: CGSize(width: 2, height: 2), blur: 2)
-		let inside = CGRect(x: (rect.size.width-size.width)/2, y: (rect.size.height-size.height)/2, width: size.width, height: size.height)
+		let inside = CGRect(x: rect.origin.x+(rect.size.width-size.width)/2, y: rect.origin.y+(rect.size.height-size.height)/2, width: size.width, height: size.height)
 		(text as NSString).draw(in: inside, withAttributes: pen.attributes)
 		c.restoreGState()
 	}

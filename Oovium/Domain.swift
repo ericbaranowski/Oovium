@@ -21,7 +21,7 @@ public class Domain: NSObject {
 	var iden: Int
 	var type: String
 	
-	var status: DomainStatus = .clean
+	var status: DomainStatus = .loading
 	var parent: Domain? = nil
 	
 //	public required init(iden: Int) {
@@ -34,11 +34,20 @@ public class Domain: NSObject {
 		self.iden = iden
 		self.type = Domain.nameFromClass(type(of:self))
 	}
+	public init(iden: Int, parent: Domain) {
+		self.iden = iden
+		self.type = Domain.nameFromClass(type(of:self))
+		self.parent = parent
+		super.init()
+		self.load()
+	}
 	public required init(attributes: [String:Any], parent: Domain) {
 		self.iden = attributes["iden"] as! Int
 		self.type = attributes["type"] as! String
 		self.parent = parent
 		type = Domain.nameFromClass(type(of:self))
+		super.init()
+		self.load()
 	}
 	
 	deinit {

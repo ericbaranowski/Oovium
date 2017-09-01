@@ -38,7 +38,7 @@ public class Aexel: Domain {
 	public required init(iden: Int, at: V2, aether: Aether) {
 		x = at.x
 		y = at.y
-		super.init(iden: iden)
+		super.init(iden: iden, parent: aether)
 	}
 	public required init(attributes: [String:Any], parent: Domain) {
 		super.init(attributes: attributes, parent: parent)

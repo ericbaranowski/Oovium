@@ -39,9 +39,9 @@ class Key: UIControl {
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		let path = CGPath(roundedRect: rect.insetBy(dx: 3*Oo.s, dy: 3*Oo.s), cornerWidth: 7*Oo.s, cornerHeight: 7*Oo.s, transform: nil)
+		let path = CGPath(roundedRect: rect.insetBy(dx: floor(3*Oo.s), dy: floor(3*Oo.s)), cornerWidth: 7*Oo.s, cornerHeight: 7*Oo.s, transform: nil)
 		Skin.key(path: path, uiColor: current)
-		Skin.key(text: text, rect: rect, font: font)
+		Skin.key(text: text, rect: rect.offsetBy(dx: 0, dy: -0.5), font: font)
 	}
 	override var isHighlighted: Bool {
 		didSet {

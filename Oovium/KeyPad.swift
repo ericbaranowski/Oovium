@@ -48,6 +48,6 @@ class KeyPad: Hover {
 	override func draw(_ rect: CGRect) {
 		let path = CGMutablePath()
 		path.addRoundedRect(in: rect.insetBy(dx: 2*Oo.s, dy: 2*Oo.s), cornerWidth: 10*Oo.s, cornerHeight: 10*Oo.s)
-		Skin.bubble(path: path, uiColor: UIColor.orange, width: 4/3*Oo.s)
+		Skin.bubble(path: path, uiColor: uiColor, width: 4/3*Oo.s)
 	}
 }
