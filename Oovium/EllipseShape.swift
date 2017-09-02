@@ -23,4 +23,9 @@ class EllipseShape: Shape {
 		path.addEllipse(in: CGRect(x: x1, y: y1, width: w, height: h))
 		Skin.bubble(path: path, uiColor: color, width: 2*Oo.s)
 	}
+	override func draw(rect: CGRect, uiColor: UIColor) {
+		let path = CGMutablePath()
+		path.addEllipse(in: rect.insetBy(dx: 3, dy: 3))
+		Skin.panel(path: path, uiColor: uiColor)
+	}
 }

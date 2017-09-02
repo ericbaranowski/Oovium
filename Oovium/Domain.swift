@@ -46,8 +46,6 @@ public class Domain: NSObject {
 		self.type = attributes["type"] as! String
 		self.parent = parent
 		type = Domain.nameFromClass(type(of:self))
-		super.init()
-		self.load()
 	}
 	
 	deinit {

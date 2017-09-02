@@ -137,6 +137,10 @@ class Hovers {
 	
 	static let shapeToolBar_: ShapeToolBar = {
 		let toolBar = ShapeToolBar(aetherView: Oovium.aetherView)
+		toolBar.onSelect = {(tool: Tool) in
+			let shapeTool: ShapeTool = tool as! ShapeTool
+			toolBar.aetherView.shape = shapeTool.shape
+		}
 		return toolBar
 	}()
 	static func invokeShapeToolBar() {
@@ -151,6 +155,10 @@ class Hovers {
 	
 	static let colorToolBar_: ColorToolBar = {
 		let toolBar = ColorToolBar(aetherView: Oovium.aetherView)
+		toolBar.onSelect = {(tool: Tool) in
+			let colorTool: ColorTool = tool as! ColorTool
+			toolBar.aetherView.color = colorTool.color
+		}
 		return toolBar
 	}()
 	static func invokeColorToolBar() {

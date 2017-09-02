@@ -10,7 +10,11 @@ import UIKit
 
 public class AetherView: UIScrollView {
 	var aether: Aether
+	
 	var maker: Maker = ObjectMaker()
+	var shape: OOShape = .ellipse
+	var color: OOColor = .orange
+	
 	var bubbles: [Bubble] = [Bubble]()
 	var currentlyEditing: Chain?
 	
@@ -141,7 +145,7 @@ public class AetherView: UIScrollView {
 	}
 	func onDoubleTap (_ gesture: UITapGestureRecognizer) {
 		let origin = gesture.location(in: self)
-		let bubble = maker.make(aether:aether, at:V2(Double(origin.x), Double(origin.y)))
+		let bubble = maker.make(aetherView: self, at: V2(Double(origin.x),Double(origin.y)))
 		addBubble(bubble)
 		bubble.create()
 		Hovers.bubbleToolBar_.recoil()

@@ -10,8 +10,8 @@ import UIKit
 
 class GateMaker: Maker {
 // Maker ===========================================================================================
-	func make(aether: Aether, at: V2) -> Bubble {
-		let gate = aether.createGate(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let gate = aetherView.aether.createGate(at: at)
 		return GateBub(gate)
 	}
 	func drawIcon() {

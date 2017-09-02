@@ -13,8 +13,8 @@ import UIKit
 class TypeMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func make(aether: Aether, at: V2) -> Bubble {
-		let type = aether.createType(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let type = aetherView.aether.createType(at: at)
 		return TypeBub(type)
 	}
 	func drawIcon() {

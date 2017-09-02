@@ -11,8 +11,8 @@ import UIKit
 class CronMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func make(aether: Aether, at: V2) -> Bubble {
-		let cron = aether.createCron(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let cron = aetherView.aether.createCron(at: at)
 		return CronBub(cron)
 	}
 	func drawIcon() {

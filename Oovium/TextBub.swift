@@ -11,8 +11,10 @@ import UIKit
 class TextMaker: Maker {
 	
 	// Maker ===========================================================================================
-	func make(aether: Aether, at: V2) -> Bubble {
-		let text = aether.createText(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let text = aetherView.aether.createText(at: at)
+		text.shape = aetherView.shape
+		text.color = aetherView.color
 		return TextBub(text)
 	}
 	func drawIcon() {
@@ -20,13 +22,13 @@ class TextMaker: Maker {
 	}
 }
 
-class TextBub: Bubble, TextLeafDelegate {
+class TextBub: Bubble {
 	let text: Text
-	
-	lazy var textLeaf: TextLeaf = {TextLeaf(delegate: self)}()
+	let textLeaf: TextLeaf
 	
 	init(_ text: Text) {
-		self.text = text
+		self.text = text		
+		textLeaf = TextLeaf(text: text)
 		
 		super.init(hitch: .center, origin: CGPoint(x: self.text.x, y: self.text.y), size: CGSize(width: 36, height: 36))
 		
@@ -35,8 +37,4 @@ class TextBub: Bubble, TextLeafDelegate {
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
-// TextLeafDelegate ================================================================================
-	var uiColor: UIColor {
-		return text.color.uiColor
-	}
 }

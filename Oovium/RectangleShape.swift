@@ -22,4 +22,8 @@ class RectangleShape: Shape {
 		let path = CGPath(rect: CGRect(x: x1, y: y1, width: w, height: h), transform: nil)
 		Skin.bubble(path: path, uiColor: color, width: 4.0/3.0*Oo.s)
 	}
+	override func draw(rect: CGRect, uiColor: UIColor) {
+		let path = CGPath(rect: rect.insetBy(dx: 3, dy: 3), transform: nil)
+		Skin.panel(path: path, uiColor: uiColor)
+	}
 }

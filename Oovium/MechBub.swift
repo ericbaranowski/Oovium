@@ -10,8 +10,8 @@ import UIKit
 
 class MechMaker: Maker {
 	// Maker ===========================================================================================
-	func make(aether: Aether, at: V2) -> Bubble {
-		let mech = aether.createMech(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let mech = aetherView.aether.createMech(at: at)
 		return MechBub(mech)
 	}
 	func drawIcon() {

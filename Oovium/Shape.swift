@@ -32,5 +32,5 @@ import UIKit
 
 class Shape {
 	func drawIcon(color: UIColor) {}
-	func draw(rect: CGRect) {}
+	func draw(rect: CGRect, uiColor: UIColor) {}
 }

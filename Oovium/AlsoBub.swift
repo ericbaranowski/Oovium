@@ -13,8 +13,8 @@ class AlsoMaker: Maker {
 	// Maker ===========================================================================================
 	func drawIcon() {
 	}
-	func make(aether: Aether, at: V2) -> Bubble {
-		let also = aether.createAlso(at: at)
+	func make(aetherView: AetherView, at: V2) -> Bubble {
+		let also = aetherView.aether.createAlso(at: at)
 		return AlsoBub(also)
 	}
 }
