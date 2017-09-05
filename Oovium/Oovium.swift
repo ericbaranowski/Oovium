@@ -17,27 +17,7 @@ class Oovium {
 		
 		window_ = UIWindow(frame: UIScreen.main.bounds)
 		window_.makeKeyAndVisible()
-		
 
-		let currentAether = Storage.get(key: "currentAether")
-		if let currentAether = currentAether {
-			print("currentAether:\(currentAether)")
-			let aether = Local.loadAether(name: currentAether)
-			aetherView = AetherView(aether: aether)
-		} else {
-			Storage.set(key: "currentAether", value: "Banana")
-		}
-		
-		
-		window_.rootViewController = OoviumController(aetherView: aetherView)
-		
-		Hovers.initialize()
-		Hovers.invokeRedDot()
-		Hovers.invokeBubbleToolBar()
-		Hovers.invokeAetherPicker()
-		
-		print("\(Local.aetherNames())")
-		
 		if !Local.hasAether(name: "Apple") {
 			var aether = Aether()
 			aether.name = "Apple"
@@ -51,6 +31,21 @@ class Oovium {
 			aether.name = "Coconut"
 			Local.storeAether(aether: aether)
 		}
+
+		let currentAether = Storage.get(key: "currentAether") ?? {
+			let name = "Banana"
+			Storage.set(key: "currentAether", value: name)
+			return name
+		}()
 		
+		let aether = Local.loadAether(name: currentAether)
+		aetherView = AetherView(aether: aether)
+		
+		window_.rootViewController = OoviumController(aetherView: aetherView)
+		
+		Hovers.initialize()
+		Hovers.invokeRedDot()
+		Hovers.invokeBubbleToolBar()
+		Hovers.invokeAetherPicker()
 	}
 }

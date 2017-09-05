@@ -93,6 +93,8 @@
 		D82BE4D21E21A11A00E8E710 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D01E21A00F00E8E710 /* JSON.swift */; };
 		D82BE4D81E2369D600E8E710 /* Oo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* Oo.swift */; };
 		D82BE4D91E2369FC00E8E710 /* Oo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82BE4D71E2369D600E8E710 /* Oo.swift */; };
+		D839D02C1F5B24F700930BE1 /* OOTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D839D02B1F5B24F700930BE1 /* OOTextField.swift */; };
+		D839D02D1F5B24F700930BE1 /* OOTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D839D02B1F5B24F700930BE1 /* OOTextField.swift */; };
 		D83DAFA81F3A2D0200A0A6C6 /* AetherPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */; };
 		D83DAFA91F3A2D0500A0A6C6 /* AetherPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */; };
 		D83DAFAB1F3A323200A0A6C6 /* MaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */; };
@@ -321,6 +323,7 @@
 		D82BE4D01E21A00F00E8E710 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		D82BE4D71E2369D600E8E710 /* Oo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Oo.swift; sourceTree = "<group>"; };
 		D830C0B41E3EB59400FF25A8 /* Oovium-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oovium-Bridging-Header.h"; sourceTree = "<group>"; };
+		D839D02B1F5B24F700930BE1 /* OOTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OOTextField.swift; sourceTree = "<group>"; };
 		D83DAFA71F3A2D0200A0A6C6 /* AetherPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherPicker.swift; sourceTree = "<group>"; };
 		D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskView.swift; sourceTree = "<group>"; };
 		D83DAFAC1F3A76EE00A0A6C6 /* AetherCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AetherCell.swift; sourceTree = "<group>"; };
@@ -778,6 +781,7 @@
 			children = (
 				D81DC9311F34E26E000140DF /* AETouchGestureRecognizer.swift */,
 				D83DAFAA1F3A323200A0A6C6 /* MaskView.swift */,
+				D839D02B1F5B24F700930BE1 /* OOTextField.swift */,
 				D894A0581EA26E1B00A9346A /* Pen.swift */,
 			);
 			name = Utility;
@@ -1351,6 +1355,7 @@
 				D84CD4071E9A804200029120 /* Position.swift in Sources */,
 				D80659121DE90EC800325182 /* Tower.swift in Sources */,
 				D896B4701F55B7EC004A32C8 /* GridLeaf.swift in Sources */,
+				D839D02D1F5B24F700930BE1 /* OOTextField.swift in Sources */,
 				D8CB76791E17AAAF00A286DF /* Cell.swift in Sources */,
 				D81DC94C1F35555E000140DF /* ShapeToolBar.swift in Sources */,
 				D81DC99C1F365B0A000140DF /* TypeBub.swift in Sources */,
@@ -1511,6 +1516,7 @@
 				D85AA8981F1F2D30004D0F81 /* V2.swift in Sources */,
 				D81DC9921F36332A000140DF /* TailBub.swift in Sources */,
 				D89BEC1E1DE8D3FA00B56F6A /* RealDef.swift in Sources */,
+				D839D02C1F5B24F700930BE1 /* OOTextField.swift in Sources */,
 				D81DC93E1F34FC26000140DF /* HelpMenu.swift in Sources */,
 				D81DC99B1F365B0A000140DF /* TypeBub.swift in Sources */,
 				D8AEB7421E9B6BA800249E7E /* Key.swift in Sources */,

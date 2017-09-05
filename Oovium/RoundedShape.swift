@@ -22,8 +22,11 @@ class RoundedShape: Shape {
 		let path = CGPath(roundedRect: CGRect(x: x1, y: y1, width: w, height: h), cornerWidth: 5, cornerHeight: 5, transform: nil)
 		Skin.bubble(path: path, uiColor: color, width: 2*Oo.s)
 	}
+	override func bounds(size: CGSize) -> CGRect {
+		return CGRect(x: 0, y: 0, width: size.width+30, height: size.height+20)
+	}
 	override func draw(rect: CGRect, uiColor: UIColor) {
 		let path = CGPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerWidth: 15, cornerHeight: 15, transform: nil)
-		Skin.panel(path: path, uiColor: uiColor)
+		Skin.bubble(path: path, uiColor: uiColor, width: 4/3*Oo.s)
 	}
 }

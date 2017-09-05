@@ -32,5 +32,6 @@ import UIKit
 
 class Shape {
 	func drawIcon(color: UIColor) {}
+	func bounds(size: CGSize) -> CGRect {return CGRect.zero}
 	func draw(rect: CGRect, uiColor: UIColor) {}
 }

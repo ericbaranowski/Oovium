@@ -18,6 +18,8 @@ public class AetherView: UIScrollView {
 	var bubbles: [Bubble] = [Bubble]()
 	var currentlyEditing: Chain?
 	
+	var editing: Editable? = nil
+	
 	public init(aether: Aether) {
 		self.aether = aether
 		
@@ -35,6 +37,11 @@ public class AetherView: UIScrollView {
 		
 		gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
 		addGestureRecognizer(gesture)
+		
+//		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+//		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDidShow), name: .UIKeyboardDidShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+//		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDidHide), name: .UIKeyboardDidHide, object: nil)
 	}
 	public required init? (coder aDecoder: NSCoder) {fatalError()}
 	
@@ -150,4 +157,12 @@ public class AetherView: UIScrollView {
 		bubble.create()
 		Hovers.bubbleToolBar_.recoil()
 	}
+//	func onKeyboardWillShow() {}
+//	func onKeyboardDidShow() {}
+	func onKeyboardWillHide() {
+		if let editing = editing {
+			editing.ok()
+		}
+	}
+//	func onKeyboardDidHide() {}
 }

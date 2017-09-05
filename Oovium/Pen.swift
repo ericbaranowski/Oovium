@@ -19,22 +19,30 @@ class Pen {
 		set {attributes[NSForegroundColorAttributeName] = newValue}
 		get {return attributes[NSForegroundColorAttributeName] as! UIColor}
 	}
-	var style: NSMutableParagraphStyle {
-		set {attributes[NSParagraphStyleAttributeName] = newValue}
-		get {return attributes[NSParagraphStyleAttributeName] as! NSMutableParagraphStyle}
-	}
 	var alignment: NSTextAlignment {
 		set {style.alignment = newValue}
 		get {return style.alignment}
+	}
+	var style: NSMutableParagraphStyle {
+		set {attributes[NSParagraphStyleAttributeName] = newValue}
+		get {return attributes[NSParagraphStyleAttributeName] as! NSMutableParagraphStyle}
 	}
 	
 	init (font: UIFont) {
 		self.font = font
 		self.color = UIColor.white
-		self.style = NSMutableParagraphStyle()
+		self.style = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
 		self.style.lineBreakMode = .byWordWrapping
 	}
 	convenience init() {
 		self.init(font: UIFont.systemFont(ofSize: 12))
+	}
+	
+	func copy() -> Pen {
+		let pen = Pen(font: font)
+		pen.color = color
+		pen.alignment = alignment
+		pen.style = style.mutableCopy() as! NSMutableParagraphStyle
+		return pen
 	}
 }

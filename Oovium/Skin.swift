@@ -8,20 +8,26 @@
 
 import UIKit
 
+enum SkinColor {
+	case labelText, labelBack, labelFore, cursor, currentCell, ovalText, ovalFore, ovalBack, headerText, hintText, tailText
+}
+
 class Skin {
 	
 	func panel(path: CGPath, uiColor: UIColor) {}
 	func panel(text: String, rect: CGRect, pen: Pen) {}
-	func key (path: CGPath, uiColor: UIColor) {}
-	func key (text: String, rect: CGRect, font: UIFont) {}
-	func bubble (path: CGPath, uiColor: UIColor, width: CGFloat) {}
-	func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {}
-	func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {}
-	func aetherPicker (path: CGPath) {}
-	func aetherPickerList (path: CGPath) {}
-	func aetherCell (path: CGPath) {}
-	func aetherCell (text: String, rect: CGRect) {}
+	func key(path: CGPath, uiColor: UIColor) {}
+	func key(text: String, rect: CGRect, font: UIFont) {}
+	func bubble(path: CGPath, uiColor: UIColor, width: CGFloat) {}
+	func bubble(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {}
+	func shape(text: String, rect: CGRect, uiColor: UIColor) {}
+	func message(text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {}
+	func aetherPicker(path: CGPath) {}
+	func aetherPickerList(path: CGPath) {}
+	func aetherCell(path: CGPath) {}
+	func aetherCell(text: String, rect: CGRect) {}
 	func wafer(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) -> CGFloat {return 0}
+	func color(_ skinColor: SkinColor) -> UIColor {return UIColor.white}
 	
 // Static ==========================================================================================
 	static var skin: Skin = TronSkin()
@@ -44,6 +50,9 @@ class Skin {
 	static func bubble (text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) {
 		skin.bubble(text: text, x: x, y: y, uiColor: uiColor)
 	}
+	static func shape(text: String, rect: CGRect, uiColor: UIColor) {
+		skin.shape(text: text, rect: rect, uiColor: uiColor)
+	}
 	static func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
 		skin.message(text: text, rect: rect, uiColor: uiColor, font: font)
 	}
@@ -61,5 +70,8 @@ class Skin {
 	}
 	static func wafer(text: String, x: CGFloat, y: CGFloat, uiColor: UIColor) -> CGFloat {
 		return skin.wafer(text: text, x: x, y: y, uiColor: uiColor)
+	}
+	static func color(_ skinColor: SkinColor) -> UIColor {
+		return skin.color(skinColor)
 	}
 }

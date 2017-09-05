@@ -39,6 +39,9 @@ class DiamondShape: Shape {
 		
 		Skin.bubble(path: path, uiColor: UIColor.lightGray, width: 2*Oo.s)
 	}
+	override func bounds(size: CGSize) -> CGRect {
+		return CGRect(x: 0, y: 0, width: size.width+size.height+12, height: size.width+size.height+12)
+	}
 	override func draw(rect: CGRect, uiColor: UIColor) {
 		let p: CGFloat = 3
 		let r: CGFloat = 10
@@ -63,6 +66,6 @@ class DiamondShape: Shape {
 		path.addArc(tangent1End: CGPoint(x: x1, y: y3), tangent2End: CGPoint(x: x2, y: y2), radius: r)
 		path.closeSubpath()
 		
-		Skin.panel(path: path, uiColor: uiColor)
+		Skin.bubble(path: path, uiColor: uiColor, width: 4/3*Oo.s)
 	}
 }

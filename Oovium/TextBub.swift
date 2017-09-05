@@ -10,7 +10,7 @@ import UIKit
 
 class TextMaker: Maker {
 	
-	// Maker ===========================================================================================
+// Maker ===========================================================================================
 	func make(aetherView: AetherView, at: V2) -> Bubble {
 		let text = aetherView.aether.createText(at: at)
 		text.shape = aetherView.shape
@@ -34,7 +34,22 @@ class TextBub: Bubble {
 		
 		textLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
 		addSubview(textLeaf)
+		
+		render()
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
+	func render() {
+		textLeaf.render()
+		bounds = textLeaf.frame
+	}
+	
+// Events ==========================================================================================
+	override func onCreate() {
+		alpha = 0
+		UIView.animate(withDuration: 0.1) {
+			self.alpha = 1
+		}
+		textLeaf.editMode()
+	}
 }

@@ -9,6 +9,8 @@
 import UIKit
 
 class TronSkin: Skin {
+	let pen = Pen(font: UIFont(name: "HelveticaNeue", size: 16)!)
+	
 // Skin ============================================================================================
 	// Panel
 	override func panel (path: CGPath, uiColor: UIColor) {
@@ -90,6 +92,28 @@ class TronSkin: Skin {
 		pen.color = UIColor.white
 		(text as NSString).draw(at: CGPoint(x: x, y: y), withAttributes: pen.attributes)
 	}
+	// Shape
+	override func shape(text: String, rect: CGRect, uiColor: UIColor) {
+		let pen = self.pen.copy()
+		pen.alignment = .center
+		pen.style.lineBreakMode = .byWordWrapping
+		
+		var size = (text as NSString).size(attributes: pen.attributes)
+		if text.components(separatedBy: " ").count > 1 {
+			while size.width > size.height*4 {
+				size = (text as NSString).boundingRect(with: CGSize(width: size.width*0.7, height: 2000), options: [.usesLineFragmentOrigin], attributes: pen.attributes, context: nil).size
+			}
+		}
+		
+		let textRect = CGRect(x: (rect.size.width-size.width)/2, y: (rect.size.height-size.height)/2-1, width: size.width+0.5, height: size.height+0.5)
+
+		pen.color = uiColor.alpha(0.4)
+		(text as NSString).draw(in: textRect.offsetBy(dx: 1, dy: 1), withAttributes: pen.attributes)
+		(text as NSString).draw(in: textRect.offsetBy(dx: -1, dy: -1), withAttributes: pen.attributes)
+		
+		pen.color = UIColor.white
+		(text as NSString).draw(in: textRect, withAttributes: pen.attributes)
+	}
 	// Miscellaneous
 	override func message (text: String, rect: CGRect, uiColor: UIColor, font: UIFont) {
 		let style = NSMutableParagraphStyle()
@@ -167,5 +191,14 @@ class TronSkin: Skin {
 		(text as NSString).draw(at: CGPoint(x: x+5, y: y), withAttributes: pen.attributes)
 		
 		return width+9
+	}
+	// Color
+	override func color(_ skinColor: SkinColor) -> UIColor {
+		switch skinColor {
+			case .labelBack:	return UIColor(red: 0, green: 0.3, blue: 0, alpha: 0.5)
+			case .ovalBack:		return UIColor.black.alpha(0.3)
+			case .currentCell:	return UIColor.purple
+			default:			return UIColor.white
+		}
 	}
 }

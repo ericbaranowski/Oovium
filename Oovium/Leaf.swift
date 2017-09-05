@@ -8,6 +8,15 @@
 
 import UIKit
 
+protocol Citable {
+}
+
+protocol Editable {
+	func edit()
+	func ok()
+	func cite(_ citable: Citable)
+}
+
 class Leaf: UIView {
 	var hitch: Position = .center
 	
