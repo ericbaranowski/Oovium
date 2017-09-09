@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AetherView: UIScrollView {
+public class AetherView: UIScrollView, UIGestureRecognizerDelegate {
 	var aether: Aether
 	
 	var maker: Maker = ObjectMaker()
@@ -19,6 +19,9 @@ public class AetherView: UIScrollView {
 	var currentlyEditing: Chain?
 	
 	var editing: Editable? = nil
+	var anchored: Bool = false
+	
+	var selected: [Bubble] = [Bubble]()
 	
 	public init(aether: Aether) {
 		self.aether = aether
@@ -31,12 +34,23 @@ public class AetherView: UIScrollView {
 		showsVerticalScrollIndicator = false
 		showsHorizontalScrollIndicator = false
 		
-		var gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
-		gesture.numberOfTapsRequired = 2
-		addGestureRecognizer(gesture)
+		let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap(_:)))
+		tapGesture.numberOfTapsRequired = 2
+		addGestureRecognizer(tapGesture)
 		
-		gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
-		addGestureRecognizer(gesture)
+		addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(onTap)))
+		
+		let anchorStart = AnchorStart(aetherView: self)
+		anchorStart.delegate = self
+		addGestureRecognizer(anchorStart)
+		
+		let anchorStop = AnchorStop(aetherView: self)
+		anchorStop.delegate = self
+		addGestureRecognizer(anchorStop)
+		
+		let anchorTap = AnchorTap(aetherView: self)
+		anchorTap.delegate = self
+		addGestureRecognizer(anchorTap)
 		
 //		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
 //		NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDidShow), name: .UIKeyboardDidShow, object: nil)
@@ -146,7 +160,54 @@ public class AetherView: UIScrollView {
 		stretch(animated: true)
 	}
 	
+// Selected ========================================================================================
+	private func selectedIsHomogeneous() -> Bool {
+		let root = selected.first!
+		for i in 1..<selected.count {
+			if type(of: root) != type(of:selected[i]) {
+				return false
+			}
+		}
+		return true
+	}
+	private func invokeContext() {
+		if selected.count == 0 {
+//			Hovers.dis
+		} else if selected.count == 1 {
+			let context = selected.first!.context
+			context.invoke()
+		} else {
+			if selectedIsHomogeneous() {
+				let context = selected.first!.context
+				context.invoke()
+			} else {
+				Hovers.multiContext.invoke()
+			}
+		}
+	}
+	func select(bubbles: [Bubble]) {
+		for bubble in bubbles {
+			bubble.select()
+			selected.append(bubble)
+		}
+		invokeContext()
+	}
+	func select(bubble: Bubble) {
+		select(bubbles: [bubble])
+	}
+	func unselect(bubble: Bubble) {
+		bubble.unselect()
+		invokeContext()
+	}
+	
 // Events ==========================================================================================
+	func onAnchorStart() {
+		anchored = true
+	}
+	func onAnchorStop() {
+		anchored = false
+	}
+	
 	func onTap() {
 		Hovers.retract()
 	}
@@ -165,4 +226,9 @@ public class AetherView: UIScrollView {
 		}
 	}
 //	func onKeyboardDidHide() {}
+	
+// UIGestureRecognizerDelegate =====================================================================
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		return true
+	}
 }

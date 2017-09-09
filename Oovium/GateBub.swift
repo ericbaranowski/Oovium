@@ -98,17 +98,17 @@ class GateBub: Bubble, ChainLeafDelegate {
 		ifLeaf.chain = gate.ifChain
 		ifLeaf.uiColor = OOColor.marine.uiColor
 		ifLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(ifLeaf)
+		add(leaf: ifLeaf)
 		
 		thenLeaf.chain = gate.thenChain
 		thenLeaf.uiColor = OOColor.marine.uiColor
 		thenLeaf.frame = CGRect(x: 50, y: 0, width: 36, height: 36)
-		addSubview(thenLeaf)
+		add(leaf: thenLeaf)
 		
 		elseLeaf.chain = gate.elseChain
 		elseLeaf.uiColor = OOColor.marine.uiColor
 		elseLeaf.frame = CGRect(x: 25, y: 40, width: 36, height: 36)
-		addSubview(elseLeaf)
+		add(leaf: elseLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	

@@ -51,14 +51,18 @@ class ObjectBub: Bubble, ChainLeafDelegate {
 	
 		chainLeaf.chain = object.chain
 		chainLeaf.frame = bounds
-		addSubview(chainLeaf)
-		
+		add(leaf: chainLeaf)	
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 // Events ==========================================================================================
 	override func onCreate() {
 		chainLeaf.edit()
+	}
+	
+// Bubble ==========================================================================================
+	override var context: Context {
+		return Hovers.objectContext
 	}
 	
 // ChainLeafDelegate ===============================================================================

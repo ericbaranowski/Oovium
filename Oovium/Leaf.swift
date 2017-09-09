@@ -19,6 +19,7 @@ protocol Editable {
 
 class Leaf: UIView {
 	var hitch: Position = .center
+	var bubble: Bubble!
 	
 	init() {
 		super.init(frame: CGRect.zero)

@@ -75,7 +75,7 @@ class MechBub: Bubble, ChainLeafDelegate {
 		resultLeaf.chain = mech.resultChain
 		resultLeaf.uiColor = UIColor.blue
 		resultLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(resultLeaf)
+		add(leaf: resultLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

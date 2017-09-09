@@ -115,22 +115,22 @@ class CronBub: Bubble, ChainLeafDelegate {
 		startLeaf.chain = cron.startChain
 		startLeaf.uiColor = OOColor.cobolt.uiColor
 		startLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(startLeaf)
+		add(leaf: startLeaf)
 
 		stopLeaf.chain = cron.stopChain
 		stopLeaf.uiColor = OOColor.cobolt.uiColor
 		stopLeaf.frame = CGRect(x: 40, y: 0, width: 36, height: 36)
-		addSubview(stopLeaf)
+		add(leaf: stopLeaf)
 		
 		stepsLeaf.chain = cron.stepsChain
 		stepsLeaf.uiColor = OOColor.cobolt.uiColor
 		stepsLeaf.frame = CGRect(x: 0, y: 40, width: 36, height: 36)
-		addSubview(stepsLeaf)
+		add(leaf: stepsLeaf)
 		
 		rateLeaf.chain = cron.rateChain
 		rateLeaf.uiColor = OOColor.cobolt.uiColor
 		rateLeaf.frame = CGRect(x: 40, y: 40, width: 36, height: 36)
-		addSubview(rateLeaf)
+		add(leaf: rateLeaf)
 		
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}

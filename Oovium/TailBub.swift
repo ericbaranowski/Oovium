@@ -128,12 +128,12 @@ class TailBub: Bubble, ChainLeafDelegate {
 		whileLeaf.chain = tail.whileChain
 		whileLeaf.uiColor = UIColor.blue
 		whileLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(whileLeaf)
+		add(leaf: whileLeaf)
 
 		resultLeaf.chain = tail.resultChain
 		resultLeaf.uiColor = UIColor.blue
 		resultLeaf.frame = CGRect(x: 0, y: 40, width: 36, height: 36)
-		addSubview(resultLeaf)
+		add(leaf: resultLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 

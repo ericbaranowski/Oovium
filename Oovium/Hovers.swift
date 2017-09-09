@@ -190,6 +190,13 @@ class Hovers {
 		chainEditor_.dismiss()
 	}
 	
+// Contexts ========================================================================================
+	static let multiContext = MultiContext()
+	static let objectContext = ObjectContext()
+	static let typeContext = TypeContext()
+	static let textContext = TextContext()
+	static let textMultiContext = TextMultiContext()
+	
 // Settings ========================================================================================
 	static private var settingsHover_ = SettingsHover()
 	static func invokeSettingsHover() {

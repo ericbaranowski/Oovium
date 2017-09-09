@@ -33,7 +33,7 @@ class TextBub: Bubble {
 		super.init(hitch: .center, origin: CGPoint(x: self.text.x, y: self.text.y), size: CGSize(width: 36, height: 36))
 		
 		textLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(textLeaf)
+		add(leaf: textLeaf)
 		
 		render()
 	}
@@ -51,5 +51,20 @@ class TextBub: Bubble {
 			self.alpha = 1
 		}
 		textLeaf.editMode()
+	}
+	override func onAnchorTap() {
+		if !selected {
+			aetherView?.select(bubble: self)
+		} else {
+			aetherView?.unselect(bubble: self)
+		}
+	}
+
+// Bubble ==========================================================================================
+	override var context: Context {
+		return Hovers.textContext
+	}
+	override var multiContext: Context {
+		return Hovers.textMultiContext
 	}
 }

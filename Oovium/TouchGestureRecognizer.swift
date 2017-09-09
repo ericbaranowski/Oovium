@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AETouchGestureRecognizer: UIGestureRecognizer {
+class TouchGestureRecognizer: UIGestureRecognizer {
 
 // UIGestureRecognizer =============================================================================
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {

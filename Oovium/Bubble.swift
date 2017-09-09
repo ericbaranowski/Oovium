@@ -13,9 +13,12 @@ protocol Maker {
 	func drawIcon()
 }
 
-class Bubble: UIView {
+class Bubble: UIView, AnchorTappable {
 	var hitch: Position
 	var aetherView: AetherView?
+	var leaves: [Leaf] = [Leaf]()
+	
+	var selected: Bool = false
 	
 	init (hitch: Position, origin: CGPoint, size: CGSize) {
 		self.hitch = hitch
@@ -32,6 +35,19 @@ class Bubble: UIView {
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
+	var context: Context {
+		return Hovers.multiContext
+	}
+	var multiContext: Context {
+		return Hovers.multiContext
+	}
+	
+	func add(leaf: Leaf) {
+		leaf.bubble = self
+		leaves.append(leaf)
+		addSubview(leaf)
+	}
+	
 // Events ==========================================================================================
 	func onCreate() {}
 	func onRemove() {}
@@ -40,9 +56,27 @@ class Bubble: UIView {
 	func onMove() {}
 	func onUnload() {}
 	
+	func onAnchorTap() {}
+	
 // Actions =========================================================================================
 	func create() {
 		onCreate()
+	}
+	func select() {
+		selected = true
+		onSelect()
+		setNeedsDisplay()
+		for leaf in leaves {
+			leaf.setNeedsDisplay()
+		}
+	}
+	func unselect() {
+		selected = false
+		onUnselect()
+		setNeedsDisplay()
+		for leaf in leaves {
+			leaf.setNeedsDisplay()
+		}
 	}
 	
 // UIView ==========================================================================================

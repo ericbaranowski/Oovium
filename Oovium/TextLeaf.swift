@@ -21,17 +21,17 @@ class TextLeaf: Leaf, UITextFieldDelegate, Editable {
 		
 		self.backgroundColor = UIColor.clear
 		
-		var gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
-		addGestureRecognizer(gesture)
-		
-		gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
-		gesture.numberOfTapsRequired = 2
-		addGestureRecognizer(gesture)
+//		var gesture = UITapGestureRecognizer(target: self, action: #selector(onTap))
+//		addGestureRecognizer(gesture)
+//		
+//		gesture = UITapGestureRecognizer(target: self, action: #selector(onDoubleTap))
+//		gesture.numberOfTapsRequired = 2
+//		addGestureRecognizer(gesture)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
 	var uiColor: UIColor {
-		return text.color.uiColor
+		return bubble.selected ? UIColor.yellow : text.color.uiColor
 	}
 	
 	func render() {
@@ -99,7 +99,7 @@ class TextLeaf: Leaf, UITextFieldDelegate, Editable {
 	
 // UIView ==========================================================================================
 	override func draw(_ rect: CGRect) {
-		text.shape.shape.draw(rect: rect, uiColor: text.color.uiColor)
+		text.shape.shape.draw(rect: rect, uiColor: uiColor)
 		if textField == nil {
 			Skin.shape(text: text.name, rect: rect, uiColor: uiColor)
 		}

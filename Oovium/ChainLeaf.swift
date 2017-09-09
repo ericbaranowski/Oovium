@@ -40,8 +40,8 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 		chainView.delegate = self
 		addSubview(chainView)
 		
-		let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
-		addGestureRecognizer(gesture)
+//		let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+//		addGestureRecognizer(gesture)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 	
@@ -71,7 +71,7 @@ class ChainLeaf: Leaf, ChainViewDelegate {
 
 // ChainViewDelegate ===============================================================================
 	var color: UIColor {
-		return uiColor
+		return bubble.selected ? UIColor.yellow : uiColor
 	}
 	
 	func onChange() {

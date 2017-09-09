@@ -12,7 +12,7 @@ import UIKit
 
 class TypeMaker: Maker {
 	
-	// Maker ===========================================================================================
+// Maker ===========================================================================================
 	func make(aetherView: AetherView, at: V2) -> Bubble {
 		let type = aetherView.aether.createType(at: at)
 		return TypeBub(type)
@@ -74,7 +74,13 @@ class TypeBub: Bubble {
 		super.init(hitch: .center, origin: CGPoint(x: self.type.x, y: self.type.y), size: CGSize(width: 36, height: 36))
 		
 		typeLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(typeLeaf)
+		add(leaf: typeLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
+
+// Bubble ==========================================================================================
+	override var context: Context {
+		return Hovers.typeContext
+	}
+	
 }

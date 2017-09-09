@@ -82,7 +82,7 @@ class GridBub: Bubble {
 		super.init(hitch: .center, origin: CGPoint(x: self.grid.x, y: self.grid.y), size: CGSize(width: 36, height: 36))
 		
 		gridLeaf.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-		addSubview(gridLeaf)
+		add(leaf: gridLeaf)
 	}
 	required init? (coder aDecoder: NSCoder) {fatalError()}
 }

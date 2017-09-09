@@ -57,6 +57,7 @@ class Hover: UIView {
 	func onFadeIn() {}
 	func onInvoke() {}
 	func onDismiss() {}
+	func onRetract() {}
 	
 // Actions =========================================================================================
 	func invoke() {
@@ -81,5 +82,7 @@ class Hover: UIView {
 	func rescale() {
 		resize()
 	}
-	func retract() {}
+	func retract() {
+		onRetract()
+	}
 }
